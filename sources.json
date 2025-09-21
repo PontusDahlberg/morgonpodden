@@ -7,37 +7,111 @@
       "selector": ".fb-post, .facebook-post, p",
       "maxItems": 10,
       "enabled": true
+    },
+    {
+      "name": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/rss.xml",
+      "type": "news",
+      "maxItems": 12,
+      "enabled": true
+    },
+    {
+      "name": "Dagens Nyheter",
+      "url": "https://www.dn.se/rss/",
+      "type": "news", 
+      "maxItems": 10,
+      "enabled": true
+    },
+    {
+      "name": "Svenska Dagbladet",
+      "url": "https://www.svd.se/rss.xml",
+      "type": "news",
+      "maxItems": 8,
+      "enabled": true
+    },
+    {
+      "name": "Computer Sweden",
+      "url": "https://computersweden.idg.se/rss/allanyheter",
+      "type": "tech",
+      "maxItems": 10,
+      "enabled": true
+    },
+    {
+      "name": "Ny Teknik",
+      "url": "https://www.nyteknik.se/rss/senaste",
+      "type": "tech",
+      "maxItems": 8,
+      "enabled": true
+    },
+    {
+      "name": "Breakit Tech",
+      "url": "https://www.breakit.se/feed",
+      "type": "tech",
+      "maxItems": 6,
+      "enabled": true
+    },
+    {
+      "name": "SMHI Väder",
+      "url": "https://wttr.in/Stockholm?format=%l:+%c+%t+%h+%w",
+      "type": "weather",
+      "maxItems": 1,
+      "enabled": true
+    },
+    {
+      "name": "NWT - Nya Wermlands-Tidningen",
+      "url": "https://www.nwt.se/rss.xml",
+      "type": "news",
+      "maxItems": 8,
+      "enabled": true,
+      "description": "Regionala nyheter från Värmland"
+    },
+    {
+      "name": "Miljö & Utveckling",
+      "url": "https://miljo-utveckling.se/feed/",
+      "type": "climate",
+      "maxItems": 6,
+      "enabled": true,
+      "description": "Klimat och miljönyheter"
+    },
+    {
+      "name": "Naturskyddsföreningen",
+      "url": "https://www.naturskyddsforeningen.se/nyheter/rss/",
+      "type": "climate", 
+      "maxItems": 5,
+      "enabled": true,
+      "description": "Miljö- och klimatnyheter"
     }
   ],
   "podcastSettings": {
-    "title": "Min Morgonpodd",
-    "description": "Din dagliga sammanfattning av nyheter, teknik och väder",
-    "author": "Morgonpodd AI",
-    "language": "sv-SE",
-    "category": "News",
+    "title": "Människa Maskin Miljö - Veckans AI & Klimat",
+    "description": "Veckosammanfattning av AI, grön teknik och hållbarhet. Automatiskt genererat komplement till Människa Maskin Miljö.",
+    "author": "Människa Maskin Miljö AI",
+    "language": "sv-SE", 
+    "category": "Technology",
     "explicit": false,
     "timezone": "Europe/Stockholm",
-    "generateTime": "06:00",
+    "generateTime": "07:00",
+    "schedule": "weekly_wednesday",
     "maxDuration": 600,
     "publicUrl": "https://pub-5b4c915c1917445e9a2efc8dafcbce45.r2.dev",
     "cover_image": "public/cover.jpg",
     "hosts": [
       {
         "name": "Anna",
-        "voice_id": "xc1ryI9pRbBLNr6aTJET",
-        "personality": "Energisk och positiv morgonvärd som älskar nyheter",
-        "style": "konversationell och varm"
+        "voice_id": "4xkUqaR9MYOJHoaC1Nak",
+        "personality": "Expertvärd inom hållbar teknik och AI, brinner för miljöfrågor och innovation",
+        "style": "engagerad och kunnig, fokuserad på gröna lösningar"
       },
       {
-        "name": "Erik",
-        "voice_id": "iwNZQzqCFIBqLR6sgFpN",
-        "personality": "Analytisk och noggrann, specialist på teknik och ekonomi",
-        "style": "informativ men lättsam"
+        "name": "Erik", 
+        "voice_id": "nPczCjzI2devNBz1zQrb",
+        "personality": "Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar",
+        "style": "tekniskt orienterad men tillgänglig, fokus på praktiska lösningar"
       }
     ],
     "promptTemplates": {
-      "main_prompt": "Du skapar ett naturligt samtal mellan {host1_name} och {host2_name}, två professionella poddvärdar.\n\n{host1_name}: {host1_personality}\n{host2_name}: {host2_personality}\n\nSkapa ett engagerande samtal där värdarna diskuterar dagens nyheter på ett naturligt sätt. \n\nInnan du ger mig skriptet kontrollera att språket i manuset är korrekt och flyter på bra samt att musikavbrotten är placerade på lämpliga ställen.",
-      "conversation_style": "natural_dialogue"
+      "main_prompt": "Du skapar ett naturligt samtal mellan {host1_name} och {host2_name} för podcasten 'Människa Maskin Miljö - Veckans AI & Klimat'.\n\n{host1_name}: {host1_personality}\n{host2_name}: {host2_personality}\n\nFormat: VECKOSAMMANFATTNING som sänds onsdagar kl 07:00. Sammanfatta veckans viktigaste händelser inom:\n• AI:s roll inom miljölösningar och hållbarhet\n• Förnybar energi, elektrifiering och energilagring\n• Grön teknologiutveckling och innovation\n• Klimatpolitik och miljöregleringar\n• Hållbara affärsmodeller och startups\n\nStil: Expertperspektiv men tillgängligt. Fokusera på trend-analys och framtidsperspektiv. Koppla samman teknik med miljönytta.\n\nInnan du levererar: Kontrollera språkkvalitet, miljö/teknik-fokus och lämplig musikplacering.",
+      "conversation_style": "expert_environmental_tech"
     },
     "textToDialogue": {
       "enabled": true,
@@ -115,6 +189,12 @@
     "ai_provider": "openrouter",
     "openai_model": "gpt-5-mini",
     "openrouter_model": "anthropic/claude-3.7-sonnet",
+    "cloudflare": {
+      "bucket": "manniska-maskin-miljo",
+      "publicUrl": "https://pub-e9499080fa4548beaf10448e8ed8d638.r2.dev",
+      "enabled": true,
+      "autoUpload": true
+    },
     "music_instructions": "Instruktioner för musikanvändning:\n- OBLIGATORISK MUSIKINTEGRATION - Du MÅSTE inkludera musik enligt följande:\n  - VIKTIGT: Använd FULLSTÄNDIGA låtar (ingen tidsbegränsning)\n  - VIKTIGT: Varje låt får bara användas EN gång per avsnitt (inga dubbletter)\n- Börja inte direkt med en låt utan låt värdarna prata lite först\n- Använd ENDAST ID:n som finns i den tillgängliga musiklistan\n- VIKTIGT: Värdarna ska ALDRIG kommentera eller presentera musiken - ingen \"nu kommer låten xxx\"\n- Placera [MUSIK: ID] mellan samtalsavsnitt eller när det passar naturligt\n- Markera musikinsättningar som: [MUSIK: a1b2c3d4] där a1b2c3d4 är den 8-siffriga koden\n- ANVÄND ALDRIG artistnamn eller låttitlar - endast ID-koder\n- Välj musik som passar ämnet och stämningen baserat på kategorierna\n- VIKTIGT: Om du inte inkluderar musik kommer systemet att MISSLYCKAS. Musik är OBLIGATORISKT.",
     "emotional_design": "EMOTIONAL DESIGN FÖR NATURLIGT SAMTAL:\nSkapa ett samtal som utnyttjar ElevenLabs nya text-to-dialogue funktionalitet med följande exempel på emotionella variation:\n- EXCITED: För positiva nyheter, framgångshistorier, spännande upptäckter\n- LAUGHING: För roliga nyheter, humoristiska kommentarer, lättsammare inslag\n- CURIOUS: För intressanta tekniska nyheter, forskningsresultat, innovations\n- CONCERNED: För allvarliga nyheter, problem, varningar, kriser\n- SAD: För tragiska nyheter, sorgsna händelser\n- NEUTRAL: För analyser, faktabaserad information, objektiva rapporter\n- FRIENDLY: För hälsningar, övergångar, personliga kommentarer\n- SURPRISED: För överraskande nyheter, häpnadsväckande upptäckter\n- CONVERSATIONAL: Som bas för neutralt innehåll och naturliga övergångar\n\nOBS: Du kan markera emotionella partier med hakparenteser [excited], [laughing], etc. men använd sparsamt - endast för tydliga emotionella höjdpunkter.\n\nInstruktioner för optimerad text-to-dialogue:\n1. Skapa ett naturligt samtal mellan värdarna\n2. Variera emotionell ton baserat på innehåll - använd ord som indikerar känsla:\n   - \"Det här är verkligen spännande...\" (CURIOUS/EXCITED)\n   - \"Det är oroande att höra...\" (CONCERNED)\n   - \"Enligt nya forskningsresultat...\" (PROFESSIONAL)\n   - \"Hej och välkommen...\" (FRIENDLY)\n   - \"Vädret idag visar...\" (CALM)\n3. Låt värdarna reagera emotionellt passande på varandras kommentarer\n4. Inkludera naturliga övergångar med emotionell förändring\n5. läggtaggar som t.ex [concerned] eller [french dialect] before the text that should be affected. "
   }

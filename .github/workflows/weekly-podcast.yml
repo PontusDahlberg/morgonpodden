@@ -1,0 +1,98 @@
+name: 📡 Människa Maskin Miljö - Weekly Podcast
+
+on:
+  # Automatisk schemaläggning: Varje onsdag kl 07:00 CET (05:00 UTC)
+  schedule:
+    - cron: '0 5 * * 3'
+  
+  # Manuell trigger för testing
+  workflow_dispatch:
+    inputs:
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  generate-podcast:
+    name: 🎙️ Generate Weekly Podcast
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Setup Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+        
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: 🔍 Verify Environment
+      run: |
+        echo "🐍 Python version: $(python --version)"
+        echo "📦 Pip packages:"
+        pip list | grep -E "(requests|feedparser|elevenlabs|python-dotenv)"
+        echo "📁 Working directory: $(pwd)"
+        ls -la
+        
+    - name: 🎙️ Generate Podcast
+      env:
+        # API Keys från GitHub Secrets
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET }}
+        CLOUDFLARE_R2_PUBLIC_URL: ${{ secrets.CLOUDFLARE_R2_PUBLIC_URL }}
+        
+        # Podcast settings
+        PODCAST_TITLE: "Människa Maskin Miljö"
+        PODCAST_AUTHOR: "Pontus - Människa Maskin Miljö"
+        PODCAST_EMAIL: "podcast@example.com"
+        PODCAST_LANGUAGE: "sv-SE"
+        GENERATE_TIME: "07:00"
+        
+        # Debug mode
+        DEBUG_MODE: ${{ github.event.inputs.debug_mode || 'false' }}
+        
+      run: |
+        echo "🚀 Startar podcast-generering..."
+        echo "📅 Datum: $(date)"
+        echo "🌍 Timezone: $(date +%Z)"
+        
+        # Kör podcast-genereringen
+        python run_podcast.py
+        
+    - name: 📊 Upload Generation Logs
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: podcast-logs-${{ github.run_number }}
+        path: |
+          *.log
+          *.txt
+          generation_log.txt
+          podcast_log.txt
+        retention-days: 30
+        
+    - name: 📈 Report Success
+      if: success()
+      run: |
+        echo "✅ Podcast-generering lyckades!"
+        echo "📡 RSS Feed: https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/feed.xml"
+        echo "🌐 Webbsida: https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev"
+        
+    - name: 🚨 Report Failure
+      if: failure()
+      run: |
+        echo "❌ Podcast-generering misslyckades!"
+        echo "📋 Kontrollera logs för felsökning"
+        echo "🔧 Workflow kan köras manuellt för retry"

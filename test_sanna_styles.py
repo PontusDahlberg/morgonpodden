@@ -9,7 +9,10 @@ def test_sanna_with_style():
     print("🎭 Testar Sanna med olika emotional styles")
     print("=" * 50)
     
-    api_key = "sk_a52d33c85c9751b9cb8ca3e8671dff718f67a488ca50df30"
+    api_key = os.getenv('ELEVENLABS_API_KEY')
+    if not api_key:
+        print("❌ ELEVENLABS_API_KEY environment variable not found!")
+        return
     voice_id = "4xkUqaR9MYOJHoaC1Nak"  # Sanna
     
     # Test olika styles

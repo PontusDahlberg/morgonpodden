@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morgonpodd - Din dagliga nyhetssammanfattning</title>
-    <meta name="description" content="En automatiskt genererad morgonpodd med dagens viktigaste nyheter, teknik och väder">
+    <title>MMM Veckonytt - MÄNNISKA MASKIN MILJÖ</title>
+    <meta name="description" content="En automatiskt genererad podcast med veckans viktigaste nyheter inom AI, teknik och klimat">
     
     <!-- Podcast RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Morgonpodd RSS" href="/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="MMM Veckonytt RSS" href="/feed.xml">
     
     <style>
         * {
@@ -161,24 +161,26 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <img src="/logo.png" alt="Morgonpodd">
+                <img src="/cover.jpg" alt="MÄNNISKA MASKIN MILJÖ">
             </div>
-            <h1>Morgonpodd</h1>
-            <p class="tagline">Din dagliga dos av nyheter, teknik och väder</p>
+            <div style="color: #666; font-size: 0.9em; margin-bottom: 5px;">MÄNNISKA MASKIN MILJÖ</div>
+            <h1>MMM Veckonytt</h1>
+            <p class="tagline">Veckans viktigaste nyheter inom AI, teknik och klimat</p>
         </div>
         
         <div class="subscribe-section">
             <h2>🎧 Prenumerera</h2>
             
             <div class="podcast-links">
-                <a href="podcast://DOMAIN/feed.xml" class="podcast-link">
+                <a href="#" onclick="copyRSSLink()" class="podcast-link">
                     <div class="icon">📱</div>
                     <div>Apple Podcasts</div>
+                    <small>Kopiera RSS-länk</small>
                 </a>
                 
-                <a href="https://www.google.com/podcasts?feed=FEED_URL" class="podcast-link">
+                <a href="https://open.spotify.com/show/YOUR_SPOTIFY_SHOW_ID" class="podcast-link">
                     <div class="icon">🎵</div>
-                    <div>Google Podcasts</div>
+                    <div>Spotify</div>
                 </a>
             </div>
             
@@ -194,7 +196,7 @@
         </div>
         
         <div class="info">
-            <p>Nya avsnitt publiceras varje morgon kl 06:00</p>
+            <p>Nya avsnitt publiceras varje onsdag kl 07:00</p>
             <p>Driven av AI • Uppdateras automatiskt</p>
         </div>
     </div>
@@ -202,16 +204,24 @@
     <script>
         // Update RSS URL
         const currentUrl = window.location.origin;
-        document.getElementById('rss-url').textContent = currentUrl + '/feed.xml';
+        const rssUrl = currentUrl + '/feed.xml';
+        document.getElementById('rss-url').textContent = rssUrl;
+        
+        // Copy RSS link function
+        function copyRSSLink() {
+            navigator.clipboard.writeText(rssUrl).then(() => {
+                alert('RSS-länk kopierad! Klistra in i Apple Podcasts för att prenumerera.');
+            });
+        }
         
         // Update podcast links
         document.querySelectorAll('.podcast-link').forEach(link => {
             const href = link.getAttribute('href');
-            if (href.includes('DOMAIN')) {
+            if (href && href.includes('DOMAIN')) {
                 link.setAttribute('href', href.replace('DOMAIN', window.location.host));
             }
-            if (href.includes('FEED_URL')) {
-                link.setAttribute('href', href.replace('FEED_URL', encodeURIComponent(currentUrl + '/feed.xml')));
+            if (href && href.includes('FEED_URL')) {
+                link.setAttribute('href', href.replace('FEED_URL', encodeURIComponent(rssUrl)));
             }
         });
         

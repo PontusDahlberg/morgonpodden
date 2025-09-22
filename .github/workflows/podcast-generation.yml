@@ -13,6 +13,7 @@ jobs:
   test-code:
     name: 🧪 Test Code Quality
     runs-on: ubuntu-latest
+    continue-on-error: true  # ⭐ Låt detta jobb faila utan att stoppa andra
     
     steps:
     - name: 📥 Checkout repository

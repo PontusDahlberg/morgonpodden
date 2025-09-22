@@ -1,4 +1,4 @@
-name: 🎙️ Människa Maskin Miljö - Podcast Generation
+ name: 🎙️ Människa Maskin Miljö - Podcast Generation
 
 # Kör workflow varje onsdag kl 07:00 svensk tid eller manuellt
 on:
@@ -88,6 +88,7 @@ jobs:
         name: daily-podcast-${{ github.run_number }}
         path: |
           audio/intro_complete_*.mp3
+          audio/episode_*.mp3
           generation_log.txt
         
     - name: 🔔 Notify on success

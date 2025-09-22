@@ -2,6 +2,12 @@
 
 En AI-driven tjänst som automatiskt genererar dagliga svenska podcast-avsnitt med två värdar, musikintegration och RSS-distribution via Cloudflare R2.
 
+## 🚀 GitHub Actions Integration
+- ✅ **Automatisk generering** kl 06:00 svensk tid
+- ✅ **Development workflow** för kodkvalitet  
+- ✅ **Säker hantering** av API-nycklar
+- ✅ **Deployment** till GitHub Pages
+
 ## ✨ Funktioner
 
 - **🤖 Två AI-värdar**: Anna & Erik med naturlig konversation

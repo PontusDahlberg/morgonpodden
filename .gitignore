@@ -1,9 +1,24 @@
+# Test files with potential secrets
+test_*token*.py
+test_*key*.py
+debug_*.py
+check_*.py
+
 # Environment variables
 .env
+.env.*
+.env_*
+.env-*
+*.env
+env.*
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.backup
+.env_backup
+.env_new
+!.env.example
 
 # Python
 __pycache__/

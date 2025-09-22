@@ -78,7 +78,7 @@ jobs:
         python run_podcast.py --auto-deploy
         
     - name: 📁 Upload podcast artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: daily-podcast-${{ github.run_number }}
         path: |
@@ -109,7 +109,7 @@ jobs:
       uses: actions/checkout@v4
       
     - name: 📂 Download podcast artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: daily-podcast-${{ github.run_number }}
         path: ./public/audio/

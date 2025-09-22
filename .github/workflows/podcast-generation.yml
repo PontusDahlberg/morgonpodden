@@ -84,7 +84,6 @@ jobs:
         path: |
           audio/intro_complete_*.mp3
           generation_log.txt
-        retention-days: 30
         
     - name: 🔔 Notify on success
       if: success()

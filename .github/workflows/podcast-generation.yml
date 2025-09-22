@@ -1,17 +1,10 @@
 name: 🎙️ Människa Maskin Miljö - Podcast Generation
 
-# Kör workflow varje dag kl 06:00 svensk tid eller manuellt
+# Kör workflow varje onsdag kl 07:00 svensk tid eller manuellt
 on:
   schedule:
-    - cron: '0 4 * * *'  # 04:00 UTC = 06:00 svensk tid
+    - cron: '0 5 * * 3'  # 05:00 UTC = 07:00 svensk tid, onsdag (3)
   workflow_dispatch:  # Manuell körning från GitHub Actions UI
-  push:
-    branches: [ master ]
-    paths: 
-      - 'run_podcast.py'
-      - 'emotion_analyzer.py'
-      - 'music_mixer.py'
-      - 'requirements.txt'
 
 env:
   PYTHON_VERSION: '3.10'

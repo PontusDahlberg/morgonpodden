@@ -114,7 +114,7 @@
       "conversation_style": "expert_environmental_tech"
     },
     "textToDialogue": {
-      "enabled": true,
+      "enabled": false,
       "fallbackToSegments": true,
       "model": "eleven_multilingual_v2",
       "maxCharsPerChunk": 1500,

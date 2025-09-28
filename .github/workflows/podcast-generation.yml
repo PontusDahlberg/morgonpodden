@@ -65,9 +65,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
+    - name: 🎵 Install FFmpeg
+      uses: FedericoCarboni/setup-ffmpeg@v3
+      id: setup-ffmpeg
+        
     - name: 🔧 Configure secrets
       run: |
         echo "OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }}" >> .env
+        echo "ELEVENLABS_API_KEY=${{ secrets.ELEVENLABS_API_KEY }}" >> .env
+        echo "ELEVENLABS_VOICE_ID_SANNA=${{ secrets.ELEVENLABS_VOICE_ID_SANNA }}" >> .env
+        echo "ELEVENLABS_VOICE_ID_GEORGE=${{ secrets.ELEVENLABS_VOICE_ID_GEORGE }}" >> .env
         echo "CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}" >> .env
         echo "CLOUDFLARE_R2_TOKEN=${{ secrets.CLOUDFLARE_R2_TOKEN }}" >> .env
         echo "CLOUDFLARE_R2_ACCOUNT_ID=${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}" >> .env
@@ -77,7 +84,7 @@ jobs:
         echo "USE_GOOGLE_CLOUD_TTS=true" >> .env
         
         # Skapa Google Cloud credentials fil från secret
-        echo '${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON }}' > google-cloud-service-account.json
+        echo '${{ secrets.GOOGLE_CLOUD_KEY }}' > google-cloud-service-account.json
         
     - name: 🎙️ Generate podcast
       run: |

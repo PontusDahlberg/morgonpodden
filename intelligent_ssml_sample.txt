@@ -1,0 +1,10 @@
+<speak>
+<p><prosody rate="fast" pitch="+2st" volume="medium">Hej och välkomna till vår morgonpodd!</prosody></p>
+<p><prosody rate="fast" pitch="+4st" volume="loud">Idag ska vi prata om något verkligen spännande - vi har hittat en ny artist som kommer att förändra hela musikscenen.</prosody></p>
+<p><prosody rate="slow" pitch="-2st" volume="soft">Men först...</prosody></p>
+<p><prosody rate="medium" pitch="default" volume="medium">lite mer seriösa nyheter.</prosody></p>
+<p><prosody rate="slow" pitch="-2st" volume="soft">Situationen i världen just nu kräver vår uppmärksamhet.</prosody></p>
+<p><prosody rate="medium" pitch="+1st" volume="loud"><emphasis level="strong">Det här är verkligen viktigt att komma ihåg,
+<break time="300ms"/> alla lyssnare!</emphasis></prosody></p>
+<p><prosody rate="medium" pitch="+2st" volume="medium">Men nu tillbaka till den glada stämningen - vi avslutar med veckans bästa låt!</prosody></p>
+</speak>

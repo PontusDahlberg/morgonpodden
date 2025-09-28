@@ -93,6 +93,8 @@ def get_week_info() -> Dict:
     
     # Beräkna veckonummer
     week_number = last_wednesday.isocalendar()[1]
+    # TEMPORÄRT AVSTÄNGT för att spara krediter:
+    # week_number = 40  # Test för 9-11 minuters innehåll
     year = last_wednesday.year
     
     return {
@@ -106,42 +108,92 @@ def scrape_news_sources(config: Dict) -> List[Dict]:
     """Scrapa nyheter från konfigurerade källor"""
     logger.info("📰 Scrapar svenska nyhetskällor...")
     
-    # TODO: Implementera RSS-scraping från sources.json
-    # För nu, använd mock data för testing
-    week_info = get_week_info()
-    
-    mock_news = [
-        {
-            "title": "AI-genombrott inom klimatmodellering",
-            "source": "Computer Sweden", 
-            "summary": "Nya AI-modeller kan förutsäga klimatförändringar med 90% noggrannhet."
-        },
-        {
-            "title": "Svenska gröna investeringar når rekordnivåer",
-            "source": "Dagens Nyheter",
-            "summary": "Investeringar i förnybar energi ökade med 150% under 2025."
-        },
-        {
-            "title": "ChatGPT får nya miljöfunktioner",
-            "source": "Ny Teknik",
-            "summary": "OpenAI lanserar klimat-AI för att hjälpa företag minska utsläpp."
-        }
-    ]
-    
-    logger.info(f"✅ Hittade {len(mock_news)} nyhetskällor")
-    return mock_news
+    try:
+        # Import och använd den riktiga scrapern
+        import sys
+        import os
+        sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+        
+        from scraper import NewsScraper
+        import asyncio
+        
+        # Kör scraper asynkront
+        scraper = NewsScraper()
+        news_data = asyncio.run(scraper.scrape_all())
+        
+        # Konvertera till format som förväntas
+        formatted_news = []
+        for source_data in news_data:
+            source_name = source_data.get('source', 'Okänd källa')
+            for item in source_data.get('items', []):
+                formatted_news.append({
+                    'title': item.get('title', 'Okänd titel'),
+                    'description': item.get('summary', item.get('text', 'Ingen beskrivning')),
+                    'source': source_name,
+                    'url': item.get('link', ''),  # Lägg till URL
+                    'published': item.get('published', '')
+                })
+        
+        logger.info(f"✅ Hittade {len(formatted_news)} nyheter från RSS-källor")
+        return formatted_news
+        
+    except Exception as e:
+        logger.warning(f"⚠️ Fel vid RSS-scraping: {e}, använder mock-data")
+        # Fallback till mock data med URL:er
+        week_info = get_week_info()
+        
+        mock_news = [
+            {
+                "title": "AI-genombrott inom klimatmodellering",
+                "source": "Computer Sweden", 
+                "description": "Nya AI-modeller kan förutsäga klimatförändringar med 90% noggrannhet.",
+                "url": "https://computersweden.idg.se/artikel/ai-genombrott-klimat"
+            },
+            {
+                "title": "Svenska gröna investeringar når rekordnivåer",
+                "source": "Dagens Nyheter",
+                "description": "Investeringar i förnybar energi ökade med 150% under 2025.",
+                "url": "https://www.dn.se/ekonomi/grona-investeringar-rekord"
+            },
+            {
+                "title": "ChatGPT får nya miljöfunktioner",
+                "source": "Ny Teknik",
+                "description": "OpenAI lanserar klimat-AI för att hjälpa företag minska utsläpp.",
+                "url": "https://nyteknik.se/ai/chatgpt-miljo-funktioner"
+            }
+        ]
+        
+        logger.info(f"✅ Hittade {len(mock_news)} nyhetskällor (mock-data)")
+        return mock_news
 
 def generate_ai_summary(news_data: List[Dict], config: Dict) -> str:
-    """Generera AI-sammanfattning med OpenRouter"""
+    """Generera AI-sammanfattning med OpenRouter - använder olika prompts för helger"""
     logger.info("🤖 Genererar AI-sammanfattning...")
     
-    # Skapa en sammanfattning av alla nyheter
+    # Kolla om det är helg
+    import datetime
+    today = datetime.datetime.now()
+    is_weekend = today.weekday() >= 5  # 5 = lördag, 6 = söndag
+    
+    # Skapa en sammanfattning av alla nyheter med URL:er
     news_summary = ""
+    news_urls = []  # Samla URL:er för senare användning
     for item in news_data:
         title = item.get('title', 'Okänd titel')
         description = item.get('description', 'Ingen beskrivning')
         source = item.get('source', 'Okänd källa')
+        url = item.get('url', '')
         news_summary += f"- {title} ({source}): {description}\n"
+        
+        # Samla URL för beskrivning
+        if url:
+            news_urls.append(f"• {title}: {url}")
+    
+    # Spara URL:erna för att använda i episode description
+    import json
+    urls_file = os.path.join(os.path.dirname(__file__), 'temp_urls.json')
+    with open(urls_file, 'w', encoding='utf-8') as f:
+        json.dump(news_urls, f, ensure_ascii=False, indent=2)
     
     week_info = get_week_info()
     
@@ -159,42 +211,34 @@ def generate_ai_summary(news_data: List[Dict], config: Dict) -> str:
             'X-Title': 'Människa Maskin Miljö Podcast'
         }
         
-        prompt = f"""Du är värd för den svenska podcasten "Människa Maskin Miljö" som fokuserar på teknik, AI och miljö.
-
-Skapa ett engagerande podcast-manus för vecka {week_info['week']}, {week_info['year']} baserat på dessa nyheter:
-
-{news_summary}
-
-VIKTIGT - Skriv ENDAST ren taltext utan:
-- Inga namn på talare (som "Sanna:", "George:")
-- Inga stage directions (som "(entusiastiskt)", "(allvarlig ton)")
-- Inga manus-markeringar eller rubriker
-- Bara ren text som ska läsas upp
-
-Krav för manuset:
-- Skriv på svenska
-- Börja med välkomst: "Välkommen till Människa Maskin Miljö, vecka {week_info['week']}!"
-- Skriv som en sammanhängande berättelse utan karaktärsnamn
-- Variera tonen naturligt: professionell, spännande, allvarlig eller vänlig
-- Dela upp i naturliga stycken (5-8 stycken) för röstväxling
-- Avsluta med "Det var allt för denna vecka. Tack för att ni lyssnade!"
-- Totalt cirka 3-4 minuter läsning (2000-2500 ord)
-
-Exempel på rätt format:
-Välkommen till Människa Maskin Miljö, vecka 38!
-
-Den här veckan har vi spännande utvecklingar inom artificiell intelligens...
-
-Nu kommer vi till mer allvarliga nyheter om cybersäkerhet...
-
-Fokusera på svenska nyheter och koppla till miljö/teknik-perspektiv även för internationella nyheter."""
-
+        # Välj prompt baserat på veckodag
+        prompt_templates = config.get('podcastSettings', {}).get('promptTemplates', {})
+        if is_weekend:
+            base_prompt = prompt_templates.get('weekend_prompt', prompt_templates.get('main_prompt', ''))
+            logger.info("🌅 Använder helg-prompt för fördjupade samtal")
+        else:
+            base_prompt = prompt_templates.get('main_prompt', '')
+            logger.info("📰 Använder vardags-prompt för nyhetsrapportering")
+        
+        # Om vi inte har konfigurerade prompts, använd fallback
+        if not base_prompt:
+            logger.warning("⚠️ Ingen prompt hittad i sources.json, använder fallback")
+            base_prompt = f"""Du skapar ett naturligt samtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.
+            
+            Lisa: Expert inom hållbar teknik och AI
+            Pelle: Specialist på AI och förnybar energi
+            
+            Skapa ett 10-minuters samtal som diskuterar dagens viktigaste händelser inom människa, maskin och miljö."""
+        
+        # Lägg till aktuella nyheter i prompten
+        full_prompt = f"{base_prompt}\n\nAktuella nyheter att diskutera:\n{news_summary}"
+        
         payload = {
             'model': 'anthropic/claude-3.5-sonnet',
             'messages': [
-                {'role': 'user', 'content': prompt}
+                {'role': 'user', 'content': full_prompt}
             ],
-            'max_tokens': 3000,
+            'max_tokens': 12000,
             'temperature': 0.7
         }
         
@@ -279,7 +323,18 @@ def generate_audio(text: str, config: Dict) -> str:
         sections = split_text_for_voices(text)
         
         week_info = get_week_info()
-        audio_filename = f"audio/episode_{week_info['week']}_{week_info['year']}.mp3"
+        # Generera tydligt filnamn baserat på dag och typ
+        import datetime
+        current_date = datetime.datetime.now()
+        is_weekend = current_date.weekday() >= 5
+        weekday_names = ['måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag', 'söndag']
+        weekday = weekday_names[current_date.weekday()]
+        date_str = current_date.strftime("%Y%m%d")
+        
+        if is_weekend:
+            audio_filename = f"audio/MMM_{date_str}_{weekday}_fördjupning.mp3"
+        else:
+            audio_filename = f"audio/MMM_{date_str}_{weekday}_nyheter.mp3"
         
         # Skapa audio-mapp
         os.makedirs('audio', exist_ok=True)
@@ -370,7 +425,18 @@ def generate_simple_audio(text: str, config: Dict) -> str:
     logger.info("🔄 Använder enkel audio-generering som fallback...")
     
     week_info = get_week_info()
-    audio_filename = f"audio/episode_{week_info['week']}_{week_info['year']}.mp3"
+    # Generera tydligt filnamn baserat på dag och typ
+    import datetime
+    current_date = datetime.datetime.now()
+    is_weekend = current_date.weekday() >= 5
+    weekday_names = ['måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag', 'söndag']
+    weekday = weekday_names[current_date.weekday()]
+    date_str = current_date.strftime("%Y%m%d")
+    
+    if is_weekend:
+        audio_filename = f"audio/MMM_{date_str}_{weekday}_fördjupning.mp3"
+    else:
+        audio_filename = f"audio/MMM_{date_str}_{weekday}_nyheter.mp3"
     os.makedirs('audio', exist_ok=True)
     
     try:
@@ -479,18 +545,71 @@ def generate_elevenlabs_audio(text: str, voice_id: str) -> bytes:
     else:
         raise Exception(f"ElevenLabs API fel: {response.status_code} - {response.text}")
 
-def create_episode_metadata(week_info: Dict, summary: str, audio_url: str) -> Dict:
-    """Skapa metadata för episoden"""
+def create_episode_metadata(week_info: Dict, summary: str, audio_url: str, is_weekend: bool = False) -> Dict:
+    """Skapa metadata för episoden med tydlig helg/vardags-namngivning och datum"""
+    import datetime
+    
+    # Skapa tydliga avsnittsnamn med datum
+    current_date = datetime.datetime.now()
+    weekday_names = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag']
+    weekday = weekday_names[current_date.weekday()]
+    
+    # Formatera datum på svenska: "27 september 2025"
+    month_names = ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 
+                  'juli', 'augusti', 'september', 'oktober', 'november', 'december']
+    date_swedish = f"{current_date.day} {month_names[current_date.month - 1]} {current_date.year}"
+    
+    if is_weekend:
+        title = f"MMM Senaste Nytt - {weekday} {date_swedish} Fördjupning"
+        description_prefix = f"🧩 Helgfördjupning {weekday.lower()} {date_swedish}: Den Gröna Tråden"
+        episode_type = "fördjupning"
+    else:
+        title = f"MMM Senaste Nytt - {weekday} {date_swedish} Nyheter" 
+        description_prefix = f"📰 Dagsnyheter {weekday.lower()} {date_swedish}"
+        episode_type = "nyheter"
+    
+    # Lägg till år för unik identifiering
+    date_str = current_date.strftime("%Y-%m-%d")
+    
+    # Läs in sparade URL:er för källhänvisningar
+    import json
+    urls_file = os.path.join(os.path.dirname(__file__), 'temp_urls.json')
+    source_links = []
+    try:
+        with open(urls_file, 'r', encoding='utf-8') as f:
+            source_links = json.load(f)
+    except Exception as e:
+        logger.warning(f"⚠️ Kunde inte läsa URL:er: {e}")
+    
+    # Skapa utökad beskrivning med källhänvisningar
+    base_description = f"{description_prefix} - {summary[:150]}..."
+    if source_links:
+        extended_description = base_description + "\n\n📰 Källor och länkar:\n" + "\n".join(source_links[:8])  # Begränsa till 8 länkar för att inte överbelasta
+    else:
+        extended_description = base_description
+    
+    # Rensa temp-filen
+    try:
+        import os
+        os.remove(urls_file)
+    except:
+        pass
+    
     return {
+        "title": title,
+        "episode_type": episode_type,
+        "weekday": weekday,
+        "date_swedish": date_swedish,
         "week": week_info['week'],
         "year": week_info['year'], 
-        "date": week_info['date'],
-        "description": f"Vecka {week_info['week']}: {summary[:200]}...",
+        "date": date_str,
+        "description": extended_description,
         "audio_url": audio_url,
-        "guid": f"mmm-{week_info['year']}-w{week_info['week']}",
+        "guid": f"mmm-{date_str}-{episode_type}",
         "pub_date": week_info['pub_date'],
         "file_size": 15000000,  # 15MB
-        "duration": "12:30"
+        "duration": "10:00",
+        "is_weekend": is_weekend
     }
 
 def main():
@@ -536,7 +655,10 @@ def main():
         logger.info(f"✅ Audio uploaded: {audio_url}")
         
         # 8. Skapa episod-metadata
-        episode_data = create_episode_metadata(week_info, summary, audio_url)
+        # 7. Skapa episode metadata med helg/vardags-info
+        import datetime
+        is_weekend = datetime.datetime.now().weekday() >= 5
+        episode_data = create_episode_metadata(week_info, summary, audio_url, is_weekend)
         
         # 9. Generera och ladda upp RSS
         rss_config = {

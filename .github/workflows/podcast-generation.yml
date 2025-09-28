@@ -1,9 +1,9 @@
- name: 🎙️ Människa Maskin Miljö - Podcast Generation
+name: 🎙️ Människa Maskin Miljö - Podcast Generation
 
-# Kör workflow varje onsdag kl 07:00 svensk tid eller manuellt
+# Kör workflow varje dag kl 06:00 svensk tid eller manuellt
 on:
   schedule:
-    - cron: '0 5 * * 3'  # 05:00 UTC = 07:00 svensk tid, onsdag (3)
+    - cron: '0 4 * * *'  # 04:00 UTC = 06:00 svensk tid, varje dag
   workflow_dispatch:  # Manuell körning från GitHub Actions UI
 
 env:
@@ -67,16 +67,17 @@ jobs:
         
     - name: 🔧 Configure secrets
       run: |
-        echo "ELEVENLABS_API_KEY=${{ secrets.ELEVENLABS_API_KEY }}" >> .env
         echo "OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }}" >> .env
-        echo "ELEVENLABS_VOICE_ID_SANNA=${{ secrets.ELEVENLABS_VOICE_ID_SANNA }}" >> .env
-        echo "ELEVENLABS_VOICE_ID_GEORGE=${{ secrets.ELEVENLABS_VOICE_ID_GEORGE }}" >> .env
         echo "CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}" >> .env
         echo "CLOUDFLARE_R2_TOKEN=${{ secrets.CLOUDFLARE_R2_TOKEN }}" >> .env
         echo "CLOUDFLARE_R2_ACCOUNT_ID=${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}" >> .env
         echo "CLOUDFLARE_R2_BUCKET_NAME=${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}" >> .env
         echo "CLOUDFLARE_R2_BUCKET=${{ secrets.CLOUDFLARE_R2_BUCKET }}" >> .env
         echo "CLOUDFLARE_R2_PUBLIC_URL=${{ secrets.CLOUDFLARE_R2_PUBLIC_URL }}" >> .env
+        echo "USE_GOOGLE_CLOUD_TTS=true" >> .env
+        
+        # Skapa Google Cloud credentials fil från secret
+        echo '${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON }}' > google-cloud-service-account.json
         
     - name: 🎙️ Generate podcast
       run: |
@@ -90,6 +91,7 @@ jobs:
           audio/intro_complete_*.mp3
           audio/episode_*.mp3
           generation_log.txt
+        retention-days: 90
         
     - name: 🔔 Notify on success
       if: success()

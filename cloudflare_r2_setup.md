@@ -18,9 +18,9 @@
 
 ## Steg 4: API-nycklar (du har redan dessa men vi kollar)
 1. Gå till "R2" > "Manage R2 API tokens"
-2. Dina nuvarande nycklar:
-   - Access Key ID: bbc4f80687281ef006d0d3b1c0b5679f
-   - Secret: 409ae6111d6db90eb073ce0497103628fe6c2dcf735639b4e971ecb9e5a09b69
+2. Skapa nya API-nycklar:
+   - Access Key ID: YOUR_ACCESS_KEY_ID
+   - Secret: YOUR_SECRET_KEY
 
 ## Steg 5: Custom domain (valfritt men rekommenderat)
 1. Om du har en domän kan du sätta upp: https://podcast.din-domain.com

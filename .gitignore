@@ -1,72 +1,42 @@
-# Test files with potential secrets
-test_*token*.py
-test_*key*.py
-debug_*.py
-check_*.py
-
-# Environment variables
+# KÄNSLIGA FILER - LÄGG ALDRIG TILL DESSA I GIT!
 .env
-.env.*
-.env_*
-.env-*
-*.env
-env.*
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env.backup
-.env_backup
-.env_new
-!.env.example
+.env.local  
+.env.*.local
+google-cloud-service-account.json
+google-cloud-credentials.json
+*-service-account.json
+*.backup
 
-# Python
+# Audio filer (för stora för git)
+audio/*.mp3
+audio/*.wav
+
+# Logs
+*.log
+generation_log.txt
+test_*.log
+
+# Python cache
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
-venv/
 env/
-ENV/
-env.bak/
-venv.bak/
-.venv
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Generated content
-episodes/
-scripts/
-public/feed.xml
-public/feed.json
-scraped_content.json
-logs/
-temp_segment_*.mp3
-temp_concat.txt
-
-# IDE
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
 # OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Temporary files
-*.tmp
-*.temp
-
-# API Keys and secrets
-**/api_keys*
-**/secrets*
-**/*secret*
-**/*key*
-!requirements.txt
-!package.json
+# Test filer
+test_dialogue.txt
+test_*.txt
+*_test_*.mp3

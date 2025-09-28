@@ -1,31 +1,81 @@
 {
+  "podcast_info": {
+    "title": "MMM Senaste Nytt",
+    "description": "Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle",
+    "hosts": ["Lisa", "Pelle"],
+    "duration_target": 10,
+    "frequency": "daily"
+  },
   "sources": [
-    {
-      "name": "Digitala Verkligheter Facebook",
-      "url": "https://www.digitalaverkligheter.se/facebook-blog/",
-      "type": "html",
-      "selector": ".fb-post, .facebook-post, p",
-      "maxItems": 10,
-      "enabled": true
-    },
     {
       "name": "SVT Nyheter",
       "url": "https://www.svt.se/nyheter/rss.xml",
       "type": "news",
-      "maxItems": 12,
+      "category": "svenska_nyheter",
+      "maxItems": 25,
       "enabled": true
     },
     {
       "name": "Dagens Nyheter",
       "url": "https://www.dn.se/rss/",
-      "type": "news", 
-      "maxItems": 10,
+      "type": "news",
+      "category": "svenska_nyheter", 
+      "maxItems": 20,
       "enabled": true
     },
     {
       "name": "Svenska Dagbladet",
       "url": "https://www.svd.se/rss.xml",
       "type": "news",
+      "category": "svenska_nyheter",
+      "maxItems": 18,
+      "enabled": true
+    },
+    {
+      "name": "BBC News",
+      "url": "http://feeds.bbci.co.uk/news/world/rss.xml",
+      "type": "news",
+      "category": "internationella_nyheter",
+      "maxItems": 20,
+      "enabled": true
+    },
+    {
+      "name": "Reuters World News",
+      "url": "https://feeds.reuters.com/reuters/worldNews",
+      "type": "news", 
+      "category": "internationella_nyheter",
+      "maxItems": 18,
+      "enabled": true
+    },
+    {
+      "name": "Associated Press",
+      "url": "https://feeds.apnews.com/rss/topnews",
+      "type": "news",
+      "category": "internationella_nyheter", 
+      "maxItems": 15,
+      "enabled": true
+    },
+    {
+      "name": "Euronews",
+      "url": "https://www.euronews.com/rss",
+      "type": "news",
+      "category": "europeiska_nyheter",
+      "maxItems": 12,
+      "enabled": true
+    },
+    {
+      "name": "Politico Europe",
+      "url": "https://www.politico.eu/rss/",
+      "type": "news",
+      "category": "europeiska_nyheter",
+      "maxItems": 8,
+      "enabled": true
+    },
+    {
+      "name": "Deutsche Welle",
+      "url": "https://rss.dw.com/rdf/rss-en-world",
+      "type": "news",
+      "category": "europeiska_nyheter",
       "maxItems": 8,
       "enabled": true
     },
@@ -33,14 +83,16 @@
       "name": "Computer Sweden",
       "url": "https://computersweden.idg.se/rss/allanyheter",
       "type": "tech",
-      "maxItems": 10,
+      "category": "teknik",
+      "maxItems": 12,
       "enabled": true
     },
     {
       "name": "Ny Teknik",
       "url": "https://www.nyteknik.se/rss/senaste",
       "type": "tech",
-      "maxItems": 8,
+      "category": "teknik",
+      "maxItems": 10,
       "enabled": true
     },
     {
@@ -77,9 +129,72 @@
       "name": "Naturskyddsföreningen",
       "url": "https://www.naturskyddsforeningen.se/nyheter/rss/",
       "type": "climate", 
-      "maxItems": 5,
+      "maxItems": 8,
       "enabled": true,
       "description": "Miljö- och klimatnyheter"
+    },
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/feed/",
+      "type": "tech",
+      "category": "teknik",
+      "maxItems": 15,
+      "enabled": true,
+      "description": "Senaste teknologi och AI-nyheter"
+    },
+    {
+      "name": "The Verge",
+      "url": "https://www.theverge.com/rss/index.xml",
+      "type": "tech",
+      "category": "teknik",
+      "maxItems": 12,
+      "enabled": true,
+      "description": "Teknologi och innovation"
+    },
+    {
+      "name": "MIT Technology Review",
+      "url": "https://www.technologyreview.com/feed/",
+      "type": "tech",
+      "category": "teknik",
+      "maxItems": 10,
+      "enabled": true,
+      "description": "Avancerad teknologi och forskning"
+    },
+    {
+      "name": "Climate Central",
+      "url": "https://www.climatecentral.org/rss.xml",
+      "type": "climate",
+      "category": "miljö",
+      "maxItems": 8,
+      "enabled": true,
+      "description": "Klimatforskning och miljönyheter"
+    },
+    {
+      "name": "CleanTechnica",
+      "url": "https://cleantechnica.com/feed/",
+      "type": "climate",
+      "category": "miljö",
+      "maxItems": 12,
+      "enabled": true,
+      "description": "Ren teknik och förnybar energi"
+    },
+    {
+      "name": "Wired",
+      "url": "https://www.wired.com/feed/",
+      "type": "tech",
+      "category": "teknik",
+      "maxItems": 10,
+      "enabled": true,
+      "description": "Teknologi och digitalt samhälle"
+    },
+    {
+      "name": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/rss/fulltext",
+      "type": "tech", 
+      "category": "teknik",
+      "maxItems": 8,
+      "enabled": true,
+      "description": "Ingenjörsteknologi och innovation"
     }
   ],
   "podcastSettings": {
@@ -110,7 +225,10 @@
       }
     ],
     "promptTemplates": {
-      "main_prompt": "Du skapar ett naturligt samtal mellan {host1_name} och {host2_name} för podcasten 'Människa Maskin Miljö - Veckans AI & Klimat'.\n\n{host1_name}: {host1_personality}\n{host2_name}: {host2_personality}\n\nFormat: VECKOSAMMANFATTNING som sänds onsdagar kl 07:00. Sammanfatta veckans viktigaste händelser inom:\n• AI:s roll inom miljölösningar och hållbarhet\n• Förnybar energi, elektrifiering och energilagring\n• Grön teknologiutveckling och innovation\n• Klimatpolitik och miljöregleringar\n• Hållbara affärsmodeller och startups\n\nVIKTIGT FÖR LÄNGD: Skapa ett DETALJERAT samtal på minst 10 minuter (cirka 2000-3000 ord). Inkludera:\n- Djupgående analys av varje nyhet (inte bara snabba omnämnanden)\n- Värdarna diskuterar implikationer och framtidsperspektiv för varje ämne\n- Praktiska exempel och konkreta fall\n- Personliga reflektioner och expertkommentarer\n- Trendanalyser och kopplingar mellan olika nyheter\n\nStil: Expertperspektiv men tillgängligt. Fokusera på trend-analys och framtidsperspektiv. Koppla samman teknik med miljönytta.\n\nInnan du levererar: Kontrollera språkkvalitet, miljö/teknik-fokus och lämplig musikplacering.",
+      "main_prompt": "Du skapar ett naturligt samtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: DAGLIG NYHETSPODCAST (10 MINUTER EXAKT). Sammanfatta dagens viktigaste händelser inom:\n• Människa: Hur teknik påverkar våra liv, jobb och samhälle\n• Maskin: AI-utveckling, nya tekniker och digitala lösningar\n• Miljö: Klimat, hållbarhet och grön teknik\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'Reuters skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, Reuters, Euronews, Politico Europe\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). OBLIGATORISKT:\n\n1. DJUP ANALYS per nyhet:\n   - Minst 2-3 minuter diskussion per huvudnyhet\n   - Lisa och Pelle diskuterar implikationer i detalj\n   - Konkreta exempel och verkliga konsekvenser\n   - Framtidsperspektiv och trendanalys\n\n2. INTERAKTIV DIALOG:\n   - Lisa och Pelle ställer frågor till varandra\n   - Följdfrågor och fördjupningar\n   - Olika perspektiv och meningsskiljaktigheter\n   - Personliga reflektioner och expertkommentarer\n\n3. PRAKTISKA KOPPLINGAR:\n   - Hur påverkar detta vanliga människor?\n   - Vilka åtgärder kan lyssnare ta?\n   - Kopplingar till tidigare nyheter och trender\n   - Svenska perspektiv på internationella nyheter\n\n4. OMFATTANDE INNEHÅLL:\n   - 8-10 olika nyhetsämnen diskuteras\n   - Varje ämne behandlas i minst 1 minut\n   - Naturliga övergångar mellan ämnen\n   - Avslutande reflektion och sammanfattning\n\nVIKTIGT: Om innehållet blir kortare än 4000 ord, EXPANDERA med:\n- Mer detaljerade förklaringar\n- Fler konkreta exempel\n- Djupare diskussioner mellan värdarna\n- Historisk kontext och jämförelser\n- Fler följdfrågor och interaktioner\n\nStil: Expertperspektiv men tillgängligt. Professionella men vänliga värdar som lär av varandra.\n\nInnan du levererar: Kontrollera att samtalet är MINST 4000 ord för att nå 10-minuters mål.",
+      
+      "weekend_prompt": "Du skapar ett fördjupande helgsamtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: HELG-FÖRDJUPNING (10 MINUTER EXAKT). Fokus på 'Den Gröna Tråden' - hur nyheter hänger ihop:\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'Reuters skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, Reuters, Euronews, Politico Europe\n\n🧩 HELGKONCEPT:\n• Färre nyheter (3-5 stycken) men MYCKET djupare analys\n• Fokus på SAMBAND mellan nyheterna\n• Mer DIALOG mellan Lisa och Pelle - de resonerar tillsammans\n• FÖRKLARAR för varandra hur saker hänger ihop\n\n📊 DIALOGSTIL (KRITISKT!):\n- 'Pelle, kan du förklara hur det här hänger ihop med...?'\n- 'Lisa, det där får mig att tänka på...'\n- 'Vänta, betyder det att...?'\n- 'Ja precis! Och det påverkar ju också...'\n- 'Det är intressant, för i veckan såg vi ju att...'\n\n🔗 TEMATISKA KOPPLINGAR:\n- Visa hur 3 olika nyheter egentligen handlar om samma trend\n- Förklara längre kedjor: AI → energi → klimat → politik → samhälle\n- Historiska perspektiv: 'För 5 år sedan..., nu ser vi...'\n- Framtidsspekulationer: 'Om den här trenden fortsätter...'\n\n💭 REFLEKTION OCH ANALYS:\n- 'Vad betyder det här på lång sikt?'\n- 'Vilka är de dolda konsekvenserna?'\n- 'Hur påverkar det våra barn?'\n- 'Vad borde vi som samhälle göra?'\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE, DIALOGISKT samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). \n\nEXEMPEL PÅ HELGSTIL:\n'Pelle, det här med Googles nya AI-chip som minskar energi... kan du hjälpa mig förstå hur det hänger ihop med EU:s datacenter-regler?'\n'Ja Lisa, det är ju fascinerande! För det visar ju hur teknikjättarna nu måste...'\n\nStil: Nyfikna experter som utforskar samband tillsammans. Mer reflektion, mindre rapportering.\n\nInnan du levererar: Kontrollera DIALOG-INTENSITET och att samtalet är MINST 4000 ord.",
+      
       "conversation_style": "expert_environmental_tech"
     },
     "textToDialogue": {

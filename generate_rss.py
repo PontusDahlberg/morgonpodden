@@ -64,8 +64,9 @@ def create_rss_feed(episodes: List[Dict], config: Dict) -> str:
     for episode in episodes:
         item = ET.SubElement(channel, "item")
         
-        # Episod metadata
-        title = f"Vecka {episode['week']}: Människa Maskin Miljö"
+        # Använd ny titelstruktur med helg/vardags-distinktion
+        title = episode.get('title', f"MMM Senaste Nytt - {episode.get('date', 'Okänt datum')}")
+        
         ET.SubElement(item, "title").text = title
         ET.SubElement(item, "description").text = episode['description']
         ET.SubElement(item, "pubDate").text = episode['pub_date']
@@ -77,10 +78,18 @@ def create_rss_feed(episodes: List[Dict], config: Dict) -> str:
         enclosure.set("type", "audio/mpeg")
         enclosure.set("length", str(episode.get('file_size', 15000000)))
         
-        # iTunes episode tags
-        ET.SubElement(item, "itunes:duration").text = episode.get('duration', '12:00')
-        ET.SubElement(item, "itunes:author").text = "Pontus - Människa Maskin Miljö"
-        ET.SubElement(item, "itunes:subtitle").text = f"Vecka {episode['week']} - AI och klimatnyheter"
+        # iTunes episode tags med uppdaterade titlar
+        ET.SubElement(item, "itunes:duration").text = episode.get('duration', '10:00')
+        ET.SubElement(item, "itunes:author").text = "Lisa & Pelle - MMM Senaste Nytt"
+        
+        # Skapa subtitle baserat på episode typ med datum
+        date_swedish = episode.get('date_swedish', '')
+        if episode.get('is_weekend', False):
+            subtitle = f"{episode.get('weekday', 'Helg')} {date_swedish} Fördjupning - Den Gröna Tråden"
+        else:
+            subtitle = f"{episode.get('weekday', 'Vardag')} {date_swedish} Nyheter - Människa Maskin Miljö"
+            
+        ET.SubElement(item, "itunes:subtitle").text = subtitle
         ET.SubElement(item, "itunes:summary").text = episode['description']
     
     # Konvertera till sträng

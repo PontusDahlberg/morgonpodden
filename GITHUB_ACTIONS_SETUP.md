@@ -15,19 +15,19 @@ Klicka **"New repository secret"** för varje:
 #### 🤖 AI & Voice APIs:
 ```
 Name: OPENROUTER_API_KEY
-Value: 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
+Value: YOUR_OPENROUTER_API_KEY_HERE
 
 Name: ELEVENLABS_API_KEY  
-Value: sk_66306c824bc74cf65efd0094398f8dfd2d077f8ee2a9987a
+Value: YOUR_ELEVENLABS_API_KEY_HERE
 
 Name: ELEVENLABS_VOICE_ID
-Value: 4xkUqaR9MYOJHoaC1Nak
+Value: YOUR_VOICE_ID_HERE
 ```
 
 #### ☁️ Cloudflare R2:
 ```
 Name: CLOUDFLARE_API_TOKEN
-Value: Abwq-QDnP30ARf21VOx4o-ZRRFSh-nWU4PA7Q4f3
+Value: YOUR_CLOUDFLARE_TOKEN_HERE
 
 Name: CLOUDFLARE_R2_BUCKET
 Value: manniska-maskin-miljo

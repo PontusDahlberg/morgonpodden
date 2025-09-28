@@ -59,13 +59,23 @@ def check_environment() -> bool:
     """Kontrollera att alla nödvändiga miljövariabler finns"""
     required_vars = [
         'OPENROUTER_API_KEY',
-        'ELEVENLABS_API_KEY', 
-        'ELEVENLABS_VOICE_ID_SANNA',
-        'ELEVENLABS_VOICE_ID_GEORGE',
         'CLOUDFLARE_API_TOKEN',
         'CLOUDFLARE_R2_BUCKET',
         'CLOUDFLARE_R2_PUBLIC_URL'
     ]
+    
+    # Lägg till Google Cloud TTS variabler om det används
+    if os.getenv('USE_GOOGLE_CLOUD_TTS', 'false').lower() == 'true':
+        logger.info("🎤 Using Google Cloud TTS")
+        # Google Cloud credentials hanteras via service account fil
+    else:
+        # Fallback till ElevenLabs om Google Cloud inte används
+        logger.info("🎵 Using ElevenLabs TTS")
+        required_vars.extend([
+            'ELEVENLABS_API_KEY', 
+            'ELEVENLABS_VOICE_ID_SANNA',
+            'ELEVENLABS_VOICE_ID_GEORGE'
+        ])
     
     missing_vars = []
     for var in required_vars:
@@ -110,8 +120,6 @@ def scrape_news_sources(config: Dict) -> List[Dict]:
     
     try:
         # Import och använd den riktiga scrapern
-        import sys
-        import os
         sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
         
         from scraper import NewsScraper
@@ -315,6 +323,61 @@ def clean_script_text(text: str) -> str:
     return text
 
 def generate_audio(text: str, config: Dict) -> str:
+    """Generera audio med Google Cloud TTS som primär, ElevenLabs som fallback"""
+    logger.info("🎵 Startar audio-generering...")
+    
+    # Kontrollera vilken TTS som ska användas
+    use_google_cloud = os.getenv('USE_GOOGLE_CLOUD_TTS', 'true').lower() == 'true'
+    
+    if use_google_cloud:
+        logger.info("☁️ Använder Google Cloud TTS (primär)")
+        return generate_audio_google_cloud(text, config)
+    else:
+        logger.info("🎭 Använder ElevenLabs TTS (fallback)")
+        return generate_audio_elevenlabs(text, config)
+
+def generate_audio_google_cloud(text: str, config: Dict) -> str:
+    """Generera audio med Google Cloud TTS"""
+    try:
+        # Importera vår Google Cloud TTS-klass
+        from google_cloud_tts import GoogleCloudTTS
+        
+        # Analysera emotioner och skapa segment
+        sections = parse_podcast_text(text)
+        
+        # Konvertera till Google Cloud TTS format
+        segments = []
+        for section in sections:
+            voice_name = section['voice_name'].lower()
+            # Mappa röstnamn till Google Cloud TTS-format
+            if voice_name in ['anna', 'sanna']:
+                google_voice = "sanna"
+            elif voice_name in ['erik', 'george']:
+                google_voice = "george" 
+            else:
+                google_voice = "sanna"  # Default
+            
+            segments.append({
+                "text": section['text'],
+                "voice": google_voice
+            })
+        
+        # Generera podcast med Google Cloud TTS
+        tts = GoogleCloudTTS()
+        audio_file = tts.generate_podcast_audio(segments)
+        
+        if audio_file:
+            logger.info(f"✅ Google Cloud TTS lyckades: {audio_file}")
+            return audio_file
+        else:
+            raise Exception("Google Cloud TTS misslyckades")
+            
+    except Exception as e:
+        logger.error(f"❌ Google Cloud TTS fel: {e}")
+        logger.info("🔄 Faller tillbaka på ElevenLabs...")
+        return generate_audio_elevenlabs(text, config)
+
+def generate_audio_elevenlabs(text: str, config: Dict) -> str:
     """Generera audio med ElevenLabs och intelligenta musik-bryggkor"""
     logger.info("🎵 Genererar audio med ElevenLabs (Emotion-baserat + musik-bryggkor)...")
     
@@ -426,8 +489,7 @@ def generate_simple_audio(text: str, config: Dict) -> str:
     
     week_info = get_week_info()
     # Generera tydligt filnamn baserat på dag och typ
-    import datetime
-    current_date = datetime.datetime.now()
+    current_date = datetime.now()
     is_weekend = current_date.weekday() >= 5
     weekday_names = ['måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag', 'söndag']
     weekday = weekday_names[current_date.weekday()]
@@ -439,18 +501,61 @@ def generate_simple_audio(text: str, config: Dict) -> str:
         audio_filename = f"audio/MMM_{date_str}_{weekday}_nyheter.mp3"
     os.makedirs('audio', exist_ok=True)
     
+    # Försök Google Cloud TTS först
+    use_google_cloud = os.getenv('USE_GOOGLE_CLOUD_TTS', 'true').lower() == 'true'
+    
+    if use_google_cloud:
+        try:
+            logger.info("☁️ Försöker Google Cloud TTS för enkel generering...")
+            from google_cloud_tts import GoogleCloudTTS
+            
+            # Skapa enkla segment för Google Cloud TTS
+            sections = parse_podcast_text(text)
+            segments = []
+            
+            for section in sections:
+                voice_name = section['voice_name'].lower()
+                # Mappa till Google Cloud röster
+                if voice_name in ['anna', 'sanna']:
+                    google_voice = "sanna"
+                elif voice_name in ['erik', 'george']:
+                    google_voice = "george"
+                else:
+                    google_voice = "sanna"  # Default
+                
+                segments.append({
+                    "text": section['text'], 
+                    "voice": google_voice
+                })
+            
+            # Generera med Google Cloud TTS
+            tts = GoogleCloudTTS()
+            result_file = tts.generate_podcast_audio(segments)
+            
+            if result_file:
+                # Flytta till rätt plats med rätt namn
+                import shutil
+                shutil.move(result_file, audio_filename)
+                logger.info(f"✅ Google Cloud TTS audio-fil skapad: {audio_filename}")
+                return audio_filename
+            
+        except Exception as e:
+            logger.warning(f"⚠️ Google Cloud TTS misslyckades: {e}")
+    
+    # Fallback till ElevenLabs
     try:
+        logger.info("🎭 Faller tillbaka på ElevenLabs för enkel generering...")
         sanna_voice = os.getenv('ELEVENLABS_VOICE_ID_SANNA')
         audio_data = generate_elevenlabs_audio(text, sanna_voice)
         
         with open(audio_filename, 'wb') as f:
             f.write(audio_data)
         
-        logger.info(f"✅ Fallback audio-fil skapad: {audio_filename}")
+        logger.info(f"✅ ElevenLabs fallback audio-fil skapad: {audio_filename}")
         return audio_filename
     except Exception as e:
-        logger.error(f"❌ Även fallback misslyckades: {e}")
-        # Ultimate fallback
+        logger.error(f"❌ Även ElevenLabs fallback misslyckades: {e}")
+        # Ultimate fallback - skapa tom fil för att undvika krasch
         with open(audio_filename, 'wb') as f:
             f.write(b'MOCK_AUDIO_DATA')
         return audio_filename
@@ -590,7 +695,6 @@ def create_episode_metadata(week_info: Dict, summary: str, audio_url: str, is_we
     
     # Rensa temp-filen
     try:
-        import os
         os.remove(urls_file)
     except:
         pass
@@ -656,8 +760,7 @@ def main():
         
         # 8. Skapa episod-metadata
         # 7. Skapa episode metadata med helg/vardags-info
-        import datetime
-        is_weekend = datetime.datetime.now().weekday() >= 5
+        is_weekend = datetime.now().weekday() >= 5
         episode_data = create_episode_metadata(week_info, summary, audio_url, is_weekend)
         
         # 9. Generera och ladda upp RSS

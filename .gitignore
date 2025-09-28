@@ -1,4 +1,4 @@
-# KÄNSLIGA FILER - LÄGG ALDRIG TILL DESSA I GIT!
+# Kï¿½NSLIGA FILER - Lï¿½GG ALDRIG TILL DESSA I GIT!
 .env
 .env.local  
 .env.*.local
@@ -7,7 +7,13 @@ google-cloud-credentials.json
 *-service-account.json
 *.backup
 
-# Audio filer (för stora för git)
+# Virtual Environment
+venv/
+env/
+.venv/
+.env
+
+# Audio filer (fï¿½r stora fï¿½r git)
 audio/*.mp3
 audio/*.wav
 

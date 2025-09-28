@@ -1,11 +1,21 @@
-# K�NSLIGA FILER - L�GG ALDRIG TILL DESSA I GIT!
+# KÄNSLIGA FILER - LÄGG ALDRIG TILL DESSA I GIT!
 .env
+.env.*
 .env.local  
 .env.*.local
 google-cloud-service-account.json
 google-cloud-credentials.json
 *-service-account.json
 *.backup
+
+# API-NYCKEL BACKUPPER - EXTREMT KÄNSLIGA!
+backups/
+backups/**/*
+api_keys_backup_*.json
+api_keys_readable_*.txt
+**/credentials/**
+**/*api*key*.json
+**/*api*key*.txt
 
 # Virtual Environment
 venv/

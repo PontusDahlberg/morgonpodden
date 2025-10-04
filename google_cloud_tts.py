@@ -52,7 +52,21 @@ class GoogleCloudTTS:
             if not self._setup_credentials():
                 return False
             
-            # Skapa TTS-klient
+            # Försök skapa klient med explicit credentials först
+            try:
+                from google.oauth2 import service_account
+                cred_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+                if cred_file and os.path.exists(cred_file):
+                    logger.info(f"🎯 Skapar klient med explicit credentials från: {cred_file}")
+                    credentials = service_account.Credentials.from_service_account_file(cred_file)
+                    self.client = texttospeech.TextToSpeechClient(credentials=credentials)
+                    logger.info("✅ Google Cloud TTS-klient skapad med explicit credentials")
+                    return True
+            except Exception as e:
+                logger.warning(f"⚠️ Explicit credentials failade: {e}")
+            
+            # Fallback: Skapa TTS-klient med environment credentials
+            logger.info("🔄 Försöker med environment credentials...")
             self.client = texttospeech.TextToSpeechClient()
             logger.info("✅ Google Cloud TTS-klient initialiserad")
             return True
@@ -108,7 +122,19 @@ class GoogleCloudTTS:
                     # Sätt environment variabel
                     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.abspath(file_path)
                     logger.info(f"✅ ANVÄNDER FIL: {os.path.abspath(file_path)}")
-                    return True
+                    
+                    # EXPLICIT CREDENTIALS LOADING - Försök läsa credentials direkt
+                    try:
+                        from google.oauth2 import service_account
+                        credentials = service_account.Credentials.from_service_account_file(
+                            os.path.abspath(file_path)
+                        )
+                        logger.info("🎯 EXPLICIT CREDENTIALS LOADED SUCCESSFULLY!")
+                        return True
+                    except Exception as e:
+                        logger.error(f"❌ EXPLICIT CREDENTIALS FAILED: {e}")
+                        # Fallback till environment variabel
+                        return True
                     
                 except json.JSONDecodeError as e:
                     logger.error(f"❌ Ogiltigt JSON i {file_path}: {e}")

@@ -52,18 +52,41 @@ class GoogleCloudTTS:
             if not self._setup_credentials():
                 return False
             
-            # Försök skapa klient med explicit credentials först
+            # Försök skapa klient med explicit credentials från JSON-data
+            try:
+                from google.oauth2 import service_account
+                import json
+                
+                cred_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+                if cred_file and os.path.exists(cred_file):
+                    logger.info(f"🎯 Läser JSON-data från: {cred_file}")
+                    
+                    # Läs JSON-data direkt och skapa credentials från dict
+                    with open(cred_file, 'r') as f:
+                        cred_data = json.load(f)
+                    
+                    logger.info("🎯 Skapar credentials från JSON-dict istället för fil")
+                    credentials = service_account.Credentials.from_service_account_info(cred_data)
+                    
+                    logger.info("🎯 Skapar TTS-klient med dict-baserade credentials")
+                    self.client = texttospeech.TextToSpeechClient(credentials=credentials)
+                    logger.info("✅ Google Cloud TTS-klient skapad med JSON-dict credentials")
+                    return True
+            except Exception as e:
+                logger.warning(f"⚠️ JSON-dict credentials failade: {e}")
+                
+            # Backup: Försök med fil-baserade credentials
             try:
                 from google.oauth2 import service_account
                 cred_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
                 if cred_file and os.path.exists(cred_file):
-                    logger.info(f"🎯 Skapar klient med explicit credentials från: {cred_file}")
+                    logger.info(f"🔄 Backup: Försöker fil-baserade credentials från: {cred_file}")
                     credentials = service_account.Credentials.from_service_account_file(cred_file)
                     self.client = texttospeech.TextToSpeechClient(credentials=credentials)
-                    logger.info("✅ Google Cloud TTS-klient skapad med explicit credentials")
+                    logger.info("✅ Google Cloud TTS-klient skapad med fil-credentials")
                     return True
             except Exception as e:
-                logger.warning(f"⚠️ Explicit credentials failade: {e}")
+                logger.warning(f"⚠️ Fil-baserade credentials failade: {e}")
             
             # Fallback: Skapa TTS-klient med environment credentials
             logger.info("🔄 Försöker med environment credentials...")

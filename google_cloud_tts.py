@@ -90,7 +90,25 @@ class GoogleCloudTTS:
         # Debug info
         logger.info(f"🔍 GOOGLE_APPLICATION_CREDENTIALS = {os.getenv('GOOGLE_APPLICATION_CREDENTIALS')}")
         logger.info(f"🔍 Working directory = {os.getcwd()}")
-        logger.info(f"🔍 Files in directory = {os.listdir('.')}")
+        
+        # DEBUG: Kolla innehållet i credentials-filen
+        cred_file = 'google-cloud-service-account.json'
+        if os.path.exists(cred_file):
+            try:
+                with open(cred_file, 'r') as f:
+                    content = f.read()
+                logger.info(f"🔍 Credentials fil storlek: {len(content)} tecken")
+                logger.info(f"🔍 Första 100 tecken: {content[:100]}...")
+                logger.info(f"🔍 Sista 50 tecken: ...{content[-50:]}")
+                
+                # Försök parsa JSON
+                import json
+                parsed = json.loads(content)
+                logger.info(f"🔍 JSON keys: {list(parsed.keys())}")
+                logger.info(f"🔍 Project ID: {parsed.get('project_id', 'NOT FOUND')}")
+                
+            except Exception as e:
+                logger.error(f"❌ Fel vid läsning av credentials fil: {e}")
         
         # Prioritera absolut sökväg från environment
         credentials_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')

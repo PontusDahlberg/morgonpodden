@@ -2393,3 +2393,260 @@
 2025-10-04 14:56:42,192 - INFO - [STATS] Segment: 44, Ord: 1090, Längd: ~7.3 min
 2025-10-04 14:56:42,196 - INFO - [GITHUB] GitHub Pages URL: https://pontusdahlberg.github.io/morgonpodden
 2025-10-04 14:56:42,196 - INFO - [FEED] RSS URL: https://pontusdahlberg.github.io/morgonpodden/feed.xml
+2025-10-04 15:33:44,010 - INFO - [PODCAST] Startar MMM Senaste Nytt med musik och väder...
+2025-10-04 15:33:44,010 - INFO - [WEATHER] Hämtar aktuell väderdata...
+2025-10-04 15:33:52,890 - INFO - [WEATHER] Vädret idag: Götaland: Drizzle +9°C ↑↖46km/h, friska vindar, Svealand: Partly cloudy +11°C ↑, friska vindar
+2025-10-04 15:33:52,890 - INFO - [WEATHER] Vädret idag: Götaland: Drizzle +9°C ↑↖46km/h, friska vindar, Svealand: Partly cloudy +11°C ↑, friska vindar
+2025-10-04 15:33:52,891 - INFO - [AI] Genererar strukturerat podcast-innehåll...
+2025-10-04 15:34:33,869 - INFO - [AI] Genererade podcast-innehåll med väderdata
+2025-10-04 15:34:33,870 - INFO - [SCRIPT] Manus sparat: podcast_script_20251004_153352.txt
+2025-10-04 15:34:33,872 - INFO - [PARSE] Hittade 56 segment att generera audio för
+2025-10-04 15:34:33,872 - INFO - [ESTIMATE] 1065 ord, uppskattad längd: 7.1 minuter
+2025-10-04 15:34:33,872 - INFO - [TTS] Genererar audio med Google Cloud TTS...
+2025-10-04 15:34:34,144 - INFO - ✅ Använder service account fil: ./google-cloud-service-account.json
+2025-10-04 15:34:34,161 - INFO - ✅ Google Cloud TTS-klient initialiserad
+2025-10-04 15:34:34,161 - INFO - 🎙️ Genererar podcast med 56 segment
+2025-10-04 15:34:34,162 - INFO - 🎤 Segment 1/56: lisa
+2025-10-04 15:34:34,162 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:34,162 - INFO - 📝 Text (56 tecken): Hej och välkommen till MMM Senaste Nytt! Jag heter Lisa....
+2025-10-04 15:34:34,756 - INFO - ✅ Audio genererad (18816 bytes)
+2025-10-04 15:34:35,149 - INFO - 🎤 Segment 2/56: pelle
+2025-10-04 15:34:35,149 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:35,149 - INFO - 📝 Text (173 tecken): Och jag heter Pelle. Idag är det lördag den 4 oktober, och vädret idag: Götaland: drizzle +9°C, fris...
+2025-10-04 15:34:36,523 - INFO - ✅ Audio genererad (61056 bytes)
+2025-10-04 15:34:36,651 - INFO - 🎤 Segment 3/56: lisa
+2025-10-04 15:34:36,651 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:36,651 - INFO - 📝 Text (128 tecken): Precis, det känns som en typisk höstdag här i Sverige. Men vi har mycket spännande att prata om idag...
+2025-10-04 15:34:37,457 - INFO - ✅ Audio genererad (36192 bytes)
+2025-10-04 15:34:37,582 - INFO - 🎤 Segment 4/56: pelle
+2025-10-04 15:34:37,583 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:37,583 - INFO - 📝 Text (143 tecken): Ja, verkligen! Vi kommer att gå igenom flera heta nyheter, allt från nya AI-lösningar till klimatför...
+2025-10-04 15:34:38,387 - INFO - ✅ Audio genererad (35904 bytes)
+2025-10-04 15:34:38,512 - INFO - 🎤 Segment 5/56: lisa
+2025-10-04 15:34:38,512 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:38,513 - INFO - 📝 Text (98 tecken): Och vi har också en djup diskussion om framtiden för grön teknologi och hur den påverkar våra liv....
+2025-10-04 15:34:39,122 - INFO - ✅ Audio genererad (25536 bytes)
+2025-10-04 15:34:39,244 - INFO - 🎤 Segment 6/56: pelle
+2025-10-04 15:34:39,244 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:39,244 - INFO - 📝 Text (63 tecken): Låt oss börja med att ge en översikt av vad vi ska ta upp idag....
+2025-10-04 15:34:39,779 - INFO - ✅ Audio genererad (18432 bytes)
+2025-10-04 15:34:39,903 - INFO - 🎤 Segment 7/56: lisa
+2025-10-04 15:34:39,903 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:39,903 - INFO - 📝 Text (122 tecken): Absolut! Först kommer vi att titta på en ny rapport om artificiell intelligens och hur den utvecklas...
+2025-10-04 15:34:40,589 - INFO - ✅ Audio genererad (30144 bytes)
+2025-10-04 15:34:40,713 - INFO - 🎤 Segment 8/56: pelle
+2025-10-04 15:34:40,713 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:40,713 - INFO - 📝 Text (93 tecken): Sen pratar vi om ett svenskt startup-företag som revolutionerar hur vi ser på hållbar energi....
+2025-10-04 15:34:41,325 - INFO - ✅ Audio genererad (23904 bytes)
+2025-10-04 15:34:41,448 - INFO - 🎤 Segment 9/56: lisa
+2025-10-04 15:34:41,448 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:41,448 - INFO - 📝 Text (125 tecken): Vi kommer också att diskutera de senaste trenderna inom klimatanpassning, särskilt i relation till d...
+2025-10-04 15:34:42,125 - INFO - ✅ Audio genererad (27744 bytes)
+2025-10-04 15:34:42,250 - INFO - 🎤 Segment 10/56: pelle
+2025-10-04 15:34:42,250 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:42,250 - INFO - 📝 Text (95 tecken): Och slutligen, en intressant nyhet om hur en stor techjätte investerar i miljövänlig teknologi....
+2025-10-04 15:34:42,968 - INFO - ✅ Audio genererad (31296 bytes)
+2025-10-04 15:34:43,090 - INFO - 🎤 Segment 11/56: lisa
+2025-10-04 15:34:43,092 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:43,092 - INFO - 📝 Text (71 tecken): Låter som en fullspäckad agenda! Ska vi dyka ner i de första nyheterna?...
+2025-10-04 15:34:43,664 - INFO - ✅ Audio genererad (20064 bytes)
+2025-10-04 15:34:43,785 - INFO - 🎤 Segment 12/56: pelle
+2025-10-04 15:34:43,785 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:43,785 - INFO - 📝 Text (21 tecken): Ja, låt oss göra det!...
+2025-10-04 15:34:44,147 - INFO - ✅ Audio genererad (10272 bytes)
+2025-10-04 15:34:44,272 - INFO - 🎤 Segment 13/56: lisa
+2025-10-04 15:34:44,272 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:44,272 - INFO - 📝 Text (199 tecken): Den första nyheten handlar om en ny rapport från McKinsey som visar hur AI påverkar arbetsmarknaden....
+2025-10-04 15:34:45,508 - INFO - ✅ Audio genererad (57312 bytes)
+2025-10-04 15:34:45,637 - INFO - 🎤 Segment 14/56: pelle
+2025-10-04 15:34:45,637 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:45,637 - INFO - 📝 Text (54 tecken): Det är en skrämmande siffra. Hur ser det ut i Sverige?...
+2025-10-04 15:34:46,101 - INFO - ✅ Audio genererad (17472 bytes)
+2025-10-04 15:34:46,227 - INFO - 🎤 Segment 15/56: lisa
+2025-10-04 15:34:46,227 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:46,227 - INFO - 📝 Text (185 tecken): Enligt rapporten kan Sverige också påverkas kraftigt, särskilt inom sektorer som transport, tillverk...
+2025-10-04 15:34:47,414 - INFO - ✅ Audio genererad (54432 bytes)
+2025-10-04 15:34:47,538 - INFO - 🎤 Segment 16/56: pelle
+2025-10-04 15:34:47,538 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:47,538 - INFO - 📝 Text (113 tecken): Det påminner mig om diskussioner vi haft tidigare om hur vi behöver förbereda arbetskraften för denn...
+2025-10-04 15:34:48,171 - INFO - ✅ Audio genererad (27264 bytes)
+2025-10-04 15:34:48,296 - INFO - 🎤 Segment 17/56: lisa
+2025-10-04 15:34:48,297 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:48,297 - INFO - 📝 Text (143 tecken): Precis! McKinsey rekommenderar investeringar i utbildning och omskolning för att rusta arbetstagare ...
+2025-10-04 15:34:49,165 - INFO - ✅ Audio genererad (43104 bytes)
+2025-10-04 15:34:49,289 - INFO - 🎤 Segment 18/56: pelle
+2025-10-04 15:34:49,290 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:49,290 - INFO - 📝 Text (115 tecken): Det är viktigt att vi inte bara ser på de jobb som kan försvinna, utan också på de nya möjligheterna...
+2025-10-04 15:34:50,121 - INFO - ✅ Audio genererad (32064 bytes)
+2025-10-04 15:34:50,244 - INFO - 🎤 Segment 19/56: lisa
+2025-10-04 15:34:50,244 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:50,244 - INFO - 📝 Text (100 tecken): Exakt! Och det handlar om att vara proaktiv och inte reaktiv när det kommer till dessa förändringar....
+2025-10-04 15:34:50,901 - INFO - ✅ Audio genererad (30432 bytes)
+2025-10-04 15:34:51,025 - INFO - 🎤 Segment 20/56: pelle
+2025-10-04 15:34:51,025 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:51,026 - INFO - 📝 Text (158 tecken): Den andra nyheten kommer från ett svenskt startup-företag, Vattenfall Innovation, som har utvecklat ...
+2025-10-04 15:34:51,882 - INFO - ✅ Audio genererad (43776 bytes)
+2025-10-04 15:34:52,009 - INFO - 🎤 Segment 21/56: lisa
+2025-10-04 15:34:52,009 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:52,010 - INFO - 📝 Text (156 tecken): Ja, jag har hört talas om dem! Deras nya solpaneler kan generera upp till 20% mer energi jämfört med...
+2025-10-04 15:34:52,949 - INFO - ✅ Audio genererad (47136 bytes)
+2025-10-04 15:34:53,072 - INFO - 🎤 Segment 22/56: pelle
+2025-10-04 15:34:53,072 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:53,072 - INFO - 📝 Text (109 tecken): Det är imponerande! Och de har också lovat att dessa solpaneler ska tillverkas med en lägre koldioxi...
+2025-10-04 15:34:53,850 - INFO - ✅ Audio genererad (38592 bytes)
+2025-10-04 15:34:53,973 - INFO - 🎤 Segment 23/56: lisa
+2025-10-04 15:34:53,973 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:53,974 - INFO - 📝 Text (93 tecken): Det är verkligen en win-win-situation. Hållbar energi är avgörande för att nå våra klimatmål....
+2025-10-04 15:34:54,593 - INFO - ✅ Audio genererad (28512 bytes)
+2025-10-04 15:34:54,720 - INFO - 🎤 Segment 24/56: pelle
+2025-10-04 15:34:54,720 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:54,720 - INFO - 📝 Text (151 tecken): Det leder oss till vår tredje nyhet. En ny studie visar att klimatanpassning kommer att kosta världe...
+2025-10-04 15:34:55,572 - INFO - ✅ Audio genererad (43296 bytes)
+2025-10-04 15:34:55,699 - INFO - 🎤 Segment 25/56: lisa
+2025-10-04 15:34:55,699 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:55,699 - INFO - 📝 Text (96 tecken): Ja, och det är en siffra som verkligen sätter press på både regeringar och företag att agera nu....
+2025-10-04 15:34:56,376 - INFO - ✅ Audio genererad (26784 bytes)
+2025-10-04 15:34:56,501 - INFO - 🎤 Segment 26/56: pelle
+2025-10-04 15:34:56,501 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:56,501 - INFO - 📝 Text (125 tecken): Enligt forskarna handlar det inte bara om att förhindra skador från extremväder utan också om att sk...
+2025-10-04 15:34:57,191 - INFO - ✅ Audio genererad (30624 bytes)
+2025-10-04 15:34:57,321 - INFO - 🎤 Segment 27/56: lisa
+2025-10-04 15:34:57,322 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:57,322 - INFO - 📝 Text (85 tecken): Det handlar om att bygga infrastruktur, förbättra vattenförsörjningen och mycket mer....
+2025-10-04 15:34:57,914 - INFO - ✅ Audio genererad (26496 bytes)
+2025-10-04 15:34:58,044 - INFO - 🎤 Segment 28/56: pelle
+2025-10-04 15:34:58,045 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:58,045 - INFO - 📝 Text (168 tecken): Det är intressant att se hur olika länder hanterar denna utmaning. Några, som Nederländerna, investe...
+2025-10-04 15:34:58,956 - INFO - ✅ Audio genererad (45696 bytes)
+2025-10-04 15:34:59,085 - INFO - 🎤 Segment 29/56: lisa
+2025-10-04 15:34:59,085 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:34:59,085 - INFO - 📝 Text (132 tecken): Precis! Medan andra länder kanske inte har samma resurser att investera. Det skapar en ojämlikhet i ...
+2025-10-04 15:34:59,859 - INFO - ✅ Audio genererad (34944 bytes)
+2025-10-04 15:34:59,992 - INFO - 🎤 Segment 30/56: pelle
+2025-10-04 15:34:59,992 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:34:59,992 - INFO - 📝 Text (119 tecken): Ja, och det är något vi måste ta på allvar. Vi behöver mer internationellt samarbete för att dela ku...
+2025-10-04 15:35:00,691 - INFO - ✅ Audio genererad (33696 bytes)
+2025-10-04 15:35:00,817 - INFO - 🎤 Segment 31/56: lisa
+2025-10-04 15:35:00,817 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:00,817 - INFO - 📝 Text (123 tecken): Den fjärde nyheten handlar om en stor techjätte, Google, som har lovat att bli koldioxidneutrala ino...
+2025-10-04 15:35:01,502 - INFO - ✅ Audio genererad (33216 bytes)
+2025-10-04 15:35:01,626 - INFO - 🎤 Segment 32/56: pelle
+2025-10-04 15:35:01,626 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:01,627 - INFO - 📝 Text (49 tecken): Det är en ambitiös plan. Vad innebär det för dem?...
+2025-10-04 15:35:02,100 - INFO - ✅ Audio genererad (15552 bytes)
+2025-10-04 15:35:02,224 - INFO - 🎤 Segment 33/56: lisa
+2025-10-04 15:35:02,225 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:02,225 - INFO - 📝 Text (109 tecken): De har åtagit sig att investera i förnybar energi och också förbättra energieffektiviteten i sina da...
+2025-10-04 15:35:02,912 - INFO - ✅ Audio genererad (31776 bytes)
+2025-10-04 15:35:03,034 - INFO - 🎤 Segment 34/56: pelle
+2025-10-04 15:35:03,034 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:03,034 - INFO - 📝 Text (129 tecken): Och de vill även uppmuntra sina partners att följa deras exempel. Det är verkligen en stor påverkan ...
+2025-10-04 15:35:03,695 - INFO - ✅ Audio genererad (30912 bytes)
+2025-10-04 15:35:03,817 - INFO - 🎤 Segment 35/56: lisa
+2025-10-04 15:35:03,817 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:03,817 - INFO - 📝 Text (155 tecken): Den sista nyheten för idag handlar om en ny AI-lösning som utvecklats av ett forskarlag i Lund, som ...
+2025-10-04 15:35:04,749 - INFO - ✅ Audio genererad (46752 bytes)
+2025-10-04 15:35:04,874 - INFO - 🎤 Segment 36/56: pelle
+2025-10-04 15:35:04,874 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:04,874 - INFO - 📝 Text (38 tecken): Det låter spännande! Hur fungerar det?...
+2025-10-04 15:35:05,302 - INFO - ✅ Audio genererad (15264 bytes)
+2025-10-04 15:35:05,424 - INFO - 🎤 Segment 37/56: lisa
+2025-10-04 15:35:05,424 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:05,424 - INFO - 📝 Text (121 tecken): Genom att använda maskininlärning kan systemet förutsäga energibehovet baserat på användarbeteende o...
+2025-10-04 15:35:06,137 - INFO - ✅ Audio genererad (33792 bytes)
+2025-10-04 15:35:06,260 - INFO - 🎤 Segment 38/56: pelle
+2025-10-04 15:35:06,260 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:06,260 - INFO - 📝 Text (98 tecken): Det kan verkligen hjälpa hushåll att minska sin energiförbrukning och därmed också sina kostnader....
+2025-10-04 15:35:06,828 - INFO - ✅ Audio genererad (23424 bytes)
+2025-10-04 15:35:06,952 - INFO - 🎤 Segment 39/56: lisa
+2025-10-04 15:35:06,952 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:06,952 - INFO - 📝 Text (106 tecken): Ja, och det är ett tydligt exempel på hur teknik kan spela en viktig roll i kampen mot klimatförändr...
+2025-10-04 15:35:07,525 - INFO - ✅ Audio genererad (24672 bytes)
+2025-10-04 15:35:07,658 - INFO - 🎤 Segment 40/56: pelle
+2025-10-04 15:35:07,659 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:07,659 - INFO - 📝 Text (150 tecken): Det är intressant hur alla dessa nyheter på något sätt hänger ihop – från AI:s påverkan på arbetsmar...
+2025-10-04 15:35:08,474 - INFO - ✅ Audio genererad (39936 bytes)
+2025-10-04 15:35:08,600 - INFO - 🎤 Segment 41/56: lisa
+2025-10-04 15:35:08,601 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:08,601 - INFO - 📝 Text (95 tecken): Verkligen! Det visar hur viktigt det är att tänka helhetsorienterat när vi pratar om framtiden....
+2025-10-04 15:35:09,229 - INFO - ✅ Audio genererad (27936 bytes)
+2025-10-04 15:35:09,351 - INFO - 🎤 Segment 42/56: pelle
+2025-10-04 15:35:09,352 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:09,352 - INFO - 📝 Text (138 tecken): Nu vill jag gärna höra dina tankar om dessa trender, Lisa. Vad ser du som de mest betydelsefulla asp...
+2025-10-04 15:35:10,045 - INFO - ✅ Audio genererad (32256 bytes)
+2025-10-04 15:35:10,167 - INFO - 🎤 Segment 43/56: lisa
+2025-10-04 15:35:10,167 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:10,168 - INFO - 📝 Text (142 tecken): Hmm, det är en bra poäng. Jag tror att en av de största utmaningarna är att säkerställa att vi inte ...
+2025-10-04 15:35:11,042 - INFO - ✅ Audio genererad (41184 bytes)
+2025-10-04 15:35:11,166 - INFO - 🎤 Segment 44/56: pelle
+2025-10-04 15:35:11,167 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:11,167 - INFO - 📝 Text (138 tecken): Precis, det handlar om att skapa inkluderande lösningar. Utbildning och omskolning blir avgörande fö...
+2025-10-04 15:35:12,007 - INFO - ✅ Audio genererad (43104 bytes)
+2025-10-04 15:35:12,130 - INFO - 🎤 Segment 45/56: lisa
+2025-10-04 15:35:12,131 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:12,131 - INFO - 📝 Text (152 tecken): Och samtidigt måste vi också vara medvetna om miljökonsekvenserna av vår teknologi. Det handlar om a...
+2025-10-04 15:35:12,987 - INFO - ✅ Audio genererad (38304 bytes)
+2025-10-04 15:35:13,111 - INFO - 🎤 Segment 46/56: pelle
+2025-10-04 15:35:13,111 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:13,111 - INFO - 📝 Text (157 tecken): Ja, och det är där företagen och regeringar måste samarbeta. Utan ett gemensamt åtagande kommer vi a...
+2025-10-04 15:35:13,983 - INFO - ✅ Audio genererad (43104 bytes)
+2025-10-04 15:35:14,107 - INFO - 🎤 Segment 47/56: lisa
+2025-10-04 15:35:14,108 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:14,108 - INFO - 📝 Text (96 tecken): Exakt! Vi behöver både tekniska lösningar och sociala strukturer som stödjer dessa förändringar....
+2025-10-04 15:35:14,748 - INFO - ✅ Audio genererad (29664 bytes)
+2025-10-04 15:35:14,874 - INFO - 🎤 Segment 48/56: pelle
+2025-10-04 15:35:14,874 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:14,874 - INFO - 📝 Text (119 tecken): Intressant nog har vi sett att många företag nu börjar implementera hållbarhetsmål, vilket är ett st...
+2025-10-04 15:35:15,586 - INFO - ✅ Audio genererad (32064 bytes)
+2025-10-04 15:35:15,720 - INFO - 🎤 Segment 49/56: lisa
+2025-10-04 15:35:15,721 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:15,721 - INFO - 📝 Text (229 tecken): För att sammanfatta dagens avsnitt har vi diskuterat hur AI påverkar arbetsmarknaden, Vattenfall Inn...
+2025-10-04 15:35:16,877 - INFO - ✅ Audio genererad (62304 bytes)
+2025-10-04 15:35:17,005 - INFO - 🎤 Segment 50/56: pelle
+2025-10-04 15:35:17,006 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:17,006 - INFO - 📝 Text (136 tecken): Och vi har också pratat om vikten av att vara proaktiva och se till att vi gör dessa förändringar på...
+2025-10-04 15:35:17,758 - INFO - ✅ Audio genererad (35904 bytes)
+2025-10-04 15:35:17,881 - INFO - 🎤 Segment 51/56: lisa
+2025-10-04 15:35:17,881 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:17,881 - INFO - 📝 Text (86 tecken): Ja, och hur alla dessa ämnen hänger ihop och påverkar vårt samhälle och miljö i stort....
+2025-10-04 15:35:18,480 - INFO - ✅ Audio genererad (26496 bytes)
+2025-10-04 15:35:18,603 - INFO - 🎤 Segment 52/56: pelle
+2025-10-04 15:35:18,603 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:18,603 - INFO - 📝 Text (114 tecken): Innan vi avslutar, vill jag påminna lyssnarna om att MMM Senaste Nytt är en del av Människa Maskin M...
+2025-10-04 15:35:19,265 - INFO - ✅ Audio genererad (31104 bytes)
+2025-10-04 15:35:19,386 - INFO - 🎤 Segment 53/56: lisa
+2025-10-04 15:35:19,387 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:19,387 - INFO - 📝 Text (102 tecken): Om ni vill ha djupare analyser och fler diskussioner om teknik, AI och klimat, kolla in vår huvudpod...
+2025-10-04 15:35:20,048 - INFO - ✅ Audio genererad (30624 bytes)
+2025-10-04 15:35:20,170 - INFO - 🎤 Segment 54/56: pelle
+2025-10-04 15:35:20,170 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:20,170 - INFO - 📝 Text (129 tecken): Tack för att ni lyssnade på dagens avsnitt! Vi hoppas att ni fått nya insikter och inspiration att t...
+2025-10-04 15:35:20,898 - INFO - ✅ Audio genererad (34272 bytes)
+2025-10-04 15:35:21,021 - INFO - 🎤 Segment 55/56: lisa
+2025-10-04 15:35:21,022 - INFO - 🎤 Genererar med Lisa (Gacrux) - Professionell kvinnlig röst
+2025-10-04 15:35:21,022 - INFO - 📝 Text (103 tecken): Ha en fortsatt bra dag, och kom ihåg att varje liten insats räknas i kampen för en mer hållbar framt...
+2025-10-04 15:35:21,628 - INFO - ✅ Audio genererad (28704 bytes)
+2025-10-04 15:35:21,752 - INFO - 🎤 Segment 56/56: pelle
+2025-10-04 15:35:21,752 - INFO - 🎤 Genererar med Pelle (Iapetus) - Professionell manlig röst
+2025-10-04 15:35:21,752 - INFO - 📝 Text (27 tecken): Precis, vi hörs snart igen!...
+2025-10-04 15:35:22,107 - INFO - ✅ Audio genererad (9984 bytes)
+2025-10-04 15:35:22,230 - INFO - 🔗 Kombinerar audiosegment...
+2025-10-04 15:35:23,759 - INFO - ✅ Podcast genererad: audio/MMM_google_cloud_20251004_153522.mp3
+2025-10-04 15:35:23,759 - INFO - 🕐 Längd: 8.1 minuter
+2025-10-04 15:35:23,759 - INFO - 📊 Totalt tecken: 6,530
+2025-10-04 15:35:23,759 - INFO - 💰 Uppskattad kostnad: $0.0261
+2025-10-04 15:35:23,762 - INFO - [TTS] Audio genererad: audio\MMM_senaste_nytt_20251004_153352.mp3
+2025-10-04 15:35:23,762 - INFO - [MUSIC] Lägger till musik och bryggkor...
+2025-10-04 15:35:23,763 - INFO - [MUSIC] Valde låt: Stjärnljus.mp3
+2025-10-04 15:35:29,893 - INFO - ✅ Mixed audio exported: audio\MMM_senaste_nytt_20251004_153352_with_music.mp3
+2025-10-04 15:35:29,903 - INFO - [MUSIC] Musik tillagd till audio\MMM_senaste_nytt_20251004_153352.mp3
+2025-10-04 15:35:29,906 - INFO - [FILES] Kopierade audio till public\audio\MMM_senaste_nytt_20251004_153352.mp3
+2025-10-04 15:35:29,908 - INFO - [RSS] RSS-feed sparad: public\feed.xml
+2025-10-04 15:35:29,908 - INFO - [SUCCESS] Komplett podcast-generering slutförd!
+2025-10-04 15:35:29,908 - INFO - [AUDIO] Audio: audio\MMM_senaste_nytt_20251004_153352.mp3
+2025-10-04 15:35:29,908 - INFO - [SCRIPT] Manus: podcast_script_20251004_153352.txt
+2025-10-04 15:35:29,908 - INFO - [RSS] RSS: public\feed.xml
+2025-10-04 15:35:29,909 - INFO - [WEATHER] Väder: Vädret idag: Götaland: Drizzle +9°C ↑↖46km/h, friska vindar, Svealand: Partly cloudy +11°C ↑, friska vindar
+2025-10-04 15:35:29,909 - INFO - [STATS] Segment: 56, Ord: 1065, Längd: ~7.1 min
+2025-10-04 15:35:29,909 - INFO - [GITHUB] GitHub Pages URL: https://pontusdahlberg.github.io/morgonpodden
+2025-10-04 15:35:29,909 - INFO - [FEED] RSS URL: https://pontusdahlberg.github.io/morgonpodden/feed.xml

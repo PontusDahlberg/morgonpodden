@@ -62,25 +62,52 @@ class GoogleCloudTTS:
     
     def _setup_credentials(self) -> bool:
         """Setup Google Cloud credentials"""
+        import json
+        
+        # Debug: visa alla credentials-relaterade environment variabler
+        logger.info(f"🔍 GOOGLE_APPLICATION_CREDENTIALS = {os.getenv('GOOGLE_APPLICATION_CREDENTIALS')}")
+        logger.info(f"🔍 GOOGLE_CLOUD_KEY exists = {bool(os.getenv('GOOGLE_CLOUD_KEY'))}")
+        logger.info(f"🔍 GOOGLE_CLOUD_KEY length = {len(os.getenv('GOOGLE_CLOUD_KEY', ''))}")
+        
         # Kolla service account fil först
         credentials_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-        if credentials_file and os.path.exists(credentials_file):
-            logger.info(f"✅ Använder service account fil: {credentials_file}")
-            return True
+        if credentials_file:
+            logger.info(f"🔍 Kollar credentials fil: {credentials_file}")
+            if os.path.exists(credentials_file):
+                logger.info(f"✅ Använder service account fil: {credentials_file}")
+                return True
+            else:
+                logger.warning(f"⚠️ Credentials fil finns inte: {credentials_file}")
         
         # Kolla om filen finns på standardplats
         standard_file = 'google-cloud-service-account.json'
+        logger.info(f"🔍 Kollar standardfil: {standard_file}")
         if os.path.exists(standard_file):
-            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = standard_file
-            logger.info(f"✅ Använder standardfil: {standard_file}")
-            return True
+            # Kontrollera filstorlek och innehåll
+            file_size = os.path.getsize(standard_file)
+            logger.info(f"🔍 Standardfil storlek: {file_size} bytes")
+            
+            try:
+                with open(standard_file, 'r') as f:
+                    content = f.read()
+                    # Validera JSON
+                    json.loads(content)
+                    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = standard_file
+                    logger.info(f"✅ Använder standardfil: {standard_file}")
+                    return True
+            except json.JSONDecodeError as e:
+                logger.error(f"❌ Ogiltigt JSON i standardfil: {e}")
+            except Exception as e:
+                logger.error(f"❌ Fel vid läsning av standardfil: {e}")
+        else:
+            logger.warning(f"⚠️ Standardfil finns inte: {standard_file}")
         
         # Endast som sista utväg: Kolla JSON i miljövariabel
         credentials_json = os.getenv('GOOGLE_CLOUD_KEY')
         if credentials_json and credentials_json.strip():  # Kontrollera att det inte är tom sträng
+            logger.info("🔍 Försöker använda GOOGLE_CLOUD_KEY miljövariabel")
             try:
                 # Verifiera att det är valid JSON först
-                import json
                 json.loads(credentials_json)
                 
                 # Spara JSON till temporär fil
@@ -98,6 +125,8 @@ class GoogleCloudTTS:
             except Exception as e:
                 logger.error(f"❌ Fel vid konfiguration av credentials: {e}")
                 return False
+        else:
+            logger.info("🔍 GOOGLE_CLOUD_KEY är tom eller saknas")
         
         logger.error("❌ Inga Google Cloud credentials hittade")
         logger.error("Sätt GOOGLE_APPLICATION_CREDENTIALS eller GOOGLE_CLOUD_KEY")

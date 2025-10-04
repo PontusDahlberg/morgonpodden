@@ -66,14 +66,29 @@ class GoogleCloudTTS:
                     with open(cred_file, 'r') as f:
                         cred_data = json.load(f)
                     
+                    # DEBUG: Kolla private key format
+                    private_key = cred_data["private_key"]
+                    logger.info(f"🔍 Private key typ: {type(private_key)}")
+                    logger.info(f"🔍 Private key längd: {len(private_key)}")
+                    logger.info(f"🔍 Private key börjar med: {private_key[:50]}...")
+                    logger.info(f"🔍 Private key slutar med: ...{private_key[-50:]}")
+                    
+                    # Försök fixa private key format
+                    if isinstance(private_key, str):
+                        # Säkerställ korrekt newline-format
+                        fixed_private_key = private_key.replace('\\n', '\n')
+                        logger.info(f"🔧 Fixade private key newlines")
+                    else:
+                        fixed_private_key = private_key
+                    
                     # Bygg credentials helt manuellt med minimal data
                     try:
-                        # Metod 1: Minimal service account credentials
+                        # Metod 1: Minimal service account credentials med fixad private key
                         minimal_cred_data = {
                             "type": cred_data["type"],
                             "project_id": cred_data["project_id"], 
                             "private_key_id": cred_data["private_key_id"],
-                            "private_key": cred_data["private_key"],
+                            "private_key": fixed_private_key,
                             "client_email": cred_data["client_email"],
                             "client_id": cred_data["client_id"],
                             "auth_uri": "https://accounts.google.com/o/oauth2/auth",

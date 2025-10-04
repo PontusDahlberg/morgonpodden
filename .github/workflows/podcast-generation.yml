@@ -95,6 +95,15 @@ jobs:
         echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS"
         echo "GOOGLE_CLOUD_KEY is unset: $GOOGLE_CLOUD_KEY"
         ls -la google-cloud-service-account.json
+        
+        echo "🔍 Checking git info:"
+        git log --oneline -5
+        git status
+        
+        echo "🔍 Checking code version:"
+        grep -n "BRUTAL FIX VERSION" google_cloud_tts.py || echo "❌ New code not found!"
+        grep -n "Service account konfigurerad från miljövariabel" google_cloud_tts.py || echo "No old text found"
+        
         python run_podcast_complete.py
         
     - name: 📁 Upload podcast artifacts

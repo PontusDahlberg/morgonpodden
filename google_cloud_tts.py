@@ -62,16 +62,27 @@ class GoogleCloudTTS:
     
     def _setup_credentials(self) -> bool:
         """Setup Google Cloud credentials"""
-        # Kolla service account fil
+        # Kolla service account fil först
         credentials_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
         if credentials_file and os.path.exists(credentials_file):
             logger.info(f"✅ Använder service account fil: {credentials_file}")
             return True
         
-        # Kolla JSON i miljövariabel (för GitHub Actions)
+        # Kolla om filen finns på standardplats
+        standard_file = 'google-cloud-service-account.json'
+        if os.path.exists(standard_file):
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = standard_file
+            logger.info(f"✅ Använder standardfil: {standard_file}")
+            return True
+        
+        # Endast som sista utväg: Kolla JSON i miljövariabel
         credentials_json = os.getenv('GOOGLE_CLOUD_KEY')
-        if credentials_json:
+        if credentials_json and credentials_json.strip():  # Kontrollera att det inte är tom sträng
             try:
+                # Verifiera att det är valid JSON först
+                import json
+                json.loads(credentials_json)
+                
                 # Spara JSON till temporär fil
                 temp_file = 'google-cloud-service-account.json'
                 with open(temp_file, 'w') as f:
@@ -81,6 +92,9 @@ class GoogleCloudTTS:
                 logger.info("✅ Service account konfigurerad från miljövariabel")
                 return True
                 
+            except json.JSONDecodeError as e:
+                logger.error(f"❌ Ogiltigt JSON i GOOGLE_CLOUD_KEY: {e}")
+                return False
             except Exception as e:
                 logger.error(f"❌ Fel vid konfiguration av credentials: {e}")
                 return False

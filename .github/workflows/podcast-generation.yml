@@ -77,12 +77,21 @@ jobs:
         # Skapa Google Cloud credentials fil från secret
         echo '${{ secrets.GOOGLE_CLOUD_KEY }}' > google-cloud-service-account.json
         
+        # Debug: kolla att filen skapades korrekt
+        echo "📁 Credentials fil skapad:"
+        ls -la google-cloud-service-account.json
+        echo "📄 Första rader av filen:"
+        head -n 3 google-cloud-service-account.json
+        
     - name: 🎙️ Generate podcast (Complete version)
       env:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        GOOGLE_APPLICATION_CREDENTIALS: ./google-cloud-service-account.json
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/google-cloud-service-account.json
         USE_GOOGLE_CLOUD_TTS: true
       run: |
+        echo "🔍 Debug environment:"
+        echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS"
+        ls -la google-cloud-service-account.json
         python run_podcast_complete.py
         
     - name: 📁 Upload podcast artifacts

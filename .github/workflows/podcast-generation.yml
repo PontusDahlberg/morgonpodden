@@ -88,9 +88,12 @@ jobs:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/google-cloud-service-account.json
         USE_GOOGLE_CLOUD_TTS: true
+        # Explicitly unset GOOGLE_CLOUD_KEY to force using file
+        GOOGLE_CLOUD_KEY: ""
       run: |
         echo "🔍 Debug environment:"
         echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS"
+        echo "GOOGLE_CLOUD_KEY is unset: $GOOGLE_CLOUD_KEY"
         ls -la google-cloud-service-account.json
         python run_podcast_complete.py
         

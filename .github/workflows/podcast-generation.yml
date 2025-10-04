@@ -77,9 +77,9 @@ jobs:
         # Skapa Google Cloud credentials fil från secret
         echo '${{ secrets.GOOGLE_CLOUD_KEY }}' > google-cloud-service-account.json
         
-    - name: 🎙️ Generate podcast (Improved version)
+    - name: 🎙️ Generate podcast (Complete version)
       run: |
-        python run_podcast_improved.py
+        python run_podcast_complete.py
         
     - name: 📁 Upload podcast artifacts
       uses: actions/upload-artifact@v4

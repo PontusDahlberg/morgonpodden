@@ -16,6 +16,7 @@ class GoogleCloudTTS:
     """Google Cloud TTS-integration med Chirp3-HD röster"""
     
     def __init__(self):
+        logger.info("🔥 GOOGLE CLOUD TTS VERSION 2.0 - BRUTAL FIX LOADED!")
         self.client = None
         self.voice_mapping = {
             # Primära röster för podcasten
@@ -63,6 +64,9 @@ class GoogleCloudTTS:
     def _setup_credentials(self) -> bool:
         """Setup Google Cloud credentials - FORCE FILE MODE"""
         import json
+        
+        # UNIK IDENTIFIERARE - OM DU SER DETTA KÖR VI NY KOD!
+        logger.info("🚀 BRUTAL FIX VERSION 2.0 - TVINGAR FIL-LÄGE!")
         
         # TEMPORÄR FIX: Ta bort GOOGLE_CLOUD_KEY helt för att tvinga fil-läge
         if 'GOOGLE_CLOUD_KEY' in os.environ:

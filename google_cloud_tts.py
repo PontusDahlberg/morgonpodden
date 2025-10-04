@@ -52,41 +52,81 @@ class GoogleCloudTTS:
             if not self._setup_credentials():
                 return False
             
-            # Försök skapa klient med explicit credentials från JSON-data
+            # DRASTISK FIX: Bygg credentials manuellt från komponenter
             try:
                 from google.oauth2 import service_account
+                from google.auth import jwt
                 import json
                 
                 cred_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
                 if cred_file and os.path.exists(cred_file):
-                    logger.info(f"🎯 Läser JSON-data från: {cred_file}")
+                    logger.info(f"🔥 DRASTISK FIX: Manuell credential-byggning från: {cred_file}")
                     
-                    # Läs JSON-data direkt och skapa credentials från dict
+                    # Läs JSON-data
                     with open(cred_file, 'r') as f:
                         cred_data = json.load(f)
                     
-                    logger.info("🎯 Skapar credentials från JSON-dict istället för fil")
-                    credentials = service_account.Credentials.from_service_account_info(cred_data)
-                    
-                    logger.info("🎯 Skapar TTS-klient med dict-baserade credentials")
-                    self.client = texttospeech.TextToSpeechClient(credentials=credentials)
-                    logger.info("✅ Google Cloud TTS-klient skapad med JSON-dict credentials")
-                    return True
+                    # Bygg credentials helt manuellt med minimal data
+                    try:
+                        # Metod 1: Minimal service account credentials
+                        minimal_cred_data = {
+                            "type": cred_data["type"],
+                            "project_id": cred_data["project_id"], 
+                            "private_key_id": cred_data["private_key_id"],
+                            "private_key": cred_data["private_key"],
+                            "client_email": cred_data["client_email"],
+                            "client_id": cred_data["client_id"],
+                            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                            "token_uri": "https://oauth2.googleapis.com/token"
+                        }
+                        
+                        logger.info("🔥 Försöker med minimala credentials")
+                        credentials = service_account.Credentials.from_service_account_info(
+                            minimal_cred_data,
+                            scopes=['https://www.googleapis.com/auth/cloud-platform']
+                        )
+                        
+                        logger.info("🔥 Skapar TTS-klient med minimala credentials")
+                        self.client = texttospeech.TextToSpeechClient(credentials=credentials)
+                        logger.info("✅ DRASTISK FIX LYCKADES - TTS-klient skapad!")
+                        return True
+                        
+                    except Exception as e2:
+                        logger.warning(f"⚠️ Minimala credentials failade: {e2}")
+                        
+                        # Metod 2: Ännu enklare approach
+                        logger.info("🔥 Försöker ännu enklare credentials")
+                        credentials = service_account.Credentials.from_service_account_info(
+                            cred_data
+                        )
+                        self.client = texttospeech.TextToSpeechClient(credentials=credentials)
+                        logger.info("✅ ENKEL FIX LYCKADES - TTS-klient skapad!")
+                        return True
+                        
             except Exception as e:
-                logger.warning(f"⚠️ JSON-dict credentials failade: {e}")
+                logger.warning(f"⚠️ DRASTISK FIX failade: {e}")
                 
-            # Backup: Försök med fil-baserade credentials
+            # SISTA UTVÄG: Försök utan explicit credentials alls
             try:
-                from google.oauth2 import service_account
-                cred_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-                if cred_file and os.path.exists(cred_file):
-                    logger.info(f"🔄 Backup: Försöker fil-baserade credentials från: {cred_file}")
-                    credentials = service_account.Credentials.from_service_account_file(cred_file)
-                    self.client = texttospeech.TextToSpeechClient(credentials=credentials)
-                    logger.info("✅ Google Cloud TTS-klient skapad med fil-credentials")
-                    return True
+                logger.info("🆘 SISTA UTVÄG: Försöker utan explicit credentials")
+                # Ta bort alla credential environment vars
+                if 'GOOGLE_APPLICATION_CREDENTIALS' in os.environ:
+                    del os.environ['GOOGLE_APPLICATION_CREDENTIALS']
+                    
+                # Återställ från secret
+                import json
+                with open('google-cloud-service-account.json', 'r') as f:
+                    cred_data = json.load(f)
+                    
+                # Sätt bara project
+                os.environ['GOOGLE_CLOUD_PROJECT'] = cred_data['project_id']
+                
+                self.client = texttospeech.TextToSpeechClient()
+                logger.info("✅ SISTA UTVÄG LYCKADES - TTS-klient utan credentials!")
+                return True
+                
             except Exception as e:
-                logger.warning(f"⚠️ Fil-baserade credentials failade: {e}")
+                logger.warning(f"⚠️ SISTA UTVÄG failade: {e}")
             
             # Fallback: Skapa TTS-klient med environment credentials
             logger.info("🔄 Försöker med environment credentials...")

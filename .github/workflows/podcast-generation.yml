@@ -80,7 +80,7 @@ jobs:
     - name: 🎙️ Generate podcast (Complete version)
       env:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        GOOGLE_CLOUD_KEY: ${{ secrets.GOOGLE_CLOUD_KEY }}
+        GOOGLE_APPLICATION_CREDENTIALS: ./google-cloud-service-account.json
         USE_GOOGLE_CLOUD_TTS: true
       run: |
         python run_podcast_complete.py

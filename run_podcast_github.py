@@ -199,7 +199,7 @@ def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
         <itunes:summary>Automatiserad podcast med AI-genererat innehåll om teknik, AI och klimat</itunes:summary>
         <itunes:owner>
             <itunes:name>Pontus Dahlberg</itunes:name>
-            <itunes:email>pontusdahlberg@gmail.com</itunes:email>
+            <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="{base_url}/cover.jpg"/>
         <lastBuildDate>{datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')}</lastBuildDate>

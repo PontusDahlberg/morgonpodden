@@ -1,13 +1,14 @@
-name: 📡 Människa Maskin Miljö - Weekly Podcast
+name: 📡 Människa Maskin Miljö - Weekly Podcast (INAKTIVERAD)
 
+# HELT INAKTIVERAD - Använd podcast-generation.yml istället
 on:
   # TEMPORÄRT AVSTÄNGT - spara ElevenLabs krediter
   # Automatisk schemaläggning: Varje onsdag kl 07:00 CET (05:00 UTC)
   # schedule:
   #   - cron: '0 5 * * 3'
   
-  # Manuell trigger för testing (fungerar fortfarande)
-  workflow_dispatch:
+  # INAKTIVERAD - Manuell trigger för testing (fungerar fortfarande)
+  # workflow_dispatch:
     inputs:
       debug_mode:
         description: 'Enable debug logging'
@@ -75,7 +76,7 @@ jobs:
         
     - name: 📊 Upload Generation Logs
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: podcast-logs-${{ github.run_number }}
         path: |

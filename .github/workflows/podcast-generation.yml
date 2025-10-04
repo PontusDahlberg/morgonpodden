@@ -92,6 +92,7 @@ jobs:
           podcast_script_*.txt
           podcast_generation.log
         retention-days: 90
+        if-no-files-found: warn
         
     - name: 🔔 Notify on success
       if: success()
@@ -125,7 +126,7 @@ jobs:
       uses: actions/configure-pages@v4
       
     - name: 📤 Upload to Pages
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: './public'
         

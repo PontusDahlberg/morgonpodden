@@ -1,0 +1,81 @@
+name: 📥 Auto-commit Generated Podcasts
+
+# Denna workflow körs efter podcast-generation för att committa nya avsnitt
+on:
+  workflow_run:
+    workflows: ["🎙️ Människa Maskin Miljö - Podcast Generation"]
+    types:
+      - completed
+
+jobs:
+  commit-podcast:
+    name: 💾 Commit New Podcast Episodes
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    permissions:
+      contents: write
+      
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: 📂 Download artifacts from podcast generation
+      uses: actions/download-artifact@v4
+      with:
+        name: daily-podcast-${{ github.event.workflow_run.run_number }}
+        path: ./
+        
+    - name: 📋 List downloaded files
+      run: |
+        echo "📁 Downloaded files:"
+        find . -name "*.mp3" -o -name "*.xml" -o -name "*.log" | head -20
+        
+    - name: 🔧 Configure Git
+      run: |
+        git config user.name "Podcast Bot"
+        git config user.email "action@github.com"
+        
+    - name: 💾 Commit new episodes
+      run: |
+        # Lägg till nya filer
+        git add audio/MMM_github_*.mp3 2>/dev/null || echo "Inga nya audio-filer"
+        git add public/audio/*.mp3 2>/dev/null || echo "Inga nya public audio-filer"
+        git add public/feed.xml 2>/dev/null || echo "Ingen ny RSS-feed"
+        
+        # Kolla om det finns ändringar
+        if git diff --staged --quiet; then
+          echo "📭 Inga nya ändringar att committa"
+        else
+          # Committa ändringar
+          TODAY=$(date +'%Y-%m-%d')
+          git commit -m "🎙️ Nytt podcast-avsnitt: $TODAY
+          
+          - Automatiskt genererat avsnitt
+          - Uppdaterad RSS-feed
+          - Sparad i GitHub Pages för 90 dagar
+          
+          🎵 Lyssna: https://pontusdahlberg.github.io/morgonpodden/
+          📡 RSS: https://pontusdahlberg.github.io/morgonpodden/feed.xml"
+          
+          git push
+          echo "✅ Committat och pushat nya avsnitt!"
+        fi
+        
+    - name: 🧹 Cleanup old episodes (keep last 30)
+      run: |
+        # Ta bort gamla episodes (behåll senaste 30)
+        cd audio
+        ls -t MMM_github_*.mp3 2>/dev/null | tail -n +31 | xargs -r git rm
+        
+        cd ../public/audio
+        ls -t MMM_github_*.mp3 2>/dev/null | tail -n +31 | xargs -r git rm
+        
+        # Committa rensning om det finns ändringar
+        if ! git diff --staged --quiet; then
+          git commit -m "🧹 Rensade gamla podcast-avsnitt (behöll senaste 30)"
+          git push
+          echo "🧹 Rensade gamla avsnitt"
+        fi

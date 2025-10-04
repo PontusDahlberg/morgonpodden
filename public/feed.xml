@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Människa Maskin Miljö</title><description>Veckans nyheter inom AI, klimat och teknik. Automatiskt genererad podcast som sammanfattar viktiga utvecklingar för en hållbar framtid.</description><link>https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev</link><language>sv-SE</language><category>Technology</category><pubDate>Sun, 28 Sep 2025 12:44:21 +0000</pubDate><lastBuildDate>Sun, 28 Sep 2025 12:44:21 +0000</lastBuildDate><itunes:author>Pontus - Människa Maskin Miljö</itunes:author><itunes:subtitle>AI och klimatnyheter varje onsdag</itunes:subtitle><itunes:summary>Människa Maskin Miljö är en AI-genererad podcast som varje onsdag sammanfattar veckans viktigaste nyheter inom artificiell intelligens, klimat och hållbar teknik. Podden ger dig en snabb överblick av utvecklingen inom dessa kritiska områden för vår framtid.</itunes:summary><itunes:owner><itunes:name>Pontus</itunes:name><itunes:email>podcast@example.com</itunes:email></itunes:owner><itunes:image href="https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/cover.jpg" /><image><url>https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/cover.jpg</url><title>Människa Maskin Miljö</title><link>https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev</link></image><item><title>MMM Senaste Nytt - 2025-09-18</title><description>Vecka 38: AI-genombrott inom klimatmodellering, nya policyer för gröna investeringar och teknikjättarnas hållbarhetsrapporter. Vi täcker också de senaste rönen inom förnybar energi.</description><pubDate>Wed, 18 Sep 2025 07:00:00 +0200</pubDate><guid>mmm-2025-w38</guid><enclosure url="https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/episodes/2025-w38.mp3" type="audio/mpeg" length="15000000" /><itunes:duration>12:30</itunes:duration><itunes:author>Lisa &amp; Pelle - MMM Senaste Nytt</itunes:author><itunes:subtitle>Vardag  Nyheter - Människa Maskin Miljö</itunes:subtitle><itunes:summary>Vecka 38: AI-genombrott inom klimatmodellering, nya policyer för gröna investeringar och teknikjättarnas hållbarhetsrapporter. Vi täcker också de senaste rönen inom förnybar energi.</itunes:summary></item><item><title>MMM Senaste Nytt - 2025-09-11</title><description>Vecka 37: ChatGPT-uppdateringar, klimatpolitik och gröna investeringar. Vi diskuterar nya AI-verktyg för miljöanalys och hur teknikjättar satsar på förnybar energi.</description><pubDate>Wed, 11 Sep 2025 07:00:00 +0200</pubDate><guid>mmm-2025-w37</guid><enclosure url="https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/episodes/2025-w37.mp3" type="audio/mpeg" length="14500000" /><itunes:duration>11:45</itunes:duration><itunes:author>Lisa &amp; Pelle - MMM Senaste Nytt</itunes:author><itunes:subtitle>Vardag  Nyheter - Människa Maskin Miljö</itunes:subtitle><itunes:summary>Vecka 37: ChatGPT-uppdateringar, klimatpolitik och gröna investeringar. Vi diskuterar nya AI-verktyg för miljöanalys och hur teknikjättar satsar på förnybar energi.</itunes:summary></item></channel></rss>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+    <channel>
+        <title>MMM Senaste Nytt - MÄNNISKA MASKIN MILJÖ</title>
+        <description>Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.</description>
+        <link>https://pontusdahlberg.github.io/morgonpodden</link>
+        <language>sv-SE</language>
+        <itunes:category text="Technology"/>
+        <itunes:category text="Science"/>
+        <itunes:category text="News"/>
+        <itunes:explicit>false</itunes:explicit>
+        <itunes:author>Pontus Dahlberg</itunes:author>
+        <itunes:summary>Daglig nyhetspodcast om AI, teknik och klimat - en del av Människa Maskin Miljö-familjen</itunes:summary>
+        <itunes:owner>
+            <itunes:name>Pontus Dahlberg</itunes:name>
+            <itunes:email>pontusdahlberg@gmail.com</itunes:email>
+        </itunes:owner>
+        <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
+        <lastBuildDate>Sat, 04 Oct 2025 14:56:42 +0000</lastBuildDate>
+        
+        <item>
+            <title>MMM Senaste Nytt - 04 October 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - Saturday den 04 October 2025. Vädret idag: Götaland: Drizzle +9°C ↑↖46km/h, friska vindar, Svealand: Partly cloudy +11°C ↑, friska vindar</description>
+            <pubDate>Sat, 04 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_145519.mp3" length="7752812" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_145519.mp3</guid>
+        </item>
+    </channel>
+</rss>

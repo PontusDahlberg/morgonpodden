@@ -322,6 +322,82 @@ def clean_script_text(text: str) -> str:
     
     return text
 
+def parse_podcast_text(text: str) -> List[Dict]:
+    """Analysera podcast-text och extrahera röst- och emotionsinformation"""
+    import re
+    
+    sections = []
+    current_voice = "Lisa"  # Default voice
+    current_emotion = "professional"  # Default emotion
+    
+    # Split text by lines and analyze each line
+    lines = text.split('\n')
+    current_content = []
+    
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+            
+        # Look for voice/emotion indicators (🎭 Lisa (energetic): eller **Lisa (professional):**)
+        voice_match = re.search(r'(?:🎭\s*|[\*\[\(]?)(?:Lisa|Pelle|Sanna|George)(?:\s*\([^)]+\))?(?:[\*\]\)]?)\s*:?', line, re.IGNORECASE)
+        
+        if voice_match:
+            # Save previous section if it has content
+            if current_content:
+                sections.append({
+                    'voice': current_voice,
+                    'emotion': current_emotion,
+                    'text': ' '.join(current_content).strip()
+                })
+                current_content = []
+            
+            # Extract new voice and emotion
+            match_text = voice_match.group(0)
+            
+            # Extract voice name
+            if 'lisa' in match_text.lower():
+                current_voice = 'Lisa'
+            elif 'pelle' in match_text.lower():
+                current_voice = 'Pelle'  
+            elif 'sanna' in match_text.lower():
+                current_voice = 'Sanna'
+            elif 'george' in match_text.lower():
+                current_voice = 'George'
+            
+            # Extract emotion from parentheses
+            emotion_match = re.search(r'\(([^)]+)\)', match_text)
+            if emotion_match:
+                emotion = emotion_match.group(1).lower().strip()
+                if emotion in ['professional', 'energetic', 'friendly', 'excited', 'calm']:
+                    current_emotion = emotion
+            
+            # Remove the voice indicator from line and add remaining content
+            remaining_content = line[voice_match.end():].strip()
+            if remaining_content:
+                current_content.append(remaining_content)
+        else:
+            # Regular content line
+            current_content.append(line)
+    
+    # Add final section
+    if current_content:
+        sections.append({
+            'voice': current_voice,
+            'emotion': current_emotion,
+            'text': ' '.join(current_content).strip()
+        })
+    
+    # If no sections found, create one default section
+    if not sections:
+        sections.append({
+            'voice': 'Lisa',
+            'emotion': 'professional', 
+            'text': text.strip()
+        })
+    
+    return sections
+
 def generate_audio(text: str, config: Dict) -> str:
     """Generera audio med Google Cloud TTS som primär, ElevenLabs som fallback"""
     logger.info("🎵 Startar audio-generering...")
@@ -348,11 +424,11 @@ def generate_audio_google_cloud(text: str, config: Dict) -> str:
         # Konvertera till Google Cloud TTS format
         segments = []
         for section in sections:
-            voice_name = section['voice_name'].lower()
+            voice_name = section['voice'].lower()
             # Mappa röstnamn till Google Cloud TTS-format
-            if voice_name in ['anna', 'sanna']:
+            if voice_name in ['lisa', 'sanna']:
                 google_voice = "sanna"
-            elif voice_name in ['erik', 'george']:
+            elif voice_name in ['pelle', 'george']:
                 google_voice = "george" 
             else:
                 google_voice = "sanna"  # Default

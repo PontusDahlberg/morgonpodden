@@ -18,6 +18,7 @@ from dotenv import load_dotenv
 # Lägg till modules
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from music_mixer import MusicMixer
+from episode_history import EpisodeHistory
 
 # Ladda miljövariabler
 load_dotenv()
@@ -35,64 +36,50 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def get_swedish_weather() -> str:
-    """Hämta aktuell väderdata för svenska landskap"""
+    """Hämta aktuell väderdata från SMHI för svenska landskap"""
     try:
-        # Svenska landskap med representativa städer
-        regions = [
-            ("Götaland", "Goteborg"),   # Göteborg representerar Götaland
-            ("Svealand", "Stockholm"),  # Stockholm representerar Svealand  
-            ("Norrland", "Umea")        # Umeå representerar Norrland
-        ]
+        # Importera SMHI-modulen
+        from smhi_weather import SMHIWeatherService
         
-        def convert_wind_speed(wind_text):
-            """Konvertera vindstyrka från km/h till svenska termer"""
-            import re
-            # Hitta siffror i vindtexten
-            wind_match = re.search(r'(\d+)km', wind_text)
-            if wind_match:
-                kmh = int(wind_match.group(1))
-                # Konvertera km/h till m/s och sedan till svenska termer
-                ms = kmh / 3.6
-                if ms < 3:
-                    return "svaga vindar"
-                elif ms < 8:
-                    return "måttliga vindar"
-                elif ms < 14:
-                    return "friska vindar"
-                else:
-                    return "hårda vindar"
-            return "svaga vindar"
+        service = SMHIWeatherService()
+        weather_summary = service.get_swedish_weather_summary()
         
-        weather_data = []
-        for region_name, api_name in regions:
-            try:
-                # Använd wttr.in API för väderdata
-                url = f"https://wttr.in/{api_name}?format=%C+%t+↑%w"
-                response = requests.get(url, timeout=10)
-                
-                if response.status_code == 200:
-                    weather_info = response.text.strip()
-                    # Konvertera vindstyrka
-                    wind_desc = convert_wind_speed(weather_info)
-                    # Ta bort vindstyrka från weather_info och lägg till svensk term
-                    import re
-                    clean_weather = re.sub(r'↑\d+km.*', '', weather_info).strip()
-                    weather_data.append(f"{region_name}: {clean_weather}, {wind_desc}")
-                    
-            except Exception as e:
-                logger.warning(f"Kunde inte hämta väder för {region_name}: {e}")
-                continue
-        
-        if weather_data:
-            weather_text = f"Vädret idag: {', '.join(weather_data[:2])}"  # Bara två första för kompakthet
-            logger.info(f"[WEATHER] {weather_text}")
-            return weather_text
-        else:
-            return "Vädret idag: Varierande väderförhållanden över Sverige"
+        logger.info(f"[WEATHER] {weather_summary}")
+        return weather_summary
             
     except Exception as e:
-        logger.error(f"[WEATHER] Fel vid väder-hämtning: {e}")
-        return "Vädret idag: Varierande väderförhållanden över Sverige"
+        logger.error(f"[WEATHER] Fel vid SMHI väder-hämtning: {e}")
+        # Fallback till wttr.in om SMHI misslyckas
+        try:
+            logger.info("[WEATHER] Använder wttr.in som backup")
+            # Svenska landskap med representativa städer
+            regions = [
+                ("Götaland", "Goteborg"),
+                ("Svealand", "Stockholm"),  
+                ("Norrland", "Umea")
+            ]
+            
+            weather_data = []
+            for region_name, api_name in regions:
+                try:
+                    url = f"https://wttr.in/{api_name}?format=%C+%t"
+                    response = requests.get(url, timeout=10)
+                    
+                    if response.status_code == 200:
+                        weather_info = response.text.strip()
+                        weather_data.append(f"{region_name}: {weather_info}")
+                        
+                except Exception:
+                    continue
+            
+            if weather_data:
+                weather_text = f"Vädret idag: {', '.join(weather_data[:2])}"
+                return weather_text
+            else:
+                return "Vädret idag: Varierande väderförhållanden över Sverige"
+                
+        except Exception:
+            return "Vädret idag: Varierande väderförhållanden över Sverige"
 
 def load_config() -> Dict:
     """Ladda konfiguration från sources.json"""
@@ -172,6 +159,16 @@ INNEHÅLLSKRAV:
 - Lisa och Pelle ska ha naturliga konversationer med följdfrågor
 - Inkludera siffror, fakta och konkreta exempel
 - Nämn specifika företag, forskare eller organisationer
+
+KÄLLHÄNVISNING - MYCKET VIKTIGT:
+- VARJE nyhet MÅSTE ha tydlig källhänvisning (t.ex. "enligt DN idag", "rapporterar SVT", "skriver Dagens Industri")
+- Specifika personer MÅSTE namnges (t.ex. "Miljöminister Romina Pourmokhtari säger...", "Enligt statsminister Ulf kristersson...")
+- Konkreta detaljer MÅSTE inkluderas (t.ex. "regeringen föreslår sänka utsläppen med 15% till 2030 genom att...")
+- När möjligt: nämn specifika studier, rapporter eller undersökningar (t.ex. "enligt KTH:s nya studie", "Naturvårdsverkets rapport visar")
+- För företagsnyheter: nämn pressmeddelanden, VD-uttalanden eller kvartalssiffror
+- Om det är oklart VAD eller HUR - säg det tydligt ("detaljerna är ännu inte kända", "ingen tidsplan har presenterats")
+- Undvik vaga termer som "regeringen har tagit initiativ" - var specifik om vad som faktiskt sagts eller beslutats
+- Lyssnarna ska kunna förstå HUR nyheten blev känd och VARIFRÅN informationen kommer
 
 OUTRO-KRAV (MYCKET VIKTIGT):
 - INGEN teasing av "nästa avsnitt" 
@@ -318,6 +315,7 @@ def parse_podcast_text(text: str) -> List[Dict]:
 def generate_audio_google_cloud(segments: List[Dict], output_file: str) -> bool:
     """Generera audio med Google Cloud TTS"""
     try:
+        # Använd rätt TTS-klass
         from google_cloud_tts import GoogleCloudTTS
         
         # Konvertera segments till rätt format
@@ -418,15 +416,32 @@ def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
     rss_items = []
     
     for episode in episodes_data:
-        pub_date = datetime.strptime(episode['date'], '%Y-%m-%d').strftime('%a, %d %b %Y %H:%M:%S +0000')
+        # Hantera båda gamla (date) och nya (pub_date) format
+        if 'pub_date' in episode:
+            pub_date = episode['pub_date']  # Redan i rätt format
+        elif 'date' in episode:
+            pub_date = datetime.strptime(episode['date'], '%Y-%m-%d').strftime('%a, %d %b %Y %H:%M:%S +0000')
+        else:
+            pub_date = datetime.now(timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000')
         
-        rss_items.append(f"""
-        <item>
+        # Hantera både gamla och nya format för audio URL och storlek
+        if 'audio_url' in episode:
+            # Nytt format från episodhistorik
+            audio_url = episode['audio_url']
+            file_size = episode.get('file_size', 7000000)
+            guid = episode.get('guid', audio_url)
+        else:
+            # Gammalt format från direct generation
+            audio_url = f"{base_url}/audio/{episode['filename']}"
+            file_size = episode.get('size', 7000000)
+            guid = audio_url
+        
+        rss_items.append(f"""        <item>
             <title>{episode['title']}</title>
             <description>{episode['description']}</description>
             <pubDate>{pub_date}</pubDate>
-            <enclosure url="{base_url}/audio/{episode['filename']}" length="{episode.get('size', 0)}" type="audio/mpeg"/>
-            <guid>{base_url}/audio/{episode['filename']}</guid>
+            <enclosure url="{audio_url}" length="{file_size}" type="audio/mpeg"/>
+            <guid>{guid}</guid>
         </item>""")
     
     rss_content = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -518,22 +533,28 @@ def main():
         file_size = os.path.getsize(audio_filepath)
         episode_data = {
             'title': f"MMM Senaste Nytt - {today.strftime('%d %B %Y')}",
-            'description': f"Dagens nyheter inom AI, teknik och klimat - {today.strftime('%A den %d %B %Y')}. {weather_info}",
+            'description': f"Dagens nyheter inom AI, teknik och klimat - {today.strftime('%A den %d %B %Y')}. Med detaljerade källhänvisningar från svenska och internationella medier. {weather_info}",
             'date': today.strftime('%Y-%m-%d'),
             'filename': audio_filename,
             'size': file_size,
             'duration': f"{estimated_minutes:.0f}:00"
         }
         
-        # Generera RSS-feed
+        # Lägg till episod till historik och generera RSS-feed med alla episoder
+        logger.info("[HISTORY] Lägger till episod till historik...")
+        history = EpisodeHistory()
+        all_episodes = history.add_episode(episode_data)
+        
+        # Generera RSS-feed med alla episoder (max 10 senaste för RSS-prestanda)
         base_url = "https://pontusdahlberg.github.io/morgonpodden"
-        rss_content = generate_github_rss([episode_data], base_url)
+        recent_episodes = all_episodes[:10]  # Ta bara 10 senaste för RSS-feed
+        rss_content = generate_github_rss(recent_episodes, base_url)
         
         # Spara RSS-feed
         rss_path = os.path.join('public', 'feed.xml')
         with open(rss_path, 'w', encoding='utf-8') as f:
             f.write(rss_content)
-        logger.info(f"[RSS] RSS-feed sparad: {rss_path}")
+        logger.info(f"[RSS] RSS-feed sparad med {len(recent_episodes)} episoder: {rss_path}")
         
         # Logga framgång
         logger.info("[SUCCESS] Komplett podcast-generering slutförd!")

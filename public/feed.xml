@@ -16,14 +16,19 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 04 Oct 2025 15:35:29 +0000</lastBuildDate>
-        
-        <item>
+        <lastBuildDate>Sun, 05 Oct 2025 10:30:19 +0000</lastBuildDate>
+                <item>
             <title>MMM Senaste Nytt - 04 October 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - Saturday den 04 October 2025. Vädret idag: Götaland: Drizzle +9°C ↑↖46km/h, friska vindar, Svealand: Partly cloudy +11°C ↑, friska vindar</description>
-            <pubDate>Sat, 04 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_153352.mp3" length="7813868" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_153352.mp3</guid>
+            <description>Gårdagens nyheter inom AI, teknik och klimat - Friday den 04 October 2025. Test-episod.</description>
+            <pubDate>Fri, 04 Oct 2025 06:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3" length="6500000" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3</guid>
+        </item>        <item>
+            <title>MMM Senaste Nytt - 05 October 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - Sunday den 05 October 2025. Med detaljerade källhänvisningar från svenska och internationella medier. Vädret idag: Götaland: Växlande molnighet +10°C, måttliga vindar, Svealand: Mulet +10°C, måttliga vindar</description>
+            <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_100104.mp3" length="7236716" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_100104.mp3</guid>
         </item>
     </channel>
 </rss>

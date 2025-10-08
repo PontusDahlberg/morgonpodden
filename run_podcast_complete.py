@@ -20,6 +20,34 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from music_mixer import MusicMixer
 from episode_history import EpisodeHistory
 
+# Import Gemini TTS för förbättrad dialog
+try:
+    from gemini_tts_dialog import GeminiTTSDialogGenerator
+    GEMINI_TTS_AVAILABLE = True
+except ImportError as e:
+    GEMINI_TTS_AVAILABLE = False
+
+# Import KRITISK faktakontroll-agent
+try:
+    from news_fact_checker import NewsFactChecker
+    FACT_CHECKER_AVAILABLE = True
+except ImportError as e:
+    FACT_CHECKER_AVAILABLE = False
+
+# Import backup faktakontroll (fungerar utan AI)
+try:
+    from basic_fact_checker import BasicFactChecker, quick_fact_check
+    BASIC_FACT_CHECKER_AVAILABLE = True
+except ImportError as e:
+    BASIC_FACT_CHECKER_AVAILABLE = False
+
+# Import självkorrigerande faktakontroll
+try:
+    from self_correcting_fact_checker import SelfCorrectingFactChecker, auto_correct_podcast_content
+    SELF_CORRECTING_AVAILABLE = True
+except ImportError as e:
+    SELF_CORRECTING_AVAILABLE = False
+
 # Ladda miljövariabler
 load_dotenv()
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
@@ -176,6 +204,7 @@ OUTRO-KRAV (MYCKET VIKTIGT):
 - STARK koppling till huvudpodden "Människa Maskin Miljö"
 - Förklara att MMM Senaste Nytt är en del av Människa Maskin Miljö-familjen
 - Uppmana lyssnare att kolla in huvudpodden för djupare analyser
+- OBLIGATORISK AI-BRASKLAPP: Lisa och Pelle ska ödmjukt förklara att de är aj-röster och att information kan innehålla fel, hänvisa till länkarna i avsnittsinformationen för verifiering
 
 DIALOGREGLER:
 - Använd naturliga övergångar: "Det påminner mig om...", "Apropå det...", "Interessant nog..."
@@ -251,6 +280,78 @@ def clean_text_for_tts(text: str) -> str:
     
     return text
 
+def split_long_text_for_tts(text: str, speaker: str, max_bytes: int = 4000) -> List[Dict]:
+    """Dela upp lång text i TTS-kompatibla segment"""
+    segments = []
+    
+    # Om texten är kort nog, returnera som ett segment
+    if len(text.encode('utf-8')) <= max_bytes:
+        return [{'speaker': speaker, 'text': text}]
+    
+    # Dela vid meningar först
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    current_chunk = []
+    current_size = 0
+    
+    for sentence in sentences:
+        sentence_bytes = len(sentence.encode('utf-8'))
+        
+        # Om en enskild mening är för lång, dela den hårdare
+        if sentence_bytes > max_bytes:
+            # Spara nuvarande chunk först
+            if current_chunk:
+                segments.append({
+                    'speaker': speaker,
+                    'text': ' '.join(current_chunk).strip()
+                })
+                current_chunk = []
+                current_size = 0
+            
+            # Dela den långa meningen vid komma eller ord
+            words = sentence.split()
+            word_chunk = []
+            word_size = 0
+            
+            for word in words:
+                word_bytes = len((word + ' ').encode('utf-8'))
+                if word_size + word_bytes > max_bytes and word_chunk:
+                    segments.append({
+                        'speaker': speaker,
+                        'text': ' '.join(word_chunk).strip()
+                    })
+                    word_chunk = [word]
+                    word_size = word_bytes
+                else:
+                    word_chunk.append(word)
+                    word_size += word_bytes
+            
+            if word_chunk:
+                segments.append({
+                    'speaker': speaker,
+                    'text': ' '.join(word_chunk).strip()
+                })
+        else:
+            # Kontrollera om vi kan lägga till meningen
+            if current_size + sentence_bytes > max_bytes and current_chunk:
+                segments.append({
+                    'speaker': speaker,
+                    'text': ' '.join(current_chunk).strip()
+                })
+                current_chunk = [sentence]
+                current_size = sentence_bytes
+            else:
+                current_chunk.append(sentence)
+                current_size += sentence_bytes
+    
+    # Lägg till sista chunk
+    if current_chunk:
+        segments.append({
+            'speaker': speaker,
+            'text': ' '.join(current_chunk).strip()
+        })
+    
+    return segments
+
 def parse_podcast_text(text: str) -> List[Dict]:
     """Parsa podcast-text i segment med talare och repliker"""
     segments = []
@@ -285,10 +386,9 @@ def parse_podcast_text(text: str) -> List[Dict]:
             if current_speaker and current_text:
                 clean_text = ' '.join(current_text).strip()
                 if clean_text:  # Endast om det finns text
-                    segments.append({
-                        'speaker': current_speaker,
-                        'text': clean_text
-                    })
+                    # Dela upp långa segment för TTS-kompatibilitet (max 4000 bytes)
+                    split_segments = split_long_text_for_tts(clean_text, current_speaker)
+                    segments.extend(split_segments)
             
             # Starta nytt segment
             current_speaker = speaker_name
@@ -305,15 +405,47 @@ def parse_podcast_text(text: str) -> List[Dict]:
     if current_speaker and current_text:
         clean_text = ' '.join(current_text).strip()
         if clean_text:  # Endast om det finns text
-            segments.append({
-                'speaker': current_speaker,
-                'text': clean_text
-            })
+            # Dela upp långa segment för TTS-kompatibilitet (max 4000 bytes)
+            split_segments = split_long_text_for_tts(clean_text, current_speaker)
+            segments.extend(split_segments)
     
     return segments
 
+def generate_audio_with_gemini_dialog(script_content: str, weather_info: str, output_file: str) -> bool:
+    """Generera audio med Gemini TTS för naturlig dialog mellan Lisa och Pelle"""
+    if not GEMINI_TTS_AVAILABLE:
+        logger.info("[AUDIO] Gemini TTS inte tillgänglig, använder standard-metod")
+        return False
+    
+    try:
+        logger.info("[AUDIO] Genererar naturlig dialog med Gemini TTS...")
+        
+        generator = GeminiTTSDialogGenerator()
+        
+        # Skapa dialog-script från innehåll
+        dialog_script = generator.create_dialog_script(script_content, weather_info)
+        logger.info("[AUDIO] Dialog-script skapat för Lisa och Pelle")
+        
+        # Generera audio med freeform dialog
+        success = generator.synthesize_dialog_freeform(
+            dialog_script=dialog_script,
+            output_file=output_file
+        )
+        
+        if success:
+            logger.info(f"[AUDIO] ✅ Gemini TTS dialog sparad: {output_file}")
+            return True
+        else:
+            logger.warning("[AUDIO] Gemini TTS misslyckades, faller tillbaka till standard")
+            return False
+            
+    except Exception as e:
+        logger.error(f"[AUDIO] Gemini TTS fel: {e}")
+        logger.info("[AUDIO] Faller tillbaka till standard TTS")
+        return False
+
 def generate_audio_google_cloud(segments: List[Dict], output_file: str) -> bool:
-    """Generera audio med Google Cloud TTS"""
+    """Generera audio med Google Cloud TTS (fallback-metod)"""
     try:
         # Använd rätt TTS-klass
         from google_cloud_tts import GoogleCloudTTS
@@ -361,41 +493,34 @@ def add_music_to_podcast(audio_file: str) -> str:
         # Skapa en MusicMixer-instans
         mixer = MusicMixer()
         
-        # Använd alla tillgängliga musik från audio/music/ i rotation
-        music_files = [
-            "audio/music/MMM Senaste Nytt Från Människa Maskin Mi.mp3",
-            "audio/music/Mellan Dröm och Verklighet.mp3", 
-            "audio/music/Stjärnljus.mp3",
-            "audio/music/The Moon and the Meadow.mp3"
-        ]
+        # Skanna alla mp3-filer i music-mappen automatiskt
+        music_dir = "audio/music"
+        available_music = []
         
-        # Filtrera till endast existerande filer
-        available_music = [f for f in music_files if os.path.exists(f)]
+        if os.path.exists(music_dir):
+            for filename in os.listdir(music_dir):
+                if filename.lower().endswith('.mp3'):
+                    full_path = os.path.join(music_dir, filename)
+                    available_music.append(full_path)
+        
+        logger.info(f"[MUSIC] Hittade {len(available_music)} musikfiler: {[os.path.basename(f) for f in available_music]}")
         
         if not available_music:
             logger.warning("[MUSIC] Inga musikfiler hittades")
             return audio_file
             
-        # Välj slumpmässig låt för variation
+        # Skapa varierad musikmix för hela avsnittet
         import random
-        background_music = random.choice(available_music)
-        logger.info(f"[MUSIC] Valde låt: {os.path.basename(background_music)}")
-        
-        if not background_music:
-            logger.warning("[MUSIC] Ingen musik hittades, använder original")
-            return audio_file
-        
-        # Generera musikversionen
         music_output = audio_file.replace('.mp3', '_with_music.mp3')
         
-        # Mixa tal med bakgrundsmusik
-        success = mixer.mix_speech_with_music(
+        # Nya förbättrade musikmixning med variation
+        success = mixer.create_varied_music_background(
             speech_file=audio_file,
-            music_file=background_music,
+            available_music=available_music,
             output_file=music_output,
             music_volume=-15,  # Låg volym i dB
-            fade_in=2000,     # 2 sekunder fade-in
-            fade_out=2000     # 2 sekunder fade-out
+            segment_duration=60,  # Byt musik var 60:e sekund
+            fade_duration=3000    # 3 sekunder crossfade mellan låtar
         )
         
         if success and os.path.exists(music_output):
@@ -473,6 +598,18 @@ def main():
     """Huvudfunktion för komplett podcast-generering med musik och väder"""
     logger.info("[PODCAST] Startar MMM Senaste Nytt med musik och väder...")
     
+    # Log Gemini TTS status after logger is initialized
+    if GEMINI_TTS_AVAILABLE:
+        logger.info("[SYSTEM] Gemini TTS tillgänglig för naturlig dialog")
+    else:
+        logger.warning("[SYSTEM] Gemini TTS inte tillgänglig - använder standard TTS")
+    
+    # Log Fact Checker status
+    if FACT_CHECKER_AVAILABLE:
+        logger.info("[SYSTEM] 🛡️ KRITISK faktakontroll-agent aktiverad för säkerhet")
+    else:
+        logger.error("[SYSTEM] ⚠️ VARNING: Faktakontroll-agent inte tillgänglig - RISK FÖR FELAKTIG INFO!")
+    
     try:
         # Hämta väderdata först
         logger.info("[WEATHER] Hämtar aktuell väderdata...")
@@ -500,6 +637,87 @@ def main():
             f.write(podcast_content)
         logger.info(f"[SCRIPT] Manus sparat: {script_path}")
         
+        # 🛡️ SJÄLVKORRIGERANDE FAKTAKONTROLL - Automatisk korrigering av problem
+        final_podcast_content = podcast_content
+        max_correction_attempts = 3
+        
+        for correction_attempt in range(max_correction_attempts):
+            logger.info(f"[FACT-CHECK] 🛡️ Faktakontroll försök {correction_attempt + 1}/{max_correction_attempts}")
+            
+            # Grundläggande faktakontroll först (snabbast)
+            fact_check_passed = False
+            if BASIC_FACT_CHECKER_AVAILABLE:
+                basic_checker = BasicFactChecker()
+                basic_result = basic_checker.basic_fact_check(final_podcast_content)
+                
+                if basic_result['safe_to_publish']:
+                    # Visa varningar men godkänn ändå
+                    warnings = basic_result.get('warnings', [])
+                    if warnings:
+                        logger.info(f"[FACT-CHECK] ✅ Faktakontroll godkänd med varningar: {warnings}")
+                    else:
+                        logger.info("[FACT-CHECK] ✅ Faktakontroll godkänd helt")
+                    fact_check_passed = True
+                    break
+                else:
+                    critical_issues = basic_result.get('critical_issues', [])
+                    warnings = basic_result.get('warnings', [])
+                    logger.error(f"[FACT-CHECK] ❌ Kritiska problem hittade: {critical_issues}")
+                    if warnings:
+                        logger.info(f"[FACT-CHECK] ℹ️ Varningar (blockerar inte): {warnings}")
+                    
+                    # Försök automatisk korrigering
+                    if SELF_CORRECTING_AVAILABLE and correction_attempt < max_correction_attempts - 1:
+                        logger.info("[FACT-CHECK] 🔧 Startar automatisk korrigering...")
+                        
+                        corrected_content, correction_success = auto_correct_podcast_content(
+                            final_podcast_content, basic_result.get('critical_issues', [])
+                        )
+                        
+                        if correction_success:
+                            logger.info("[FACT-CHECK] ✅ Automatisk korrigering lyckades!")
+                            final_podcast_content = corrected_content
+                            
+                            # Spara korrigerat manus
+                            corrected_script_path = f"podcast_script_{timestamp}_corrected_v{correction_attempt + 1}.txt"
+                            with open(corrected_script_path, 'w', encoding='utf-8') as f:
+                                f.write(final_podcast_content)
+                            logger.info(f"[SCRIPT] Korrigerat manus sparat: {corrected_script_path}")
+                            continue
+                        else:
+                            logger.warning("[FACT-CHECK] ⚠️ Automatisk korrigering misslyckades")
+                    else:
+                        logger.warning("[FACT-CHECK] ⚠️ Självkorrigering inte tillgänglig")
+            
+            # Om vi når hit har korrigering misslyckats eller är sista försöket
+            break
+        
+        # Final kontroll
+        if not fact_check_passed:
+            logger.error("🚨 PUBLICERING STOPPAD - FAKTAKONTROLL MISSLYCKADES!")
+            
+            # Spara rapport för manuell granskning
+            final_report_path = f"fact_check_failed_{timestamp}.txt"
+            with open(final_report_path, 'w', encoding='utf-8') as f:
+                f.write("FAKTAKONTROLL MISSLYCKADES\n")
+                f.write(f"Datum: {datetime.now().isoformat()}\n")
+                f.write(f"Försök gjorda: {correction_attempt + 1}\n\n")
+                if 'basic_result' in locals():
+                    f.write("SENASTE PROBLEM:\n")
+                    for issue in basic_result['issues_found']:
+                        f.write(f"- {issue}\n")
+            
+            print(f"\n🚨 SÄKERHETSVARNING: Automatisk korrigering misslyckades!")
+            print(f"Rapport sparad: {final_report_path}")
+            print("Manuell granskning krävs. Se MANUAL_FACT_CHECK_GUIDE.md")
+            return False
+        else:
+            logger.info("[FACT-CHECK] ✅ Faktakontroll godkänd - säkert att publicera")
+            # Uppdatera innehållet om det korrigerades
+            if final_podcast_content != podcast_content:
+                logger.info("[FACT-CHECK] 📝 Använder automatiskt korrigerat innehåll")
+                podcast_content = final_podcast_content
+        
         # Parsa innehållet i segment
         segments = parse_podcast_text(podcast_content)
         logger.info(f"[PARSE] Hittade {len(segments)} segment att generera audio för")
@@ -513,13 +731,20 @@ def main():
         audio_filename = f"MMM_senaste_nytt_{timestamp}.mp3"
         audio_filepath = os.path.join('audio', audio_filename)
         
-        # Generera audio med Google Cloud TTS
-        logger.info("[TTS] Genererar audio med Google Cloud TTS...")
-        success = generate_audio_google_cloud(segments, audio_filepath)
+        # Försök först med Gemini TTS för naturlig dialog
+        logger.info("[TTS] Försöker generera naturlig dialog med Gemini TTS...")
+        gemini_success = generate_audio_with_gemini_dialog(podcast_content, weather_info, audio_filepath)
         
-        if not success:
-            logger.error("[ERROR] Audio-generering misslyckades")
-            return False
+        if not gemini_success:
+            # Fallback till standard Google Cloud TTS
+            logger.info("[TTS] Använder standard Google Cloud TTS som fallback...")
+            success = generate_audio_google_cloud(segments, audio_filepath)
+            
+            if not success:
+                logger.error("[ERROR] Audio-generering misslyckades")
+                return False
+        else:
+            logger.info("[TTS] ✅ Naturlig dialog genererad med Gemini TTS!")
         
         # Lägg till musik och bryggkor
         audio_filepath = add_music_to_podcast(audio_filepath)

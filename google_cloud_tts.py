@@ -247,6 +247,25 @@ class GoogleCloudTTS:
         """Kontrollera om Google Cloud TTS är tillgängligt"""
         return self.client is not None
     
+    def _preprocess_text(self, text: str) -> str:
+        """
+        Preprocessa text för bättre uttal
+        - AI uttalas mer naturligt som sammanhängande ord istället för bokstaverat
+        - EU uttalas mer naturligt som sammanhängande ord istället för bokstaverat
+        """
+        import re
+        
+        # Använd SSML för att styra uttal mer naturligt
+        # <phoneme> låter oss specificera exakt hur det ska uttalas
+        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="aɪ">AI</phoneme>', text)
+        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="aɪ">Ai</phoneme>', text)
+        text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="ɛʊ">EU</phoneme>', text)
+        text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="ɛʊ">Eu</phoneme>', text)
+        text = re.sub(r'\bUSA\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">USA</phoneme>', text)
+        text = re.sub(r'\bUsa\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">Usa</phoneme>', text)
+        
+        return text
+    
     def generate_audio(self, text: str, voice: str = "sanna") -> Optional[bytes]:
         """
         Generera audio med Google Cloud TTS
@@ -286,8 +305,16 @@ class GoogleCloudTTS:
                 volume_gain_db=0.0       # Normal volym
             )
             
-            # Skapa input
-            synthesis_input = texttospeech.SynthesisInput(text=text)
+            # Preprocessa text för bättre uttal
+            processed_text = self._preprocess_text(text)
+            
+            # Skapa input - använd SSML om vi har fonetiska markeringar
+            if '<phoneme' in processed_text:
+                # Wrappa i SSML-struktur
+                ssml_text = f'<speak>{processed_text}</speak>'
+                synthesis_input = texttospeech.SynthesisInput(ssml=ssml_text)
+            else:
+                synthesis_input = texttospeech.SynthesisInput(text=processed_text)
             
             logger.info(f"🎤 Genererar med {voice_config['description']}")
             logger.info(f"📝 Text ({len(text)} tecken): {text[:100]}...")

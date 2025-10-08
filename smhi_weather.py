@@ -14,11 +14,12 @@ logger = logging.getLogger(__name__)
 class SMHIWeatherService:
     """Klass för att hämta väderdata från SMHI:s API"""
     
-    # Svenska koordinater för representativa städer i varje landskap
+    # Svenska koordinater för representativa områden
     REGIONS = {
         "Götaland": {"lat": 57.7089, "lon": 11.9746, "city": "Göteborg"},
         "Svealand": {"lat": 59.3293, "lon": 18.0649, "city": "Stockholm"}, 
-        "Norrland": {"lat": 63.8258, "lon": 20.2630, "city": "Umeå"}
+        "Södra Norrland": {"lat": 62.3875, "lon": 17.3069, "city": "Sundsvall"},
+        "Norra Norrland": {"lat": 67.8558, "lon": 20.2253, "city": "Kiruna"}
     }
     
     # API URL för väderprognos
@@ -150,7 +151,7 @@ class SMHIWeatherService:
                         weather_desc = self.get_weather_symbol_description(symbol)
                         wind_desc = self.get_wind_description(wind_speed)
                         
-                        weather_data.append(f"{region_name} ({weather['city']}): {weather_desc}, {temp_str}, {wind_desc}")
+                        weather_data.append(f"{region_name}: {weather_desc}, {temp_str}, {wind_desc}")
                         
                         logger.info(f"[SMHI] {region_name}: {weather_desc}, {temp_str}, {wind_desc}")
             

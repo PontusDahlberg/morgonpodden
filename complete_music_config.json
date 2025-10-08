@@ -1,0 +1,122 @@
+{
+  "MMM Senaste Nytt Från Människa Maskin Mi.mp3": {
+    "moods": ["uplifting", "energetic"],
+    "tempo": "medium",
+    "energy": "high", 
+    "intensity": "medium",
+    "categories": ["intro", "outro", "news"],
+    "description": "Signaturmelodi för MMM Senaste Nytt - energisk och professionell"
+  },
+  "Mellan Dröm och Verklighet.mp3": {
+    "moods": ["dreamy", "contemplative"],
+    "tempo": "medium",
+    "energy": "medium",
+    "intensity": "medium", 
+    "categories": ["background", "transition"],
+    "description": "Drömsk och eftertänksam musik"
+  },
+  "Stjärnljus.mp3": {
+    "moods": ["peaceful", "uplifting"],
+    "tempo": "slow",
+    "energy": "medium",
+    "intensity": "low",
+    "categories": ["background", "ambient"],
+    "description": "Ljus och hoppfull ambient musik"
+  },
+  "The Moon and the Meadow.mp3": {
+    "moods": ["peaceful", "mysterious"],
+    "tempo": "slow", 
+    "energy": "low",
+    "intensity": "low",
+    "categories": ["background", "transition", "ambient"],
+    "description": "Mystisk och naturinspirerad bakgrundsmusik"
+  },
+  "Vågornas Sång.mp3": {
+    "moods": ["peaceful", "calm"], 
+    "tempo": "slow",
+    "energy": "low",
+    "intensity": "low",
+    "categories": ["background", "transition", "relaxing"],
+    "description": "Lugn och avslappnande som vågor på stranden"
+  },
+  "Vågornas Sång (1).mp3": {
+    "moods": ["peaceful", "mysterious"],
+    "tempo": "slow",
+    "energy": "low",
+    "intensity": "medium", 
+    "categories": ["background", "ambient"],
+    "description": "Variant 1 - mer mystisk och djupare känsla"
+  },
+  "Vågornas Sång (2).mp3": {
+    "moods": ["peaceful", "uplifting"],
+    "tempo": "medium",
+    "energy": "medium",
+    "intensity": "low",
+    "categories": ["background", "transition"],
+    "description": "Variant 2 - lite mer energisk och hoppfull"
+  },
+  "Vågornas Sång (3).mp3": {
+    "moods": ["calm", "meditative"],
+    "tempo": "slow", 
+    "energy": "low",
+    "intensity": "low",
+    "categories": ["background", "relaxing", "ambient"],
+    "description": "Variant 3 - extra lugn och meditativ"
+  },
+  "Till en podd om klimat och miljö.mp3": {
+    "moods": ["informative", "educational"],
+    "tempo": "medium",
+    "energy": "medium",
+    "intensity": "medium",
+    "categories": ["news", "background"],
+    "description": "Huvudtemat för klimat- och miljöavsnitt"
+  },
+  "Till en podd om klimat och miljö (1).mp3": {
+    "moods": ["urgent", "energetic"],
+    "tempo": "fast",
+    "energy": "high",
+    "intensity": "high",
+    "categories": ["news", "intro"],
+    "description": "Variant 3 - mer intensiv för viktiga miljönyheter"
+  },
+  "Till en podd om klimat och miljö (2).mp3": {
+    "moods": ["urgent", "energetic"],
+    "tempo": "fast",
+    "energy": "high",
+    "intensity": "high",
+    "categories": ["news", "intro"],
+    "description": "Variant 3 - mer intensiv för viktiga miljönyheter"
+  },
+  "Till en podd om klimat och miljö (3).mp3": {
+    "moods": ["urgent", "energetic"],
+    "tempo": "fast",
+    "energy": "high",
+    "intensity": "high",
+    "categories": ["news", "intro"],
+    "description": "Variant 3 - mer intensiv för viktiga miljönyheter"
+  },
+    "Toppnyheten.mp3": {
+    "moods": ["uplifting", "energetic"],
+    "tempo": "fast",
+    "energy": "high",
+    "intensity": "high",
+    "categories": ["news", "background"],
+    "description": "Glada toppnyheten"
+  },
+  "Toppnyheten(1).mp3": {
+    "moods": ["uplifting", "energetic"],
+    "tempo": "fast",
+    "energy": "high",
+    "intensity": "high",
+    "categories": ["news", "background"],
+    "description": "Glada toppnyheten"
+  },
+  "Toppnyheten(3).mp3": {
+    "moods": ["uplifting", "energetic"],
+    "tempo": "fast",
+    "energy": "high",
+    "intensity": "high",
+    "categories": ["news", "background"],
+    "description": "Glada toppnyheten"
+  }
+}

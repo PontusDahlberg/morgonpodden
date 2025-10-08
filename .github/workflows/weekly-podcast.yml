@@ -1,20 +1,9 @@
 name: 📡 Människa Maskin Miljö - Weekly Podcast (INAKTIVERAD)
 
-# HELT INAKTIVERAD - Använd podcast-generation.yml istället
+# HELT INAKTIVERAD - Använd podcast-generation.yml istället  
 on:
-  # TEMPORÄRT AVSTÄNGT - spara ElevenLabs krediter
-  # Automatisk schemaläggning: Varje onsdag kl 07:00 CET (05:00 UTC)
-  # schedule:
-  #   - cron: '0 5 * * 3'
-  
-  # INAKTIVERAD - Manuell trigger för testing (fungerar fortfarande)
-  # workflow_dispatch:
-    inputs:
-      debug_mode:
-        description: 'Enable debug logging'
-        required: false
-        default: 'false'
-        type: boolean
+  # INAKTIVERAD - Minimal trigger för att undvika YAML-fel
+  workflow_dispatch:
 
 jobs:
   generate-podcast:

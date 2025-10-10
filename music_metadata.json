@@ -1,0 +1,304 @@
+{
+  "tracks": {
+    "c103a867": {
+      "id": "c103a867",
+      "filename": "Mellan Dröm och Verklighet.mp3",
+      "path": "audio/music/Mellan Dröm och Verklighet.mp3",
+      "title": "Mellan Dröm och Verklighet",
+      "file_size": 2490227,
+      "added_at": "2025-10-06T17:11:10.575972",
+      "moods": [
+        "dreamy",
+        "contemplative"
+      ],
+      "tempo": "medium",
+      "energy": "medium",
+      "categories": [
+        "background",
+        "transition"
+      ],
+      "intensity": "medium",
+      "description": "Drömsk och eftertänksam musik"
+    },
+    "fecb65b6": {
+      "id": "fecb65b6",
+      "filename": "MMM Senaste Nytt Från Människa Maskin Mi.mp3",
+      "path": "audio/music/MMM Senaste Nytt Från Människa Maskin Mi.mp3",
+      "title": "MMM Senaste Nytt Från Människa Maskin Mi",
+      "file_size": 1494425,
+      "added_at": "2025-10-06T17:11:10.572965",
+      "moods": [
+        "uplifting",
+        "energetic"
+      ],
+      "tempo": "medium",
+      "energy": "high",
+      "categories": [
+        "intro",
+        "outro",
+        "news"
+      ],
+      "intensity": "medium",
+      "description": "Signaturmelodi för MMM Senaste Nytt - energisk och professionell"
+    },
+    "df98917b": {
+      "id": "df98917b",
+      "filename": "Stjärnljus.mp3",
+      "path": "audio/music/Stjärnljus.mp3",
+      "title": "Stjärnljus",
+      "file_size": 2968591,
+      "added_at": "2025-10-06T17:11:10.579983",
+      "moods": [
+        "peaceful",
+        "uplifting"
+      ],
+      "tempo": "slow",
+      "energy": "medium",
+      "categories": [
+        "background",
+        "ambient"
+      ],
+      "intensity": "low",
+      "description": "Ljus och hoppfull ambient musik"
+    },
+    "3c64b4a4": {
+      "id": "3c64b4a4",
+      "filename": "The Moon and the Meadow.mp3",
+      "path": "audio/music/The Moon and the Meadow.mp3",
+      "title": "The Moon and the Meadow",
+      "file_size": 1297306,
+      "added_at": "2025-10-06T17:11:10.582037",
+      "moods": [
+        "peaceful",
+        "mysterious"
+      ],
+      "tempo": "slow",
+      "energy": "low",
+      "categories": [
+        "background",
+        "transition",
+        "ambient"
+      ],
+      "intensity": "low",
+      "description": "Mystisk och naturinspirerad bakgrundsmusik"
+    },
+    "1509a6af": {
+      "id": "1509a6af",
+      "filename": "Vågornas Sång (1).mp3",
+      "path": "audio/music/Vågornas Sång (1).mp3",
+      "title": "Vågornas Sång (1)",
+      "file_size": 1426675,
+      "added_at": "2025-10-06T17:11:10.586046",
+      "moods": [
+        "peaceful",
+        "mysterious"
+      ],
+      "tempo": "slow",
+      "energy": "low",
+      "categories": [
+        "background",
+        "ambient"
+      ],
+      "intensity": "medium",
+      "description": "Variant 1 - mer mystisk och djupare känsla"
+    },
+    "3041940e": {
+      "id": "3041940e",
+      "filename": "Vågornas Sång (2).mp3",
+      "path": "audio/music/Vågornas Sång (2).mp3",
+      "title": "Vågornas Sång (2)",
+      "file_size": 3961342,
+      "added_at": "2025-10-06T17:11:10.591072",
+      "moods": [
+        "peaceful",
+        "uplifting"
+      ],
+      "tempo": "medium",
+      "energy": "medium",
+      "categories": [
+        "background",
+        "transition"
+      ],
+      "intensity": "low",
+      "description": "Variant 2 - lite mer energisk och hoppfull"
+    },
+    "6228dd17": {
+      "id": "6228dd17",
+      "filename": "Vågornas Sång (3).mp3",
+      "path": "audio/music/Vågornas Sång (3).mp3",
+      "title": "Vågornas Sång (3)",
+      "file_size": 5662825,
+      "added_at": "2025-10-06T17:11:10.599159",
+      "moods": [
+        "calm",
+        "meditative"
+      ],
+      "tempo": "slow",
+      "energy": "low",
+      "categories": [
+        "background",
+        "relaxing",
+        "ambient"
+      ],
+      "intensity": "low",
+      "description": "Variant 3 - extra lugn och meditativ"
+    },
+    "d1e2b878": {
+      "id": "d1e2b878",
+      "filename": "Vågornas Sång.mp3",
+      "path": "audio/music/Vågornas Sång.mp3",
+      "title": "Vågornas Sång",
+      "file_size": 1342327,
+      "added_at": "2025-10-06T17:11:10.584041",
+      "moods": [
+        "peaceful",
+        "calm"
+      ],
+      "tempo": "slow",
+      "energy": "low",
+      "categories": [
+        "background",
+        "transition",
+        "relaxing"
+      ],
+      "intensity": "low",
+      "description": "Lugn och avslappnande som vågor på stranden"
+    },
+    "2cd6c75a": {
+      "id": "2cd6c75a",
+      "filename": "Till en podd om klimat och miljö (1).mp3",
+      "path": "audio/music/Till en podd om klimat och miljö (1).mp3",
+      "title": "Till en podd om klimat och miljö (1)",
+      "file_size": 1518353,
+      "added_at": "2025-10-06T17:11:10.603167",
+      "moods": [
+        "urgent",
+        "energetic"
+      ],
+      "tempo": "fast",
+      "energy": "high",
+      "categories": [
+        "news",
+        "intro"
+      ],
+      "intensity": "high",
+      "description": "Variant 3 - mer intensiv för viktiga miljönyheter"
+    },
+    "5bd86d69": {
+      "id": "5bd86d69",
+      "filename": "Till en podd om klimat och miljö (2).mp3",
+      "path": "audio/music/Till en podd om klimat och miljö (2).mp3",
+      "title": "Till en podd om klimat och miljö (2)",
+      "file_size": 1577058,
+      "added_at": "2025-10-06T17:11:10.606173",
+      "moods": [
+        "urgent",
+        "energetic"
+      ],
+      "tempo": "fast",
+      "energy": "high",
+      "categories": [
+        "news",
+        "intro"
+      ],
+      "intensity": "high",
+      "description": "Variant 3 - mer intensiv för viktiga miljönyheter"
+    },
+    "f54e31c6": {
+      "id": "f54e31c6",
+      "filename": "Till en podd om klimat och miljö (3).mp3",
+      "path": "audio/music/Till en podd om klimat och miljö (3).mp3",
+      "title": "Till en podd om klimat och miljö (3)",
+      "file_size": 1585684,
+      "added_at": "2025-10-06T17:11:10.608179",
+      "moods": [
+        "urgent",
+        "energetic"
+      ],
+      "tempo": "fast",
+      "energy": "high",
+      "categories": [
+        "news",
+        "intro"
+      ],
+      "intensity": "high",
+      "description": "Variant 3 - mer intensiv för viktiga miljönyheter"
+    },
+    "cac2488a": {
+      "id": "cac2488a",
+      "filename": "Till en podd om klimat och miljö.mp3",
+      "path": "audio/music/Till en podd om klimat och miljö.mp3",
+      "title": "Till en podd om klimat och miljö",
+      "file_size": 1534082,
+      "added_at": "2025-10-06T17:11:10.601163",
+      "moods": [
+        "informative",
+        "educational"
+      ],
+      "tempo": "medium",
+      "energy": "medium",
+      "categories": [
+        "news",
+        "background"
+      ],
+      "intensity": "medium",
+      "description": "Huvudtemat för klimat- och miljöavsnitt"
+    },
+    "06a8b2e7": {
+      "id": "06a8b2e7",
+      "filename": "Toppnyheten (1).mp3",
+      "path": "audio/music/Toppnyheten (1).mp3",
+      "title": "Toppnyheten (1)",
+      "file_size": 1482548,
+      "added_at": "2025-10-06T16:50:05.974588",
+      "moods": [
+        "neutral"
+      ],
+      "tempo": "medium",
+      "energy": "medium",
+      "categories": [
+        "background"
+      ],
+      "intensity": "medium"
+    },
+    "737e44c8": {
+      "id": "737e44c8",
+      "filename": "Toppnyheten (2).mp3",
+      "path": "audio/music/Toppnyheten (2).mp3",
+      "title": "Toppnyheten (2)",
+      "file_size": 1436069,
+      "added_at": "2025-10-06T16:50:05.978658",
+      "moods": [
+        "neutral"
+      ],
+      "tempo": "medium",
+      "energy": "medium",
+      "categories": [
+        "background"
+      ],
+      "intensity": "medium"
+    },
+    "73c1c694": {
+      "id": "73c1c694",
+      "filename": "Toppnyheten.mp3",
+      "path": "audio/music/Toppnyheten.mp3",
+      "title": "Toppnyheten",
+      "file_size": 1677327,
+      "added_at": "2025-10-06T17:11:10.610184",
+      "moods": [
+        "uplifting",
+        "energetic"
+      ],
+      "tempo": "fast",
+      "energy": "high",
+      "categories": [
+        "news",
+        "background"
+      ],
+      "intensity": "high",
+      "description": "Glada toppnyheten"
+    }
+  },
+  "last_updated": "2025-10-06T17:11:10.611204",
+  "version": "2.0"
+}

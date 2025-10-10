@@ -1,0 +1,45 @@
+{
+  "MMM Senaste Nytt Från Människa Maskin Mi.mp3": {
+    "moods": [
+      "uplifting",
+      "energetic"
+    ],
+    "tempo": "medium",
+    "energy": "high",
+    "intensity": "medium",
+    "categories": [
+      "intro",
+      "outro",
+      "news"
+    ],
+    "description": "Signaturmelodi för MMM Senaste Nytt - energisk och professionell"
+  },
+  "Vågornas Sång.mp3": {
+    "moods": [
+      "peaceful",
+      "calm"
+    ],
+    "tempo": "slow",
+    "energy": "low",
+    "intensity": "low",
+    "categories": [
+      "background",
+      "transition"
+    ],
+    "description": "Lugn och avslappnande bakgrundsmusik"
+  },
+  "Vågornas Sång (1).mp3": {
+    "moods": [
+      "peaceful",
+      "mysterious"
+    ],
+    "tempo": "slow",
+    "energy": "low",
+    "intensity": "medium",
+    "categories": [
+      "background",
+      "ambient"
+    ],
+    "description": "Variant 1 - mer mystisk känsla"
+  }
+}

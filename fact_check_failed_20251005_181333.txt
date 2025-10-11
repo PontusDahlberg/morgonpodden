@@ -1,0 +1,7 @@
+FAKTAKONTROLL MISSLYCKADES
+Datum: 2025-10-05T18:14:37.481455
+Försök gjorda: 1
+
+SENASTE PROBLEM:
+- KONTROLLERA: Tidskänslig referens 'nyligen' - verifiera aktualitet
+- KONTROLLERA: Stor investering (4 miljarder) - verifiera källa och datum

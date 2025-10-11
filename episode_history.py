@@ -17,7 +17,7 @@ class EpisodeHistory:
     
     def __init__(self, history_file: str = "episode_history.json"):
         self.history_file = history_file
-        self.max_episodes = 50  # Behåll max 50 avsnitt i RSS-feed
+        self.max_episodes = 10  # Behåll max 10 avsnitt i RSS-feed (senaste + 9 föregående)
         
     def load_history(self) -> List[Dict]:
         """Ladda befintlig episodhistorik"""

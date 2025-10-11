@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+    <channel>
+        <title>MMM Senaste Nytt - MÄNNISKA MASKIN MILJÖ</title>
+        <description>Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.</description>
+        <link>https://pontusdahlberg.github.io/morgonpodden</link>
+        <language>sv-SE</language>
+        <itunes:category text="Technology"/>
+        <itunes:category text="Science"/>
+        <itunes:category text="News"/>
+        <itunes:explicit>false</itunes:explicit>
+        <itunes:author>Pontus Dahlberg</itunes:author>
+        <itunes:summary>Daglig nyhetspodcast om AI, teknik och klimat - en del av Människa Maskin Miljö-familjen</itunes:summary>
+        <itunes:owner>
+            <itunes:name>Pontus Dahlberg</itunes:name>
+            <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
+        </itunes:owner>
+        <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
+        <lastBuildDate>Sun, 05 Oct 2025 10:30:19 +0000</lastBuildDate>
+                <item>
+            <title>MMM Senaste Nytt - 04 October 2025</title>
+            <description>Gårdagens nyheter inom AI, teknik och klimat - Friday den 04 October 2025. Test-episod.</description>
+            <pubDate>Fri, 04 Oct 2025 06:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3" length="6500000" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3</guid>
+        </item>        <item>
+            <title>MMM Senaste Nytt - 05 October 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - Sunday den 05 October 2025. Med detaljerade källhänvisningar från svenska och internationella medier. Vädret idag: Götaland: Växlande molnighet +10°C, måttliga vindar, Svealand: Mulet +10°C, måttliga vindar</description>
+            <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_100104.mp3" length="7236716" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_100104.mp3</guid>
+        </item>
+    </channel>
+</rss>

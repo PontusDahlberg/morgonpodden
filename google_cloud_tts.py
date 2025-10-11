@@ -257,14 +257,40 @@ class GoogleCloudTTS:
         
         # Använd SSML för att styra uttal mer naturligt
         # <phoneme> låter oss specificera exakt hur det ska uttalas
-        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="aɪ">AI</phoneme>', text)
-        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="aɪ">Ai</phoneme>', text)
+        # AI: använd "a.i" istället för "aɪ" för att undvika "aj"-ljud
+        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="a.i">AI</phoneme>', text)
+        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="a.i">Ai</phoneme>', text)
         text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="ɛʊ">EU</phoneme>', text)
         text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="ɛʊ">Eu</phoneme>', text)
         text = re.sub(r'\bUSA\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">USA</phoneme>', text)
         text = re.sub(r'\bUsa\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">Usa</phoneme>', text)
+        # SMHI: naturligt uttal som "s.m.h.i" utan överbetoning på sista I
+        text = re.sub(r'\bSMHI\b', '<phoneme alphabet="ipa" ph="ɛs.ɛm.hoː.iː">SMHI</phoneme>', text)
+        
+        # Ta bort upprepade ord (som IPCC IPCC)
+        text = self._remove_word_duplicates(text)
         
         return text
+    
+    def _remove_word_duplicates(self, text: str) -> str:
+        """Ta bort upprepade ord som 'IPCC IPCC' → 'IPCC'"""
+        import re
+        
+        # Hitta upprepade ord (case-insensitive)
+        # Matchar "ord ord" eller "ORD ORD" men inte "ord ORD" (olika case)
+        pattern = r'\b(\w+)(\s+\1)+\b'
+        
+        # Ersätt upprepningar med bara första ordet
+        cleaned = re.sub(pattern, r'\1', text, flags=re.IGNORECASE)
+        
+        # Special-hantering för förkortningar som ofta upprepas
+        abbreviations = ['IPCC', 'AI', 'EU', 'USA', 'SMHI', 'KTH', 'SVT']
+        for abbr in abbreviations:
+            # Ta bort direkt upprepning av förkortningar
+            pattern_abbr = f'{abbr}\\s+{abbr}'
+            cleaned = re.sub(pattern_abbr, abbr, cleaned, flags=re.IGNORECASE)
+        
+        return cleaned
     
     def generate_audio(self, text: str, voice: str = "sanna") -> Optional[bytes]:
         """

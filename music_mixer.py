@@ -380,17 +380,23 @@ class MusicMixer:
             music_queue = []
             used_tracks = []
             
-            # ALLTID använd "Mellan Dröm och Verklighet" som intro (samma som MMM huvudpodden)
+            # ALLTID använd "Mellan Dröm och Verklighet" som FÖRSTA intro (samma som MMM huvudpodden)
+            # Men ALDRIG i bakgrundsmusik eller senare segment
             intro_track = None
+            intro_only_music = []
             for track in available_music:
                 if "Mellan Dröm och Verklighet" in track:
                     intro_track = track
+                    intro_only_music.append(track)  # Spara intro-musik separat
                     break
             
             if intro_track:
                 music_queue.append(intro_track)
                 used_tracks.append(intro_track)
                 logger.info("🎵 Fast intro: Mellan Dröm och Verklighet (samma som MMM huvudpodden)")
+            
+            # Filtrera bort intro-musik från tillgänglig musik för bakgrund
+            background_music = [m for m in available_music if m not in intro_only_music]
             
             # Försök använda metadata-baserat urval för övriga zoner
             if self.metadata_manager:
@@ -405,15 +411,16 @@ class MusicMixer:
                         used_tracks.append(track_path)
                         logger.info(f"🎵 Zon '{zone['name']}': {os.path.basename(track_path)}")
             
-            # Fyll upp med resterande musik slumpmässigt
-            remaining_music = [m for m in available_music if m not in music_queue]
+            # Fyll upp med resterande musik slumpmässigt (UTAN intro-musik)
+            remaining_music = [m for m in background_music if m not in music_queue]
             random.shuffle(remaining_music)
             music_queue.extend(remaining_music)
             
-            # Fallback om metadata inte fungerade
-            if not music_queue:
-                music_queue = available_music.copy()
-                random.shuffle(music_queue)
+            # Fallback om metadata inte fungerade (använd background_music, inte available_music)
+            if len(music_queue) <= 1:  # Bara intro-låt
+                fallback_music = background_music.copy()
+                random.shuffle(fallback_music)
+                music_queue.extend(fallback_music)
             
             current_pos = 0
             music_index = 0
@@ -462,8 +469,8 @@ class MusicMixer:
                     current_pos += segment_duration_ms  # Hoppa över denna sektion
                     continue
             
-            # Lägg till 8 sekunder musikuttoning efter tal
-            outro_duration_ms = 8000  # 8 sekunder
+            # Lägg till 10 sekunder musikuttoning efter tal  
+            outro_duration_ms = 10000  # 10 sekunder
             final_audio_duration = speech_duration_ms + outro_duration_ms
             
             # Skapa längre bakgrund för att inkludera uttoning

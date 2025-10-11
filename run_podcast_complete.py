@@ -151,7 +151,7 @@ def get_openrouter_response(messages: List[Dict], model: str = "openai/gpt-4o-mi
         logger.error(f"[ERROR] OpenRouter API error: {e}")
         raise
 
-def generate_structured_podcast_content(weather_info: str) -> str:
+def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Dict]]:
     """Generera strukturerat podcast-innehåll med AI och riktig väderdata"""
     
     # Dagens datum för kontext
@@ -164,12 +164,40 @@ def generate_structured_podcast_content(weather_info: str) -> str:
     }
     swedish_weekday = swedish_weekdays.get(weekday, weekday)
     
+    # Läs in tillgängliga artiklar för referens
+    available_articles = []
+    try:
+        with open('scraped_content.json', 'r', encoding='utf-8') as f:
+            scraped_data = json.load(f)
+            for source_group in scraped_data:
+                source_name = source_group.get('source', 'Okänd källa')
+                if 'items' in source_group:
+                    for item in source_group['items'][:5]:  # Max 5 per källa
+                        if item.get('link') and item.get('title') and item.get('content'):
+                            available_articles.append({
+                                'source': source_name,
+                                'title': item['title'][:100],
+                                'content': item['content'][:300],
+                                'link': item['link']
+                            })
+    except Exception as e:
+        logger.warning(f"[CONTENT] Kunde inte läsa artikeldata: {e}")
+    
+    # Skapa artikelreferenser för AI
+    article_refs = ""
+    if available_articles:
+        article_refs = "\n\nTILLGÄNGLIGA ARTIKLAR ATT REFERERA TILL:\n"
+        for i, article in enumerate(available_articles[:10], 1):
+            article_refs += f"{i}. {article['source']}: {article['title']}\n   Innehåll: {article['content']}\n   [Referera som: {article['source']}]\n\n"
+    
     prompt = f"""Skapa ett KOMPLETT och DETALJERAT manus för dagens avsnitt av "MMM Senaste Nytt" - en svensk daglig nyhetspodcast om teknik, AI och klimat.
 
 DATUM: {date_str} ({swedish_weekday})
 VÄDER: {weather_info}
 LÄNGD: Absolut mål är 10 minuter (minst 1800-2200 ord för talat innehåll)
 VÄRDAR: Lisa (kvinnlig, professionell men vänlig) och Pelle (manlig, nyfiken och engagerad)
+
+{article_refs}
 
 DETALJERAD STRUKTUR:
 1. INTRO & VÄLKOMST (90-120 sekunder) - Inkludera RIKTIG väderinfo från "{weather_info}"
@@ -189,14 +217,15 @@ INNEHÅLLSKRAV:
 - Nämn specifika företag, forskare eller organisationer
 
 KÄLLHÄNVISNING - MYCKET VIKTIGT:
-- VARJE nyhet MÅSTE ha tydlig källhänvisning (t.ex. "enligt DN idag", "rapporterar SVT", "skriver Dagens Industri")
-- Specifika personer MÅSTE namnges (t.ex. "Miljöminister Romina Pourmokhtari säger...", "Enligt statsminister Ulf kristersson...")
-- Konkreta detaljer MÅSTE inkluderas (t.ex. "regeringen föreslår sänka utsläppen med 15% till 2030 genom att...")
-- När möjligt: nämn specifika studier, rapporter eller undersökningar (t.ex. "enligt KTH:s nya studie", "Naturvårdsverkets rapport visar")
-- För företagsnyheter: nämn pressmeddelanden, VD-uttalanden eller kvartalssiffror
-- Om det är oklart VAD eller HUR - säg det tydligt ("detaljerna är ännu inte kända", "ingen tidsplan har presenterats")
-- Undvik vaga termer som "regeringen har tagit initiativ" - var specifik om vad som faktiskt sagts eller beslutats
-- Lyssnarna ska kunna förstå HUR nyheten blev känd och VARIFRÅN informationen kommer
+- ANVÄND ENDAST artiklarna listade ovan som källor för dina nyheter
+- VARJE nyhet MÅSTE baseras på en specifik artikel och ha tydlig källhänvisning (t.ex. "enligt DN idag", "rapporterar SVT", "skriver Dagens Industri")  
+- Referera till artiklarna med deras källnamn (t.ex. "SVT Nyheter rapporterar att...", "Dagens Nyheter skriver att...")
+- Specifika personer MÅSTE namnges när de finns i artiklarna (t.ex. "Miljöminister Romina Pourmokhtari säger...", "Enligt statsminister Ulf kristersson...")
+- Konkreta detaljer MÅSTE tas från artiklarna - påhitta ALDRIG fakta
+- När möjligt: använd siffror och fakta från artiklarna
+- Om information saknas i artiklarna - säg det tydligt ("detaljerna är ännu inte kända", "ingen tidsplan har presenterats")
+- Undvik vaga termer - var specifik baserat på vad som faktiskt står i artiklarna
+- Lyssnarna ska kunna förstå att nyheten kommer från en specifik källa som de kan kolla upp
 
 OUTRO-KRAV (MYCKET VIKTIGT):
 - INGEN teasing av "nästa avsnitt" 
@@ -230,11 +259,11 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
     try:
         content = get_openrouter_response(messages)
         logger.info("[AI] Genererade podcast-innehåll med väderdata")
-        return content
+        return content, available_articles
     except Exception as e:
         logger.error(f"[ERROR] Kunde inte generera AI-innehåll: {e}")
         # Fallback till mock-innehåll
-        return generate_fallback_content(date_str, swedish_weekday, weather_info)
+        return generate_fallback_content(date_str, swedish_weekday, weather_info), available_articles
 
 def generate_fallback_content(date_str: str, weekday: str, weather_info: str) -> str:
     """Fallback-innehåll om AI inte fungerar"""
@@ -629,13 +658,19 @@ def main():
         
         # Generera strukturerat podcast-innehåll med riktig väderdata
         logger.info("[AI] Genererar strukturerat podcast-innehåll...")
-        podcast_content = generate_structured_podcast_content(weather_info)
+        podcast_content, referenced_articles = generate_structured_podcast_content(weather_info)
         
         # Spara manus för referens
         script_path = f"podcast_script_{timestamp}.txt"
         with open(script_path, 'w', encoding='utf-8') as f:
             f.write(podcast_content)
         logger.info(f"[SCRIPT] Manus sparat: {script_path}")
+        
+        # Spara artikelreferenser för senare användning
+        articles_path = f"episode_articles_{timestamp}.json"
+        with open(articles_path, 'w', encoding='utf-8') as f:
+            json.dump(referenced_articles, f, indent=2, ensure_ascii=False)
+        logger.info(f"[ARTICLES] Artikelreferenser sparade: {articles_path}")
         
         # 🛡️ SJÄLVKORRIGERANDE FAKTAKONTROLL - Automatisk korrigering av problem
         final_podcast_content = podcast_content
@@ -754,11 +789,25 @@ def main():
         shutil.copy2(audio_filepath, public_audio_path)
         logger.info(f"[FILES] Kopierade audio till {public_audio_path}")
         
-        # Skapa episode data
+        # Skapa episode data med artiklar som faktiskt refererades i avsnittet
         file_size = os.path.getsize(audio_filepath)
+        
+        # Använd artiklar som faktiskt refererades under genereringen
+        article_links = []
+        for article in referenced_articles[:6]:  # Max 6 artiklar
+            if article.get('link') and article.get('title'):
+                # Korta titlar för bättre läsbarhet
+                short_title = article['title'][:60] + "..." if len(article['title']) > 60 else article['title']
+                source_name = article.get('source', 'Okänd källa')
+                article_links.append(f"{source_name}: {short_title}\n  {article['link']}")
+        
+        sources_text = ""
+        if article_links:
+            sources_text = f"\n\nKällor som refereras i detta avsnitt:\n• " + "\n• ".join(article_links)
+        
         episode_data = {
             'title': f"MMM Senaste Nytt - {today.strftime('%d %B %Y')}",
-            'description': f"Dagens nyheter inom AI, teknik och klimat - {today.strftime('%A den %d %B %Y')}. Med detaljerade källhänvisningar från svenska och internationella medier. {weather_info}",
+            'description': f"Dagens nyheter inom AI, teknik och klimat - {today.strftime('%A den %d %B %Y')}. Med detaljerade källhänvisningar från svenska och internationella medier.{sources_text}",
             'date': today.strftime('%Y-%m-%d'),
             'filename': audio_filename,
             'size': file_size,

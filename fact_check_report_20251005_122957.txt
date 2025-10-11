@@ -1,0 +1,37 @@
+
+# FAKTAKONTROLL-RAPPORT ⚠️
+
+**Status**: REQUIRES_REVIEW
+**Datum**: 2025-10-05T12:30:35.835151
+**Säker att publicera**: NEJ - KRÄVER GRANSKNING
+
+## Sammanfattning
+- **Fakta kontrollerade**: 4
+- **Noggrannhet**: 0.0%
+- **Konfidensgrad**: 0.0%
+
+## Kritiska Problem
+
+### Problem 1
+- **Entitet**: Tesla
+- **Problem**: Kunde inte verifiera pga tekniskt fel: OpenAI-klient inte tillgänglig
+- **Förslag**: Manuell kontroll krävs
+
+### Problem 2
+- **Entitet**: Google
+- **Problem**: Kunde inte verifiera pga tekniskt fel: OpenAI-klient inte tillgänglig
+- **Förslag**: Manuell kontroll krävs
+
+### Problem 3
+- **Entitet**: Microsoft
+- **Problem**: Kunde inte verifiera pga tekniskt fel: OpenAI-klient inte tillgänglig
+- **Förslag**: Manuell kontroll krävs
+
+### Problem 4
+- **Entitet**: miljöminister
+- **Problem**: Kunde inte verifiera pga tekniskt fel: OpenAI-klient inte tillgänglig
+- **Förslag**: Manuell kontroll krävs
+
+## ⚠️ VARNING
+Detta manus är INTE säkert att publicera utan granskning.
+Åtgärda problemen ovan innan publicering.

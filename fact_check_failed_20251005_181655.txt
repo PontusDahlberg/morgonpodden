@@ -1,0 +1,7 @@
+FAKTAKONTROLL MISSLYCKADES
+Datum: 2025-10-05T18:17:32.569587
+Försök gjorda: 1
+
+SENASTE PROBLEM:
+- KONTROLLERA: Tidskänslig referens 'i går' - verifiera aktualitet
+- KONTROLLERA: Tidskänslig referens 'nyligen' - verifiera aktualitet

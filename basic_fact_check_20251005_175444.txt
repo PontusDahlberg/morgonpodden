@@ -1,0 +1,6 @@
+GRUNDLÄGGANDE FAKTAKONTROLL
+Datum: 2025-10-05T17:55:20.391268
+Säker att publicera: False
+
+PROBLEM HITTADE:
+- KONTROLLERA: Tidskänslig referens 'nyligen' - verifiera aktualitet

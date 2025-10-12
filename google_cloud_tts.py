@@ -249,17 +249,19 @@ class GoogleCloudTTS:
     
     def _preprocess_text(self, text: str) -> str:
         """
-        Preprocessa text för bättre uttal
-        - AI uttalas mer naturligt som sammanhängande ord istället för bokstaverat
-        - EU uttalas mer naturligt som sammanhängande ord istället för bokstaverat
+        Preprocessa text för bättre uttal med korrekt SSML-formattering
+        - AI uttalas perfekt som sammanhängande "ɑːiː" utan pauser
+        - Hela texten omsluts med <speak>-taggen som SSML kräver
         """
         import re
         
-        # Använd SSML för att styra uttal mer naturligt
-        # <phoneme> låter oss specificera exakt hur det ska uttalas
-        # AI: använd "a.i" istället för "aɪ" för att undvika "aj"-ljud
-        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="a.i">AI</phoneme>', text)
-        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="a.i">Ai</phoneme>', text)
+        # Ta bort upprepade ord först (som IPCC IPCC)
+        text = self._remove_word_duplicates(text)
+        
+        # Använd SSML med <phoneme>-taggar för exakt uttal
+        # AI: använd "ɑːiː" som du specificerade - bokstav A följt direkt av bokstav I
+        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑːiː">AI</phoneme>', text)
+        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑːiː">Ai</phoneme>', text)
         text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="ɛʊ">EU</phoneme>', text)
         text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="ɛʊ">Eu</phoneme>', text)
         text = re.sub(r'\bUSA\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">USA</phoneme>', text)
@@ -267,8 +269,8 @@ class GoogleCloudTTS:
         # SMHI: naturligt uttal som "s.m.h.i" utan överbetoning på sista I
         text = re.sub(r'\bSMHI\b', '<phoneme alphabet="ipa" ph="ɛs.ɛm.hoː.iː">SMHI</phoneme>', text)
         
-        # Ta bort upprepade ord (som IPCC IPCC)
-        text = self._remove_word_duplicates(text)
+        # VIKTIGT: Omslut hela texten med <speak>-taggen som SSML kräver
+        text = f"<speak>{text}</speak>"
         
         return text
     
@@ -335,10 +337,9 @@ class GoogleCloudTTS:
             processed_text = self._preprocess_text(text)
             
             # Skapa input - använd SSML om vi har fonetiska markeringar
-            if '<phoneme' in processed_text:
-                # Wrappa i SSML-struktur
-                ssml_text = f'<speak>{processed_text}</speak>'
-                synthesis_input = texttospeech.SynthesisInput(ssml=ssml_text)
+            if '<phoneme' in processed_text or processed_text.startswith('<speak>'):
+                # Texten är redan SSML-formaterad från _preprocess_text
+                synthesis_input = texttospeech.SynthesisInput(ssml=processed_text)
             else:
                 synthesis_input = texttospeech.SynthesisInput(text=processed_text)
             

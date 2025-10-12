@@ -157,7 +157,7 @@ class SMHIWeatherService:
             
             if weather_data:
                 # Ta bara första två för kompakthet i podcasten
-                summary = f"Vädret idag enligt SMHI: {'; '.join(weather_data[:2])}"
+                summary = f"Vädret idag enligt SMHI: {'; '.join(weather_data)}"  # Visa alla regioner
                 return summary
             else:
                 return "Vädret idag: Varierande väderförhållanden över Sverige"

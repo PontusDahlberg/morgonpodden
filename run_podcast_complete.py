@@ -80,11 +80,12 @@ def get_swedish_weather() -> str:
         # Fallback till wttr.in om SMHI misslyckas
         try:
             logger.info("[WEATHER] Använder wttr.in som backup")
-            # Svenska landskap med representativa städer
+            # Svenska landskap med representativa städer - alla 4 regioner
             regions = [
                 ("Götaland", "Goteborg"),
                 ("Svealand", "Stockholm"),  
-                ("Norrland", "Umea")
+                ("Södra Norrland", "Sundsvall"),
+                ("Norra Norrland", "Kiruna")
             ]
             
             weather_data = []
@@ -101,7 +102,7 @@ def get_swedish_weather() -> str:
                     continue
             
             if weather_data:
-                weather_text = f"Vädret idag: {', '.join(weather_data[:2])}"
+                weather_text = f"Vädret idag: {', '.join(weather_data)}"  # Visa alla regioner
                 return weather_text
             else:
                 return "Vädret idag: Varierande väderförhållanden över Sverige"
@@ -164,16 +165,43 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     }
     swedish_weekday = swedish_weekdays.get(weekday, weekday)
     
-    # Läs in tillgängliga artiklar för referens
+    # Läs in tillgängliga artiklar för referens - ENDAST från seriösa nyhetskällor
     available_articles = []
+    
+    # Lista över accepterade nyhetskällor (ALDRIG sociala medier)
+    trusted_sources = {
+        'SVT Nyheter', 'Dagens Nyheter', 'Svenska Dagbladet', 'BBC News', 
+        'Reuters', 'The Guardian', 'Financial Times', 'AP News',
+        'Dagens Industri', 'Computer Sweden', 'NyTeknik', 'Wired',
+        'TechCrunch', 'The Verge', 'Ars Technica', 'IEEE Spectrum',
+        'Nature', 'Science', 'MIT Technology Review'
+    }
+    
     try:
         with open('scraped_content.json', 'r', encoding='utf-8') as f:
             scraped_data = json.load(f)
             for source_group in scraped_data:
                 source_name = source_group.get('source', 'Okänd källa')
+                
+                # FILTRERA BORT sociala medier och icke-trovärdiga källor
+                if any(social in source_name.lower() for social in ['facebook', 'twitter', 'instagram', 'tiktok', 'linkedin', 'youtube']):
+                    logger.warning(f"[FILTER] Hoppar över social media källa: {source_name}")
+                    continue
+                
+                # Acceptera bara kända trovärdiga källor
+                if not any(trusted in source_name for trusted in trusted_sources):
+                    logger.info(f"[FILTER] Okänd källa, hoppar över: {source_name}")
+                    continue
+                
                 if 'items' in source_group:
                     for item in source_group['items'][:5]:  # Max 5 per källa
                         if item.get('link') and item.get('title') and item.get('content'):
+                            # Dubbelkolla att länken inte går till sociala medier
+                            link_url = item.get('link', '')
+                            if any(social in link_url.lower() for social in ['facebook.com', 'twitter.com', 'instagram.com', 'tiktok.com']):
+                                logger.warning(f"[FILTER] Hoppar över social media länk: {link_url}")
+                                continue
+                                
                             available_articles.append({
                                 'source': source_name,
                                 'title': item['title'][:100],
@@ -217,15 +245,16 @@ INNEHÅLLSKRAV:
 - Nämn specifika företag, forskare eller organisationer
 
 KÄLLHÄNVISNING - MYCKET VIKTIGT:
-- ANVÄND ENDAST artiklarna listade ovan som källor för dina nyheter
-- VARJE nyhet MÅSTE baseras på en specifik artikel och ha tydlig källhänvisning (t.ex. "enligt DN idag", "rapporterar SVT", "skriver Dagens Industri")  
-- Referera till artiklarna med deras källnamn (t.ex. "SVT Nyheter rapporterar att...", "Dagens Nyheter skriver att...")
+- ANVÄND ENDAST artiklarna listade ovan som källor för dina nyheter - ALDRIG sociala medier eller opålitliga källor
+- VARJE nyhet MÅSTE baseras på en specifik artikel från seriösa medier (SVT, DN, BBC, Reuters etc.)
+- FÖRBJUDET: Facebook, Twitter/X, Instagram, TikTok, YouTube eller andra sociala medier som källor
+- Referera tydligt: "SVT Nyheter rapporterar att...", "BBC News skriver att...", "Reuters meddelar att..."
 - Specifika personer MÅSTE namnges när de finns i artiklarna (t.ex. "Miljöminister Romina Pourmokhtari säger...", "Enligt statsminister Ulf kristersson...")
 - Konkreta detaljer MÅSTE tas från artiklarna - påhitta ALDRIG fakta
 - När möjligt: använd siffror och fakta från artiklarna
 - Om information saknas i artiklarna - säg det tydligt ("detaljerna är ännu inte kända", "ingen tidsplan har presenterats")
 - Undvik vaga termer - var specifik baserat på vad som faktiskt står i artiklarna
-- Lyssnarna ska kunna förstå att nyheten kommer från en specifik källa som de kan kolla upp
+- Lyssnarna ska kunna förstå att nyheten kommer från en etablerad, trovärdig nyhetskälla
 
 OUTRO-KRAV (MYCKET VIKTIGT):
 - INGEN teasing av "nästa avsnitt" 

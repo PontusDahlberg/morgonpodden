@@ -258,10 +258,10 @@ class GoogleCloudTTS:
         # Ta bort upprepade ord först (som IPCC IPCC)
         text = self._remove_word_duplicates(text)
         
-        # Använd SSML med <phoneme>-taggar för exakt uttal
-        # AI: använd "ɑːiː" som du specificerade - bokstav A följt direkt av bokstav I
-        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑːiː">AI</phoneme>', text)
-        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑːiː">Ai</phoneme>', text)
+        # Använd SSML med IPA för extra långa vokalljud som i SAAB och BIL
+        # AI: använd "ɑːːiːː" med extra längdmarkörer för mycket långa ljud
+        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑːːiːː">AI</phoneme>', text)
+        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑːːiːː">Ai</phoneme>', text)
         text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="ɛʊ">EU</phoneme>', text)
         text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="ɛʊ">Eu</phoneme>', text)
         text = re.sub(r'\bUSA\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">USA</phoneme>', text)

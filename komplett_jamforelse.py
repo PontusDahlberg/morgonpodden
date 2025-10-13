@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""
+Jämförelse av alla AI-uttal varianter
+"""
+print("🔤 KOMPLETT AI-UTTAL JÄMFÖRELSE:")
+print()
+print("❌ X-SAMPA 'A:i:' - För kort, I blir nedtonat")
+print("🤔 IPA 'ɑːiː' - Bättre men fortfarande för kort")  
+print("✅ IPA 'ɑːːiːː' - Extra långt som SAAB + BIL")
+print()
+print("🎧 Test-filer att jämföra:")
+print("   test_xsampa_ai_*.mp3        (X-SAMPA - dålig)")
+print("   test_correct_ipa_ai_*.mp3   (Standard IPA - kort)")
+print("   test_extra_long_ai_*.mp3    (Extra lång IPA - BRA)")
+print()
+print("🔤 Fonetisk förklaring:")
+print("   ɑ   = Script A (som i SAAB)")
+print("   ː   = Längdmarkör")
+print("   ːː  = Extra längdmarkör (dubbel längd)")
+print("   i   = I-ljud")
+print("   ː   = Längdmarkör för I")
+print("   ːː  = Extra längdmarkör för I (som i BIL)")
+print()
+print("✅ Slutlig kod: <phoneme alphabet=\"ipa\" ph=\"ɑːːiːː\">AI</phoneme>")
+print("⏱️ Plus tystnad (...) i testfiler för ljudspelare")

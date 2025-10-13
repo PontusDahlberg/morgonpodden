@@ -821,9 +821,13 @@ def main():
         # Skapa episode data med artiklar som faktiskt refererades i avsnittet
         file_size = os.path.getsize(audio_filepath)
         
+        # Debug: Kolla om vi har artiklar att visa
+        logger.info(f"[RSS] Antal tillgängliga artiklar: {len(referenced_articles)}")
+        
         # Använd artiklar som faktiskt refererades under genereringen
         article_links = []
-        for article in referenced_articles[:6]:  # Max 6 artiklar
+        for i, article in enumerate(referenced_articles[:6]):  # Max 6 artiklar
+            logger.info(f"[RSS] Artikel {i+1}: {article.get('source', 'N/A')} - {article.get('title', 'N/A')[:50]}...")
             if article.get('link') and article.get('title'):
                 # Korta titlar för bättre läsbarhet
                 short_title = article['title'][:60] + "..." if len(article['title']) > 60 else article['title']
@@ -833,10 +837,36 @@ def main():
         sources_text = ""
         if article_links:
             sources_text = f"\n\nKällor som refereras i detta avsnitt:\n• " + "\n• ".join(article_links)
+            logger.info(f"[RSS] Lade till {len(article_links)} källor i RSS-beskrivning")
+        else:
+            logger.warning("[RSS] Inga källor att visa i RSS-beskrivning!")
+            # Fallback: använd sources.json som backup
+            try:
+                config = load_config()
+                if config and 'sources' in config:
+                    fallback_sources = [s['name'] for s in config['sources'][:4] if s.get('enabled', True)]
+                    if fallback_sources:
+                        sources_text = f"\n\nKällor: {', '.join(fallback_sources)}"
+                        logger.info(f"[RSS] Använder fallback-källor: {fallback_sources}")
+            except Exception as e:
+                logger.error(f"[RSS] Fel vid fallback-källor: {e}")
+        
+        # Svenska månadsnamn
+        swedish_months = {
+            1: 'januari', 2: 'februari', 3: 'mars', 4: 'april', 5: 'maj', 6: 'juni',
+            7: 'juli', 8: 'augusti', 9: 'september', 10: 'oktober', 11: 'november', 12: 'december'
+        }
+        swedish_weekdays = {
+            'Monday': 'måndag', 'Tuesday': 'tisdag', 'Wednesday': 'onsdag',
+            'Thursday': 'torsdag', 'Friday': 'fredag', 'Saturday': 'lördag', 'Sunday': 'söndag'
+        }
+        
+        month_swedish = swedish_months[today.month]
+        weekday_swedish = swedish_weekdays[today.strftime('%A')]
         
         episode_data = {
-            'title': f"MMM Senaste Nytt - {today.strftime('%d %B %Y')}",
-            'description': f"Dagens nyheter inom AI, teknik och klimat - {today.strftime('%A den %d %B %Y')}. Med detaljerade källhänvisningar från svenska och internationella medier.{sources_text}",
+            'title': f"MMM Senaste Nytt - {today.strftime('%d')} {month_swedish} {today.year}",
+            'description': f"Dagens nyheter inom AI, teknik och klimat - {weekday_swedish} den {today.strftime('%d')} {month_swedish} {today.year}. Med detaljerade källhänvisningar från svenska och internationella medier.{sources_text}",
             'date': today.strftime('%Y-%m-%d'),
             'filename': audio_filename,
             'size': file_size,

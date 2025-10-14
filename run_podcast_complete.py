@@ -168,13 +168,13 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     # Läs in tillgängliga artiklar för referens - ENDAST från seriösa nyhetskällor
     available_articles = []
     
-    # Lista över accepterade nyhetskällor (ALDRIG sociala medier)
+    # Lista över accepterade nyckelord för trovärdiga nyhetskällor (ALDRIG sociala medier)
     trusted_sources = {
-        'SVT Nyheter', 'Dagens Nyheter', 'Svenska Dagbladet', 'BBC News', 
-        'Reuters', 'The Guardian', 'Financial Times', 'AP News',
-        'Dagens Industri', 'Computer Sweden', 'NyTeknik', 'Wired',
-        'TechCrunch', 'The Verge', 'Ars Technica', 'IEEE Spectrum',
-        'Nature', 'Science', 'MIT Technology Review'
+        'SVT', 'Dagens Nyheter', 'Svenska Dagbladet', 'BBC', 
+        'Reuters', 'Guardian', 'Financial Times', 'AP News',
+        'Dagens Industri', 'Computer Sweden', 'Ny Teknik', 'NyTeknik', 'Wired',
+        'TechCrunch', 'Verge', 'Ars Technica', 'IEEE Spectrum',
+        'Nature', 'Science', 'MIT Technology Review', 'Breakit'
     }
     
     try:
@@ -189,13 +189,16 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
                     continue
                 
                 # Acceptera bara kända trovärdiga källor
-                if not any(trusted in source_name for trusted in trusted_sources):
+                is_trusted = any(trusted.lower() in source_name.lower() for trusted in trusted_sources)
+                if not is_trusted:
                     logger.info(f"[FILTER] Okänd källa, hoppar över: {source_name}")
                     continue
+                else:
+                    logger.info(f"[FILTER] ✅ Accepterad källa: {source_name}")
                 
                 if 'items' in source_group:
                     for item in source_group['items'][:5]:  # Max 5 per källa
-                        if item.get('link') and item.get('title') and item.get('content'):
+                        if item.get('link') and item.get('title'):
                             # Dubbelkolla att länken inte går till sociala medier
                             link_url = item.get('link', '')
                             if any(social in link_url.lower() for social in ['facebook.com', 'twitter.com', 'instagram.com', 'tiktok.com']):
@@ -205,7 +208,7 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
                             available_articles.append({
                                 'source': source_name,
                                 'title': item['title'][:100],
-                                'content': item['content'][:300],
+                                'content': item.get('content', '')[:300],  # Tom om saknas
                                 'link': item['link']
                             })
     except Exception as e:

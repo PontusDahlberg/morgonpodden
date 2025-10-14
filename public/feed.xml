@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 05 Oct 2025 18:42:40 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 14 Oct 2025 18:48:32 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 14 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 14 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Nu öppnar vallokalerna i kyrkovalet
+  https://www.svt.se/nyheter/inrikes/nu-oppnar-vallokalerna-i-kyrkovalet
+• SVT Nyheter: Tonåring knivskuren vid hemmafest i Mönsterås – sex misstänk...
+  https://www.svt.se/nyheter/lokalt/smaland/tonaring-knivskuren-fem-gripna-for-mordforsok-i-monsteras
+• SVT Nyheter: Satellitbilder visar hur palestinska byar försvinner på Väst...
+  https://www.svt.se/nyheter/utrikes/satellitbilder-visar-hur-palestinska-byar-forsvinner-pa-vastbanken
+• SVT Nyheter: 16-årige Linus från Linköping balanserar skola med motorspor...
+  https://www.svt.se/nyheter/lokalt/ost/16-arige-linus-fran-linkoping-balanserar-skola-med-motorsport
+• SVT Nyheter: Snabbmatskvittot avslöjade knarkfabriken i Gantofta
+  https://www.svt.se/nyheter/lokalt/helsingborg/snabbmatskvittot-avslojade-knarkfabriken-i-gantofta
+• Dagens Nyheter: Ledare: ”Donald Trumps maktkärna består av sju personer”
+  https://www.dn.se/ledare/donald-trumps-maktkarna-bestar-av-sju-personer/</description>
+            <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251014_184610.mp3" length="9428972" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251014_184610.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 05 October 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - Sunday den 05 October 2025. Med detaljerade källhänvisningar från svenska och internationella medier. Vädret idag enligt SMHI: Götaland: Lätt regnskur, 12°C, måttliga vindar; Svealand: Mulet, 11°C, svaga vindar</description>
             <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>

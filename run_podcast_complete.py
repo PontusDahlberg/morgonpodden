@@ -165,16 +165,52 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     }
     swedish_weekday = swedish_weekdays.get(weekday, weekday)
     
+    # Läs tidigare använda artiklar för upprepningsfilter (senaste 7 dagarna)
+    used_articles = set()
+    try:
+        import glob
+        article_files = glob.glob('episode_articles_*.json')
+        
+        # Filtrera på datum - bara senaste 7 dagarna
+        cutoff_date = datetime.now() - timedelta(days=7)
+        recent_files = []
+        for article_file in article_files:
+            try:
+                # Extrahera datum från filnamn: episode_articles_20251014_190405.json
+                date_str = article_file.split('_')[2]  # 20251014
+                file_date = datetime.strptime(date_str, '%Y%m%d')
+                if file_date >= cutoff_date:
+                    recent_files.append(article_file)
+            except (IndexError, ValueError):
+                continue
+        
+        for article_file in recent_files:
+            try:
+                with open(article_file, 'r', encoding='utf-8') as f:
+                    prev_articles = json.load(f)
+                    for article in prev_articles:
+                        # Använd länk som unik identifierare, eller titel om länk saknas
+                        unique_id = article.get('link') or article.get('title', '').lower()
+                        if unique_id:
+                            used_articles.add(unique_id)
+            except Exception as e:
+                logger.warning(f"[HISTORY] Kunde inte läsa {article_file}: {e}")
+        logger.info(f"[HISTORY] Laddade {len(used_articles)} tidigare använda artiklar för upprepningsfilter")
+    except Exception as e:
+        logger.warning(f"[HISTORY] Upprepningsfilter misslyckades: {e}")
+    
     # Läs in tillgängliga artiklar för referens - ENDAST från seriösa nyhetskällor
     available_articles = []
     
-    # Lista över accepterade nyckelord för trovärdiga nyhetskällor (ALDRIG sociala medier)
+    # Lista över accepterade nyckelord för trovärdiga nyhetskällor (inkl. klimatkällor)
     trusted_sources = {
         'SVT', 'Dagens Nyheter', 'Svenska Dagbladet', 'BBC', 
         'Reuters', 'Guardian', 'Financial Times', 'AP News',
         'Dagens Industri', 'Computer Sweden', 'Ny Teknik', 'NyTeknik', 'Wired',
         'TechCrunch', 'Verge', 'Ars Technica', 'IEEE Spectrum',
-        'Nature', 'Science', 'MIT Technology Review', 'Breakit'
+        'Nature', 'Science', 'MIT Technology Review', 'Breakit', 'Digitala Verkligheter',
+        'Miljö & Utveckling', 'Naturskyddsföreningen', 'SMHI', 'European Environment Agency',
+        'EEA', 'European Commission', 'EU Commission', 'Eurostat', 'Europa.eu'
     }
     
     try:
@@ -183,26 +219,83 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
             for source_group in scraped_data:
                 source_name = source_group.get('source', 'Okänd källa')
                 
-                # FILTRERA BORT sociala medier och icke-trovärdiga källor
-                if any(social in source_name.lower() for social in ['facebook', 'twitter', 'instagram', 'tiktok', 'linkedin', 'youtube']):
-                    logger.warning(f"[FILTER] Hoppar över social media källa: {source_name}")
-                    continue
-                
-                # Acceptera bara kända trovärdiga källor
+                # Kolla först om det är en trovärdig källa
                 is_trusted = any(trusted.lower() in source_name.lower() for trusted in trusted_sources)
                 if not is_trusted:
                     logger.info(f"[FILTER] Okänd källa, hoppar över: {source_name}")
                     continue
-                else:
-                    logger.info(f"[FILTER] ✅ Accepterad källa: {source_name}")
+                
+                # För "Digitala Verkligheter" - acceptera trots Facebook i namnet (kurerat AI-innehåll)
+                if 'digitala verkligheter' not in source_name.lower():
+                    # FILTRERA BORT sociala medier för andra källor
+                    if any(social in source_name.lower() for social in ['facebook', 'twitter', 'instagram', 'tiktok', 'linkedin', 'youtube']):
+                        logger.warning(f"[FILTER] Hoppar över social media källa: {source_name}")
+                        continue
+                
+                logger.info(f"[FILTER] ✅ Accepterad källa: {source_name}")
                 
                 if 'items' in source_group:
                     for item in source_group['items'][:5]:  # Max 5 per källa
                         if item.get('link') and item.get('title'):
-                            # Dubbelkolla att länken inte går till sociala medier
+                            # Dubbelkolla att länken inte går till sociala medier (förutom för Digitala Verkligheter)
                             link_url = item.get('link', '')
-                            if any(social in link_url.lower() for social in ['facebook.com', 'twitter.com', 'instagram.com', 'tiktok.com']):
-                                logger.warning(f"[FILTER] Hoppar över social media länk: {link_url}")
+                            if 'digitala verkligheter' not in source_name.lower():
+                                if any(social in link_url.lower() for social in ['facebook.com', 'twitter.com', 'instagram.com', 'tiktok.com']):
+                                    logger.warning(f"[FILTER] Hoppar över social media länk: {link_url}")
+                                    continue
+                            
+                            # Innehållsfilter: bara relevanta ämnen för teknik/AI/klimat-podcast
+                            title_text = item.get('title', '').lower()
+                            content_text = item.get('content', '').lower()
+                            combined_text = title_text + " " + content_text
+                            
+                            # Relevanta nyckelord för MMM Senaste Nytt
+                            relevant_keywords = [
+                                # AI & Teknik
+                                'ai', 'artificiell intelligens', 'machine learning', 'maskininlärning',
+                                'teknik', 'teknologi', 'innovation', 'forskning', 'vetenskap',
+                                'datorer', 'mjukvara', 'app', 'digital', 'internet', 'cybersäkerhet',
+                                # Klimat & Miljö (utökad lista)
+                                'klimat', 'miljö', 'hållbarhet', 'förnybar energi', 'koldioxid', 'co2',
+                                'växthusgaser', 'global uppvärmning', 'klimatförändringar', 'paris',
+                                'elbil', 'solenergi', 'vindkraft', 'batterier', 'elektricitet',
+                                'återvinning', 'cirkulär ekonomi', 'biodiversitet', 'ekosystem',
+                                'naturskydd', 'energieffektivitet', 'fossila bränslen', 'elkraft',
+                                'väder', 'temperatur', 'havsnivå', 'smältning', 'is', 'torka'
+                            ]
+                            
+                            # Irrelevanta ämnen som vi ska filtrera bort (UTÖKAD LISTA)
+                            irrelevant_keywords = [
+                                'våld', 'mord', 'knivskuren', 'skjutning', 'död', 'dödad',
+                                'krig', 'konflikt', 'gaza', 'palestina', 'palestinska', 'israel', 'ukraina',
+                                'knark', 'droger', 'narkotika', 'kriminell', 'polis', 'häktad',
+                                'val', 'politik', 'parti', 'regering', 'minister', 'kyrka', 'kyrkovalet',
+                                'sport', 'fotboll', 'hockey', 'motorsport', 'racing', 'trump', 'putin',
+                                'satellitbilder', 'förstör', 'byar', 'musiktävling', 'köttallergi', 'allergi',
+                                # Extra politik-filter
+                                'avgång', 'avgångsersättning', 'riksdagen', 'motion', 'landslag', 'fotboll',
+                                'asllani', 'hatt', 'politisk', 'politiker', 'debatt', 'omröstning',
+                                # Extra irrelevanta ämnen
+                                'rökdykning', 'räddningstjänst', 'brandkår', 'teckenspråk', 'språk',
+                                'kultur', 'bok', 'författare', 'adolescence', 'gruvdrift', 'malmberget'
+                            ]
+                            
+                            # Kolla om artikeln innehåller irrelevant innehåll
+                            has_irrelevant = any(keyword in combined_text for keyword in irrelevant_keywords)
+                            if has_irrelevant:
+                                logger.info(f"[FILTER] Filtrerar bort irrelevant artikel: {title_text[:50]}...")
+                                continue
+                            
+                            # OBLIGATORISK positivfiltrering: ALLA artiklar MÅSTE innehålla relevanta nyckelord
+                            has_relevant = any(keyword in combined_text for keyword in relevant_keywords)
+                            if not has_relevant:
+                                logger.info(f"[FILTER] Filtrerar bort icke-relevant artikel: {title_text[:50]}...")
+                                continue
+                            
+                            # Upprepningsfilter - kolla om vi redan använt denna artikel
+                            article_id = item.get('link') or item.get('title', '').lower()
+                            if article_id in used_articles:
+                                logger.info(f"[FILTER] Filtrerar bort upprepning: {title_text[:50]}...")
                                 continue
                                 
                             available_articles.append({
@@ -265,7 +358,7 @@ OUTRO-KRAV (MYCKET VIKTIGT):
 - STARK koppling till huvudpodden "Människa Maskin Miljö"
 - Förklara att MMM Senaste Nytt är en del av Människa Maskin Miljö-familjen
 - Uppmana lyssnare att kolla in huvudpodden för djupare analyser
-- OBLIGATORISK AI-BRASKLAPP: Lisa och Pelle ska ödmjukt förklara att de är aj-röster och att information kan innehålla fel, hänvisa till länkarna i avsnittsinformationen för verifiering
+- OBLIGATORISK AI-BRASKLAPP: Lisa och Pelle ska ödmjukt förklara att de är <phoneme alphabet="ipa" ph="ɑːːiːː">AI</phoneme>-röster och att information kan innehålla fel, hänvisa till länkarna i avsnittsinformationen för verifiering
 
 DIALOGREGLER:
 - Använd naturliga övergångar: "Det påminner mig om...", "Apropå det...", "Interessant nog..."

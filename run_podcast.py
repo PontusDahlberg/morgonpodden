@@ -25,7 +25,6 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 # Importera våra moduler
 try:
-    from cloudflare_uploader import CloudflareUploader
     from generate_rss import generate_and_upload_rss
 except ImportError as e:
     print(f"❌ Import error: {e}")

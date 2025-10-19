@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 AUTOMATISK LOKAL LAGRING
-Hämtar nya avsnitt från Cloudflare och GitHub Actions automatiskt
+Hämtar nya avsnitt från GitHub Actions automatiskt
 """
 
 import os
@@ -41,9 +41,6 @@ class EpisodeDownloader:
         self.local_episodes_dir = Path("local_episodes")
         self.local_episodes_dir.mkdir(exist_ok=True)
         
-        # Cloudflare URL från din config
-        self.cloudflare_base = "https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev"
-        
         # GitHub API för artifacts (kräver token för privata repos)
         self.github_token = os.getenv('GITHUB_TOKEN')
         self.repo_owner = "PontusDahlberg"
@@ -52,59 +49,21 @@ class EpisodeDownloader:
         logger.info("Episode Downloader initialiserad")
     
     def check_for_new_episodes(self) -> List[Dict]:
-        """Kolla efter nya avsnitt från senaste dagarna"""
+        """Kolla efter nya avsnitt från GitHub Actions"""
         logger.info("Letar efter nya avsnitt...")
         
         new_episodes = []
         
-        # Kolla Cloudflare för nya filer
-        cloudflare_episodes = self._check_cloudflare_episodes()
-        new_episodes.extend(cloudflare_episodes)
-        
-        # Kolla GitHub Actions artifacts (fallback)
+        # Kolla GitHub Actions artifacts
         if self.github_token:
             github_episodes = self._check_github_artifacts()
             new_episodes.extend(github_episodes)
+        else:
+            logger.info("ℹ️ Ingen GitHub token konfigurerad")
         
         return new_episodes
     
-    def _check_cloudflare_episodes(self) -> List[Dict]:
-        """Kolla Cloudflare R2 för nya avsnitt"""
-        episodes = []
-        
-        try:
-            # Försök ladda RSS feed för att hitta nya avsnitt
-            rss_url = f"{self.cloudflare_base}/feed.xml"
-            response = self.session.get(rss_url, timeout=10)
-            
-            if response.status_code == 200:
-                # Enkel parsing av RSS för att hitta episode URLs
-                import xml.etree.ElementTree as ET
-                root = ET.fromstring(response.content)
-                
-                for item in root.findall('.//item'):
-                    enclosure = item.find('enclosure')
-                    if enclosure is not None:
-                        episode_url = enclosure.get('url')
-                        title_elem = item.find('title')
-                        title = title_elem.text if title_elem is not None else "Unknown"
-                        
-                        pub_date_elem = item.find('pubDate')
-                        pub_date = pub_date_elem.text if pub_date_elem is not None else ""
-                        
-                        episodes.append({
-                            'url': episode_url,
-                            'title': title,
-                            'pub_date': pub_date,
-                            'source': 'cloudflare'
-                        })
-                        
-                logger.info(f"✅ Hittade {len(episodes)} avsnitt i Cloudflare")
-        
-        except Exception as e:
-            logger.warning(f"⚠️ Kunde inte komma åt Cloudflare: {e}")
-        
-        return episodes
+
     
     def _check_github_artifacts(self) -> List[Dict]:
         """Kolla GitHub Actions artifacts för nya avsnitt"""

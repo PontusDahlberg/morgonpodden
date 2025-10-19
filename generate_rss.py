@@ -14,8 +14,6 @@ from typing import List, Dict
 # Lägg till src-mappen i Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from cloudflare_uploader import CloudflareUploader
-
 def create_rss_feed(episodes: List[Dict], config: Dict) -> str:
     """Skapa RSS feed XML för podcast"""
     

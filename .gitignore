@@ -1,5 +1,6 @@
 # KÄNSLIGA FILER - LÄGG ALDRIG TILL DESSA I GIT!
 .env
+.env*
 .env.*
 .env.local  
 .env.*.local

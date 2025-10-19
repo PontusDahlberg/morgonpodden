@@ -41,9 +41,6 @@ jobs:
         ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         ELEVENLABS_VOICE_ID_SANNA: ${{ secrets.ELEVENLABS_VOICE_ID_SANNA }}
         ELEVENLABS_VOICE_ID_GEORGE: ${{ secrets.ELEVENLABS_VOICE_ID_GEORGE }}
-        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        CLOUDFLARE_R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET }}
-        CLOUDFLARE_R2_PUBLIC_URL: ${{ secrets.CLOUDFLARE_R2_PUBLIC_URL }}
         
         # Podcast settings
         PODCAST_TITLE: "Människa Maskin Miljö"
@@ -79,8 +76,8 @@ jobs:
       if: success()
       run: |
         echo "✅ Podcast-generering lyckades!"
-        echo "📡 RSS Feed: https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/feed.xml"
-        echo "🌐 Webbsida: https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev"
+        echo "📡 RSS Feed: https://pontusdahlberg.github.io/morgonpodden/feed.xml"
+        echo "🌐 GitHub Pages: https://pontusdahlberg.github.io/morgonpodden"
         
     - name: 🚨 Report Failure
       if: failure()

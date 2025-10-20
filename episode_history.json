@@ -1,5 +1,13 @@
 [
   {
+    "title": "MMM Senaste Nytt - 20 oktober 2025",
+    "description": "Dagens nyheter inom AI, teknik och klimat - måndag den 20 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.\n\nKällor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News",
+    "date": "2025-10-20",
+    "filename": "MMM_senaste_nytt_20251020_151326.mp3",
+    "size": 8139500,
+    "duration": "8:00"
+  },
+  {
     "title": "MMM Senaste Nytt - 19 oktober 2025",
     "description": "Dagens nyheter inom AI, teknik och klimat - söndag den 19 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.\n\nKällor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News",
     "date": "2025-10-19",
@@ -70,13 +78,5 @@
     "filename": "MMM_senaste_nytt_20251005_113953.mp3",
     "size": 8712428,
     "duration": "8:00"
-  },
-  {
-    "title": "MMM Senaste Nytt - 04 October 2025",
-    "description": "Gårdagens nyheter inom AI, teknik och klimat - Friday den 04 October 2025. Test-episod.",
-    "pub_date": "Fri, 04 Oct 2025 06:00:00 +0000",
-    "guid": "https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3",
-    "audio_url": "https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3",
-    "file_size": 6500000
   }
 ]

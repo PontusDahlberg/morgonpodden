@@ -16,8 +16,16 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 19 Oct 2025 19:59:12 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 20 Oct 2025 15:14:59 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 20 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 20 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
+            <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251020_151326.mp3" length="8139500" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251020_151326.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 19 oktober 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 19 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -123,12 +131,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_113953.mp3" length="8712428" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_113953.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 04 October 2025</title>
-            <description>Gårdagens nyheter inom AI, teknik och klimat - Friday den 04 October 2025. Test-episod.</description>
-            <pubDate>Fri, 04 Oct 2025 06:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3" length="6500000" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251004_060000.mp3</guid>
         </item>
     </channel>
 </rss>

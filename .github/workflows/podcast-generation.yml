@@ -50,9 +50,14 @@ jobs:
     # needs: test-code  # Tillfälligt inaktiverat för att fokusera på podcast-generering
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     
+    permissions:
+      contents: write  # Behövs för att committa tillbaka till repo
+    
     steps:
     - name: 📥 Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: 🐍 Setup Python
       uses: actions/setup-python@v4
@@ -119,7 +124,40 @@ jobs:
         retention-days: 90
         if-no-files-found: warn
         
-    - name: 🔔 Notify on success
+    - name: � Commit generated podcast to repository
+      if: success()
+      run: |
+        # Konfigurera Git
+        git config user.name "Podcast Bot"
+        git config user.email "action@github.com"
+        
+        # Lägg till nya filer
+        git add audio/MMM_*.mp3 2>/dev/null || echo "Inga nya audio-filer"
+        git add public/audio/*.mp3 2>/dev/null || echo "Inga nya public audio-filer"  
+        git add public/feed.xml 2>/dev/null || echo "Ingen ny RSS-feed"
+        git add podcast_script_*.txt 2>/dev/null || echo "Inga nya script-filer"
+        git add episode_*.json 2>/dev/null || echo "Inga nya episode-filer"
+        
+        # Kolla om det finns ändringar att committa
+        if git diff --staged --quiet; then
+          echo "📭 Inga nya ändringar att committa"
+        else
+          # Committa ändringar
+          TODAY=$(date +'%Y-%m-%d')
+          git commit -m "🎙️ Nytt podcast-avsnitt: $TODAY
+
+          - Automatiskt genererat avsnitt  
+          - Uppdaterad RSS-feed
+          - Sparad i GitHub Pages för 90 dagar
+          
+          🎵 Lyssna: https://pontusdahlberg.github.io/morgonpodden/
+          📡 RSS: https://pontusdahlberg.github.io/morgonpodden/feed.xml"
+          
+          git push
+          echo "✅ Committat och pushat nya avsnitt!"
+        fi
+        
+    - name: �🔔 Notify on success
       if: success()
       run: |
         echo "✅ Podcast generated successfully!"

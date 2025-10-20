@@ -1,11 +1,10 @@
-name: 📥 Auto-commit Generated Podcasts
+name: 📥 Auto-commit Generated Podcasts (INAKTIVERAD)
 
-# Denna workflow körs efter podcast-generation för att committa nya avsnitt
+# INAKTIVERAD - Commit-logik flyttad direkt till podcast-generation.yml
+# Cross-workflow artifacts fungerar inte pålitligt i GitHub Actions
 on:
-  workflow_run:
-    workflows: ["🎙️ Människa Maskin Miljö - Podcast Generation"]
-    types:
-      - completed
+  # INAKTIVERAD - Workflow körs inte längre
+  workflow_dispatch:  # Endast manuell körning för felsökning
 
 jobs:
   commit-podcast:

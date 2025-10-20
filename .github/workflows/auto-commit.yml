@@ -27,21 +27,42 @@ jobs:
       with:
         name: daily-podcast-${{ github.event.workflow_run.run_number }}
         path: ./
+      continue-on-error: true
         
-    - name: 📋 List downloaded files
+    - name: 📋 Diagnostik och fillistning
       run: |
+        echo "🔍 DIAGNOSTIK:"
+        echo "Workflow run conclusion: ${{ github.event.workflow_run.conclusion }}"
+        echo "Workflow run number: ${{ github.event.workflow_run.run_number }}"
+        echo "Expected artifact name: daily-podcast-${{ github.event.workflow_run.run_number }}"
+        
         echo "📁 Downloaded files:"
         find . -name "*.mp3" -o -name "*.xml" -o -name "*.log" | head -20
+        
+        echo "📁 All files in current directory:"
+        ls -la
         
     - name: 🔧 Configure Git
       run: |
         git config user.name "Podcast Bot"
         git config user.email "action@github.com"
         
-    - name: 💾 Commit new episodes
+    - name: � Check for new files
+      id: check_files
+      run: |
+        # Kolla om artifacts laddades ner
+        if find . -name "*.mp3" | grep -q .; then
+          echo "files_found=true" >> $GITHUB_OUTPUT
+        else
+          echo "files_found=false" >> $GITHUB_OUTPUT
+          echo "⚠️ Inga podcast-filer hittades från artifacts"
+        fi
+        
+    - name: �💾 Commit new episodes
+      if: steps.check_files.outputs.files_found == 'true'
       run: |
         # Lägg till nya filer
-        git add audio/MMM_github_*.mp3 2>/dev/null || echo "Inga nya audio-filer"
+        git add audio/MMM_*.mp3 2>/dev/null || echo "Inga nya audio-filer"
         git add public/audio/*.mp3 2>/dev/null || echo "Inga nya public audio-filer"
         git add public/feed.xml 2>/dev/null || echo "Ingen ny RSS-feed"
         
@@ -63,6 +84,16 @@ jobs:
           git push
           echo "✅ Committat och pushat nya avsnitt!"
         fi
+        
+    - name: 🚨 Notify missing artifacts
+      if: steps.check_files.outputs.files_found == 'false'
+      run: |
+        echo "❌ VARNING: Inga podcast-filer hittades!"
+        echo "🔍 Möjliga orsaker:"
+        echo "  1. Podcast-generation workflow misslyckades"
+        echo "  2. Artifacts skapades inte korrekt"
+        echo "  3. Artifact-namnet matchar inte förväntningen"
+        echo "🔧 Kontrollera podcast-generation workflow för fel"
         
     - name: 🧹 Cleanup old episodes (keep last 30)
       run: |

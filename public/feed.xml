@@ -16,8 +16,16 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 20 Oct 2025 15:14:59 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 21 Oct 2025 04:09:07 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 21 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 21 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
+            <pubDate>Tue, 21 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251021_040731.mp3" length="9312620" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251021_040731.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 20 oktober 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 20 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -125,12 +133,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_122957.mp3" length="8191724" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_122957.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 05 October 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - Sunday den 05 October 2025. Med detaljerade källhänvisningar från svenska och internationella medier. Vädret idag enligt SMHI: Götaland (Göteborg): Lätt regn, 13°C, friska vindar; Svealand (Stockholm): Halvklart, 13°C, måttliga vindar</description>
-            <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_113953.mp3" length="8712428" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251005_113953.mp3</guid>
         </item>
     </channel>
 </rss>

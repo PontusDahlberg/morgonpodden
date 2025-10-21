@@ -57,10 +57,7 @@ def load_config() -> Dict:
 def check_environment() -> bool:
     """Kontrollera att alla nödvändiga miljövariabler finns"""
     required_vars = [
-        'OPENROUTER_API_KEY',
-        'CLOUDFLARE_API_TOKEN',
-        'CLOUDFLARE_R2_BUCKET',
-        'CLOUDFLARE_R2_PUBLIC_URL'
+        'OPENROUTER_API_KEY'
     ]
     
     # Lägg till Google Cloud TTS variabler om det används
@@ -817,41 +814,36 @@ def main():
         # 6. Generera audio
         audio_file = generate_audio(summary, config)
         
-        # 7. Ladda upp audio till R2
-        logger.info("☁️ Laddar upp audio till Cloudflare R2...")
-        uploader = CloudflareUploader()
+        # 7. Audio är nu sparat lokalt - GitHub Actions hanterar upload
+        logger.info("✅ Audio genererat och sparat lokalt för GitHub Pages")
         
-        if not uploader.test_connection():
-            raise Exception("R2 connection failed")
-        
-        # Upload audio
-        remote_audio_name = f"episodes/{week_info['year']}-w{week_info['week']}.mp3"
-        audio_url = uploader.upload_file(audio_file, remote_audio_name)
+        # För GitHub Pages - använd den lokala filen i RSS
+        audio_filename = os.path.basename(audio_file)
+        audio_url = f"https://pontusdahlberg.github.io/morgonpodden/audio/{audio_filename}"
         
         if not audio_url:
             raise Exception("Audio upload failed")
         
-        logger.info(f"✅ Audio uploaded: {audio_url}")
+        logger.info(f"✅ Audio sparat lokalt: {audio_file}")
         
-        # 8. Skapa episod-metadata
-        # 7. Skapa episode metadata med helg/vardags-info
+        # 8. Skapa episod-metadata för GitHub Pages
         is_weekend = datetime.now().weekday() >= 5
         episode_data = create_episode_metadata(week_info, summary, audio_url, is_weekend)
         
-        # 9. Generera och ladda upp RSS
+        # 9. Generera RSS för GitHub Pages  
         rss_config = {
-            "publicUrl": os.getenv('CLOUDFLARE_R2_PUBLIC_URL')
+            "publicUrl": "https://pontusdahlberg.github.io/morgonpodden"
         }
         
-        rss_result = generate_and_upload_rss([episode_data], rss_config, upload_to_r2=True)
+        # Använd vår nya, enkla RSS-generator
+        from generate_rss import generate_rss_feed
+        rss_result = generate_rss_feed([episode_data], rss_config)
         
-        if rss_result.get('public_url'):
-            logger.info(f"✅ RSS feed updated: {rss_result['public_url']}")
-        else:
-            raise Exception("RSS upload failed")
+        logger.info(f"✅ RSS feed genererad: {rss_result['public_url']}")
         
         # 10. Slutrapport
         logger.info("🎉 Podcast-generering lyckades!")
+        logger.info("📡 RSS-feed kommer att uppdateras via GitHub Pages efter commit")
         logger.info(f"📡 RSS Feed: {rss_result['public_url']}")
         logger.info(f"🎵 Episode: {audio_url}")
         logger.info(f"📅 Vecka: {week_info['week']}/{week_info['year']}")

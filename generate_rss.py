@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-RSS Feed Generator för Människa Maskin Miljö
-Skapar en Spotify-kompatibel RSS-feed med Cloudflare R2-integration
+RSS Feed Generator för Människa Maskin Miljö - Enkel GitHub Pages version
+Skapar en Spotify-kompatibel RSS-feed utan Cloudflare R2 krångel
 """
 
 import json
@@ -10,9 +10,27 @@ from datetime import datetime, timezone
 import os
 import sys
 from typing import List, Dict
+import re
+import html
 
 # Lägg till src-mappen i Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+
+def clean_xml_text(text: str) -> str:
+    """Rensa text för säker XML-användning"""
+    if not text:
+        return ""
+    
+    # Ta bort problematiska Unicode-tecken (bold/italic mathematical symbols)
+    text = re.sub(r'[\U0001D400-\U0001D7FF]', '', text)  # Mathematical symbols
+    
+    # Escape HTML entities
+    text = html.escape(text, quote=False)
+    
+    # Ta bort kontrollkaraktärer utom vanliga whitespace
+    text = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text)
+    
+    return text
 
 def create_rss_feed(episodes: List[Dict], config: Dict) -> str:
     """Skapa RSS feed XML för podcast"""
@@ -26,84 +44,71 @@ def create_rss_feed(episodes: List[Dict], config: Dict) -> str:
     channel = ET.SubElement(rss, "channel")
     
     # Podcast metadata
-    ET.SubElement(channel, "title").text = "Människa Maskin Miljö"
-    ET.SubElement(channel, "description").text = "Veckans nyheter inom AI, klimat och teknik. Automatiskt genererad podcast som sammanfattar viktiga utvecklingar för en hållbar framtid."
-    ET.SubElement(channel, "link").text = config.get("publicUrl", "https://manniska-maskin-miljo.r2.dev")
+    ET.SubElement(channel, "title").text = "MMM Senaste Nytt - MÄNNISKA MASKIN MILJÖ"
+    ET.SubElement(channel, "description").text = "Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen."
+    ET.SubElement(channel, "link").text = config.get("publicUrl", "https://pontusdahlberg.github.io/morgonpodden")
     ET.SubElement(channel, "language").text = "sv-SE"
     ET.SubElement(channel, "category").text = "Technology"
-    ET.SubElement(channel, "pubDate").text = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S %z")
-    ET.SubElement(channel, "lastBuildDate").text = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S %z")
     
-    # iTunes-specific tags
-    itunes_author = ET.SubElement(channel, "itunes:author")
-    itunes_author.text = "Pontus - Människa Maskin Miljö"
+    # Datum
+    now = datetime.now(timezone.utc)
+    ET.SubElement(channel, "pubDate").text = now.strftime("%a, %d %b %Y %H:%M:%S +0000")
+    ET.SubElement(channel, "lastBuildDate").text = now.strftime("%a, %d %b %Y %H:%M:%S +0000")
     
-    itunes_subtitle = ET.SubElement(channel, "itunes:subtitle")
-    itunes_subtitle.text = "AI och klimatnyheter varje onsdag"
+    # iTunes metadata
+    ET.SubElement(channel, "itunes:author").text = "Pontus - Människa Maskin Miljö"
+    ET.SubElement(channel, "itunes:subtitle").text = "AI och klimatnyheter varje onsdag"
+    ET.SubElement(channel, "itunes:summary").text = "Människa Maskin Miljö är en AI-genererad podcast som varje onsdag sammanfattar veckans viktigaste nyheter inom artificiell intelligens, klimat och hållbar teknik. Podden ger dig en snabb överblick av utvecklingen inom dessa kritiska områden för vår framtid."
     
-    itunes_summary = ET.SubElement(channel, "itunes:summary")
-    itunes_summary.text = "Människa Maskin Miljö är en AI-genererad podcast som varje onsdag sammanfattar veckans viktigaste nyheter inom artificiell intelligens, klimat och hållbar teknik. Podden ger dig en snabb överblick av utvecklingen inom dessa kritiska områden för vår framtid."
+    # Owner
+    owner = ET.SubElement(channel, "itunes:owner")
+    ET.SubElement(owner, "itunes:name").text = "Pontus"
+    ET.SubElement(owner, "itunes:email").text = "podcast@example.com"
     
-    itunes_owner = ET.SubElement(channel, "itunes:owner")
-    ET.SubElement(itunes_owner, "itunes:name").text = "Pontus"
-    ET.SubElement(itunes_owner, "itunes:email").text = "podcast@example.com"
+    # Image
+    ET.SubElement(channel, "itunes:image").set("href", f"{config.get('publicUrl')}/cover.jpg")
     
-    # Cover image
-    cover_url = f"{config.get('publicUrl', '')}/cover.jpg"
-    ET.SubElement(channel, "itunes:image").set("href", cover_url)
-    
-    # Image tag for RSS
     image = ET.SubElement(channel, "image")
-    ET.SubElement(image, "url").text = cover_url
+    ET.SubElement(image, "url").text = f"{config.get('publicUrl')}/cover.jpg"
     ET.SubElement(image, "title").text = "Människa Maskin Miljö"
-    ET.SubElement(image, "link").text = config.get("publicUrl", "")
+    ET.SubElement(image, "link").text = config.get("publicUrl")
     
     # Lägg till episoder
     for episode in episodes:
         item = ET.SubElement(channel, "item")
         
-        # Använd ny titelstruktur med helg/vardags-distinktion
-        title = episode.get('title', f"MMM Senaste Nytt - {episode.get('date', 'Okänt datum')}")
+        # Grundläggande episode info
+        ET.SubElement(item, "title").text = clean_xml_text(episode.get("title", ""))
+        ET.SubElement(item, "description").text = clean_xml_text(episode.get("description", ""))
+        ET.SubElement(item, "pubDate").text = episode.get("pub_date", "Mon, 01 Jan 2025 00:00:00 +0000")
+        ET.SubElement(item, "guid").text = episode.get("guid", f"mmm-{episode.get('date', '2025-01-01')}")
         
-        ET.SubElement(item, "title").text = title
-        ET.SubElement(item, "description").text = episode['description']
-        ET.SubElement(item, "pubDate").text = episode['pub_date']
-        ET.SubElement(item, "guid").text = episode['guid']
-        
-        # Audio enclosure
+        # Audio file
         enclosure = ET.SubElement(item, "enclosure")
-        enclosure.set("url", episode['audio_url'])
+        enclosure.set("url", episode.get("audio_url", ""))
         enclosure.set("type", "audio/mpeg")
-        enclosure.set("length", str(episode.get('file_size', 15000000)))
+        enclosure.set("length", str(episode.get("file_size", 0)))
         
-        # iTunes episode tags med uppdaterade titlar
-        ET.SubElement(item, "itunes:duration").text = episode.get('duration', '10:00')
+        # iTunes episode metadata
+        ET.SubElement(item, "itunes:duration").text = episode.get("duration", "8:00")
         ET.SubElement(item, "itunes:author").text = "Lisa & Pelle - MMM Senaste Nytt"
-        
-        # Skapa subtitle baserat på episode typ med datum
-        date_swedish = episode.get('date_swedish', '')
-        if episode.get('is_weekend', False):
-            subtitle = f"{episode.get('weekday', 'Helg')} {date_swedish} Fördjupning - Den Gröna Tråden"
-        else:
-            subtitle = f"{episode.get('weekday', 'Vardag')} {date_swedish} Nyheter - Människa Maskin Miljö"
-            
-        ET.SubElement(item, "itunes:subtitle").text = subtitle
-        ET.SubElement(item, "itunes:summary").text = episode['description']
+        ET.SubElement(item, "itunes:subtitle").text = "Vardag  Nyheter - Människa Maskin Miljö"
+        ET.SubElement(item, "itunes:summary").text = clean_xml_text(episode.get("description", ""))
     
-    # Konvertera till sträng
-    return ET.tostring(rss, encoding='unicode', method='xml')
+    # Konvertera till string
+    rss_str = ET.tostring(rss, encoding='unicode', method='xml')
+    return rss_str
 
-def generate_and_upload_rss(episodes: List[Dict], config: Dict, upload_to_r2: bool = True) -> Dict:
+def generate_rss_feed(episodes: List[Dict], config: Dict) -> Dict:
     """
-    Generera RSS feed och ladda upp till Cloudflare R2
+    Generera RSS feed för GitHub Pages
     
     Args:
         episodes: Lista med episod-data
         config: Podcast konfiguration
-        upload_to_r2: Om True, ladda upp till R2, annars bara spara lokalt
     
     Returns:
-        dict: Resultat med local_path och optional public_url
+        dict: Resultat med local_path och content_length
     """
     print("📡 Genererar RSS feed...")
     
@@ -120,103 +125,82 @@ def generate_and_upload_rss(episodes: List[Dict], config: Dict, upload_to_r2: bo
     
     result = {
         "local_path": rss_file,
-        "content_length": len(rss_content)
+        "content_length": len(rss_content),
+        "public_url": f"{config.get('publicUrl', 'https://pontusdahlberg.github.io/morgonpodden')}/feed.xml"
     }
     
     print(f"✅ RSS feed sparad lokalt: {rss_file}")
     print(f"📝 Storlek: {len(rss_content)} tecken")
     
-    # Ladda upp till R2 om requested
-    if upload_to_r2:
-        try:
-            print("☁️ Laddar upp till Cloudflare R2...")
-            uploader = CloudflareUploader()
-            
-            # Test connection först
-            if not uploader.test_connection():
-                print("❌ R2 connection failed")
-                return result
-            
-            # Upload RSS feed
-            public_url = uploader.upload_file(rss_file, "feed.xml", "application/xml")
-            
-            if public_url:
-                result["public_url"] = public_url
-                print(f"✅ RSS feed uploaded: {public_url}")
-                
-                # Upload static files också
-                print("📁 Laddar upp statiska filer...")
-                static_urls = uploader.upload_static_files()
-                if static_urls:
-                    result["static_files"] = static_urls
-                    print(f"✅ {len(static_urls)} statiska filer uppladdade")
-                
-            else:
-                print("❌ RSS upload failed")
-                
-        except Exception as e:
-            print(f"❌ R2 upload error: {e}")
-    
     return result
 
+def load_episodes_from_history() -> List[Dict]:
+    """Ladda episoder från episode_history.json"""
+    try:
+        with open('episode_history.json', 'r', encoding='utf-8') as f:
+            episodes = json.load(f)
+        
+        # Konvertera till RSS-format
+        rss_episodes = []
+        for i, episode in enumerate(episodes):
+            # Skapa audio URL från filename
+            audio_url = f"https://pontusdahlberg.github.io/morgonpodden/audio/{episode['filename']}"
+            
+            # Konvertera datum till pubDate format
+            try:
+                date_obj = datetime.strptime(episode['date'], '%Y-%m-%d')
+                pub_date = date_obj.strftime('%a, %d %b %Y 00:00:00 +0000')
+            except:
+                pub_date = "Mon, 01 Jan 2025 00:00:00 +0000"
+            
+            rss_episode = {
+                "title": episode.get('title', f"MMM Senaste Nytt - {episode.get('date')}"),
+                "description": episode.get('description', ''),
+                "audio_url": audio_url,
+                "guid": f"mmm-{episode.get('date', '2025-01-01')}",
+                "pub_date": pub_date,
+                "file_size": episode.get('size', 0),
+                "duration": episode.get('duration', '8:00'),
+                "date": episode.get('date')
+            }
+            rss_episodes.append(rss_episode)
+        
+        print(f"📚 Laddade {len(rss_episodes)} episoder från historik")
+        return rss_episodes
+        
+    except FileNotFoundError:
+        print("⚠️ episode_history.json hittades inte, använder tom lista")
+        return []
+    except Exception as e:
+        print(f"❌ Fel vid laddning av episoder: {e}")
+        return []
+
 def test_rss_generation():
-    """Test RSS generation och upload"""
-    print("=== RSS GENERATION & UPLOAD TEST ===\n")
+    """Test RSS generation för GitHub Pages"""
+    print("=== RSS GENERATION TEST ===")
     
-    # Test data
-    test_episodes = [
-        {
-            "week": "38",
-            "date": "2025-09-18", 
-            "description": "Vecka 38: AI-genombrott inom klimatmodellering, nya policyer för gröna investeringar och teknikjättarnas hållbarhetsrapporter. Vi täcker också de senaste rönen inom förnybar energi.",
-            "audio_url": "https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/episodes/2025-w38.mp3",
-            "guid": "mmm-2025-w38",
-            "pub_date": "Wed, 18 Sep 2025 07:00:00 +0200",
-            "file_size": 15000000,  # 15MB
-            "duration": "12:30"
-        },
-        {
-            "week": "37", 
-            "date": "2025-09-11",
-            "description": "Vecka 37: ChatGPT-uppdateringar, klimatpolitik och gröna investeringar. Vi diskuterar nya AI-verktyg för miljöanalys och hur teknikjättar satsar på förnybar energi.",
-            "audio_url": "https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev/episodes/2025-w37.mp3",
-            "guid": "mmm-2025-w37", 
-            "pub_date": "Wed, 11 Sep 2025 07:00:00 +0200",
-            "file_size": 14500000,
-            "duration": "11:45"
-        }
-    ]
+    # Ladda episoder från history
+    episodes = load_episodes_from_history()
     
+    # Konfiguration för GitHub Pages
     config = {
-        "publicUrl": "https://manniska-maskin-miljo.9c5323b560f65e0ead7cee1bdba8a690.r2.dev"
+        "publicUrl": "https://pontusdahlberg.github.io/morgonpodden"
     }
     
-    # Generera och ladda upp RSS
-    result = generate_and_upload_rss(test_episodes, config, upload_to_r2=True)
+    # Generera RSS
+    result = generate_rss_feed(episodes, config)
     
     print("\n📊 RESULTAT:")
     print(f"   Lokal fil: {result.get('local_path')}")
     print(f"   Storlek: {result.get('content_length')} tecken")
-    
-    if result.get('public_url'):
-        print(f"   Public URL: {result['public_url']}")
-        print(f"   📡 Feed redo för Spotify/podcasting platforms!")
-    else:
-        print("   ⚠️ Ingen public URL - upload misslyckades eller ej aktiverad")
-    
-    if result.get('static_files'):
-        print(f"   🗂️ Statiska filer: {len(result['static_files'])} upladdade")
+    print(f"   Public URL: {result.get('public_url')}")
+    print(f"   📡 Feed redo för GitHub Pages deployment!")
     
     print("\n🎯 NÄSTA STEG:")
-    if result.get('public_url'):
-        print("1. ✅ RSS feed är live och redo")
-        print("2. 📱 Lägg till feed URL i Spotify for Podcasters")
-        print("3. 🎧 Testa playback i podcast apps")
-        print(f"4. 🔗 Feed URL: {result['public_url']}")
-    else:
-        print("1. 🔧 Fixa R2 upload-problem")
-        print("2. 🔄 Kör test igen")
-        print("3. 📡 Verifiera feed fungerar")
+    print("1. ✅ RSS feed är genererad")
+    print("2. 🔄 Committa och pusha till GitHub")
+    print("3. 📡 GitHub Pages uppdaterar automatiskt")
+    print(f"4. 🔗 Feed URL: {result.get('public_url')}")
     
     # Visa början av feed för debug
     if os.path.exists(result.get('local_path', '')):

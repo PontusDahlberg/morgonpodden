@@ -24,11 +24,11 @@ def clean_xml_text(text: str) -> str:
     # Ta bort problematiska Unicode-tecken (bold/italic mathematical symbols)
     text = re.sub(r'[\U0001D400-\U0001D7FF]', '', text)  # Mathematical symbols
     
-    # Escape HTML entities
-    text = html.escape(text, quote=False)
-    
     # Ta bort kontrollkaraktärer utom vanliga whitespace
     text = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text)
+    
+    # Använd bara html.escape med quote=True för säker XML-escaping
+    text = html.escape(text, quote=True)
     
     return text
 

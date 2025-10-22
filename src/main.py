@@ -13,7 +13,6 @@ from scraper import NewsScraper
 from summarizer import PodcastSummarizer
 from tts_generator import PodcastGenerator
 from rss_generator import RSSGenerator
-from cloudflare_uploader import CloudflareUploader
 from intro_generator import IntroGenerator
 
 load_dotenv()
@@ -32,7 +31,6 @@ class MorgonPoddService:
         self.summarizer = PodcastSummarizer()
         self.tts_generator = PodcastGenerator()
         self.rss_generator = RSSGenerator()
-        self.uploader = CloudflareUploader()
         self.intro_generator = IntroGenerator()
         
         # Load config for main service
@@ -84,11 +82,9 @@ class MorgonPoddService:
             logger.info("Step 5: Updating RSS feed...")
             self.rss_generator.generate_feed()
             
-            # Step 6: Upload to Cloudflare
-            logger.info("Step 6: Uploading to Cloudflare R2...")
-            self.uploader.upload_episode(audio_file, metadata)
-            self.uploader.upload_feed()
-            self.uploader.upload_static_files()
+            # Step 6: Files saved locally for GitHub Pages
+            logger.info("Step 6: Files saved locally for GitHub Pages deployment...")
+            logger.info("✅ Episode ready for GitHub Actions to commit and deploy")
             
             # Calculate total time
             end_time = datetime.now()

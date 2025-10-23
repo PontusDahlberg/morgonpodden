@@ -1,30 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>MMM Senaste Nytt - MÄNNISKA MASKIN MILJÖ</title><description>Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.</description><link>https://pontusdahlberg.github.io/morgonpodden</link><language>sv-SE</language><category>Technology</category><pubDate>Wed, 22 Oct 2025 15:14:15 +0000</pubDate><lastBuildDate>Wed, 22 Oct 2025 15:14:15 +0000</lastBuildDate><itunes:author>Pontus - Människa Maskin Miljö</itunes:author><itunes:subtitle>AI och klimatnyheter varje onsdag</itunes:subtitle><itunes:summary>Människa Maskin Miljö är en AI-genererad podcast som varje onsdag sammanfattar veckans viktigaste nyheter inom artificiell intelligens, klimat och hållbar teknik. Podden ger dig en snabb överblick av utvecklingen inom dessa kritiska områden för vår framtid.</itunes:summary><itunes:owner><itunes:name>Pontus</itunes:name><itunes:email>podcast@example.com</itunes:email></itunes:owner><itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg" /><image><url>https://pontusdahlberg.github.io/morgonpodden/cover.jpg</url><title>Människa Maskin Miljö</title><link>https://pontusdahlberg.github.io/morgonpodden</link></image><item><title>MMM Senaste Nytt - 22 oktober 2025</title><description>Dagens nyheter inom AI, teknik och klimat - onsdag den 22 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+    <channel>
+        <title>MMM Senaste Nytt - MÄNNISKA MASKIN MILJÖ</title>
+        <description>Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.</description>
+        <link>https://pontusdahlberg.github.io/morgonpodden</link>
+        <language>sv-SE</language>
+        <itunes:category text="Technology"/>
+        <itunes:category text="Science"/>
+        <itunes:category text="News"/>
+        <itunes:explicit>false</itunes:explicit>
+        <itunes:author>Pontus Dahlberg</itunes:author>
+        <itunes:summary>Daglig nyhetspodcast om AI, teknik och klimat - en del av Människa Maskin Miljö-familjen</itunes:summary>
+        <itunes:owner>
+            <itunes:name>Pontus Dahlberg</itunes:name>
+            <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
+        </itunes:owner>
+        <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
+        <lastBuildDate>Thu, 23 Oct 2025 04:09:03 +0000</lastBuildDate>
+                <item>
+            <title>MMM Senaste Nytt - 23 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 23 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
+            <pubDate>Thu, 23 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251023_040729.mp3" length="7914860" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251023_040729.mp3</guid>
+        </item>        <item>
+            <title>MMM Senaste Nytt - 22 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 22 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
 Källor som refereras i detta avsnitt:
-• BBC News: &amp;#x27;Father of our democracy&amp;#x27;: Kenya&amp;#x27;s Raila Odinga dies in Indi...
-  https://www.bbc.com/news/articles/c1m39xg4dggo?at_medium=RSS&amp;amp;at_campaign=rss
-• BBC News: China seizes 60,000 maps over &amp;#x27;mislabelled&amp;#x27; Taiwan
-  https://www.bbc.com/news/articles/czr1myxe673o?at_medium=RSS&amp;amp;at_campaign=rss
-• Miljö &amp;amp; Utveckling: Experterna listar: Här är kompetenskraven på hållbarhetschef...
+• BBC News: 'Father of our democracy': Kenya's Raila Odinga dies in Indi...
+  https://www.bbc.com/news/articles/c1m39xg4dggo?at_medium=RSS&at_campaign=rss
+• BBC News: China seizes 60,000 maps over 'mislabelled' Taiwan
+  https://www.bbc.com/news/articles/czr1myxe673o?at_medium=RSS&at_campaign=rss
+• Miljö & Utveckling: Experterna listar: Här är kompetenskraven på hållbarhetschef...
   https://miljo-utveckling.se/karriar-experterna-listar-har-ar-kompetenskraven-pa-hallbarhetschefen-2026/
-• Miljö &amp;amp; Utveckling: Företag uppmanas till klimatpress – här är fem krav inför Co...
+• Miljö & Utveckling: Företag uppmanas till klimatpress – här är fem krav inför Co...
   https://miljo-utveckling.se/foretag-uppmanas-till-klimatpress-har-ar-fem-krav-infor-cop30/
-• Miljö &amp;amp; Utveckling: Forskare: Världens korallrev nära kritisk gräns – men ännu i...
+• Miljö & Utveckling: Forskare: Världens korallrev nära kritisk gräns – men ännu i...
   https://miljo-utveckling.se/forskare-varldens-korallrev-nara-kritisk-grans-men-annu-inte-bortom-raddning/
 • TechCrunch: Less than 3 days remain to secure your exhibit table at Tech...
-  https://techcrunch.com/2025/10/15/less-than-3-days-remain-to-secure-your-exhibit-table-at-techcrunch-disrupt-2025/</description><pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate><guid>mmm-2025-10-22</guid><enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251022_040727.mp3" type="audio/mpeg" length="8147564" /><itunes:duration>8:00</itunes:duration><itunes:author>Lisa &amp; Pelle - MMM Senaste Nytt</itunes:author><itunes:subtitle>Vardag  Nyheter - Människa Maskin Miljö</itunes:subtitle><itunes:summary>Dagens nyheter inom AI, teknik och klimat - onsdag den 22 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• BBC News: &amp;#x27;Father of our democracy&amp;#x27;: Kenya&amp;#x27;s Raila Odinga dies in Indi...
-  https://www.bbc.com/news/articles/c1m39xg4dggo?at_medium=RSS&amp;amp;at_campaign=rss
-• BBC News: China seizes 60,000 maps over &amp;#x27;mislabelled&amp;#x27; Taiwan
-  https://www.bbc.com/news/articles/czr1myxe673o?at_medium=RSS&amp;amp;at_campaign=rss
-• Miljö &amp;amp; Utveckling: Experterna listar: Här är kompetenskraven på hållbarhetschef...
-  https://miljo-utveckling.se/karriar-experterna-listar-har-ar-kompetenskraven-pa-hallbarhetschefen-2026/
-• Miljö &amp;amp; Utveckling: Företag uppmanas till klimatpress – här är fem krav inför Co...
-  https://miljo-utveckling.se/foretag-uppmanas-till-klimatpress-har-ar-fem-krav-infor-cop30/
-• Miljö &amp;amp; Utveckling: Forskare: Världens korallrev nära kritisk gräns – men ännu i...
-  https://miljo-utveckling.se/forskare-varldens-korallrev-nara-kritisk-grans-men-annu-inte-bortom-raddning/
-• TechCrunch: Less than 3 days remain to secure your exhibit table at Tech...
-  https://techcrunch.com/2025/10/15/less-than-3-days-remain-to-secure-your-exhibit-table-at-techcrunch-disrupt-2025/</itunes:summary></item><item><title>MMM Senaste Nytt - 21 oktober 2025</title><description>Dagens nyheter inom AI, teknik och klimat - tisdag den 21 oktober 2025. Automatiskt genererad podcast med Lisa och Pelle.</description><pubDate>Tue, 21 Oct 2025 00:00:00 +0000</pubDate><guid>mmm-2025-10-21</guid><enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251021_073314.mp3" type="audio/mpeg" length="8306924" /><itunes:duration>8:00</itunes:duration><itunes:author>Lisa &amp; Pelle - MMM Senaste Nytt</itunes:author><itunes:subtitle>Vardag  Nyheter - Människa Maskin Miljö</itunes:subtitle><itunes:summary>Dagens nyheter inom AI, teknik och klimat - tisdag den 21 oktober 2025. Automatiskt genererad podcast med Lisa och Pelle.</itunes:summary></item></channel></rss>
+  https://techcrunch.com/2025/10/15/less-than-3-days-remain-to-secure-your-exhibit-table-at-techcrunch-disrupt-2025/</description>
+            <pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251022_040727.mp3" length="8147564" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251022_040727.mp3</guid>
+        </item>        <item>
+            <title>MMM Senaste Nytt - 21 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 21 oktober 2025. Automatiskt genererad podcast med Lisa och Pelle.</description>
+            <pubDate>Tue, 21 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251021_073314.mp3" length="8306924" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251021_073314.mp3</guid>
+        </item>
+    </channel>
+</rss>

@@ -27,7 +27,10 @@ def clean_xml_text(text: str) -> str:
     # Ta bort kontrollkaraktärer utom vanliga whitespace
     text = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text)
     
-    # Använd bara html.escape med quote=True för säker XML-escaping
+    # Normalisera befintliga entiteter först för att undvika dubbel-escaping
+    text = html.unescape(text)
+    
+    # Escapa för säker XML-serialisering
     text = html.escape(text, quote=True)
     
     return text

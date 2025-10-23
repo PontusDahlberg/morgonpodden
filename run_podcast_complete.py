@@ -11,7 +11,8 @@ import logging
 import shutil
 import requests
 import re
-from datetime import datetime, timedelta
+import html
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from dotenv import load_dotenv
 
@@ -690,6 +691,16 @@ def add_music_to_podcast(audio_file: str) -> str:
         logger.error(f"[MUSIC] Fel vid musiktillägg: {e}")
         return audio_file  # Returnera original om musik misslyckas
 
+def clean_xml_text(text: Optional[str]) -> str:
+    """Sanitize text for safe XML output"""
+    if not text:
+        return ""
+
+    cleaned = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', str(text))
+    normalized = html.unescape(cleaned)
+    return html.escape(normalized, quote=True)
+
+
 def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
     """Generera RSS-feed för GitHub Pages"""
     rss_items = []
@@ -715,12 +726,17 @@ def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
             file_size = episode.get('size', 7000000)
             guid = audio_url
         
+        safe_title = clean_xml_text(episode.get('title', ''))
+        safe_description = clean_xml_text(episode.get('description', ''))
+        safe_audio_url = html.escape(audio_url, quote=True)
+        safe_guid = clean_xml_text(guid)
+
         rss_items.append(f"""        <item>
-            <title>{episode['title']}</title>
-            <description>{episode['description']}</description>
+            <title>{safe_title}</title>
+            <description>{safe_description}</description>
             <pubDate>{pub_date}</pubDate>
-            <enclosure url="{audio_url}" length="{file_size}" type="audio/mpeg"/>
-            <guid>{guid}</guid>
+            <enclosure url="{safe_audio_url}" length="{file_size}" type="audio/mpeg"/>
+            <guid>{safe_guid}</guid>
         </item>""")
     
     rss_content = f"""<?xml version="1.0" encoding="UTF-8"?>

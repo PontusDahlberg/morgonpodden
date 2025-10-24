@@ -64,6 +64,31 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+SWEDISH_WEEKDAYS = {
+    'Monday': 'måndag',
+    'Tuesday': 'tisdag',
+    'Wednesday': 'onsdag',
+    'Thursday': 'torsdag',
+    'Friday': 'fredag',
+    'Saturday': 'lördag',
+    'Sunday': 'söndag'
+}
+
+SWEDISH_MONTHS = {
+    1: 'januari',
+    2: 'februari',
+    3: 'mars',
+    4: 'april',
+    5: 'maj',
+    6: 'juni',
+    7: 'juli',
+    8: 'augusti',
+    9: 'september',
+    10: 'oktober',
+    11: 'november',
+    12: 'december'
+}
+
 def get_swedish_weather() -> str:
     """Hämta aktuell väderdata från SMHI för svenska landskap"""
     try:
@@ -160,11 +185,7 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     today = datetime.now()
     date_str = today.strftime('%Y-%m-%d')
     weekday = today.strftime('%A')
-    swedish_weekdays = {
-        'Monday': 'måndag', 'Tuesday': 'tisdag', 'Wednesday': 'onsdag',
-        'Thursday': 'torsdag', 'Friday': 'fredag', 'Saturday': 'lördag', 'Sunday': 'söndag'
-    }
-    swedish_weekday = swedish_weekdays.get(weekday, weekday)
+    swedish_weekday = SWEDISH_WEEKDAYS.get(weekday, weekday)
     
     # Läs tidigare använda artiklar för upprepningsfilter (senaste 7 dagarna)
     used_articles = set()
@@ -201,7 +222,10 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
         logger.warning(f"[HISTORY] Upprepningsfilter misslyckades: {e}")
     
     # Läs in tillgängliga artiklar för referens - ENDAST från seriösa nyhetskällor
-    available_articles = []
+    available_articles: List[Dict] = []
+    candidate_articles: List[Dict] = []
+    repeat_articles: List[Dict] = []
+    candidate_ids = set()
     
     # Lista över accepterade nyckelord för trovärdiga nyhetskällor (inkl. klimatkällor)
     trusted_sources = {
@@ -244,12 +268,20 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
                                 if any(social in link_url.lower() for social in ['facebook.com', 'twitter.com', 'instagram.com', 'tiktok.com']):
                                     logger.warning(f"[FILTER] Hoppar över social media länk: {link_url}")
                                     continue
-                            
+
+                            article_id = item.get('link') or item.get('title', '').lower()
+                            if not article_id or article_id in candidate_ids:
+                                continue
+
+                            is_repeat = article_id in used_articles
+                            if is_repeat:
+                                logger.info(f"[FILTER] Upprepad artikel hittad: {item.get('title', '')[:50]}...")
+
                             # Innehållsfilter: bara relevanta ämnen för teknik/AI/klimat-podcast
                             title_text = item.get('title', '').lower()
                             content_text = item.get('content', '').lower()
                             combined_text = title_text + " " + content_text
-                            
+
                             # Relevanta nyckelord för MMM Senaste Nytt
                             relevant_keywords = [
                                 # AI & Teknik
@@ -264,7 +296,7 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
                                 'naturskydd', 'energieffektivitet', 'fossila bränslen', 'elkraft',
                                 'väder', 'temperatur', 'havsnivå', 'smältning', 'is', 'torka'
                             ]
-                            
+
                             # Irrelevanta ämnen som vi ska filtrera bort (UTÖKAD LISTA)
                             irrelevant_keywords = [
                                 'våld', 'mord', 'knivskuren', 'skjutning', 'död', 'dödad',
@@ -280,34 +312,43 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
                                 'rökdykning', 'räddningstjänst', 'brandkår', 'teckenspråk', 'språk',
                                 'kultur', 'bok', 'författare', 'adolescence', 'gruvdrift', 'malmberget'
                             ]
-                            
-                            # Kolla om artikeln innehåller irrelevant innehåll
+
                             has_irrelevant = any(keyword in combined_text for keyword in irrelevant_keywords)
                             if has_irrelevant:
                                 logger.info(f"[FILTER] Filtrerar bort irrelevant artikel: {title_text[:50]}...")
                                 continue
-                            
-                            # OBLIGATORISK positivfiltrering: ALLA artiklar MÅSTE innehålla relevanta nyckelord
+
+                            article_info = {
+                                'source': source_name,
+                                'title': item['title'][:100],
+                                'content': item.get('content', '')[:300],
+                                'link': item['link']
+                            }
+                            candidate_ids.add(article_id)
+                            candidate_articles.append(article_info)
+
+                            if is_repeat:
+                                repeat_articles.append(article_info)
+                                continue
+
                             has_relevant = any(keyword in combined_text for keyword in relevant_keywords)
                             if not has_relevant:
                                 logger.info(f"[FILTER] Filtrerar bort icke-relevant artikel: {title_text[:50]}...")
                                 continue
-                            
-                            # Upprepningsfilter - kolla om vi redan använt denna artikel
-                            article_id = item.get('link') or item.get('title', '').lower()
-                            if article_id in used_articles:
-                                logger.info(f"[FILTER] Filtrerar bort upprepning: {title_text[:50]}...")
-                                continue
-                                
-                            available_articles.append({
-                                'source': source_name,
-                                'title': item['title'][:100],
-                                'content': item.get('content', '')[:300],  # Tom om saknas
-                                'link': item['link']
-                            })
+
+                            available_articles.append(article_info)
     except Exception as e:
         logger.warning(f"[CONTENT] Kunde inte läsa artikeldata: {e}")
     
+    if len(available_articles) < 6 and repeat_articles:
+        needed = 6 - len(available_articles)
+        logger.warning(f"[FILTER] Fyller på med {min(needed, len(repeat_articles))} artiklar från senaste dagarna")
+        available_articles.extend(repeat_articles[:needed])
+
+    if not available_articles and candidate_articles:
+        logger.warning("[FILTER] Inga nya artiklar klarade filtren - använder fallback från trovärdiga källor")
+        available_articles = candidate_articles[:8]
+
     # Skapa artikelreferenser för AI
     article_refs = ""
     if available_articles:
@@ -691,6 +732,22 @@ def add_music_to_podcast(audio_file: str) -> str:
         logger.error(f"[MUSIC] Fel vid musiktillägg: {e}")
         return audio_file  # Returnera original om musik misslyckas
 
+
+def enforce_intro_date(script_text: str, weekday: str, day: int, month: str) -> str:
+    """Replace incorrect intro date phrases with the actual Swedish date."""
+    if not script_text:
+        return script_text
+
+    def _replace_intro(match: re.Match) -> str:
+        intro_line = match.group(0)
+        comma_index = intro_line.find(',')
+        suffix = intro_line[comma_index:] if comma_index != -1 else ''
+        logger.info("[SCRIPT] Uppdaterar intro-datum till dagens datum")
+        return f"Idag är det {weekday} den {day} {month}{suffix}"
+
+    return re.sub(r"Idag är det[^\n]*", _replace_intro, script_text, count=1)
+
+
 def clean_xml_text(text: Optional[str]) -> str:
     """Sanitize text for safe XML output"""
     if not text:
@@ -800,6 +857,10 @@ def main():
         # Generera strukturerat podcast-innehåll med riktig väderdata
         logger.info("[AI] Genererar strukturerat podcast-innehåll...")
         podcast_content, referenced_articles = generate_structured_podcast_content(weather_info)
+
+        weekday_swedish = SWEDISH_WEEKDAYS.get(today.strftime('%A'), today.strftime('%A'))
+        month_swedish = SWEDISH_MONTHS.get(today.month, today.strftime('%B').lower())
+        podcast_content = enforce_intro_date(podcast_content, weekday_swedish, today.day, month_swedish)
         
         # Spara manus för referens
         script_path = f"podcast_script_{timestamp}.txt"
@@ -963,22 +1024,12 @@ def main():
             except Exception as e:
                 logger.error(f"[RSS] Fel vid fallback-källor: {e}")
         
-        # Svenska månadsnamn
-        swedish_months = {
-            1: 'januari', 2: 'februari', 3: 'mars', 4: 'april', 5: 'maj', 6: 'juni',
-            7: 'juli', 8: 'augusti', 9: 'september', 10: 'oktober', 11: 'november', 12: 'december'
-        }
-        swedish_weekdays = {
-            'Monday': 'måndag', 'Tuesday': 'tisdag', 'Wednesday': 'onsdag',
-            'Thursday': 'torsdag', 'Friday': 'fredag', 'Saturday': 'lördag', 'Sunday': 'söndag'
-        }
-        
-        month_swedish = swedish_months[today.month]
-        weekday_swedish = swedish_weekdays[today.strftime('%A')]
+        month_swedish = SWEDISH_MONTHS[today.month]
+        weekday_swedish = SWEDISH_WEEKDAYS.get(today.strftime('%A'), today.strftime('%A'))
         
         episode_data = {
-            'title': f"MMM Senaste Nytt - {today.strftime('%d')} {month_swedish} {today.year}",
-            'description': f"Dagens nyheter inom AI, teknik och klimat - {weekday_swedish} den {today.strftime('%d')} {month_swedish} {today.year}. Med detaljerade källhänvisningar från svenska och internationella medier.{sources_text}",
+            'title': f"MMM Senaste Nytt - {today.day} {month_swedish} {today.year}",
+            'description': f"Dagens nyheter inom AI, teknik och klimat - {weekday_swedish} den {today.day} {month_swedish} {today.year}. Med detaljerade källhänvisningar från svenska och internationella medier.{sources_text}",
             'date': today.strftime('%Y-%m-%d'),
             'filename': audio_filename,
             'size': file_size,

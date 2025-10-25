@@ -16,8 +16,16 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 24 Oct 2025 04:08:59 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 25 Oct 2025 04:09:23 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 25 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 25 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251025_040723.mp3" length="10241516" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251025_040723.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 24 oktober 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 24 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 

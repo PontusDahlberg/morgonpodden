@@ -134,6 +134,46 @@
       "description": "Miljö- och klimatnyheter"
     },
     {
+      "name": "Naturvårdsverket",
+      "url": "https://www.naturvardsverket.se/om-oss/aktuellt/nyheter-och-pressmeddelanden/rss/",
+      "type": "climate",
+      "maxItems": 8,
+      "enabled": true,
+      "description": "Officiella miljönyheter från Naturvårdsverket"
+    },
+    {
+      "name": "Sveriges Natur",
+      "url": "https://www.sverigesnatur.org/feed/",
+      "type": "climate",
+      "maxItems": 6,
+      "enabled": true,
+      "description": "Natur- och miljönyheter från Sveriges Natur"
+    },
+    {
+      "name": "Energimyndigheten",
+      "url": "https://www.energimyndigheten.se/rss/nyheter/",
+      "type": "climate",
+      "maxItems": 6,
+      "enabled": true,
+      "description": "Nyheter om energi och klimat från Energimyndigheten"
+    },
+    {
+      "name": "SVT Nyheter Klimat",
+      "url": "https://www.svt.se/nyheter/amne/Klimat?rss",
+      "type": "climate",
+      "maxItems": 10,
+      "enabled": true,
+      "description": "SVT:s klimatrapportering"
+    },
+    {
+      "name": "Aktuell Hållbarhet",
+      "url": "https://www.aktuellhallbarhet.se/feed/",
+      "type": "climate",
+      "maxItems": 8,
+      "enabled": true,
+      "description": "Svensk tidskrift om hållbarhet och miljö"
+    },
+    {
       "name": "TechCrunch",
       "url": "https://techcrunch.com/feed/",
       "type": "tech",

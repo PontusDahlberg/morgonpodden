@@ -223,6 +223,8 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     
     # Läs in tillgängliga artiklar för referens - ENDAST från seriösa nyhetskällor
     available_articles: List[Dict] = []
+    climate_articles: List[Dict] = []  # Prioriterade klimat/miljö-artiklar
+    tech_articles: List[Dict] = []     # Tech/AI-artiklar
     candidate_articles: List[Dict] = []
     repeat_articles: List[Dict] = []
     candidate_ids = set()
@@ -234,8 +236,17 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
         'Dagens Industri', 'Computer Sweden', 'Ny Teknik', 'NyTeknik', 'Wired',
         'TechCrunch', 'Verge', 'Ars Technica', 'IEEE Spectrum',
         'Nature', 'Science', 'MIT Technology Review', 'Breakit', 'Digitala Verkligheter',
-        'Miljö & Utveckling', 'Naturskyddsföreningen', 'SMHI', 'European Environment Agency',
-        'EEA', 'European Commission', 'EU Commission', 'Eurostat', 'Europa.eu'
+        'Miljö & Utveckling', 'Naturskyddsföreningen', 'Naturvårdsverket', 'Sveriges Natur',
+        'Energimyndigheten', 'Aktuell Hållbarhet', 'SMHI', 'European Environment Agency',
+        'EEA', 'European Commission', 'EU Commission', 'Eurostat', 'Europa.eu',
+        'CleanTechnica', 'Climate Central'
+    }
+    
+    # Klimat- och miljökällor för prioritering
+    climate_sources = {
+        'Miljö & Utveckling', 'Naturskyddsföreningen', 'Naturvårdsverket', 'Sveriges Natur',
+        'Energimyndigheten', 'Aktuell Hållbarhet', 'SMHI', 'CleanTechnica', 'Climate Central',
+        'European Environment Agency', 'EEA'
     }
     
     try:
@@ -336,9 +347,36 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
                                 logger.info(f"[FILTER] Filtrerar bort icke-relevant artikel: {title_text[:50]}...")
                                 continue
 
-                            available_articles.append(article_info)
+                            # Kontrollera om det är en klimat-artikel
+                            climate_keywords = [
+                                'klimat', 'miljö', 'hållbarhet', 'förnybar energi', 'koldioxid', 'co2',
+                                'växthusgaser', 'global uppvärmning', 'klimatförändringar', 'paris',
+                                'elbil', 'solenergi', 'vindkraft', 'batterier', 'elektricitet',
+                                'återvinning', 'cirkulär ekonomi', 'biodiversitet', 'ekosystem',
+                                'naturskydd', 'energieffektivitet', 'fossila bränslen', 'elkraft',
+                                'väder', 'temperatur', 'havsnivå', 'smältning', 'is', 'torka'
+                            ]
+                            is_climate = any(kw in combined_text for kw in climate_keywords)
+                            is_climate_source = any(src.lower() in source_name.lower() for src in climate_sources)
+                            
+                            if is_climate or is_climate_source:
+                                climate_articles.append(article_info)
+                                logger.info(f"[FILTER] ✅ Klimat/miljö-artikel: {title_text[:50]}...")
+                            else:
+                                tech_articles.append(article_info)
+                                logger.info(f"[FILTER] Tech/AI-artikel: {title_text[:50]}...")
     except Exception as e:
         logger.warning(f"[CONTENT] Kunde inte läsa artikeldata: {e}")
+    
+    # Bygg balanserad artikellista: MINST 50% klimat/miljö
+    logger.info(f"[BALANCE] Klimat/miljö: {len(climate_articles)}, Tech/AI: {len(tech_articles)}")
+    
+    # Ta 60% klimat, 40% tech för att säkerställa balans
+    climate_count = max(6, int(len(climate_articles) * 0.6)) if climate_articles else 0
+    tech_count = max(4, int(len(tech_articles) * 0.4)) if tech_articles else 0
+    
+    available_articles = climate_articles[:climate_count] + tech_articles[:tech_count]
+    logger.info(f"[BALANCE] Balanserad lista: {len(climate_articles[:climate_count])} klimat + {len(tech_articles[:tech_count])} tech = {len(available_articles)} totalt")
     
     if len(available_articles) < 6 and repeat_articles:
         needed = 6 - len(available_articles)
@@ -373,10 +411,15 @@ DETALJERAD STRUKTUR:
 5. SAMMANFATTNING (60-90 sekunder) - Detaljerad recap av alla ämnen
 6. OUTRO & MMM-KOPPLING (60-90 sekunder) - STARK koppling till huvudpodden "Människa Maskin Miljö"
 
-INNEHÅLLSKRAV:
+INNEHÅLLSKRAV OCH ÄMNESFÖRDELNING:
 - Lisa säger "MMM Senaste Nytt" naturligt och professionellt (inte överdrivet)
 - Använd RIKTIG väderdata: "{weather_info}" - inte påhittade kommentarer om "fin dag i Stockholm"
 - Minst 6 konkreta nyheter från svenska och internationella källor
+- OBLIGATORISK ÄMNESFÖRDELNING (mycket viktigt för balans):
+  * MINST 50% av nyheterna MÅSTE handla om KLIMAT, MILJÖ och HÅLLBARHET
+  * Maximalt 50% får handla om AI och teknologi (inte klimatrelaterad)
+  * Prioritera SVENSKA klimat- och miljönyheter när de finns tillgängliga
+  * Exempel: Om du har 6 nyheter, MINST 3 ska vara klimat/miljö
 - Varje nyhet ska vara minst 150-200 ord inklusive diskussion
 - Lisa och Pelle ska ha naturliga konversationer med följdfrågor
 - Inkludera siffror, fakta och konkreta exempel

@@ -262,8 +262,9 @@ class GoogleCloudTTS:
         # AI: använd "ɑːːiːː" med extra längdmarkörer för mycket långa ljud
         text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑːːiːː">AI</phoneme>', text)
         text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑːːiːː">Ai</phoneme>', text)
-        text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="ɛʊ">EU</phoneme>', text)
-        text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="ɛʊ">Eu</phoneme>', text)
+        # EU: använd "eːuː" för korrekt svenskt uttal (inte "e-o" utan "e-u")
+        text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="eːuː">EU</phoneme>', text)
+        text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="eːuː">Eu</phoneme>', text)
         text = re.sub(r'\bUSA\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">USA</phoneme>', text)
         text = re.sub(r'\bUsa\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">Usa</phoneme>', text)
         # SMHI: naturligt uttal som "s.m.h.i" utan överbetoning på sista I

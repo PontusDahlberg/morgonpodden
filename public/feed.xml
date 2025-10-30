@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 29 Oct 2025 04:13:01 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 30 Oct 2025 04:09:38 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 30 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 30 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Tekniska problem med molntjänster
+  https://www.svt.se/nyheter/utrikes/tekniska-problem-med-molntjanster
+• BBC News: Dutch centrist liberals neck and neck with populist Wilders ...
+  https://www.bbc.com/news/articles/cpwvy4w875vo?at_medium=RSS&amp;at_campaign=rss
+• BBC News: France enshrines need for consent into rape law in wake of G...
+  https://www.bbc.com/news/articles/ce9d3ldgg5vo?at_medium=RSS&amp;at_campaign=rss
+• Miljö &amp; Utveckling: Över 130 organisationer i öppet brev om bekämpningsmedel
+  https://miljo-utveckling.se/over-130-organisationer-i-oppet-brev-om-bekampningsmedel/
+• Miljö &amp; Utveckling: Bill Gates svänger i klimatfrågan – det vill han satsa på i ...
+  https://miljo-utveckling.se/bill-gates-svanger-i-klimatfragan-det-vill-han-satsa-pa-i-stallet/
+• Miljö &amp; Utveckling: Rapport: Så mycket ökar utsläppen från Sveriges rikaste
+  https://miljo-utveckling.se/klimat-sa-mycket-okar-utslappen-fran-sveriges-rikaste/</description>
+            <pubDate>Thu, 30 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251030_040747.mp3" length="7996652" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251030_040747.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 29 oktober 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 29 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 

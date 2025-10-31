@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 30 Oct 2025 04:09:38 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 31 Oct 2025 04:09:52 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 31 oktober 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 31 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Röda korset: ”Massiv förödelse i spåren av Melissa”
+  https://www.svt.se/nyheter/utrikes/roda-korset-massiv-forodelse-i-sparen-av-melissa
+• SVT Nyheter: Brittiska kungahuset: Prins Andrews förlorar prinstitel
+  https://www.svt.se/nyheter/utrikes/process-inledd-prins-andrews-titlar-ska-nu-avskaffas
+• Dagens Nyheter: Elina Sahlin: ”Halva Malmö” bidrar till normaliseringen av s...
+  https://www.dn.se/kultur/elina-sahlin-halva-malmo-bidrar-till-normaliseringen-av-strypsex/
+• Miljö &amp; Utveckling: FN: Finansiering till klimatanpassning måste tolvfaldigas
+  https://miljo-utveckling.se/fn-finansiering-till-klimatanpassning-maste-tolvfaldigas/
+• Miljö &amp; Utveckling: Lista: här är framgångsrecepten för återbruk
+  https://miljo-utveckling.se/ny-rapport-har-ar-framgangsrecepten-for-aterbruk/
+• Miljö &amp; Utveckling: Miljömålsberedningen: Sverige klimatmål till 2030 blir kvar
+  https://miljo-utveckling.se/politik-klimatmal-till-2030-behalls/</description>
+            <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251031_040812.mp3" length="7721708" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251031_040812.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 30 oktober 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 30 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -161,12 +181,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251022_040727.mp3" length="8147564" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251022_040727.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 21 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 21 oktober 2025. Automatiskt genererad podcast med Lisa och Pelle.</description>
-            <pubDate>Tue, 21 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251021_073314.mp3" length="8306924" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251021_073314.mp3</guid>
         </item>
     </channel>
 </rss>

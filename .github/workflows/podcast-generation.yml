@@ -91,23 +91,7 @@ jobs:
     - name: 📰 Scrape fresh news content
       run: |
         echo "📰 Scraping fresh content from all sources..."
-        python -c "
-        import asyncio
-        import sys
-        import os
-        sys.path.append('src')
-        from scraper import NewsScraper
-        
-        async def scrape():
-            scraper = NewsScraper(sources_file='sources.json')
-            data = await scraper.scrape_all()
-            import json
-            with open('scraped_content.json', 'w', encoding='utf-8') as f:
-                json.dump(data, f, indent=2, ensure_ascii=False)
-            print(f'✅ Scraped {len(data)} sources')
-        
-        asyncio.run(scrape())
-        "
+        python scrape_news.py
         echo "✅ Fresh content scraped and saved"
         
     - name: 🎙️ Generate podcast (Complete version)

@@ -147,7 +147,7 @@ class SMHIWeatherService:
                     symbol = weather["weather_symbol"]
                     
                     if temp is not None and wind_speed is not None and symbol is not None:
-                        temp_str = f"{temp:.0f}°C"
+                        temp_str = f"{temp:.0f} grader"
                         weather_desc = self.get_weather_symbol_description(symbol)
                         wind_desc = self.get_wind_description(wind_speed)
                         

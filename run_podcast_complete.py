@@ -451,6 +451,9 @@ DIALOGREGLER:
 - Inkludera korta pauser för eftertanke: "Hmm, det är en bra poäng..."
 - Använd svenska uttryck och vardagligt språk
 - Variera meningslängderna för naturligt flyt
+- KRITISKT: Varje replik måste logiskt följa föregående - ingen får svara på något som inte sagts ännu
+- KRITISKT: Om någon nämner en siffra/statistik, måste den först ha presenterats i tidigare replik
+- Kontrollera att alla hänvisningar ("det", "den siffran", "som du sa") faktiskt refererar till något som redan sagts
 
 FORMAT: Skriv ENDAST som ren dialog med "Talarnamn: Text" - INGEN markdown eller formatering!
 FÖRBJUDET: **, ##, ---, ###, rubriker, markeringar, lyssnarfrågor, "nästa avsnitt" - bara ren dialog!

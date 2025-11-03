@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 02 Nov 2025 04:09:56 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 03 Nov 2025 04:13:28 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 3 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 3 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• BBC News: At least eight dead after magnitude-6.3 earthquake hits Afgh...
+  https://www.bbc.com/news/articles/c8jrw12d3edo?at_medium=RSS&amp;at_campaign=rss
+• TechCrunch: Alphabet is increasingly launching “moonshot” projects as in...
+  https://techcrunch.com/2025/11/02/alphabet-is-increasingly-launching-moonshot-projects-as-independent-companies-heres-why/
+• The Verge: The best new movies to stream this week
+  https://www.theverge.com/entertainment/812193/the-best-new-movies-to-stream-this-week
+• The Verge: The perfect grocery list-making app doesn’t exist
+  https://www.theverge.com/tech/809152/grocery-list-app-paprika-better-meal-google-keep
+• MIT Technology Review: The Download: down the Mandela effect rabbit hole, and the p...
+  https://www.technologyreview.com/2025/10/31/1127444/the-download-down-the-mandela-effect-rabbit-hole-and-the-promise-of-a-vaccine-for-colds/
+• MIT Technology Review: Leveraging the clinician’s expertise with agentic AI
+  https://www.technologyreview.com/2025/10/30/1125697/leveraging-the-clinicians-expertise-with-agentic-ai/</description>
+            <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251103_041145.mp3" length="8358380" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251103_041145.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 2 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 2 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -173,14 +193,6 @@ Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
             <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251024_040723.mp3" length="8673260" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251024_040723.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 23 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 23 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
-            <pubDate>Thu, 23 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251023_040729.mp3" length="7914860" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251023_040729.mp3</guid>
         </item>
     </channel>
 </rss>

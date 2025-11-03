@@ -258,10 +258,10 @@ class GoogleCloudTTS:
         # Ta bort upprepade ord först (som IPCC IPCC)
         text = self._remove_word_duplicates(text)
         
-        # Använd SSML med IPA för extra långa vokalljud som i SAAB och BIL
-        # AI: använd "ɑːːiːː" med extra längdmarkörer för mycket långa ljud
-        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑːːiːː">AI</phoneme>', text)
-        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑːːiːː">Ai</phoneme>', text)
+        # Använd SSML med IPA för korrekt svenskt uttal
+        # AI: bokstaveras A-I men utan långa pauser mellan bokstäverna
+        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑː.iː">AI</phoneme>', text)
+        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑː.iː">Ai</phoneme>', text)
         # EU: använd "eːuː" för korrekt svenskt uttal (inte "e-o" utan "e-u")
         text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="eːuː">EU</phoneme>', text)
         text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="eːuː">Eu</phoneme>', text)
@@ -269,6 +269,12 @@ class GoogleCloudTTS:
         text = re.sub(r'\bUsa\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">Usa</phoneme>', text)
         # SMHI: naturligt uttal som "s.m.h.i" utan överbetoning på sista I
         text = re.sub(r'\bSMHI\b', '<phoneme alphabet="ipa" ph="ɛs.ɛm.hoː.iː">SMHI</phoneme>', text)
+        # NATO: uttalas som ett ord "nato" (inte bokstaveras N-A-T-O)
+        text = re.sub(r'\bNATO\b', '<phoneme alphabet="ipa" ph="ˈnɑːtʊ">NATO</phoneme>', text)
+        text = re.sub(r'\bNato\b', '<phoneme alphabet="ipa" ph="ˈnɑːtʊ">Nato</phoneme>', text)
+        # Brådskande: uttalas "bråsskande" med kort å (D-et hörs inte)
+        text = re.sub(r'\bbrådskande\b', '<phoneme alphabet="ipa" ph="ˈbrɔs.skande">brådskande</phoneme>', text)
+        text = re.sub(r'\bBrådskande\b', '<phoneme alphabet="ipa" ph="ˈbrɔs.skande">Brådskande</phoneme>', text)
         
         # VIKTIGT: Omslut hela texten med <speak>-taggen som SSML kräver
         text = f"<speak>{text}</speak>"

@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 03 Nov 2025 04:13:28 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 04 Nov 2025 04:09:29 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 4 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 4 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Då får svenskar resa visumfritt till Kina
+  https://www.svt.se/nyheter/inrikes/da-far-svenskar-resa-visumfritt-till-kina
+• Dagens Nyheter: Isobel Hadley-Kamptz: Det som hände på kyrkogårdarna i helge...
+  https://www.dn.se/ledare/isobel-hadley-kamptz-det-som-hande-pa-kyrkogardarna-i-helgen-visar-hur-felaktig-bilden-av-svenskar/
+• BBC News: China academic intimidation claim referred to counter-terror...
+  https://www.bbc.com/news/articles/cj0e1lyyvdlo?at_medium=RSS&amp;at_campaign=rss
+• Miljö &amp; Utveckling: Svensk startup gör grön kiselrevolution
+  https://miljo-utveckling.se/svensk-startup-gor-gron-kiselrevolution/
+• TechCrunch: Studio Ghibli and other Japanese publishers want OpenAI to s...
+  https://techcrunch.com/2025/11/03/studio-ghibli-and-other-japanese-publishers-want-openai-to-stop-training-on-their-work/
+• MIT Technology Review: The State of AI: Is China about to win the race?
+  https://www.technologyreview.com/2025/11/03/1126780/the-state-of-ai-is-china-about-to-win-the-race/</description>
+            <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251104_040754.mp3" length="7381868" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251104_040754.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 3 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 3 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -185,14 +205,6 @@ Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
             <pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251025_040723.mp3" length="10241516" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251025_040723.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 24 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 24 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
-            <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251024_040723.mp3" length="8673260" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251024_040723.mp3</guid>
         </item>
     </channel>
 </rss>

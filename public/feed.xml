@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 04 Nov 2025 04:09:29 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 05 Nov 2025 04:10:36 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 5 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 5 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: The Weather Stations visuella inramning adderar lager till m...
+  https://www.dn.se/kultur/the-weather-stations-visuella-inramning-adderar-lager-till-musiken/
+• Miljö &amp; Utveckling: SBTI skjuter upp tidsfrist för avskogningsfria leverantörske...
+  https://miljo-utveckling.se/sbti-skjuter-upp-tidsfrist-for-avskogningsfria-leverantorskedjor/
+• Miljö &amp; Utveckling: Riksrevisionen kritiserar styrningen av utsläppskrediter
+  https://miljo-utveckling.se/riksrevisionen-kritiserar-styrningen-av-utslappskrediter/
+• Miljö &amp; Utveckling: VSME i praktiken – Danmark visar hur
+  https://miljo-utveckling.se/danmark-visar-vagen-sa-funkar-eus-nya-sme-standard/
+• TechCrunch: Beta Technologies ends first day on NYSE in the green and $1...
+  https://techcrunch.com/2025/11/04/beta-technologies-ends-first-day-on-nyse-in-the-green-and-1b-raised/
+• The Verge: Apple Podcasts is generating automatic links and chapters
+  https://www.theverge.com/news/813817/apple-podcasts-automatic-links-and-chapters</description>
+            <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251105_040841.mp3" length="9181292" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251105_040841.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 4 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 4 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,14 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 26 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251026_040725.mp3" length="8010476" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251026_040725.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 25 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 25 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor: SVT Nyheter, Dagens Nyheter, Svenska Dagbladet, BBC News</description>
-            <pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251025_040723.mp3" length="10241516" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251025_040723.mp3</guid>
         </item>
     </channel>
 </rss>

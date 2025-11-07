@@ -221,172 +221,47 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     except Exception as e:
         logger.warning(f"[HISTORY] Upprepningsfilter misslyckades: {e}")
     
-    # Läs in tillgängliga artiklar för referens - ENDAST från seriösa nyhetskällor
-    available_articles: List[Dict] = []
-    climate_articles: List[Dict] = []  # Prioriterade klimat/miljö-artiklar
-    tech_articles: List[Dict] = []     # Tech/AI-artiklar
-    candidate_articles: List[Dict] = []
-    repeat_articles: List[Dict] = []
-    candidate_ids = set()
+    # ============================================================
+    # MULTI-AGENT NEWS CURATION SYSTEM
+    # ============================================================
+    logger.info("\n" + "="*80)
+    logger.info("🤖 AGENT-BASERAD NYHETSKURERING STARTAR")
+    logger.info("="*80)
     
-    # Lista över accepterade nyckelord för trovärdiga nyhetskällor (inkl. klimatkällor)
-    trusted_sources = {
-        'SVT', 'Dagens Nyheter', 'Svenska Dagbladet', 'BBC', 
-        'Reuters', 'Guardian', 'Financial Times', 'AP News',
-        'Dagens Industri', 'Computer Sweden', 'Ny Teknik', 'NyTeknik', 'Wired',
-        'TechCrunch', 'Verge', 'Ars Technica', 'IEEE Spectrum',
-        'Nature', 'Science', 'MIT Technology Review', 'Breakit', 'Digitala Verkligheter',
-        'Miljö & Utveckling', 'Naturskyddsföreningen', 'Naturvårdsverket', 'Sveriges Natur',
-        'Energimyndigheten', 'Aktuell Hållbarhet', 'SMHI', 'European Environment Agency',
-        'EEA', 'European Commission', 'EU Commission', 'Eurostat', 'Europa.eu',
-        'CleanTechnica', 'Climate Central'
-    }
-    
-    # Klimat- och miljökällor för prioritering
-    climate_sources = {
-        'Miljö & Utveckling', 'Naturskyddsföreningen', 'Naturvårdsverket', 'Sveriges Natur',
-        'Energimyndigheten', 'Aktuell Hållbarhet', 'SMHI', 'CleanTechnica', 'Climate Central',
-        'European Environment Agency', 'EEA'
-    }
-    
+    # Importera agent-systemet
     try:
-        with open('scraped_content.json', 'r', encoding='utf-8') as f:
-            scraped_data = json.load(f)
-            for source_group in scraped_data:
-                source_name = source_group.get('source', 'Okänd källa')
-                
-                # Kolla först om det är en trovärdig källa
-                is_trusted = any(trusted.lower() in source_name.lower() for trusted in trusted_sources)
-                if not is_trusted:
-                    logger.info(f"[FILTER] Okänd källa, hoppar över: {source_name}")
-                    continue
-                
-                # För "Digitala Verkligheter" - acceptera trots Facebook i namnet (kurerat AI-innehåll)
-                if 'digitala verkligheter' not in source_name.lower():
-                    # FILTRERA BORT sociala medier för andra källor
-                    if any(social in source_name.lower() for social in ['facebook', 'twitter', 'instagram', 'tiktok', 'linkedin', 'youtube']):
-                        logger.warning(f"[FILTER] Hoppar över social media källa: {source_name}")
-                        continue
-                
-                logger.info(f"[FILTER] ✅ Accepterad källa: {source_name}")
-                
-                if 'items' in source_group:
-                    for item in source_group['items'][:5]:  # Max 5 per källa
+        from news_curation_integration import curate_news_sync
+        
+        # Använd agent-systemet för att kurera artiklar
+        available_articles = curate_news_sync('scraped_content.json')
+        
+        logger.info(f"\n✅ Agent-systemet valde {len(available_articles)} artiklar för podcast")
+        logger.info("="*80 + "\n")
+        
+    except Exception as e:
+        logger.error(f"❌ Agent-systemet misslyckades: {e}")
+        logger.warning("Faller tillbaka på enkel filtrering...")
+        
+        # FALLBACK: Enkel filtrering om agent-systemet failar
+        available_articles: List[Dict] = []
+        try:
+            with open('scraped_content.json', 'r', encoding='utf-8') as f:
+                scraped_data = json.load(f)
+                for source_group in scraped_data:
+                    source_name = source_group.get('source', 'Okänd')
+                    items = source_group.get('items', [])
+                    for item in items[:5]:
                         if item.get('link') and item.get('title'):
-                            # Dubbelkolla att länken inte går till sociala medier (förutom för Digitala Verkligheter)
-                            link_url = item.get('link', '')
-                            if 'digitala verkligheter' not in source_name.lower():
-                                if any(social in link_url.lower() for social in ['facebook.com', 'twitter.com', 'instagram.com', 'tiktok.com']):
-                                    logger.warning(f"[FILTER] Hoppar över social media länk: {link_url}")
-                                    continue
-
-                            article_id = item.get('link') or item.get('title', '').lower()
-                            if not article_id or article_id in candidate_ids:
-                                continue
-
-                            is_repeat = article_id in used_articles
-                            if is_repeat:
-                                logger.info(f"[FILTER] Upprepad artikel hittad: {item.get('title', '')[:50]}...")
-
-                            # Innehållsfilter: bara relevanta ämnen för teknik/AI/klimat-podcast
-                            title_text = item.get('title', '').lower()
-                            content_text = item.get('content', '').lower()
-                            combined_text = title_text + " " + content_text
-
-                            # Relevanta nyckelord för MMM Senaste Nytt
-                            relevant_keywords = [
-                                # AI & Teknik
-                                'ai', 'artificiell intelligens', 'machine learning', 'maskininlärning',
-                                'teknik', 'teknologi', 'innovation', 'forskning', 'vetenskap',
-                                'datorer', 'mjukvara', 'app', 'digital', 'internet', 'cybersäkerhet',
-                                # Klimat & Miljö (utökad lista)
-                                'klimat', 'miljö', 'hållbarhet', 'förnybar energi', 'koldioxid', 'co2',
-                                'växthusgaser', 'global uppvärmning', 'klimatförändringar', 'paris',
-                                'elbil', 'solenergi', 'vindkraft', 'batterier', 'elektricitet',
-                                'återvinning', 'cirkulär ekonomi', 'biodiversitet', 'ekosystem',
-                                'naturskydd', 'energieffektivitet', 'fossila bränslen', 'elkraft',
-                                'väder', 'temperatur', 'havsnivå', 'smältning', 'is', 'torka'
-                            ]
-
-                            # Irrelevanta ämnen som vi ska filtrera bort (UTÖKAD LISTA)
-                            irrelevant_keywords = [
-                                'våld', 'mord', 'knivskuren', 'skjutning', 'död', 'dödad',
-                                'krig', 'konflikt', 'gaza', 'palestina', 'palestinska', 'israel', 'ukraina',
-                                'knark', 'droger', 'narkotika', 'kriminell', 'polis', 'häktad',
-                                'val', 'politik', 'parti', 'regering', 'minister', 'kyrka', 'kyrkovalet',
-                                'sport', 'fotboll', 'hockey', 'motorsport', 'racing', 'trump', 'putin',
-                                'satellitbilder', 'förstör', 'byar', 'musiktävling', 'köttallergi', 'allergi',
-                                # Extra politik-filter
-                                'avgång', 'avgångsersättning', 'riksdagen', 'motion', 'landslag', 'fotboll',
-                                'asllani', 'hatt', 'politisk', 'politiker', 'debatt', 'omröstning',
-                                # Extra irrelevanta ämnen
-                                'rökdykning', 'räddningstjänst', 'brandkår', 'teckenspråk', 'språk',
-                                'kultur', 'bok', 'författare', 'adolescence', 'gruvdrift', 'malmberget'
-                            ]
-
-                            has_irrelevant = any(keyword in combined_text for keyword in irrelevant_keywords)
-                            if has_irrelevant:
-                                logger.info(f"[FILTER] Filtrerar bort irrelevant artikel: {title_text[:50]}...")
-                                continue
-
-                            article_info = {
+                            available_articles.append({
                                 'source': source_name,
                                 'title': item['title'][:100],
                                 'content': item.get('content', '')[:300],
                                 'link': item['link']
-                            }
-                            candidate_ids.add(article_id)
-                            candidate_articles.append(article_info)
-
-                            if is_repeat:
-                                repeat_articles.append(article_info)
-                                continue
-
-                            has_relevant = any(keyword in combined_text for keyword in relevant_keywords)
-                            if not has_relevant:
-                                logger.info(f"[FILTER] Filtrerar bort icke-relevant artikel: {title_text[:50]}...")
-                                continue
-
-                            # Kontrollera om det är en klimat-artikel
-                            climate_keywords = [
-                                'klimat', 'miljö', 'hållbarhet', 'förnybar energi', 'koldioxid', 'co2',
-                                'växthusgaser', 'global uppvärmning', 'klimatförändringar', 'paris',
-                                'elbil', 'solenergi', 'vindkraft', 'batterier', 'elektricitet',
-                                'återvinning', 'cirkulär ekonomi', 'biodiversitet', 'ekosystem',
-                                'naturskydd', 'energieffektivitet', 'fossila bränslen', 'elkraft',
-                                'väder', 'temperatur', 'havsnivå', 'smältning', 'is', 'torka'
-                            ]
-                            is_climate = any(kw in combined_text for kw in climate_keywords)
-                            is_climate_source = any(src.lower() in source_name.lower() for src in climate_sources)
-                            
-                            if is_climate or is_climate_source:
-                                climate_articles.append(article_info)
-                                logger.info(f"[FILTER] ✅ Klimat/miljö-artikel: {title_text[:50]}...")
-                            else:
-                                tech_articles.append(article_info)
-                                logger.info(f"[FILTER] Tech/AI-artikel: {title_text[:50]}...")
-    except Exception as e:
-        logger.warning(f"[CONTENT] Kunde inte läsa artikeldata: {e}")
+                            })
+        except Exception as fallback_error:
+            logger.error(f"❌ Även fallback-filtrering misslyckades: {fallback_error}")
+            available_articles = []
     
-    # Bygg balanserad artikellista: MINST 50% klimat/miljö
-    logger.info(f"[BALANCE] Klimat/miljö: {len(climate_articles)}, Tech/AI: {len(tech_articles)}")
-    
-    # Ta 60% klimat, 40% tech för att säkerställa balans
-    climate_count = max(6, int(len(climate_articles) * 0.6)) if climate_articles else 0
-    tech_count = max(4, int(len(tech_articles) * 0.4)) if tech_articles else 0
-    
-    available_articles = climate_articles[:climate_count] + tech_articles[:tech_count]
-    logger.info(f"[BALANCE] Balanserad lista: {len(climate_articles[:climate_count])} klimat + {len(tech_articles[:tech_count])} tech = {len(available_articles)} totalt")
-    
-    if len(available_articles) < 6 and repeat_articles:
-        needed = 6 - len(available_articles)
-        logger.warning(f"[FILTER] Fyller på med {min(needed, len(repeat_articles))} artiklar från senaste dagarna")
-        available_articles.extend(repeat_articles[:needed])
-
-    if not available_articles and candidate_articles:
-        logger.warning("[FILTER] Inga nya artiklar klarade filtren - använder fallback från trovärdiga källor")
-        available_articles = candidate_articles[:8]
-
     # Skapa artikelreferenser för AI
     article_refs = ""
     if available_articles:

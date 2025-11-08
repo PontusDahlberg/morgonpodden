@@ -16,8 +16,26 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 07 Nov 2025 04:09:24 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 08 Nov 2025 04:09:19 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 8 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 8 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Ungern undantas amerikanska energisanktioner mot Ryssland
+  https://www.dn.se/varlden/trump-oppnar-for-att-undanta-ungern-fran-sanktioner/
+• Euronews: Trump weighs Hungary&#x27;s &#x27;vital&#x27; request for exemption from Ru...
+  http://www.euronews.com/2025/11/07/trump-weighs-hungarys-vital-request-for-exemption-from-russian-energy-sanctions
+• Euronews: Germany promises support for Brazil&#x27;s tropical forest protec...
+  http://www.euronews.com/green/2025/11/07/germany-promises-support-for-brazils-tropical-forest-protection-scheme-at-un-climate-talks
+• TechCrunch: Chris Sacca’s VC firm is raising a second nuclear fusion fun...
+  https://techcrunch.com/2025/11/06/chris-saccas-vc-firm-is-raising-a-second-nuclear-fusion-fund/
+• IEEE Spectrum: Menifee’s EV-Powered Homes: A New Era in Energy Independence
+  https://spectrum.ieee.org/evs-keep-homes-lit</description>
+            <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251108_040736.mp3" length="8260460" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251108_040736.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 7 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 7 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251029_041109.mp3" length="8452460" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251029_041109.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 28 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 28 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Insändare. Ordet permanent har faktiskt en viss betydelse
-  https://www.dn.se/insandare/ordet-permanent-har-faktiskt-en-viss-betydelse/
-• BBC News: Hurricane Melissa: Jamaica braces for world&#x27;s strongest stor...
-  https://www.bbc.com/news/articles/c2dr0z57nygo?at_medium=RSS&amp;at_campaign=rss
-• BBC News: Watch: Storm chasers fly inside the eye of Hurricane Melissa
-  https://www.bbc.com/news/videos/cwypk4e3v3lo?at_medium=RSS&amp;at_campaign=rss
-• BBC News: Dutch volleyball player and convicted child rapist denied vi...
-  https://www.bbc.com/news/articles/cly9z3r1dmzo?at_medium=RSS&amp;at_campaign=rss
-• Miljö &amp; Utveckling: Oljejätte fälls för vilseledande klimatbudskap
-  https://miljo-utveckling.se/oljejatte-falls-for-vilseledande-klimatbudskap/
-• Miljö &amp; Utveckling: EU-ledare enas om klimatmål – men oenighet kvarstår
-  https://miljo-utveckling.se/eu-ledare-enas-om-klimatmal-men-oenighet-kvarstar/</description>
-            <pubDate>Tue, 28 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251028_040744.mp3" length="7457132" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251028_040744.mp3</guid>
         </item>
     </channel>
 </rss>

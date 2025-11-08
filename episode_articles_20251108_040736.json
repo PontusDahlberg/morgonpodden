@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Dagens Nyheter",
+    "title": "Ungern undantas amerikanska energisanktioner mot Ryssland",
+    "content": "",
+    "link": "https://www.dn.se/varlden/trump-oppnar-for-att-undanta-ungern-fran-sanktioner/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Euronews",
+    "title": "Trump weighs Hungary's 'vital' request for exemption from Russian energy sanctions",
+    "content": "",
+    "link": "http://www.euronews.com/2025/11/07/trump-weighs-hungarys-vital-request-for-exemption-from-russian-energy-sanctions",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Euronews",
+    "title": "Germany promises support for Brazil's tropical forest protection scheme at UN climate talks",
+    "content": "",
+    "link": "http://www.euronews.com/green/2025/11/07/germany-promises-support-for-brazils-tropical-forest-protection-scheme-at-un-climate-talks",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter Klimat",
+    "title": "Allt om:Klimat|",
+    "content": "",
+    "link": "",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Chris Sacca’s VC firm is raising a second nuclear fusion fund",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/06/chris-saccas-vc-firm-is-raising-a-second-nuclear-fusion-fund/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Menifee’s EV-Powered Homes: A New Era in Energy Independence",
+    "content": "",
+    "link": "https://spectrum.ieee.org/evs-keep-homes-lit",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Klipp påstås visa gråtande ukrainsk soldat – är rysk streamers ansikte",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/klipp-pastas-visa-gratande-ukrainsk-soldat-ar-rysk-streamers-ansikte",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Vilhelm Mobergs nationalepos sprängs till en skimrande mosaik",
+    "content": "",
+    "link": "https://www.dn.se/kultur/vilhelm-mobergs-nationalepos-sprangs-till-en-skimrande-mosaik/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC News",
+    "title": "Israel receives coffin Hamas says contains body of Gaza hostage",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cwykw15dx56o?at_medium=RSS&at_campaign=rss",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC News",
+    "title": "Belgium rushes to secure drone defences after airport disruption",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c8r04ld1gz2o?at_medium=RSS&at_campaign=rss",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

@@ -231,6 +231,102 @@ class FactCheckAgent:
         return article
 
 
+class NewsQualityAgent:
+    """
+    Agent 5: Djupgranskning av relevans och nyhetsvärde
+    Filtrerar bort "falska positiva" som innehåller klimatord men inte är klimatnyheter
+    """
+    
+    # Nyheter som INTE är relevanta trots klimat-keywords
+    FALSE_POSITIVE_PATTERNS = [
+        # Krig och konflikt (även om "energy sites" nämns)
+        (r'ukrain|russia.*attack|missile.*strike|war.*dead|military.*target', 
+         "Krigsnyheter är inte klimatnyheter, även om energianläggningar nämns"),
+        
+        # Geopolitik utan klimatfokus
+        (r'sanction.*russia|trump.*orbán|political.*deal.*energy',
+         "Geopolitisk energipolitik utan klimatvinkel är inte relevant"),
+        
+        # Lokala consumer-nyheter (USA-specifika produkter/tjänster)
+        (r'homes.*in.*california|homes.*in.*texas|menifee|us households.*install',
+         "Lokala consumer-nyheter från USA är inte relevanta för svensk klimatpodd"),
+        
+        # Flyginställningar pga väder (inte klimatbeteende)
+        (r'flight.*cancel.*weather|airport.*close.*storm|travel.*disrupt.*snow',
+         "Flyginställningar pga väder är inte klimatnyheter om folk inte ändrar beteende"),
+        
+        # Mat och hälsa (sockerarter, allergier, etc)
+        (r'sockerar|sugar.*health|food.*allerg|diet.*advice',
+         "Mat- och hälsonyheter är inte relevanta för klimatpodd"),
+        
+        # Sport och underhållning
+        (r'fotboll|hockey|sport|music.*award|film.*festival',
+         "Sport och underhållning är aldrig relevant"),
+        
+        # Allmän politik utan klimatfokus
+        (r'riksdag.*motion|minister.*avgång|election.*result|political.*scandal',
+         "Allmän politik utan klimatfokus är inte relevant"),
+    ]
+    
+    # Mönster för VERKLIGT relevanta klimatnyheter
+    TRUE_CLIMATE_PATTERNS = [
+        r'klimatmål|klimatavtal|cop\d+|ipcc.*rapport',  # Klimatpolitik
+        r'koldioxid.*minskning|utsläpp.*reducera|co2.*capture',  # Utsläppsminskningar
+        r'förnybar.*energi.*sverige|solceller.*sverige|vindkraft.*sverige',  # Svensk energiomställning
+        r'elbilar.*försäljning|elbil.*miljö|batteriteknik.*genombrott',  # Verklig tech-innovation
+        r'naturskydd.*beslut|nationalpark|artutrotning|biodiversitet.*kris',  # Naturvård
+        r'väder.*extrem.*öka|torka.*värre|översvämning.*klimat',  # Klimateffekter
+    ]
+    
+    def evaluate_quality(self, article: NewsArticle) -> tuple[bool, str]:
+        """
+        Bedöm om artikeln verkligen är relevant
+        Returns: (is_quality, reason)
+        """
+        # Support both NewsArticle objects and dicts
+        if isinstance(article, dict):
+            title = article.get('title', '')
+            content = article.get('content', '')
+            category = article.get('category', '')
+            text = f"{title} {content}".lower()
+        else:
+            title = article.title
+            content = article.content
+            category = article.category
+            text = f"{title} {content}".lower()
+        
+        # Om kategoriserad som irrelevant, godkänn den bedömningen
+        if category == NewsCategory.IRRELEVANT or category == 'irrelevant':
+            return (True, "Korrekt kategoriserad som irrelevant")
+        
+        # Kolla efter false positives
+        for pattern, reason in self.FALSE_POSITIVE_PATTERNS:
+            import re
+            if re.search(pattern, text):
+                return (False, reason)
+        
+        # Om kategoriserad som klimat, verifiera att det VERKLIGEN är klimat
+        climate_categories = [NewsCategory.CLIMATE_SWEDEN, NewsCategory.CLIMATE_GLOBAL, 
+                             NewsCategory.ENVIRONMENT_SWEDEN, NewsCategory.ENVIRONMENT_GLOBAL,
+                             'climate_sweden', 'climate_global', 'environment_sweden', 'environment_global']
+        if category in climate_categories:
+            # Kräv minst ETT true climate pattern
+            import re
+            has_true_climate = any(re.search(pattern, text) for pattern in self.TRUE_CLIMATE_PATTERNS)
+            
+            if not has_true_climate:
+                # Om inget true climate pattern hittades, kräv svensk relevans eller forskning
+                geo_region = article.get('geographic_region', '') if isinstance(article, dict) else article.geographic_region
+                if geo_region == "Sverige":
+                    return (True, "Svensk klimat/miljö-nyhet godkänd")
+                elif any(word in text for word in ['forskning', 'research', 'studie', 'study', 'rapport', 'report']):
+                    return (True, "Klimatforskning godkänd")
+                else:
+                    return (False, "Innehåller klimatord men saknar verklig klimatfokus")
+        
+        return (True, "Kvalitetsgodkänd")
+
+
 class BalanceAgent:
     """
     Agent 4: Säkerställer rätt ämnesbalans
@@ -295,6 +391,7 @@ class NewsOrchestrator:
         self.scraper = NewsScraperAgent()
         self.relevance = RelevanceAgent()
         self.fact_checker = FactCheckAgent()
+        self.quality = NewsQualityAgent()
         self.balance = BalanceAgent(target_climate_percent=60)
     
     async def process_articles(self, raw_articles: List[Dict]) -> List[NewsArticle]:
@@ -331,8 +428,22 @@ class NewsOrchestrator:
         logger.info("-" * 60)
         articles = await asyncio.gather(*[self.fact_checker.verify(a) for a in articles])
         
-        # Steg 4: Balansering
-        logger.info("\n⚖️  STEG 4: BALANSERING")
+        # Steg 4: Kvalitetsgranskning (NY!)
+        logger.info("\n🎯 STEG 4: KVALITETSGRANSKNING")
+        logger.info("-" * 60)
+        quality_filtered = []
+        for article in articles:
+            is_quality, reason = self.quality.evaluate_quality(article)
+            if is_quality:
+                quality_filtered.append(article)
+                logger.info(f"[QUALITY] ✅ {article.title[:60]}")
+            else:
+                logger.warning(f"[QUALITY] ❌ {article.title[:60]}")
+                logger.warning(f"           Reason: {reason}")
+        articles = quality_filtered
+        
+        # Steg 5: Balansering
+        logger.info("\n⚖️  STEG 5: BALANSERING")
         logger.info("-" * 60)
         selected = self.balance.balance(articles, target_count=10)
         

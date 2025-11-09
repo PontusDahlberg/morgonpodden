@@ -1,0 +1,92 @@
+[
+  {
+    "source": "BBC News",
+    "title": "Six dead as Russia hits energy and residential sites in Ukraine",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/ce3xdg7xrv9o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Euronews",
+    "title": "Trump hands Viktor Orbán a win as Hungary locks exemption for Russian energy imports",
+    "content": "",
+    "link": "http://www.euronews.com/my-europe/2025/11/08/trump-hands-viktor-orban-a-win-as-hungary-locks-exemption-for-russian-energy-imports",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Euronews",
+    "title": "Orbán says Trump has agreed to grant Hungary an exemption from sanctions on Russian energy purchases",
+    "content": "",
+    "link": "http://www.euronews.com/2025/11/08/orban-says-trump-has-agreed-to-grant-hungary-an-exemption-from-sanctions-on-russian-energy",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter Klimat",
+    "title": "Allt om:Klimat|",
+    "content": "",
+    "link": "",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Menifee’s EV-Powered Homes: A New Era in Energy Independence",
+    "content": "",
+    "link": "https://spectrum.ieee.org/evs-keep-homes-lit",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Är vissa sockerarter ”mindre dåliga” än andra?",
+    "content": "",
+    "link": "https://www.dn.se/insidan/ar-vissa-sockerarter-mindre-daliga-an-andra/",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Ukrainas nya armé lockar unga att strida",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/ukrainas-nya-arme-lockar-unga-att-strida",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC News",
+    "title": "More than 1,400 flights cancelled as US air traffic cuts enter second day",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cj410k00yw8o?at_medium=RSS&at_campaign=rss",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC News",
+    "title": "US authorities ground cargo plane model after Kentucky air disaster",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cx2pr5y7p90o?at_medium=RSS&at_campaign=rss",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC News",
+    "title": "Belgium rushes to secure drone defences after airport disruption",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c8r04ld1gz2o?at_medium=RSS&at_campaign=rss",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

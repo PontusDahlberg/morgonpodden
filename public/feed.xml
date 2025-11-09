@@ -16,8 +16,26 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 08 Nov 2025 04:09:19 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 09 Nov 2025 04:09:37 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 9 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 9 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• BBC News: Six dead as Russia hits energy and residential sites in Ukra...
+  https://www.bbc.com/news/articles/ce3xdg7xrv9o?at_medium=RSS&amp;at_campaign=rss
+• Euronews: Trump hands Viktor Orbán a win as Hungary locks exemption fo...
+  http://www.euronews.com/my-europe/2025/11/08/trump-hands-viktor-orban-a-win-as-hungary-locks-exemption-for-russian-energy-imports
+• Euronews: Orbán says Trump has agreed to grant Hungary an exemption fr...
+  http://www.euronews.com/2025/11/08/orban-says-trump-has-agreed-to-grant-hungary-an-exemption-from-sanctions-on-russian-energy
+• IEEE Spectrum: Menifee’s EV-Powered Homes: A New Era in Energy Independence
+  https://spectrum.ieee.org/evs-keep-homes-lit
+• Dagens Nyheter: Är vissa sockerarter ”mindre dåliga” än andra?
+  https://www.dn.se/insidan/ar-vissa-sockerarter-mindre-daliga-an-andra/</description>
+            <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251109_040754.mp3" length="8176364" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251109_040754.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 8 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 8 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 30 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251030_040747.mp3" length="7996652" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251030_040747.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 29 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 29 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: ”Mamma, kan du swisha” – så fixar barnen extra mycket i måna...
-  https://www.svt.se/nyheter/lokalt/jonkoping/mamma-kan-du-swisha-sa-fixar-barnen-extra-mycket-i-manadspeng
-• Miljö &amp; Utveckling: Sverige överkört när EU höjer fiskekvoter
-  https://miljo-utveckling.se/sverige-overkort-nar-eu-hojer-fiskekvoter/
-• Miljö &amp; Utveckling: Ny EU-avgift kan bromsa återbruk: ”En skatt på dålig statist...
-  https://miljo-utveckling.se/ny-eu-avgift-kan-bromsa-aterbruk-en-skatt-pa-dalig-statistik/
-• TechCrunch: LG Uplus is latest South Korean telco to confirm cybersecuri...
-  https://techcrunch.com/2025/10/28/lg-uplus-is-latest-south-korean-telco-to-confirm-cybersecurity-incident/
-• TechCrunch: Here are the 5 Startup Battlefield finalists at TechCrunch D...
-  https://techcrunch.com/2025/10/28/here-are-the-5-startup-battlefield-finalists-at-techcrunch-disrupt-2025/
-• The Verge: Withings’ urine scanning health tracker is now available for...
-  https://www.theverge.com/news/808381/withings-u-scan-toilet-urine-test-health-nutrio-calci</description>
-            <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251029_041109.mp3" length="8452460" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251029_041109.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -97,6 +97,15 @@ class NewsScraperAgent:
         'best movies', 'best shows', 'celebrity', 'kändis'
     ]
     
+    AI_KEYWORDS = [
+        'artificial intelligence', 'machine learning', 'maskininlärning',
+        'deep learning', 'neural network', 'chatgpt', 'openai',
+        'ai model', 'ai-model', 'generative ai', 'llm',
+        'large language model', 'ai algorithm', 'ai-driven',
+        'robotics', 'autonomous', 'autonom', 'ai safety',
+        'ai regulation', 'ai-reglering', 'ai ethics'
+    ]
+    
     SWEDISH_INDICATORS = [
         'sverige', 'swedish', 'stockholm', 'göteborg', 'malmö',
         'riksdag', 'regering', 'statsminister', 'miljöminister',
@@ -121,6 +130,7 @@ class NewsScraperAgent:
         has_climate = any(kw in text for kw in self.CLIMATE_KEYWORDS)
         has_environment = any(kw in text for kw in self.ENVIRONMENT_KEYWORDS)
         has_tech_climate = any(kw in text for kw in self.TECH_CLIMATE_KEYWORDS)
+        has_ai = any(kw in text for kw in self.AI_KEYWORDS)
         
         if has_climate and is_swedish:
             article.category = NewsCategory.CLIMATE_SWEDEN
@@ -132,7 +142,7 @@ class NewsScraperAgent:
             article.category = NewsCategory.ENVIRONMENT_GLOBAL
         elif has_tech_climate:
             article.category = NewsCategory.TECH_CLIMATE
-        elif 'ai' in text or 'artificial intelligence' in text or 'maskininlärning' in text:
+        elif has_ai:
             article.category = NewsCategory.TECH_AI
         else:
             article.category = NewsCategory.TECH_GENERAL
@@ -329,15 +339,15 @@ class NewsQualityAgent:
 
 class BalanceAgent:
     """
-    Agent 4: Säkerställer rätt ämnesbalans
-    Minst 50% klimat/miljö, max 50% tech/AI
+    Agent 5: Säkerställer rätt ämnesbalans
+    Lika delar klimat, tech och AI (33% vardera)
     """
     
-    def __init__(self, target_climate_percent: int = 60):
-        self.target_climate_percent = target_climate_percent
+    def __init__(self):
+        pass
     
     def balance(self, articles: List[NewsArticle], target_count: int = 10) -> List[NewsArticle]:
-        """Välj balanserad uppsättning artiklar"""
+        """Välj balanserad uppsättning artiklar - lika delar klimat, tech, AI"""
         
         # Filtrera bort irrelevanta och fact-check-failade
         valid_articles = [
@@ -348,35 +358,62 @@ class BalanceAgent:
         # Sortera efter relevans
         valid_articles.sort(key=lambda x: x.relevance_score, reverse=True)
         
-        # Gruppera efter typ
+        # Gruppera i 3 kategorier
         climate_env = [
             a for a in valid_articles 
             if a.category in [
                 NewsCategory.CLIMATE_SWEDEN, NewsCategory.CLIMATE_GLOBAL,
-                NewsCategory.ENVIRONMENT_SWEDEN, NewsCategory.ENVIRONMENT_GLOBAL,
-                NewsCategory.TECH_CLIMATE
+                NewsCategory.ENVIRONMENT_SWEDEN, NewsCategory.ENVIRONMENT_GLOBAL
             ]
         ]
         
-        tech_ai = [
+        tech_general = [
             a for a in valid_articles
-            if a.category in [NewsCategory.TECH_AI, NewsCategory.TECH_GENERAL]
+            if a.category == NewsCategory.TECH_GENERAL
         ]
         
-        # Beräkna målfördelning
-        climate_target = int(target_count * self.target_climate_percent / 100)
-        tech_target = target_count - climate_target
+        ai_articles = [
+            a for a in valid_articles
+            if a.category == NewsCategory.TECH_AI
+        ]
         
-        # Välj artiklar
-        selected = climate_env[:climate_target] + tech_ai[:tech_target]
+        # TECH_CLIMATE räknas som klimat
+        tech_climate = [
+            a for a in valid_articles
+            if a.category == NewsCategory.TECH_CLIMATE
+        ]
+        climate_env.extend(tech_climate)
         
-        # Om vi inte har tillräckligt med klimat-artiklar, fyll på med tech
+        # Beräkna målfördelning (lika delar, med avrundning)
+        per_category = target_count // 3  # 3 delar för 10 artiklar = 3 vardera
+        remainder = target_count % 3       # Rest att fördela
+        
+        climate_target = per_category + (1 if remainder > 0 else 0)  # 4
+        tech_target = per_category + (1 if remainder > 1 else 0)      # 3
+        ai_target = per_category                                       # 3
+        
+        # Välj artiklar från varje kategori
+        selected_climate = climate_env[:climate_target]
+        selected_tech = tech_general[:tech_target]
+        selected_ai = ai_articles[:ai_target]
+        
+        selected = selected_climate + selected_tech + selected_ai
+        
+        # Om någon kategori har för få artiklar, fyll på från andra kategorier
         if len(selected) < target_count:
             remaining = target_count - len(selected)
-            more_tech = [a for a in tech_ai if a not in selected][:remaining]
-            selected.extend(more_tech)
+            
+            # Försök fylla på med artiklar från andra kategorier (högst rankade)
+            all_unused = [a for a in valid_articles if a not in selected]
+            all_unused.sort(key=lambda x: x.relevance_score, reverse=True)
+            selected.extend(all_unused[:remaining])
         
-        logger.info(f"[BALANCE] Valde {len([a for a in selected if a.category in [NewsCategory.CLIMATE_SWEDEN, NewsCategory.CLIMATE_GLOBAL, NewsCategory.ENVIRONMENT_SWEDEN, NewsCategory.ENVIRONMENT_GLOBAL, NewsCategory.TECH_CLIMATE]])} klimat/miljö och {len([a for a in selected if a.category in [NewsCategory.TECH_AI, NewsCategory.TECH_GENERAL]])} tech/AI")
+        # Logga fördelning
+        climate_count = len([a for a in selected if a.category in [NewsCategory.CLIMATE_SWEDEN, NewsCategory.CLIMATE_GLOBAL, NewsCategory.ENVIRONMENT_SWEDEN, NewsCategory.ENVIRONMENT_GLOBAL, NewsCategory.TECH_CLIMATE]])
+        tech_count = len([a for a in selected if a.category == NewsCategory.TECH_GENERAL])
+        ai_count = len([a for a in selected if a.category == NewsCategory.TECH_AI])
+        
+        logger.info(f"[BALANCE] Valde {climate_count} klimat/miljö, {tech_count} tech, {ai_count} AI")
         
         return selected[:target_count]
 
@@ -392,7 +429,7 @@ class NewsOrchestrator:
         self.relevance = RelevanceAgent()
         self.fact_checker = FactCheckAgent()
         self.quality = NewsQualityAgent()
-        self.balance = BalanceAgent(target_climate_percent=60)
+        self.balance = BalanceAgent()
     
     async def process_articles(self, raw_articles: List[Dict]) -> List[NewsArticle]:
         """

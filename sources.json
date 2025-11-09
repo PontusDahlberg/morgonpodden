@@ -121,57 +121,41 @@
       "name": "Miljö & Utveckling",
       "url": "https://miljo-utveckling.se/feed/",
       "type": "climate",
-      "maxItems": 6,
+      "maxItems": 12,
       "enabled": true,
       "description": "Klimat och miljönyheter"
-    },
-    {
-      "name": "Naturskyddsföreningen",
-      "url": "https://www.naturskyddsforeningen.se/nyheter/rss/",
-      "type": "climate", 
-      "maxItems": 8,
-      "enabled": true,
-      "description": "Miljö- och klimatnyheter"
-    },
-    {
-      "name": "Naturvårdsverket",
-      "url": "https://www.naturvardsverket.se/om-oss/aktuellt/nyheter-och-pressmeddelanden/rss/",
-      "type": "climate",
-      "maxItems": 8,
-      "enabled": true,
-      "description": "Officiella miljönyheter från Naturvårdsverket"
     },
     {
       "name": "Sveriges Natur",
       "url": "https://www.sverigesnatur.org/feed/",
       "type": "climate",
-      "maxItems": 6,
+      "maxItems": 12,
       "enabled": true,
       "description": "Natur- och miljönyheter från Sveriges Natur"
     },
     {
-      "name": "Energimyndigheten",
-      "url": "https://www.energimyndigheten.se/rss/nyheter/",
+      "name": "BBC Science & Environment",
+      "url": "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
       "type": "climate",
-      "maxItems": 6,
+      "maxItems": 15,
       "enabled": true,
-      "description": "Nyheter om energi och klimat från Energimyndigheten"
+      "description": "BBC:s vetenskap och miljörapportering"
     },
     {
-      "name": "SVT Nyheter Klimat",
-      "url": "https://www.svt.se/nyheter/amne/Klimat?rss",
+      "name": "Guardian Climate Crisis",
+      "url": "https://www.theguardian.com/environment/climate-crisis/rss",
       "type": "climate",
-      "maxItems": 10,
+      "maxItems": 15,
       "enabled": true,
-      "description": "SVT:s klimatrapportering"
+      "description": "Guardian:s klimatkrisrapportering"
     },
     {
-      "name": "Aktuell Hållbarhet",
-      "url": "https://www.aktuellhallbarhet.se/feed/",
+      "name": "Guardian Environment",
+      "url": "https://www.theguardian.com/environment/rss",
       "type": "climate",
-      "maxItems": 8,
+      "maxItems": 12,
       "enabled": true,
-      "description": "Svensk tidskrift om hållbarhet och miljö"
+      "description": "Guardian:s miljörapportering"
     },
     {
       "name": "TechCrunch",

@@ -262,9 +262,9 @@ class GoogleCloudTTS:
         # AI: bokstaveras A-I men utan långa pauser mellan bokstäverna
         text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑː.iː">AI</phoneme>', text)
         text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑː.iː">Ai</phoneme>', text)
-        # EU: använd "eːuː" för korrekt svenskt uttal (inte "e-o" utan "e-u")
-        text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="eːuː">EU</phoneme>', text)
-        text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="eːuː">Eu</phoneme>', text)
+        # EU: använd "eː.ʉː" för korrekt svenskt E-U uttal (långt e följt av långt u)
+        text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="eː.ʉː">EU</phoneme>', text)
+        text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="eː.ʉː">Eu</phoneme>', text)
         text = re.sub(r'\bUSA\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">USA</phoneme>', text)
         text = re.sub(r'\bUsa\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">Usa</phoneme>', text)
         # SMHI: naturligt uttal som "s.m.h.i" utan överbetoning på sista I

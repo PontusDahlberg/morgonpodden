@@ -259,12 +259,12 @@ class GoogleCloudTTS:
         text = self._remove_word_duplicates(text)
         
         # Använd SSML med IPA för korrekt svenskt uttal
-        # AI: bokstaveras A-I men utan långa pauser mellan bokstäverna
-        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑː.iː">AI</phoneme>', text)
-        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑː.iː">Ai</phoneme>', text)
-        # EU: använd "eː.ʉː" för korrekt svenskt E-U uttal (långt e följt av långt u)
-        text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="eː.ʉː">EU</phoneme>', text)
-        text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="eː.ʉː">Eu</phoneme>', text)
+        # AI: långt A, långt I med tydlig betoning (dubblerad vokal ger längre uttal)
+        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑːː.iːː">AI</phoneme>', text)
+        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑːː.iːː">Ai</phoneme>', text)
+        # EU: långt E, långt U med tydlig betoning (dubblerad vokal ger längre uttal)
+        text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="eːː.ʉːː">EU</phoneme>', text)
+        text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="eːː.ʉːː">Eu</phoneme>', text)
         text = re.sub(r'\bUSA\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">USA</phoneme>', text)
         text = re.sub(r'\bUsa\b', '<phoneme alphabet="ipa" ph="uːɛsˈɑː">Usa</phoneme>', text)
         # SMHI: naturligt uttal som "s.m.h.i" utan överbetoning på sista I
@@ -370,6 +370,7 @@ class GoogleCloudTTS:
     def generate_podcast_audio(self, segments: List[Dict]) -> Optional[str]:
         """
         Generera komplett podcast med flera segment
+        Använder crossfade och optimerade pauser för naturligt dialog-flyt
         
         Args:
             segments: Lista med segments [{"text": "...", "voice": "sanna"}, ...]
@@ -381,6 +382,7 @@ class GoogleCloudTTS:
             return None
         
         logger.info(f"🎙️ Genererar podcast med {len(segments)} segment")
+        logger.info(f"🎯 Använder crossfade för naturligt dialog-flyt")
         
         audio_segments = []
         total_chars = 0
@@ -414,24 +416,23 @@ class GoogleCloudTTS:
                 audio_segment = AudioSegment.from_mp3(temp_file)
                 audio_segments.append(audio_segment)
                 total_chars += len(text)
-                
-                # Lägg till kort paus mellan segment
-                if i < len(segments) - 1:  # Inte efter sista segmentet
-                    pause = AudioSegment.silent(duration=500)  # 0.5 sekund
-                    audio_segments.append(pause)
             
             if not audio_segments:
                 logger.error("❌ Inga segment kunde genereras")
                 return None
             
-            # Kombinera alla segment
-            logger.info("🔗 Kombinerar audiosegment...")
-            combined = AudioSegment.empty()
-            for segment in audio_segments:
-                combined += segment
+            # Kombinera med crossfade för naturliga övergångar
+            logger.info("🔗 Kombinerar med crossfade för naturligt flyt...")
+            combined = audio_segments[0]
+            
+            for i in range(1, len(audio_segments)):
+                # Använd crossfade mellan segment för mjuka övergångar
+                # 200ms crossfade ger naturligt samtal utan hårda klipp
+                combined = combined.append(audio_segments[i], crossfade=200)
             
             # Spara slutligt resultat
             from datetime import datetime
+            os.makedirs('audio', exist_ok=True)
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             output_file = f'audio/MMM_google_cloud_{timestamp}.mp3'
             combined.export(output_file, format="mp3")
@@ -452,6 +453,7 @@ class GoogleCloudTTS:
             logger.info(f"🕐 Längd: {duration_minutes:.1f} minuter")
             logger.info(f"📊 Totalt tecken: {total_chars:,}")
             logger.info(f"💰 Uppskattad kostnad: ${cost:.4f}")
+            logger.info(f"🎯 Naturligt flyt med 200ms crossfade mellan talare")
             
             return output_file
             

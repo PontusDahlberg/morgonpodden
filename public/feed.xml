@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 09 Nov 2025 04:09:37 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 10 Nov 2025 04:13:50 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 10 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 10 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: DN Debatt. ”Det är ett försvagat EU som åker till klimatmöte...
+  https://www.dn.se/debatt/det-ar-ett-forsvagat-eu-som-aker-till-klimatmotet-cop30/
+• Euronews: COP30: What to expect from this year&#x27;s UN climate talks
+  http://www.euronews.com/green/2025/11/10/cop30-what-to-expect-from-this-years-un-climate-talks
+• Miljö &amp; Utveckling: Hårda reaktioner mot nya klimatmålet: ”En katastrof”
+  https://miljo-utveckling.se/harda-reaktioner-mot-eu-en-katastrof/
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• SVT Nyheter: Så jobbar Sverige för att stoppa gängtopparna utomlands
+  https://www.svt.se/nyheter/inrikes/sa-jobbar-sverige-for-att-stoppa-gangtopparna-utomlands
+• SVT Nyheter: Nu finns Sveriges nordligaste sjöräddningsstation i Kalix
+  https://www.svt.se/nyheter/lokalt/norrbotten/nu-finns-sveriges-nordligaste-sjoraddningsstation-i-kalix</description>
+            <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251110_041154.mp3" length="8391404" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251110_041154.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 9 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 9 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251031_040812.mp3" length="7721708" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251031_040812.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 30 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 30 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Tekniska problem med molntjänster
-  https://www.svt.se/nyheter/utrikes/tekniska-problem-med-molntjanster
-• BBC News: Dutch centrist liberals neck and neck with populist Wilders ...
-  https://www.bbc.com/news/articles/cpwvy4w875vo?at_medium=RSS&amp;at_campaign=rss
-• BBC News: France enshrines need for consent into rape law in wake of G...
-  https://www.bbc.com/news/articles/ce9d3ldgg5vo?at_medium=RSS&amp;at_campaign=rss
-• Miljö &amp; Utveckling: Över 130 organisationer i öppet brev om bekämpningsmedel
-  https://miljo-utveckling.se/over-130-organisationer-i-oppet-brev-om-bekampningsmedel/
-• Miljö &amp; Utveckling: Bill Gates svänger i klimatfrågan – det vill han satsa på i ...
-  https://miljo-utveckling.se/bill-gates-svanger-i-klimatfragan-det-vill-han-satsa-pa-i-stallet/
-• Miljö &amp; Utveckling: Rapport: Så mycket ökar utsläppen från Sveriges rikaste
-  https://miljo-utveckling.se/klimat-sa-mycket-okar-utslappen-fran-sveriges-rikaste/</description>
-            <pubDate>Thu, 30 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251030_040747.mp3" length="7996652" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251030_040747.mp3</guid>
         </item>
     </channel>
 </rss>

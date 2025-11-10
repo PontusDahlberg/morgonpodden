@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Dagens Nyheter",
+    "title": "DN Debatt. ”Det är ett försvagat EU som åker till klimatmötet COP30”",
+    "content": "",
+    "link": "https://www.dn.se/debatt/det-ar-ett-forsvagat-eu-som-aker-till-klimatmotet-cop30/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Euronews",
+    "title": "COP30: What to expect from this year's UN climate talks",
+    "content": "",
+    "link": "http://www.euronews.com/green/2025/11/10/cop30-what-to-expect-from-this-years-un-climate-talks",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Hårda reaktioner mot nya klimatmålet: ”En katastrof”",
+    "content": "",
+    "link": "https://miljo-utveckling.se/harda-reaktioner-mot-eu-en-katastrof/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Så jobbar Sverige för att stoppa gängtopparna utomlands",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/inrikes/sa-jobbar-sverige-for-att-stoppa-gangtopparna-utomlands",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Nu finns Sveriges nordligaste sjöräddningsstation i Kalix",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/norrbotten/nu-finns-sveriges-nordligaste-sjoraddningsstation-i-kalix",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Sverige slog Finland – obesegrad i turneringen",
+    "content": "",
+    "link": "https://www.dn.se/sport/sverige-slog-finland-obesegrad-i-turneringen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI asked Trump administration to expand Chips Act tax credit to cover data centers",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/08/openai-asked-trump-administration-to-expand-chips-act-tax-credit-to-cover-data-centers/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Seven more families are now suing OpenAI over ChatGPT’s role in suicides, delusions",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/07/seven-more-families-are-now-suing-openai-over-chatgpts-role-in-suicides-delusions/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Wired",
+    "title": "What Is Adobe Firefly? Here’s How to Use This Powerful Generative AI Tool",
+    "content": "",
+    "link": "https://www.wired.com/story/what-is-adobe-firefly/",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  }
+]

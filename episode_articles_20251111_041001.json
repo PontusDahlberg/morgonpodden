@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Agenda for Cop30 agreed as crucial climate talks begin – as it happened",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/live/2025/nov/10/cop30-climate-talks-brazil-belem-latest-news-updates",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "‘Existential and urgent’: what impact will ICJ climate ruling have on Cop30?",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/09/what-impact-will-icj-climate-ruling-have-on-cop30",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Nilsson Lindelöf lagkapten för Sverige",
+    "content": "",
+    "link": "https://www.svt.se/sport/fotboll/nilsson-lindelof-lagkapten-for-sverige",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "När Tidöregeringen dansar kring reaktorn",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/opinion/ledare/nar-tidoregeringen-dansar-kring-reaktorn/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Budgetstriden i USA ett steg närmare lösning",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/budgetstriden-i-usa-ett-steg-narmare-losning",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Kent Ekeroth (SD) avvisades från regionfullmäktige",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/dalarna/kent-ekeroth-sd-kastades-ut-ur-regionfullmaktige",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Kent Ekeroth utkastad från regionfullmäktige",
+    "content": "",
+    "link": "https://www.dn.se/sverige/kent-ekeroth-utkastad-fran-regionfullmaktige/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "Over 100 US leaders to attend Cop30 climate summit as Trump stays away",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/07/cop30-climate-trump-us-officials",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  }
+]

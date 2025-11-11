@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 10 Nov 2025 04:13:50 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 11 Nov 2025 04:11:39 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 11 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 11 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Agenda for Cop30 agreed as crucial climate talks begin – as ...
+  https://www.theguardian.com/environment/live/2025/nov/10/cop30-climate-talks-brazil-belem-latest-news-updates
+• Guardian Climate Crisis: ‘Existential and urgent’: what impact will ICJ climate rulin...
+  https://www.theguardian.com/environment/2025/nov/09/what-impact-will-icj-climate-ruling-have-on-cop30
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• SVT Nyheter: Nilsson Lindelöf lagkapten för Sverige
+  https://www.svt.se/sport/fotboll/nilsson-lindelof-lagkapten-for-sverige
+• Sveriges Natur: När Tidöregeringen dansar kring reaktorn
+  https://www.sverigesnatur.org/opinion/ledare/nar-tidoregeringen-dansar-kring-reaktorn/</description>
+            <pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251111_041001.mp3" length="7665260" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251111_041001.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 10 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 10 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251102_040832.mp3" length="6987500" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251102_040832.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 31 oktober 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 31 oktober 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Röda korset: ”Massiv förödelse i spåren av Melissa”
-  https://www.svt.se/nyheter/utrikes/roda-korset-massiv-forodelse-i-sparen-av-melissa
-• SVT Nyheter: Brittiska kungahuset: Prins Andrews förlorar prinstitel
-  https://www.svt.se/nyheter/utrikes/process-inledd-prins-andrews-titlar-ska-nu-avskaffas
-• Dagens Nyheter: Elina Sahlin: ”Halva Malmö” bidrar till normaliseringen av s...
-  https://www.dn.se/kultur/elina-sahlin-halva-malmo-bidrar-till-normaliseringen-av-strypsex/
-• Miljö &amp; Utveckling: FN: Finansiering till klimatanpassning måste tolvfaldigas
-  https://miljo-utveckling.se/fn-finansiering-till-klimatanpassning-maste-tolvfaldigas/
-• Miljö &amp; Utveckling: Lista: här är framgångsrecepten för återbruk
-  https://miljo-utveckling.se/ny-rapport-har-ar-framgangsrecepten-for-aterbruk/
-• Miljö &amp; Utveckling: Miljömålsberedningen: Sverige klimatmål till 2030 blir kvar
-  https://miljo-utveckling.se/politik-klimatmal-till-2030-behalls/</description>
-            <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251031_040812.mp3" length="7721708" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251031_040812.mp3</guid>
         </item>
     </channel>
 </rss>

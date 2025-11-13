@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Deutsche Welle",
+    "title": "COP30: Can India step up and lead Global South on climate?",
+    "content": "",
+    "link": "https://www.dw.com/en/cop30-can-india-step-up-and-lead-global-south-on-climate/a-74714337?maca=en-rss-en-world-4025-rdf",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "GRI lanserar verktyg för klimatrapportering enligt FN:s riktlinjer",
+    "content": "",
+    "link": "https://miljo-utveckling.se/gri-lanserar-verktyg-for-klimatrapportering-enligt-fns-riktlinjer/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Nej till direkttåg mellan Trondheim och Stockholm",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/jamtland/nej-till-direkttag-mellan-trondheim-och-stockholm",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "När Tidöregeringen dansar kring reaktorn",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/opinion/ledare/nar-tidoregeringen-dansar-kring-reaktorn/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Nedstängningen i USA är över – statsapparaten kan öppna",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/nedstangningen-kan-vara-over-representanthuset-rostar-ja",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Court rules that OpenAI violated German copyright law; orders it to pay damages",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/12/court-rules-that-openai-violated-german-copyright-law-ordered-it-to-pay-damages/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "The Verge",
+    "title": "OpenAI says the brand-new GPT-5.1 is &#8216;warmer&#8217; and has more &#8216;personality&#8217; options",
+    "content": "",
+    "link": "https://www.theverge.com/news/802653/openai-gpt-5-1-upgrade-personality-presets",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "California governor calls Trump ‘an invasive species’ at Cop30 climate talks",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/11/gavin-newsom-trump-cop30",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  }
+]

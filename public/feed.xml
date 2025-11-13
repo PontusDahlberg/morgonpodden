@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 12 Nov 2025 04:10:31 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 13 Nov 2025 04:13:00 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 13 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 13 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Deutsche Welle: COP30: Can India step up and lead Global South on climate?
+  https://www.dw.com/en/cop30-can-india-step-up-and-lead-global-south-on-climate/a-74714337?maca=en-rss-en-world-4025-rdf
+• Miljö &amp; Utveckling: GRI lanserar verktyg för klimatrapportering enligt FN:s rikt...
+  https://miljo-utveckling.se/gri-lanserar-verktyg-for-klimatrapportering-enligt-fns-riktlinjer/
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• SVT Nyheter: Nej till direkttåg mellan Trondheim och Stockholm
+  https://www.svt.se/nyheter/lokalt/jamtland/nej-till-direkttag-mellan-trondheim-och-stockholm
+• Sveriges Natur: När Tidöregeringen dansar kring reaktorn
+  https://www.sverigesnatur.org/opinion/ledare/nar-tidoregeringen-dansar-kring-reaktorn/</description>
+            <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251113_041110.mp3" length="8392556" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251113_041110.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 12 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 12 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251104_040754.mp3" length="7381868" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251104_040754.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 3 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 3 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• BBC News: At least eight dead after magnitude-6.3 earthquake hits Afgh...
-  https://www.bbc.com/news/articles/c8jrw12d3edo?at_medium=RSS&amp;at_campaign=rss
-• TechCrunch: Alphabet is increasingly launching “moonshot” projects as in...
-  https://techcrunch.com/2025/11/02/alphabet-is-increasingly-launching-moonshot-projects-as-independent-companies-heres-why/
-• The Verge: The best new movies to stream this week
-  https://www.theverge.com/entertainment/812193/the-best-new-movies-to-stream-this-week
-• The Verge: The perfect grocery list-making app doesn’t exist
-  https://www.theverge.com/tech/809152/grocery-list-app-paprika-better-meal-google-keep
-• MIT Technology Review: The Download: down the Mandela effect rabbit hole, and the p...
-  https://www.technologyreview.com/2025/10/31/1127444/the-download-down-the-mandela-effect-rabbit-hole-and-the-promise-of-a-vaccine-for-colds/
-• MIT Technology Review: Leveraging the clinician’s expertise with agentic AI
-  https://www.technologyreview.com/2025/10/30/1125697/leveraging-the-clinicians-expertise-with-agentic-ai/</description>
-            <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251103_041145.mp3" length="8358380" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251103_041145.mp3</guid>
         </item>
     </channel>
 </rss>

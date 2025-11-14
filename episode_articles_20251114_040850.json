@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Dagens Nyheter",
+    "title": "M-topp JO-anmäler kampanj om miljözon i Stockholm",
+    "content": "",
+    "link": "https://www.dn.se/sverige/m-topp-jo-anmaler-kampanj-om-miljozon-i-stockholm/",
+    "category": "environment_sweden",
+    "relevance_score": 100,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Forskning: Varmare sjöar kan fördubbla metanutsläpp",
+    "content": "",
+    "link": "https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "”Hon ska få C att sluta drömma i regeringsfrågan”",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/inrikes/hon-ska-fa-c-att-sluta-dromma-i-regeringsfragan",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Svårt för nyanlända att få bostad i Stockholm – hänvisas till modulhus",
+    "content": "",
+    "link": "https://www.dn.se/ekonomi/svart-for-nyanlanda-att-fa-bostad-i-stockholm-hanvisas-till-modulhus/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC News",
+    "title": "Drugs disguised as tea keep washing up on this S Korean holiday island",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c93d4y8ggvqo?at_medium=RSS&at_campaign=rss",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "OpenAI’s new LLM exposes the secrets of how AI really works",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/11/13/1127914/openais-new-llm-exposes-the-secrets-of-how-ai-really-works/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "The Verge",
+    "title": "Hackers use Anthropic’s AI model Claude once again",
+    "content": "",
+    "link": "https://www.theverge.com/news/820458/hackers-china-ai-anthropic-claude",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "Major US broadcasters sit out Cop30 climate talks: ‘They’re missing a lot’",
+    "content": "",
+    "link": "https://www.theguardian.com/us-news/2025/nov/13/cop30-climate-talks-belem-us-broadcasters",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  }
+]

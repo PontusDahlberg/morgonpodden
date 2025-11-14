@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 13 Nov 2025 04:13:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 14 Nov 2025 04:11:03 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 14 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 14 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: M-topp JO-anmäler kampanj om miljözon i Stockholm
+  https://www.dn.se/sverige/m-topp-jo-anmaler-kampanj-om-miljozon-i-stockholm/
+• Miljö &amp; Utveckling: Forskning: Varmare sjöar kan fördubbla metanutsläpp
+  https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• SVT Nyheter: ”Hon ska få C att sluta drömma i regeringsfrågan”
+  https://www.svt.se/nyheter/inrikes/hon-ska-fa-c-att-sluta-dromma-i-regeringsfragan
+• Dagens Nyheter: Svårt för nyanlända att få bostad i Stockholm – hänvisas til...
+  https://www.dn.se/ekonomi/svart-for-nyanlanda-att-fa-bostad-i-stockholm-hanvisas-till-modulhus/</description>
+            <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251114_040850.mp3" length="8641004" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251114_040850.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 13 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 13 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251105_040841.mp3" length="9181292" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251105_040841.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 4 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 4 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Då får svenskar resa visumfritt till Kina
-  https://www.svt.se/nyheter/inrikes/da-far-svenskar-resa-visumfritt-till-kina
-• Dagens Nyheter: Isobel Hadley-Kamptz: Det som hände på kyrkogårdarna i helge...
-  https://www.dn.se/ledare/isobel-hadley-kamptz-det-som-hande-pa-kyrkogardarna-i-helgen-visar-hur-felaktig-bilden-av-svenskar/
-• BBC News: China academic intimidation claim referred to counter-terror...
-  https://www.bbc.com/news/articles/cj0e1lyyvdlo?at_medium=RSS&amp;at_campaign=rss
-• Miljö &amp; Utveckling: Svensk startup gör grön kiselrevolution
-  https://miljo-utveckling.se/svensk-startup-gor-gron-kiselrevolution/
-• TechCrunch: Studio Ghibli and other Japanese publishers want OpenAI to s...
-  https://techcrunch.com/2025/11/03/studio-ghibli-and-other-japanese-publishers-want-openai-to-stop-training-on-their-work/
-• MIT Technology Review: The State of AI: Is China about to win the race?
-  https://www.technologyreview.com/2025/11/03/1126780/the-state-of-ai-is-china-about-to-win-the-race/</description>
-            <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251104_040754.mp3" length="7381868" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251104_040754.mp3</guid>
         </item>
     </channel>
 </rss>

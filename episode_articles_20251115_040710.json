@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Forskning: Varmare sjöar kan fördubbla metanutsläpp",
+    "content": "",
+    "link": "https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "Protesters clash with security at COP30 climate talks in Brazil",
+    "content": "",
+    "link": "https://www.bbc.com/news/videos/c4gkyx4r190o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Pappa till bortförd flicka tillbaka i Sverige – kommunen ovetande",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/pappa-till-bortford-flicka-tillbaka-i-sverige-kommunen-ovetande",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Socialdemokraterna vill att Sverige bygger fler ubåtar",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/inrikes/socialdemokraterna-vill-att-sverige-bygger-fler-ubatar",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Slovakiska Oscarsbidraget ”Father” tar hem årets Bronshäst i Stockholm",
+    "content": "",
+    "link": "https://www.dn.se/kultur/slovenska-oscarsbidraget-father-tar-hem-arets-bronshast-i-stockholm/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Leaked documents shed light into how much OpenAI pays Microsoft",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/leaked-documents-shed-light-into-how-much-openai-pays-microsoft/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/chatgpt-everything-to-know-about-the-ai-chatbot/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI says it’s fixed ChatGPT’s em dash problem",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/openai-says-its-fixed-chatgpts-em-dash-problem/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

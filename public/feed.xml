@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 14 Nov 2025 04:11:03 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 15 Nov 2025 04:08:55 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 15 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 15 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Miljö &amp; Utveckling: Forskning: Varmare sjöar kan fördubbla metanutsläpp
+  https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• BBC Science &amp; Environment: Protesters clash with security at COP30 climate talks in Bra...
+  https://www.bbc.com/news/videos/c4gkyx4r190o?at_medium=RSS&amp;at_campaign=rss
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• SVT Nyheter: Pappa till bortförd flicka tillbaka i Sverige – kommunen ove...
+  https://www.svt.se/nyheter/lokalt/stockholm/pappa-till-bortford-flicka-tillbaka-i-sverige-kommunen-ovetande
+• SVT Nyheter: Socialdemokraterna vill att Sverige bygger fler ubåtar
+  https://www.svt.se/nyheter/inrikes/socialdemokraterna-vill-att-sverige-bygger-fler-ubatar</description>
+            <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251115_040710.mp3" length="7265900" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251115_040710.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 14 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 14 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251106_041053.mp3" length="6543212" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251106_041053.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 5 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 5 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: The Weather Stations visuella inramning adderar lager till m...
-  https://www.dn.se/kultur/the-weather-stations-visuella-inramning-adderar-lager-till-musiken/
-• Miljö &amp; Utveckling: SBTI skjuter upp tidsfrist för avskogningsfria leverantörske...
-  https://miljo-utveckling.se/sbti-skjuter-upp-tidsfrist-for-avskogningsfria-leverantorskedjor/
-• Miljö &amp; Utveckling: Riksrevisionen kritiserar styrningen av utsläppskrediter
-  https://miljo-utveckling.se/riksrevisionen-kritiserar-styrningen-av-utslappskrediter/
-• Miljö &amp; Utveckling: VSME i praktiken – Danmark visar hur
-  https://miljo-utveckling.se/danmark-visar-vagen-sa-funkar-eus-nya-sme-standard/
-• TechCrunch: Beta Technologies ends first day on NYSE in the green and $1...
-  https://techcrunch.com/2025/11/04/beta-technologies-ends-first-day-on-nyse-in-the-green-and-1b-raised/
-• The Verge: Apple Podcasts is generating automatic links and chapters
-  https://www.theverge.com/news/813817/apple-podcasts-automatic-links-and-chapters</description>
-            <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251105_040841.mp3" length="9181292" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251105_040841.mp3</guid>
         </item>
     </channel>
 </rss>

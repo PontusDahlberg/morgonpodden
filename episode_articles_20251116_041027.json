@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Euronews",
+    "title": "Climate protesters demand to be heard as they continue demonstrations at UN COP30 talks",
+    "content": "",
+    "link": "http://www.euronews.com/green/2025/11/15/climate-protesters-demand-to-be-heard-as-they-continue-demonstrations-at-un-cop30-talks",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Forskning: Varmare sjöar kan fördubbla metanutsläpp",
+    "content": "",
+    "link": "https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Två personer vårdas efter bussolyckan i Stockholm",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/tva-personer-vardas-efter-bussolyckan-i-stockholm",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Ingen Potter-effekt när Sverige föll tungt i Schweiz",
+    "content": "",
+    "link": "https://www.dn.se/sport/sverige-foll-tungt-mot-schweiz-igen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Sverige möter Schweiz – följ matchen live",
+    "content": "",
+    "link": "https://www.dn.se/sport/sverige-moter-schweiz-folj-matchen-live/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Leaked documents shed light into how much OpenAI pays Microsoft",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/leaked-documents-shed-light-into-how-much-openai-pays-microsoft/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/chatgpt-everything-to-know-about-the-ai-chatbot/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI says it’s fixed ChatGPT’s em dash problem",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/openai-says-its-fixed-chatgpts-em-dash-problem/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

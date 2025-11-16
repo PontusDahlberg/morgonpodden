@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 15 Nov 2025 04:08:55 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 16 Nov 2025 04:12:14 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 16 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 16 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Euronews: Climate protesters demand to be heard as they continue demon...
+  http://www.euronews.com/green/2025/11/15/climate-protesters-demand-to-be-heard-as-they-continue-demonstrations-at-un-cop30-talks
+• Miljö &amp; Utveckling: Forskning: Varmare sjöar kan fördubbla metanutsläpp
+  https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• SVT Nyheter: Två personer vårdas efter bussolyckan i Stockholm
+  https://www.svt.se/nyheter/lokalt/stockholm/tva-personer-vardas-efter-bussolyckan-i-stockholm
+• Dagens Nyheter: Ingen Potter-effekt när Sverige föll tungt i Schweiz
+  https://www.dn.se/sport/sverige-foll-tungt-mot-schweiz-igen/</description>
+            <pubDate>Sun, 16 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251116_041027.mp3" length="7730156" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251116_041027.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 15 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 15 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251107_040743.mp3" length="7706348" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251107_040743.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 6 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 6 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• BBC News: Miss Universe contestants walk out after organiser berates M...
-  https://www.bbc.com/news/articles/cy40q990g28o?at_medium=RSS&amp;at_campaign=rss
-• Miljö &amp; Utveckling: Forskare: Hållbarhetspotentialen i AI underskattas
-  https://miljo-utveckling.se/forskare-potentialen-for-ai-i-hallbarhetsforskning-underskattas/
-• Miljö &amp; Utveckling: Hårda reaktioner mot nya klimatmålet: ”En katastrof”
-  https://miljo-utveckling.se/harda-reaktioner-mot-eu-en-katastrof/
-• Miljö &amp; Utveckling: Krav på att stoppa fossil­lobbyn inför Cop30 – forskare stud...
-  https://miljo-utveckling.se/krav-pa-att-stoppa-fossillobbyn-infor-cop30-forskare-studerar-makten-bakom-kulisserna/
-• TechCrunch: Discord’s Family Center update now lets parents monitor week...
-  https://techcrunch.com/2025/11/05/discords-family-center-update-now-lets-parents-monitor-weekly-purchases/
-• TechCrunch: Cluely’s Roy Lee hints that viral hype is not enough
-  https://techcrunch.com/2025/11/05/cluelys-roy-lee-hints-that-viral-hype-is-not-enough/</description>
-            <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251106_041053.mp3" length="6543212" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251106_041053.mp3</guid>
         </item>
     </channel>
 </rss>

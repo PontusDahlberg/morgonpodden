@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 16 Nov 2025 04:12:14 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 17 Nov 2025 04:12:53 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 17 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 17 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Miljö &amp; Utveckling: Forskning: Varmare sjöar kan fördubbla metanutsläpp
+  https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• Guardian Environment: Major US broadcasters sit out Cop30 climate talks: ‘They’re ...
+  https://www.theguardian.com/us-news/2025/nov/13/cop30-climate-talks-belem-us-broadcasters
+• Dagens Nyheter: Snabb revansch för Pittsburgh – seger i Stockholm
+  https://www.dn.se/sport/snabb-revansch-for-pittsburgh-seger-i-stockholm/
+• Miljö &amp; Utveckling: EU-parlamentet godkände Omnibus 1 – splittrade reaktioner i ...
+  https://miljo-utveckling.se/eu-parlamentet-godkande-omnibus-1-splittrade-reaktioner-i-sverige/</description>
+            <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251117_041104.mp3" length="7827308" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251117_041104.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 16 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 16 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251108_040736.mp3" length="8260460" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251108_040736.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 7 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 7 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• BBC News: &#x27;Our job is only killing&#x27; - how Sudan&#x27;s brutal militia carri...
-  https://www.bbc.com/news/articles/c8dr5e30m5ro?at_medium=RSS&amp;at_campaign=rss
-• TechCrunch: Chris Sacca’s VC firm is raising a second nuclear fusion fun...
-  https://techcrunch.com/2025/11/06/chris-saccas-vc-firm-is-raising-a-second-nuclear-fusion-fund/
-• TechCrunch: Grand Theft Auto VI is delayed — again
-  https://techcrunch.com/2025/11/06/grand-theft-auto-vi-is-delayed-again/
-• The Verge: Samsung’s new Switch 2-compatible microSD Express card is al...
-  https://www.theverge.com/tech/815946/samsung-p9-microsd-express-card-nintendo-switch-2-deal-sale
-• Wired: The 65 Best Movies on Disney+ Right Now (November 2025)
-  https://www.wired.com/story/best-movies-disney-plus/
-• Wired: The 15-Inch MacBook Air Is $200 Off
-  https://www.wired.com/story/macbook-air-15-deal-1125/</description>
-            <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251107_040743.mp3" length="7706348" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251107_040743.mp3</guid>
         </item>
     </channel>
 </rss>

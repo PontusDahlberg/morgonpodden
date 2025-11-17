@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Forskning: Varmare sjöar kan fördubbla metanutsläpp",
+    "content": "",
+    "link": "https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "Major US broadcasters sit out Cop30 climate talks: ‘They’re missing a lot’",
+    "content": "",
+    "link": "https://www.theguardian.com/us-news/2025/nov/13/cop30-climate-talks-belem-us-broadcasters",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Snabb revansch för Pittsburgh – seger i Stockholm",
+    "content": "",
+    "link": "https://www.dn.se/sport/snabb-revansch-for-pittsburgh-seger-i-stockholm/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "EU-parlamentet godkände Omnibus 1 – splittrade reaktioner i Sverige",
+    "content": "",
+    "link": "https://miljo-utveckling.se/eu-parlamentet-godkande-omnibus-1-splittrade-reaktioner-i-sverige/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "När Tidöregeringen dansar kring reaktorn",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/opinion/ledare/nar-tidoregeringen-dansar-kring-reaktorn/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Leaked documents shed light into how much OpenAI pays Microsoft",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/leaked-documents-shed-light-into-how-much-openai-pays-microsoft/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/14/chatgpt-everything-to-know-about-the-ai-chatbot/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "OpenAI’s new LLM exposes the secrets of how AI really works",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/11/13/1127914/openais-new-llm-exposes-the-secrets-of-how-ai-really-works/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "Major US broadcasters sit out Cop30 climate talks: ‘They’re missing a lot’",
+    "content": "",
+    "link": "https://www.theguardian.com/us-news/2025/nov/13/cop30-climate-talks-belem-us-broadcasters",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Politico Europe",
+    "title": "Diplomats scramble to save UK role in COP30 rainforest fund",
+    "content": "",
+    "link": "https://www.politico.eu/article/diplomats-scramble-to-keep-uk-rainforest-fund-hopes-alive-uma-kumaran/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Polisen: Tre kvinnor dog i bussolyckan i centrala Stockholm",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/polisen-tre-kvinnor-dog-i-bussolyckan",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Man åtalas för grova ekobrott i Kinesiska muren i Malmö",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/skane/man-atalas-for-grova-ekobrott-i-kinesiska-muren-i-malmo",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "DN Debatt. ”Regeringens giftblandning riskerar offentlighetsprincipen”",
+    "content": "",
+    "link": "https://www.dn.se/debatt/regeringens-giftblandning-riskerar-offentlighetsprincipen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "a16z-backed super PAC is targeting Alex Bores, sponsor of New York’s AI safety bill — he says bring it on",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/17/a16z-backed-super-pac-is-targeting-alex-bores-sponsor-of-new-yorks-ai-safety-bill-he-says-bring-it-on/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Bone AI raises $12M to challenge Asia’s defense giants with AI-powered robotics",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/17/bone-ai-raises-funding-to-challenge-asias-defense-giants-with-next-gen-ai-powered-robotics/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "OpenAI’s new LLM exposes the secrets of how AI really works",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/11/13/1127914/openais-new-llm-exposes-the-secrets-of-how-ai-really-works/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

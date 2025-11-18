@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 17 Nov 2025 04:12:53 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 18 Nov 2025 04:11:15 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 18 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 18 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• Guardian Environment: Major US broadcasters sit out Cop30 climate talks: ‘They’re ...
+  https://www.theguardian.com/us-news/2025/nov/13/cop30-climate-talks-belem-us-broadcasters
+• Politico Europe: Diplomats scramble to save UK role in COP30 rainforest fund
+  https://www.politico.eu/article/diplomats-scramble-to-keep-uk-rainforest-fund-hopes-alive-uma-kumaran/?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication
+• SVT Nyheter: Polisen: Tre kvinnor dog i bussolyckan i centrala Stockholm
+  https://www.svt.se/nyheter/lokalt/stockholm/polisen-tre-kvinnor-dog-i-bussolyckan
+• SVT Nyheter: Man åtalas för grova ekobrott i Kinesiska muren i Malmö
+  https://www.svt.se/nyheter/lokalt/skane/man-atalas-for-grova-ekobrott-i-kinesiska-muren-i-malmo</description>
+            <pubDate>Tue, 18 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251118_040911.mp3" length="9208940" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251118_040911.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 17 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 17 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,24 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251109_040754.mp3" length="8176364" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251109_040754.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 8 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 8 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Ungern undantas amerikanska energisanktioner mot Ryssland
-  https://www.dn.se/varlden/trump-oppnar-for-att-undanta-ungern-fran-sanktioner/
-• Euronews: Trump weighs Hungary&#x27;s &#x27;vital&#x27; request for exemption from Ru...
-  http://www.euronews.com/2025/11/07/trump-weighs-hungarys-vital-request-for-exemption-from-russian-energy-sanctions
-• Euronews: Germany promises support for Brazil&#x27;s tropical forest protec...
-  http://www.euronews.com/green/2025/11/07/germany-promises-support-for-brazils-tropical-forest-protection-scheme-at-un-climate-talks
-• TechCrunch: Chris Sacca’s VC firm is raising a second nuclear fusion fun...
-  https://techcrunch.com/2025/11/06/chris-saccas-vc-firm-is-raising-a-second-nuclear-fusion-fund/
-• IEEE Spectrum: Menifee’s EV-Powered Homes: A New Era in Energy Independence
-  https://spectrum.ieee.org/evs-keep-homes-lit</description>
-            <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251108_040736.mp3" length="8260460" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251108_040736.mp3</guid>
         </item>
     </channel>
 </rss>

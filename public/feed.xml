@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 18 Nov 2025 04:11:15 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 19 Nov 2025 04:11:15 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 19 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 19 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Aktivisten om klimatmötet COP30: ”Det är arga leken”
+  https://www.svt.se/nyheter/utrikes/aktivisten-om-klimatmotet-cop30-det-ar-arga-leken
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• Guardian Climate Crisis: Sussan Ley, it’s time we took a look at your climate policy ...
+  https://www.theguardian.com/commentisfree/2025/nov/18/sussan-its-time-we-took-a-look-at-your-climate-policy-report-card-you-appear-to-have-learned-nothing
+• SVT Nyheter: Så går Sverige till VM 2026 – här är laget Lustig helst lott...
+  https://www.svt.se/sport/fotboll/sa-gar-sverige-till-vm-2026-har-ar-laget-lustig-helst-lottas-mot-i-playoff
+• SVT Nyheter: Stockholm får egen julbock: ”Hoppas de låter bli att bränna ...
+  https://www.svt.se/nyheter/lokalt/stockholm/stockholm-far-egen-julbock-hoppas-de-later-bli-att-branna-ner-den</description>
+            <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251119_040912.mp3" length="8487788" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251119_040912.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 18 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 18 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,24 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251110_041154.mp3" length="8391404" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251110_041154.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 9 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 9 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• BBC News: Six dead as Russia hits energy and residential sites in Ukra...
-  https://www.bbc.com/news/articles/ce3xdg7xrv9o?at_medium=RSS&amp;at_campaign=rss
-• Euronews: Trump hands Viktor Orbán a win as Hungary locks exemption fo...
-  http://www.euronews.com/my-europe/2025/11/08/trump-hands-viktor-orban-a-win-as-hungary-locks-exemption-for-russian-energy-imports
-• Euronews: Orbán says Trump has agreed to grant Hungary an exemption fr...
-  http://www.euronews.com/2025/11/08/orban-says-trump-has-agreed-to-grant-hungary-an-exemption-from-sanctions-on-russian-energy
-• IEEE Spectrum: Menifee’s EV-Powered Homes: A New Era in Energy Independence
-  https://spectrum.ieee.org/evs-keep-homes-lit
-• Dagens Nyheter: Är vissa sockerarter ”mindre dåliga” än andra?
-  https://www.dn.se/insidan/ar-vissa-sockerarter-mindre-daliga-an-andra/</description>
-            <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251109_040754.mp3" length="8176364" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251109_040754.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -1,0 +1,92 @@
+[
+  {
+    "source": "SVT Nyheter",
+    "title": "Aktivisten om klimatmötet COP30: ”Det är arga leken”",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/aktivisten-om-klimatmotet-cop30-det-ar-arga-leken",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Sussan Ley, it’s time we took a look at your climate policy report card. You appear to have learned nothing | Tristan Edis",
+    "content": "",
+    "link": "https://www.theguardian.com/commentisfree/2025/nov/18/sussan-its-time-we-took-a-look-at-your-climate-policy-report-card-you-appear-to-have-learned-nothing",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Så går Sverige till VM 2026 – här är laget Lustig helst lottas mot i playoff",
+    "content": "",
+    "link": "https://www.svt.se/sport/fotboll/sa-gar-sverige-till-vm-2026-har-ar-laget-lustig-helst-lottas-mot-i-playoff",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Stockholm får egen julbock: ”Hoppas de låter bli att bränna ner den”",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/stockholm-far-egen-julbock-hoppas-de-later-bli-att-branna-ner-den",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Uppgifter: Sjukdomsfall kan ha orsakat bussolyckan i Stockholm",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/uppgifter-sjukdomsfall-bakom-bussolyckan-i-stockholm",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Politico Europe",
+    "title": "The EU promised to lead on regulating artificial intelligence. Now it’s hitting pause.",
+    "content": "",
+    "link": "https://www.politico.eu/article/the-eu-wanted-to-lead-on-regulating-ai-now-its-hitting-pause/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Hugging Face CEO says we’re in an ‘LLM bubble,’ not an AI bubble",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/18/hugging-face-ceo-says-were-in-an-llm-bubble-not-an-ai-bubble/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Monarch Tractor sued over tractors that were ‘unable to operate autonomously’",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/18/monarch-tractor-sued-over-tractors-that-were-unable-to-operate-autonomously/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

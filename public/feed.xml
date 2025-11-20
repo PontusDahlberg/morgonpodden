@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 19 Nov 2025 04:11:15 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 20 Nov 2025 04:09:32 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 20 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 20 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
+  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
+• Guardian Climate Crisis: Turkey to host Cop31 climate conference after Australia drop...
+  https://www.theguardian.com/australia-news/2025/nov/20/turkey-to-host-cop31-climate-conference-after-australia-drops-push-to-hold-it-in-adelaide
+• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
+  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
+• Guardian Climate Crisis: Sussan Ley, it’s time we took a look at your climate policy ...
+  https://www.theguardian.com/commentisfree/2025/nov/18/sussan-its-time-we-took-a-look-at-your-climate-policy-report-card-you-appear-to-have-learned-nothing
+• SVT Nyheter: Italienarnas Sverige-skräck: ”Ingen här vill det”
+  https://www.svt.se/sport/fotboll/italienarnas-sverige-skrack-ingen-har-vill-det
+• SVT Nyheter: Nu ska ”flygande” elfärjan Nova testas i Stockholms skärgård
+  https://www.svt.se/nyheter/lokalt/stockholm/nu-ska-flygande-elfarjan-nova-testas-i-stockholms-skargard</description>
+            <pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251120_040744.mp3" length="8012396" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251120_040744.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 19 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 19 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251111_041001.mp3" length="7665260" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251111_041001.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 10 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 10 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: DN Debatt. ”Det är ett försvagat EU som åker till klimatmöte...
-  https://www.dn.se/debatt/det-ar-ett-forsvagat-eu-som-aker-till-klimatmotet-cop30/
-• Euronews: COP30: What to expect from this year&#x27;s UN climate talks
-  http://www.euronews.com/green/2025/11/10/cop30-what-to-expect-from-this-years-un-climate-talks
-• Miljö &amp; Utveckling: Hårda reaktioner mot nya klimatmålet: ”En katastrof”
-  https://miljo-utveckling.se/harda-reaktioner-mot-eu-en-katastrof/
-• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
-  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
-• SVT Nyheter: Så jobbar Sverige för att stoppa gängtopparna utomlands
-  https://www.svt.se/nyheter/inrikes/sa-jobbar-sverige-for-att-stoppa-gangtopparna-utomlands
-• SVT Nyheter: Nu finns Sveriges nordligaste sjöräddningsstation i Kalix
-  https://www.svt.se/nyheter/lokalt/norrbotten/nu-finns-sveriges-nordligaste-sjoraddningsstation-i-kalix</description>
-            <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251110_041154.mp3" length="8391404" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251110_041154.mp3</guid>
         </item>
     </channel>
 </rss>

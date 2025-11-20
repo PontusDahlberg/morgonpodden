@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "I skuggan av COP30 lämnas världens mest klimatutsatta folk åt sitt öde",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Turkey to host Cop31 climate conference after Australia drops push to hold it in Adelaide",
+    "content": "",
+    "link": "https://www.theguardian.com/australia-news/2025/nov/20/turkey-to-host-cop31-climate-conference-after-australia-drops-push-to-hold-it-in-adelaide",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Lula’s balancing act: Cop30 Amazon summit juggles climate and social priorities",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Sussan Ley, it’s time we took a look at your climate policy report card. You appear to have learned nothing | Tristan Edis",
+    "content": "",
+    "link": "https://www.theguardian.com/commentisfree/2025/nov/18/sussan-its-time-we-took-a-look-at-your-climate-policy-report-card-you-appear-to-have-learned-nothing",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Italienarnas Sverige-skräck: ”Ingen här vill det”",
+    "content": "",
+    "link": "https://www.svt.se/sport/fotboll/italienarnas-sverige-skrack-ingen-har-vill-det",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Nu ska ”flygande” elfärjan Nova testas i Stockholms skärgård",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/nu-ska-flygande-elfarjan-nova-testas-i-stockholms-skargard",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "SMHI varnar: Snövädret fortsätter på torsdagen",
+    "content": "",
+    "link": "https://www.dn.se/sverige/smhi-varnar-snovadret-fortsatter-pa-torsdagen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Wired",
+    "title": "Google DeepMind Hires Former CTO of Boston Dynamics as the Company Pushes Deeper Into Robotics",
+    "content": "",
+    "link": "https://www.wired.com/story/google-hires-cto-boston-dynamics-demis-hassabis-android/",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "Turkey to host Cop31 climate conference after Australia drops push to hold it in Adelaide",
+    "content": "",
+    "link": "https://www.theguardian.com/australia-news/2025/nov/20/turkey-to-host-cop31-climate-conference-after-australia-drops-push-to-hold-it-in-adelaide",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "”Erfarenhet är underskattat” – veteraner driver kampanj för fler seniorer i riksdagen",
+    "content": "",
+    "link": "https://www.dn.se/sverige/erfarenhet-ar-underskattat-veteraner-driver-kampanj-for-fler-seniorer-i-riksdagen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  }
+]

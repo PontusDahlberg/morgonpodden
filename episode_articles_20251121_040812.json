@@ -1,0 +1,92 @@
+[
+  {
+    "source": "BBC News",
+    "title": "COP30 climate talks evacuated after fire breaks out",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/ce9d9p5jrjgo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC News",
+    "title": "India's delayed action plan raises eyebrows at COP30 climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cy8v8k8mlego?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Deutsche Welle",
+    "title": "Fire disrupts COP30 climate summit in Brazil",
+    "content": "",
+    "link": "https://www.dw.com/en/fire-disrupts-cop30-climate-summit-in-brazil/a-74826492?maca=en-rss-en-world-4025-rdf",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Utsläpp kan halveras i viktiga sektioner – ny rapport visar hur",
+    "content": "",
+    "link": "https://miljo-utveckling.se/utslapp-kan-halveras-i-viktiga-sektioner-ny-rapport-visar-hur/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Nu slutar Jarmo Rahikainen efter 40 år i riksdagens tjänst",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/uutiset/svenska/nu-slutar-jarmo-rahikainen-efter-40-ar-i-riksdagens-tjanst",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Sveriges vargförvaltning döms ut av EU – ”inte i linje med vetenskapen”",
+    "content": "",
+    "link": "https://www.dn.se/sverige/sveriges-vargforvaltning-doms-ut-av-eu-inte-i-linje-med-vetenskapen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "Rovdjurspriset delas ut till Kungsörn Sverige",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/rovdjurspriset-delas-ut-till-kungsorn-sverige/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT launches group chats globally",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/20/chatgpt-launches-group-chats-globally/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "The Verge",
+    "title": "OpenAI is launching group chats in ChatGPT",
+    "content": "",
+    "link": "https://www.theverge.com/news/825544/openai-chatgpt-group-chats-launch",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Wired",
+    "title": "Swatch’s New OpenAI-Powered Tool Lets You Design Your Own Watch",
+    "content": "",
+    "link": "https://www.wired.com/story/swatchs-new-openai-powered-tool-lets-you-design-your-own-watch/",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  }
+]

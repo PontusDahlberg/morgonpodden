@@ -1,0 +1,92 @@
+[
+  {
+    "source": "BBC News",
+    "title": "COP30 - Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Euronews",
+    "title": "COP30: New climate deal reached in Brazil, but still no fossil fuel roadmap",
+    "content": "",
+    "link": "http://www.euronews.com/green/2025/11/22/cop30-new-climate-deal-reached-in-brazil-but-still-no-fossil-fuel-roadmap",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Utsläpp kan halveras i viktiga sektioner – ny rapport visar hur",
+    "content": "",
+    "link": "https://miljo-utveckling.se/utslapp-kan-halveras-i-viktiga-sektioner-ny-rapport-visar-hur/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30 climate talks evacuated after fire breaks out",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/ce9d9p5jrjgo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "SMHI-varning om plötslig ishalka i Värmland",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/varmland/smhi-varning-om-plotslig-ishalka-i-varmland",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "En till sjukhus efter lägenhetsbrand i Malmö",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/skane/en-till-sjukhus-efter-lagenhetsbrand-i-malmo-bc1ajh",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Källor: USA överväger störta Maduros regering – flyg ställs in",
+    "content": "",
+    "link": "https://www.dn.se/varlden/kallor-usa-overvager-storsta-maduros-regering-flyg-stalls-in/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Trump administration might not fight state AI regulations after all",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/22/trump-administration-might-not-fight-state-ai-regulations-after-all/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30 - Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "What was agreed on climate change at COP30 in Brazil?",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  }
+]

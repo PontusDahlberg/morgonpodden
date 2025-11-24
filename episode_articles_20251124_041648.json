@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Utsläpp kan halveras i viktiga sektioner – ny rapport visar hur",
+    "content": "",
+    "link": "https://miljo-utveckling.se/utslapp-kan-halveras-i-viktiga-sektioner-ny-rapport-visar-hur/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30 climate talks evacuated after fire breaks out",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/ce9d9p5jrjgo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "What was agreed on climate change at COP30 in Brazil?",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Misstänkt våldtäkt i centrala Stockholm",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/misstankt-valdtakt-i-centrala-stockholm-352f1k",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "EU-kommissionen ger Sverige bakläxa om vargen",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/eu-kommissionen-ger-sverige-baklaxa-om-vargen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "Rovdjurspriset delas ut till Kungsörn Sverige",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/rovdjurspriset-delas-ut-till-kungsorn-sverige/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Deutsche Welle",
+    "title": "Separatist candidate wins vote in Bosnia's autonomous Republika Srpska",
+    "content": "",
+    "link": "https://www.dw.com/en/separatist-candidate-wins-vote-in-bosnia-s-autonomous-republika-srpska/a-74852088?maca=en-rss-en-world-4025-rdf",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT told them they were special — their families say it led to tragedy",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/23/chatgpt-told-them-they-were-special-their-families-say-it-led-to-tragedy/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Trump administration might not fight state AI regulations after all",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/22/trump-administration-might-not-fight-state-ai-regulations-after-all/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

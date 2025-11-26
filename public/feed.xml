@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 25 Nov 2025 04:13:09 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 26 Nov 2025 04:12:20 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 26 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 26 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Miljö &amp; Utveckling: Konjunkturinstitutet: Sveriges klimatmål krockar med EU:s ut...
+  https://miljo-utveckling.se/konjunkturinstitutet-sveriges-klimatmal-krockar-med-eus-utslappshandel/
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC Science &amp; Environment: What was agreed on climate change at COP30 in Brazil?
+  https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&amp;at_campaign=rss
+• SVT Nyheter: Kvinna hittad död i lägenhet i Stockholm – polisen utreder m...
+  https://www.svt.se/nyheter/lokalt/stockholm/kvinna-hittad-dod-i-lagenhet-i-stockholm-polisen-utreder-mord
+• SVT Nyheter: Sex bilar brann i garage vid köpcentrum i Malmö
+  https://www.svt.se/nyheter/lokalt/skane/sex-bilar-brann-i-garage-vid-kopcentrum-i-malmo</description>
+            <pubDate>Wed, 26 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251126_041048.mp3" length="6813548" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251126_041048.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 25 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 25 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251117_041104.mp3" length="7827308" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251117_041104.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 16 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 16 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Euronews: Climate protesters demand to be heard as they continue demon...
-  http://www.euronews.com/green/2025/11/15/climate-protesters-demand-to-be-heard-as-they-continue-demonstrations-at-un-cop30-talks
-• Miljö &amp; Utveckling: Forskning: Varmare sjöar kan fördubbla metanutsläpp
-  https://miljo-utveckling.se/forskning-varmare-sjoar-kan-fordubbla-metanutslapp/
-• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
-  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
-• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
-  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
-• SVT Nyheter: Två personer vårdas efter bussolyckan i Stockholm
-  https://www.svt.se/nyheter/lokalt/stockholm/tva-personer-vardas-efter-bussolyckan-i-stockholm
-• Dagens Nyheter: Ingen Potter-effekt när Sverige föll tungt i Schweiz
-  https://www.dn.se/sport/sverige-foll-tungt-mot-schweiz-igen/</description>
-            <pubDate>Sun, 16 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251116_041027.mp3" length="7730156" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251116_041027.mp3</guid>
         </item>
     </channel>
 </rss>

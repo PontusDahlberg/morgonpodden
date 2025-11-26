@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Konjunkturinstitutet: Sveriges klimatmål krockar med EU:s utsläppshandel",
+    "content": "",
+    "link": "https://miljo-utveckling.se/konjunkturinstitutet-sveriges-klimatmal-krockar-med-eus-utslappshandel/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "What was agreed on climate change at COP30 in Brazil?",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Kvinna hittad död i lägenhet i Stockholm – polisen utreder mord",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/kvinna-hittad-dod-i-lagenhet-i-stockholm-polisen-utreder-mord",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Sex bilar brann i garage vid köpcentrum i Malmö",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/skane/sex-bilar-brann-i-garage-vid-kopcentrum-i-malmo",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Jättesumman: Så mycket förlorar Sverige årligen på grund av linjär ekonomi",
+    "content": "",
+    "link": "https://miljo-utveckling.se/ekonomi-sverige-forlorar-600-miljarder-kronor-arligen-pa-grund-av-linjar-ekonomi/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT’s voice mode is no longer a separate interface",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/25/chatgpts-voice-mode-is-no-longer-a-separate-interface/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI and Perplexity are launching AI shopping assistants, but competing startups aren’t sweating it",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/25/openai-and-perplexity-are-launching-ai-shopping-assistants-but-competing-startups-arent-sweating-it/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30 climate talks overrun with deadlock over fossil fuels",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c1lr5v5y932o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "What was agreed on climate change at COP30 in Brazil?",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Sverige slog Tjeckien i premiären av handbolls-VM",
+    "content": "",
+    "link": "https://www.svt.se/sport/handboll/sverige-slog-tjeckien-i-premiaren-av-handbolls-vm",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Sveriges Lag Hasselborg till final i curling-EM – trots grov miss",
+    "content": "",
+    "link": "https://www.svt.se/sport/curling/sveriges-lag-hasselborg-till-final-i-curling-em-trots-grov-miss",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Sverige vann i VM-premiären",
+    "content": "",
+    "link": "https://www.dn.se/sport/sverige-vann-i-vm-premiaren/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI claims teen circumvented safety features before suicide that ChatGPT helped plan",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/26/openai-claims-teen-circumvented-safety-features-before-suicide-that-chatgpt-helped-plan/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+    "content": "",
+    "link": "https://techcrunch.com/2025/11/26/chatgpt-everything-to-know-about-the-ai-chatbot/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Danska regeringens nattvakt bevakar Trump",
+    "content": "",
+    "link": "https://www.dn.se/varlden/danska-regeringens-nattvakt-bevakar-trump/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Sverige till final efter vändning",
+    "content": "",
+    "link": "https://www.dn.se/sport/sverige-till-final-efter-vandning/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  }
+]

@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 27 Nov 2025 04:11:06 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 28 Nov 2025 04:10:50 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 28 november 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 28 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC Science &amp; Environment: What was agreed on climate change at COP30 in Brazil?
+  https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&amp;at_campaign=rss
+• SVT Nyheter: Sverige slog Tjeckien i premiären av handbolls-VM
+  https://www.svt.se/sport/handboll/sverige-slog-tjeckien-i-premiaren-av-handbolls-vm
+• SVT Nyheter: Sveriges Lag Hasselborg till final i curling-EM – trots grov...
+  https://www.svt.se/sport/curling/sveriges-lag-hasselborg-till-final-i-curling-em-trots-grov-miss
+• Dagens Nyheter: Sverige vann i VM-premiären
+  https://www.dn.se/sport/sverige-vann-i-vm-premiaren/</description>
+            <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251128_040858.mp3" length="8480492" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251128_040858.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 27 november 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 27 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251119_040912.mp3" length="8487788" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251119_040912.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 18 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 18 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: I skuggan av COP30 lämnas världens mest klimatutsatta folk å...
-  https://www.sverigesnatur.org/aktuellt/i-skuggan-av-cop30-lamnas-varldens-mest-klimatutsatta-folk-at-sitt-ode/
-• Guardian Climate Crisis: Lula’s balancing act: Cop30 Amazon summit juggles climate an...
-  https://www.theguardian.com/environment/2025/nov/08/brazil-amazon-summit-juggles-climate-and-social-priorities
-• Guardian Environment: Major US broadcasters sit out Cop30 climate talks: ‘They’re ...
-  https://www.theguardian.com/us-news/2025/nov/13/cop30-climate-talks-belem-us-broadcasters
-• Politico Europe: Diplomats scramble to save UK role in COP30 rainforest fund
-  https://www.politico.eu/article/diplomats-scramble-to-keep-uk-rainforest-fund-hopes-alive-uma-kumaran/?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication
-• SVT Nyheter: Polisen: Tre kvinnor dog i bussolyckan i centrala Stockholm
-  https://www.svt.se/nyheter/lokalt/stockholm/polisen-tre-kvinnor-dog-i-bussolyckan
-• SVT Nyheter: Man åtalas för grova ekobrott i Kinesiska muren i Malmö
-  https://www.svt.se/nyheter/lokalt/skane/man-atalas-for-grova-ekobrott-i-kinesiska-muren-i-malmo</description>
-            <pubDate>Tue, 18 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251118_040911.mp3" length="9208940" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251118_040911.mp3</guid>
         </item>
     </channel>
 </rss>

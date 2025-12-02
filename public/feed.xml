@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 01 Dec 2025 04:28:00 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 02 Dec 2025 04:15:12 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 2 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 2 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Miljö &amp; Utveckling: Regeringen pressas om jordbrukets klimatpåverkan
+  https://miljo-utveckling.se/regeringen-pressas-om-jordbrukets-klimatpaverkan/
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC Science &amp; Environment: What was agreed on climate change at COP30 in Brazil?
+  https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&amp;at_campaign=rss
+• SVT Nyheter: Skolverket: Antisemitism på de flesta skolorna i Sverige
+  https://www.svt.se/nyheter/lokalt/skane/skolverket-antisemitism-pa-de-flesta-skolorna-i-sverige
+• SVT Nyheter: Idol-Ingrid om Stockholmsflytten: ”Här för att stanna”
+  https://www.svt.se/nyheter/uutiset/svenska/idol-ingrid-om-stockholmsflytten-har-for-att-stanna</description>
+            <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251202_041339.mp3" length="6938732" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251202_041339.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 1 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 1 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251123_041634.mp3" length="6996332" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251123_041634.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 22 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 22 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Miljö &amp; Utveckling: Utsläpp kan halveras i viktiga sektioner – ny rapport visar ...
-  https://miljo-utveckling.se/utslapp-kan-halveras-i-viktiga-sektioner-ny-rapport-visar-hur/
-• BBC Science &amp; Environment: COP30 climate talks evacuated after fire breaks out
-  https://www.bbc.com/news/articles/ce9d9p5jrjgo?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: India&#x27;s delayed action plan raises eyebrows at COP30 climate...
-  https://www.bbc.com/news/articles/cy8v8k8mlego?at_medium=RSS&amp;at_campaign=rss
-• Guardian Climate Crisis: Cop30: countries still far apart as climate talks overrun – ...
-  https://www.theguardian.com/world/live/2025/nov/21/cop30-live-fossil-fuel-phaseout-final-text-brazil-belem-latest-news-updates
-• SVT Nyheter: Sverige dömer ut COP-utkastet: ”Inte tillräckligt ambitiöst”
-  https://www.svt.se/nyheter/utrikes/sverige-domer-ut-cop-utkastet-inte-tillrackligt-ambitiost
-• SVT Nyheter: Propalestinska demonstranter tillbaka vid Göteborgs universi...
-  https://www.svt.se/nyheter/lokalt/vast/propalestinska-demonstranter-tillbaka-vid-goteborgs-universitet-talt-revs-efter-en-timme</description>
-            <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251122_040727.mp3" length="6488300" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251122_040727.mp3</guid>
         </item>
     </channel>
 </rss>

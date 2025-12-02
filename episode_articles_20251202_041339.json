@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Regeringen pressas om jordbrukets klimatpåverkan",
+    "content": "",
+    "link": "https://miljo-utveckling.se/regeringen-pressas-om-jordbrukets-klimatpaverkan/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "What was agreed on climate change at COP30 in Brazil?",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Skolverket: Antisemitism på de flesta skolorna i Sverige",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/skane/skolverket-antisemitism-pa-de-flesta-skolorna-i-sverige",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Idol-Ingrid om Stockholmsflytten: ”Här för att stanna”",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/uutiset/svenska/idol-ingrid-om-stockholmsflytten-har-for-att-stanna",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Jevhen får vård i Sverige: ”Ryssland har brutit mot alla avtal”",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/jevhen-far-vard-i-sverige-ryssland-har-brutit-mot-alla-avtal",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Nvidia announces new open AI models and tools for autonomous driving research",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/01/nvidia-announces-new-open-ai-models-and-tools-for-autonomous-driving-research/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI’s investment into Thrive Holdings is its latest circular deal",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/01/openais-investment-into-thrive-holdings-is-its-latest-circular-deal/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "An AI model trained on prison phone calls now looks for planned crimes in those calls",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/01/1128591/an-ai-model-trained-on-prison-phone-calls-is-now-being-used-to-surveil-inmates/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

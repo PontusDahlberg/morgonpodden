@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 02 Dec 2025 04:15:12 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 07 Dec 2025 04:19:32 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 7 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 7 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
+  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
+• SVT Nyheter: Göteborgs universitet: Nya arter upptäckta i Stilla havet
+  https://www.svt.se/nyheter/lokalt/vast/goteborgs-universitet-nya-arter-upptackta-i-stilla-havet
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• Guardian Climate Crisis: Global race to secure critical minerals for weapons threaten...
+  https://www.theguardian.com/environment/2025/dec/04/critical-minerals-military-us-pentagon-climate-crisis
+• SVT Nyheter: Ny attack med grön laser i Göteborg
+  https://www.svt.se/nyheter/lokalt/vast/ny-attack-med-gron-laser-i-goteborg
+• SVT Nyheter: Kommer Sverige att införa euron?
+  https://www.svt.se/nyheter/inrikes/kommer-sverige-att-infora-euron</description>
+            <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251207_041732.mp3" length="8500460" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251207_041732.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 2 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 2 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 24 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251124_041648.mp3" length="8355692" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251124_041648.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 23 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 23 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• BBC News: COP30 - Five key takeaways from a deeply divisive climate su...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• Euronews: COP30: New climate deal reached in Brazil, but still no foss...
-  http://www.euronews.com/green/2025/11/22/cop30-new-climate-deal-reached-in-brazil-but-still-no-fossil-fuel-roadmap
-• Miljö &amp; Utveckling: Utsläpp kan halveras i viktiga sektioner – ny rapport visar ...
-  https://miljo-utveckling.se/utslapp-kan-halveras-i-viktiga-sektioner-ny-rapport-visar-hur/
-• BBC Science &amp; Environment: COP30 climate talks evacuated after fire breaks out
-  https://www.bbc.com/news/articles/ce9d9p5jrjgo?at_medium=RSS&amp;at_campaign=rss
-• SVT Nyheter: SMHI-varning om plötslig ishalka i Värmland
-  https://www.svt.se/nyheter/lokalt/varmland/smhi-varning-om-plotslig-ishalka-i-varmland
-• SVT Nyheter: En till sjukhus efter lägenhetsbrand i Malmö
-  https://www.svt.se/nyheter/lokalt/skane/en-till-sjukhus-efter-lagenhetsbrand-i-malmo-bc1ajh</description>
-            <pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251123_041634.mp3" length="6996332" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251123_041634.mp3</guid>
         </item>
     </channel>
 </rss>

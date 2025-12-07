@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Göteborgs universitet: Nya arter upptäckta i Stilla havet",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/vast/goteborgs-universitet-nya-arter-upptackta-i-stilla-havet",
+    "category": "environment_sweden",
+    "relevance_score": 100,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Global race to secure critical minerals for weapons threatens climate, warns report",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/dec/04/critical-minerals-military-us-pentagon-climate-crisis",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Ny attack med grön laser i Göteborg",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/vast/ny-attack-med-gron-laser-i-goteborg",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Kommer Sverige att införa euron?",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/inrikes/kommer-sverige-att-infora-euron",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Insändare. Satsa på alla unga för att stärka Sverige",
+    "content": "",
+    "link": "https://www.dn.se/insandare/satsa-pa-alla-unga-for-att-starka-sverige/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "The Download: LLM confessions, and tapping into geothermal hot spots",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/04/1128772/the-download-llm-confessions-and-tapping-into-geothermal-hot-spots/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Video Friday: Biorobotics Turns Lobster Tails Into Gripper",
+    "content": "",
+    "link": "https://spectrum.ieee.org/lobster-biorobotics",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "MIT’s AI Robotics Lab Director Is Building People-Centered Robots",
+    "content": "",
+    "link": "https://spectrum.ieee.org/mits-ai-robotics-lab-director",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

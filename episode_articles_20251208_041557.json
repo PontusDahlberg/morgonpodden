@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Global race to secure critical minerals for weapons threatens climate, warns report",
+    "content": "",
+    "link": "https://www.theguardian.com/environment/2025/dec/04/critical-minerals-military-us-pentagon-climate-crisis",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Stockholmsaktuella Milo Rau: ”Teater är en form av rättegång”",
+    "content": "",
+    "link": "https://www.dn.se/kultur/stockholmsaktuella-milo-rau-teater-ar-en-form-av-rattegang/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "De är Sveriges nöjdaste bilägare 2025",
+    "content": "",
+    "link": "https://www.dn.se/motor/de-ar-sveriges-nojdaste-bilagare-2025/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "EU-kommissionen ger Sverige bakläxa om vargen",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/eu-kommissionen-ger-sverige-baklaxa-om-vargen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "The accelerator is on the floor for autonomous vehicles",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/07/the-accelerator-is-on-the-floor-for-autonomous-vehicles/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI says it’s turned off app suggestions that look like ads",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/07/openai-says-its-turned-off-app-suggestions-that-look-like-ads/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "The Download: LLM confessions, and tapping into geothermal hot spots",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/04/1128772/the-download-llm-confessions-and-tapping-into-geothermal-hot-spots/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Video Friday: Biorobotics Turns Lobster Tails Into Gripper",
+    "content": "",
+    "link": "https://spectrum.ieee.org/lobster-biorobotics",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

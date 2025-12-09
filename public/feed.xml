@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 08 Dec 2025 04:17:39 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 09 Dec 2025 04:14:23 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 9 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 9 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
+  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
+• SVT Nyheter: Haverikommissionen: Sjukdomsfall bakom bussolyckan i Stockho...
+  https://www.svt.se/nyheter/lokalt/stockholm/haverikommissionen-sjukdomsfall-bakom-bussolyckan-i-stockholm
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• Guardian Environment: Drinking water contaminated with Pfas probably increases ris...
+  https://www.theguardian.com/us-news/2025/dec/08/drinking-water-pfas-infant-mortality-study
+• Dagens Nyheter: Kristina Lindquist: I regeringens Sverige är vissa barn mer ...
+  https://www.dn.se/kultur/kristina-lindquist-i-regeringens-sverige-ar-vissa-barn-mer-barn-an-andra/
+• Sveriges Natur: EU-kommissionen ger Sverige bakläxa om vargen
+  https://www.sverigesnatur.org/aktuellt/eu-kommissionen-ger-sverige-baklaxa-om-vargen/</description>
+            <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251209_041222.mp3" length="9288044" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251209_041222.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 8 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 8 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 26 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251126_041048.mp3" length="6813548" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251126_041048.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 25 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 25 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Miljö &amp; Utveckling: Utsläpp kan halveras i viktiga sektioner – ny rapport visar ...
-  https://miljo-utveckling.se/utslapp-kan-halveras-i-viktiga-sektioner-ny-rapport-visar-hur/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: What was agreed on climate change at COP30 in Brazil?
-  https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&amp;at_campaign=rss
-• SVT Nyheter: Alla anhöriga informerade efter bussolyckan i Stockholm
-  https://www.svt.se/nyheter/lokalt/stockholm/tio-dagar-efter-olyckan-alla-anhoriga-informerade
-• Sveriges Natur: EU-kommissionen ger Sverige bakläxa om vargen
-  https://www.sverigesnatur.org/aktuellt/eu-kommissionen-ger-sverige-baklaxa-om-vargen/</description>
-            <pubDate>Tue, 25 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251125_041106.mp3" length="8642924" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251125_041106.mp3</guid>
         </item>
     </channel>
 </rss>

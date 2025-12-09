@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Haverikommissionen: Sjukdomsfall bakom bussolyckan i Stockholm",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/haverikommissionen-sjukdomsfall-bakom-bussolyckan-i-stockholm",
+    "category": "environment_sweden",
+    "relevance_score": 100,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "Drinking water contaminated with Pfas probably increases risk of infant mortality, study finds",
+    "content": "",
+    "link": "https://www.theguardian.com/us-news/2025/dec/08/drinking-water-pfas-infant-mortality-study",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Kristina Lindquist: I regeringens Sverige är vissa barn mer barn än andra",
+    "content": "",
+    "link": "https://www.dn.se/kultur/kristina-lindquist-i-regeringens-sverige-ar-vissa-barn-mer-barn-an-andra/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "EU-kommissionen ger Sverige bakläxa om vargen",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/eu-kommissionen-ger-sverige-baklaxa-om-vargen/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Polisen utreder misstänkta svartpuben på SD-politikerns hemadress i Skinnskatteberg",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/vastmanland/polisen-utreder-misstankta-svartpubben-pa-sd-politikerns-hemadress-i-skinnskatteberg",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "You can buy your Instacart groceries without leaving ChatGPT",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/08/you-can-buy-your-instacart-groceries-without-leaving-chatgpt/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "The Download: LLM confessions, and tapping into geothermal hot spots",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/04/1128772/the-download-llm-confessions-and-tapping-into-geothermal-hot-spots/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Video Friday: Biorobotics Turns Lobster Tails Into Gripper",
+    "content": "",
+    "link": "https://spectrum.ieee.org/lobster-biorobotics",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

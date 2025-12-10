@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 09 Dec 2025 04:14:23 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 10 Dec 2025 04:17:05 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 10 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 10 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
+  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC News: UN environment report &#x27;hijacked&#x27; by US and others over fossi...
+  https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&amp;at_campaign=rss
+• Miljö &amp; Utveckling: Efter Omnibus: EU föreslår ytterligare lättnader i miljörapp...
+  https://miljo-utveckling.se/efter-omnibus-eu-foreslar-ytterligare-lattnader-i-miljorapporteringen/
+• SVT Nyheter: Region Stockholm i stabsläge – problem att  ringa till sjukh...
+  https://www.svt.se/nyheter/lokalt/stockholm/region-stockholm-i-stabslage-gar-inte-ringa-till-sjukhus
+• Dagens Nyheter: Birgit Johansson är äldst i Sverige – fyller 110
+  https://www.dn.se/sverige/birgit-johansson-ar-aldst-i-sverige-fyller-110/</description>
+            <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251210_041528.mp3" length="6892268" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251210_041528.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 9 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 9 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 27 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251127_040910.mp3" length="7642220" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251127_040910.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 26 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 26 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Miljö &amp; Utveckling: Konjunkturinstitutet: Sveriges klimatmål krockar med EU:s ut...
-  https://miljo-utveckling.se/konjunkturinstitutet-sveriges-klimatmal-krockar-med-eus-utslappshandel/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: What was agreed on climate change at COP30 in Brazil?
-  https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&amp;at_campaign=rss
-• SVT Nyheter: Kvinna hittad död i lägenhet i Stockholm – polisen utreder m...
-  https://www.svt.se/nyheter/lokalt/stockholm/kvinna-hittad-dod-i-lagenhet-i-stockholm-polisen-utreder-mord
-• SVT Nyheter: Sex bilar brann i garage vid köpcentrum i Malmö
-  https://www.svt.se/nyheter/lokalt/skane/sex-bilar-brann-i-garage-vid-kopcentrum-i-malmo</description>
-            <pubDate>Wed, 26 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251126_041048.mp3" length="6813548" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251126_041048.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "EU enas om klimatmål: 90 procents utsläppsminskning till 2040",
+    "content": "",
+    "link": "https://miljo-utveckling.se/eu-enas-om-klimatmal-90-procents-utslappsminskning-till-2040/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "UN environment report 'hijacked' by US and others over fossil fuels, top scientist says",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&at_campaign=rss",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Regeringen stärker stödet till skuldsatta – ska förebygga psykisk ohälsa",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/ekonomi/regeringen-starker-stodet-till-skuldsatta-ska-forebygga-psykisk-ohalsa",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Nobelsnackisarna: Svantesson utan kavaljer och klassisk Swedish House Mafia",
+    "content": "",
+    "link": "https://www.svt.se/kultur/nobelsnackisarna-svantesson-utan-kavaljer-och-klassisk-swedish-house-mafia",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Världsberömd jullåt skapades i Malmö – har fått minnesplakett",
+    "content": "",
+    "link": "https://www.dn.se/kultur/varldsberomd-jullat-skapades-i-malmo-har-fatt-minnesplakett/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "State attorneys general warn Microsoft, OpenAI, Google, and other AI giants to fix ‘delusional’ outputs",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/10/state-attorneys-general-warn-microsoft-openai-google-and-other-ai-giants-to-fix-delusional-outputs/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT is Apple’s most downloaded app of 2025 in the US",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/10/chatgpt-is-apples-most-downloaded-app-of-2025-in-the-us/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Why Vision AI Models Fail",
+    "content": "",
+    "link": "https://content.knowledgehub.wiley.com/why-vision-ai-models-fail/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

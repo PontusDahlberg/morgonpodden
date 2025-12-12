@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 11 Dec 2025 04:18:51 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 12 Dec 2025 04:18:32 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 12 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 12 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Insändare. Svar: Kärnkraften kan göra Sverige fossilt oberoe...
+  https://www.dn.se/insandare/svar-karnkraften-kan-gora-sverige-fossilt-oberoende/
+• Miljö &amp; Utveckling: Etisk Handel Sverige startar ny arbetsgrupp: möter risker in...
+  https://miljo-utveckling.se/etisk-handel-sverige-startar-ny-arbetsgrupp-moter-risker-inom-fornybar-energi/
+• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
+  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
+• Miljö &amp; Utveckling: EU enas om klimatmål: 90 procents utsläppsminskning till 204...
+  https://miljo-utveckling.se/eu-enas-om-klimatmal-90-procents-utslappsminskning-till-2040/
+• SVT Nyheter: Regeringen om vårdköerna: ”Möjligt trendbrott”
+  https://www.svt.se/nyheter/inrikes/regeringen-om-vardkoerna-mojligt-trendbrott
+• Dagens Nyheter: Malmö förlorade i Portugal – i praktiken utslaget
+  https://www.dn.se/sport/malmo-forlorade-i-portugal-i-praktiken-utslaget/</description>
+            <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251212_041634.mp3" length="8517740" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251212_041634.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 11 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 11 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251129_040811.mp3" length="7401836" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251129_040811.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 28 november 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 28 november 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: What was agreed on climate change at COP30 in Brazil?
-  https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&amp;at_campaign=rss
-• SVT Nyheter: Sverige slog Tjeckien i premiären av handbolls-VM
-  https://www.svt.se/sport/handboll/sverige-slog-tjeckien-i-premiaren-av-handbolls-vm
-• SVT Nyheter: Sveriges Lag Hasselborg till final i curling-EM – trots grov...
-  https://www.svt.se/sport/curling/sveriges-lag-hasselborg-till-final-i-curling-em-trots-grov-miss
-• Dagens Nyheter: Sverige vann i VM-premiären
-  https://www.dn.se/sport/sverige-vann-i-vm-premiaren/</description>
-            <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251128_040858.mp3" length="8480492" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251128_040858.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Etisk Handel Sverige startar ny arbetsgrupp: möter risker inom förnybar energi",
+    "content": "",
+    "link": "https://miljo-utveckling.se/etisk-handel-sverige-startar-ny-arbetsgrupp-moter-risker-inom-fornybar-energi/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "UN environment report 'hijacked' by US and others over fossil fuels, top scientist says",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&at_campaign=rss",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Man skjuten i Malmö",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/skane/uppgift-person-skjuten-i-malmo",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Inte ens en timme solljus i Stockholm i december",
+    "content": "",
+    "link": "https://www.dn.se/sverige/inte-ens-en-timme-solljus-i-stockholm-i-december/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Ledare: Regeringen flyttar flera miljoner – är det någon som tror att det går obemärkt förbi?",
+    "content": "",
+    "link": "https://www.dn.se/ledare/regeringen-flyttar-flera-miljoner-ar-det-nagon-som-tror-att-det-gar-obemarkt-forbi/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Riding onboard with Rivian’s race to autonomy",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/12/riding-onboard-with-rivians-race-to-autonomy/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/12/chatgpt-everything-to-know-about-the-ai-chatbot/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "The Download: solar geoengineering’s future, and OpenAI is being sued",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/11/1129288/the-download-solar-geoengineerings-future-and-openai-is-being-sued/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

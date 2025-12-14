@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Etisk Handel Sverige startar ny arbetsgrupp: möter risker inom förnybar energi",
+    "content": "",
+    "link": "https://miljo-utveckling.se/etisk-handel-sverige-startar-ny-arbetsgrupp-moter-risker-inom-fornybar-energi/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "UN environment report 'hijacked' by US and others over fossil fuels, top scientist says",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&at_campaign=rss",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Läkemedelsjätten Johnson & Johnson döms betala miljonskadestånd",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/lakemedelsjatten-johnson-och-johnson-doms-betala-miljonskadestand",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Fem gripna för terrorplaner mot julmarknad i Tyskland",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/fem-gripna-for-terrorplaner-mot-julmarknad-i-tyskland",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Två döda efter skjutning vid Brown university i USA",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/flera-skjutna-vid-brown-university",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/12/chatgpt-everything-to-know-about-the-ai-chatbot/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "The Download: solar geoengineering’s future, and OpenAI is being sued",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/11/1129288/the-download-solar-geoengineerings-future-and-openai-is-being-sued/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Ghost Robotics’ Arm Brings Manipulation to Military Quadrupeds",
+    "content": "",
+    "link": "https://spectrum.ieee.org/ghost-robotics-quadruped-robot-arm",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

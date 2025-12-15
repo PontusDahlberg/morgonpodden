@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Etisk Handel Sverige startar ny arbetsgrupp: möter risker inom förnybar energi",
+    "content": "",
+    "link": "https://miljo-utveckling.se/etisk-handel-sverige-startar-ny-arbetsgrupp-moter-risker-inom-fornybar-energi/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "UN environment report 'hijacked' by US and others over fossil fuels, top scientist says",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&at_campaign=rss",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Bröderna Boris och Iván i Nyköping är bäst i Sverige på flipper",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/sormland/broderna-boris-och-ivan-i-nykoping-ar-bast-i-sverige-pa-flipper",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Nathan Shachar: Israels ledare lägger skulden på Australiens regering",
+    "content": "",
+    "link": "https://www.dn.se/varlden/nathan-shachar-israels-ledare-lagger-skulden-pa-australiens-regering/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Kontroll av sociala medier för USA-resenärer kan bli verklighet",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/kontroll-av-sociala-medier-for-usa-resenarer-kan-bli-verklighet",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "The Download: solar geoengineering’s future, and OpenAI is being sued",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/11/1129288/the-download-solar-geoengineerings-future-and-openai-is-being-sued/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "IEEE Spectrum",
+    "title": "Ghost Robotics’ Arm Brings Manipulation to Military Quadrupeds",
+    "content": "",
+    "link": "https://spectrum.ieee.org/ghost-robotics-quadruped-robot-arm",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "The Verge",
+    "title": "The end of OpenAI, and other 2026 predictions",
+    "content": "",
+    "link": "https://www.theverge.com/podcast/844401/tech-industry-2026-predictions-openai-apple",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  }
+]

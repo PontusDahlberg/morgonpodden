@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 15 Dec 2025 04:24:27 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 16 Dec 2025 04:19:22 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 16 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 16 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
+  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
+• Dagens Nyheter: Sverige riskerar gå miste om miljardprojekt till havs
+  https://www.dn.se/ekonomi/sverige-riskerar-ga-miste-om-miljardprojekt-till-havs/
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• BBC Science &amp; Environment: UN environment report &#x27;hijacked&#x27; by US and others over fossi...
+  https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&amp;at_campaign=rss
+• SVT Nyheter: Chanukka firades i Malmö – arrangören: ”Med tunga hjärtan”
+  https://www.svt.se/nyheter/lokalt/skane/chanukka-firades-i-malmo-arrangoren-med-tunga-hjartan
+• SVT Nyheter: SMHI varnar för plötslig ishalka i norr
+  https://www.svt.se/nyheter/lokalt/vasterbotten/smhi-varnar-for-plotslig-ishalka-i-norr-hmj40d</description>
+            <pubDate>Tue, 16 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251216_041741.mp3" length="7497452" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251216_041741.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 15 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 15 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251207_041732.mp3" length="8500460" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251207_041732.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 2 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 2 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Miljö &amp; Utveckling: Regeringen pressas om jordbrukets klimatpåverkan
-  https://miljo-utveckling.se/regeringen-pressas-om-jordbrukets-klimatpaverkan/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: What was agreed on climate change at COP30 in Brazil?
-  https://www.bbc.com/news/articles/c04gqez4lkyo?at_medium=RSS&amp;at_campaign=rss
-• SVT Nyheter: Skolverket: Antisemitism på de flesta skolorna i Sverige
-  https://www.svt.se/nyheter/lokalt/skane/skolverket-antisemitism-pa-de-flesta-skolorna-i-sverige
-• SVT Nyheter: Idol-Ingrid om Stockholmsflytten: ”Här för att stanna”
-  https://www.svt.se/nyheter/uutiset/svenska/idol-ingrid-om-stockholmsflytten-har-for-att-stanna</description>
-            <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251202_041339.mp3" length="6938732" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251202_041339.mp3</guid>
         </item>
     </channel>
 </rss>

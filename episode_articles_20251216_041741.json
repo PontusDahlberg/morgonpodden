@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Sverige riskerar gå miste om miljardprojekt till havs",
+    "content": "",
+    "link": "https://www.dn.se/ekonomi/sverige-riskerar-ga-miste-om-miljardprojekt-till-havs/",
+    "category": "environment_sweden",
+    "relevance_score": 100,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "UN environment report 'hijacked' by US and others over fossil fuels, top scientist says",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&at_campaign=rss",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Chanukka firades i Malmö – arrangören: ”Med tunga hjärtan”",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/skane/chanukka-firades-i-malmo-arrangoren-med-tunga-hjartan",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "SMHI varnar för plötslig ishalka i norr",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/vasterbotten/smhi-varnar-for-plotslig-ishalka-i-norr-hmj40d",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Färre nattåg Stockholm–Narvik – kritik mot Andreas Carlson (KD)",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/norrbotten/farre-nattag-stockholm-narvik-kritik-mot-andreas-carlson-kd",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "I hate that I love Riverside’s AI-driven ‘Rewind’ for podcasters",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/15/i-hate-that-i-love-riversides-ai-driven-rewind-for-podcasters/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Nvidia bulks up open source offerings with an acquisition and new open AI models",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/15/nvidia-bulks-up-open-source-offerings-with-an-acquisition-and-new-open-ai-models/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "MIT Technology Review",
+    "title": "Generative AI hype distracts us from AI’s more important breakthroughs",
+    "content": "",
+    "link": "https://www.technologyreview.com/2025/12/15/1129179/generative-ai-hype-distracts-us-from-ais-more-important-breakthroughs/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  }
+]

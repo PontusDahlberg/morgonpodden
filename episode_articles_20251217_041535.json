@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Tre nya vägledningar ska hjälpa småföretag med hållbarhetsrapportering",
+    "content": "",
+    "link": "https://miljo-utveckling.se/hallbarhetsrapportering-smaforetag-efrag-vagledning/",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Gina Gustavsson: Nej, det är inte läxorna som sticker ut i Sverige Schulman – det är kaoset",
+    "content": "",
+    "link": "https://www.dn.se/ledare/gina-gustavsson-nej-det-ar-inte-laxorna-som-sticker-ut-i-sverige-schulman-det-ar-kaoset/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "50 göteborgare ska ta fram förslag för en hållbar stad",
+    "content": "",
+    "link": "https://miljo-utveckling.se/50-goteborgare-ska-ta-fram-forslag-for-en-hallbar-stad/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Stor uppslutning vid första begravningen i Sydney",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/stor-uppslutning-vid-forsta-begravningen-i-sydney",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "OpenAI continues on its ‘code red’ warpath with new image generation model",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/16/openai-continues-on-its-code-red-warpath-with-new-image-generation-model/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Wired",
+    "title": "OpenAI Rolls Back ChatGPT’s Model Router System for Most Users",
+    "content": "",
+    "link": "https://www.wired.com/story/openai-router-relaunch-gpt-5-sam-altman/",
+    "category": "tech_ai",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Så minglar du rätt – expertens bästa tips för julfesten",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/inrikes/sa-minglar-du-ratt-expertens-basta-tips-for-julfesten",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Trump beordrar Venezuela-blockad",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/utrikes/trump-beordrar-venezuela-blockad",
+    "category": "tech_general",
+    "relevance_score": 20,
+    "geographic_region": "Global"
+  }
+]

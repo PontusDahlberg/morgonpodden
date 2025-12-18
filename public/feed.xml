@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 17 Dec 2025 04:16:58 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 18 Dec 2025 04:16:56 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 18 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 18 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
+  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
+• Miljö &amp; Utveckling: Genomgång: Stöd och kritik mot EU:s klimatmål för 2040
+  https://miljo-utveckling.se/genomgang-stod-och-kritik-mot-eus-klimatmal-for-2040/
+• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
+  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
+• Guardian Climate Crisis: Trump administration to dismantle key climate research cente...
+  https://www.theguardian.com/us-news/2025/dec/17/trump-boulder-ncar-climate-lab
+• SVT Nyheter: Demonstrationer påstås ta över julmarknader i Stockholm – vä...
+  https://www.svt.se/nyheter/lokalt/stockholm/demonstrationer-pastas-ta-over-julmarknader-i-stockholm-vacker-ilska-i-sociala-medier
+• Dagens Nyheter: Finlands statsminister ber asiatiska länder om ursäkt efter ...
+  https://www.dn.se/varlden/finlands-statsminister-ber-asiatiska-lander-om-ursakt-efter-rasismskandal/</description>
+            <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251218_041540.mp3" length="5794796" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251218_041540.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 17 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 17 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251209_041222.mp3" length="9288044" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251209_041222.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 8 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 8 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
-  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• Guardian Climate Crisis: Global race to secure critical minerals for weapons threaten...
-  https://www.theguardian.com/environment/2025/dec/04/critical-minerals-military-us-pentagon-climate-crisis
-• Dagens Nyheter: Stockholmsaktuella Milo Rau: ”Teater är en form av rättegång...
-  https://www.dn.se/kultur/stockholmsaktuella-milo-rau-teater-ar-en-form-av-rattegang/
-• Dagens Nyheter: De är Sveriges nöjdaste bilägare 2025
-  https://www.dn.se/motor/de-ar-sveriges-nojdaste-bilagare-2025/
-• Sveriges Natur: EU-kommissionen ger Sverige bakläxa om vargen
-  https://www.sverigesnatur.org/aktuellt/eu-kommissionen-ger-sverige-baklaxa-om-vargen/</description>
-            <pubDate>Mon, 08 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251208_041557.mp3" length="8147564" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251208_041557.mp3</guid>
         </item>
     </channel>
 </rss>

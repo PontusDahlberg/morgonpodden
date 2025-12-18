@@ -1,0 +1,92 @@
+[
+  {
+    "source": "Sveriges Natur",
+    "title": "Fängelse för klimataktion vid Finlands ambassad i Stockholm",
+    "content": "",
+    "link": "https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/",
+    "category": "climate_sweden",
+    "relevance_score": 105,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Genomgång: Stöd och kritik mot EU:s klimatmål för 2040",
+    "content": "",
+    "link": "https://miljo-utveckling.se/genomgang-stod-och-kritik-mot-eus-klimatmal-for-2040/",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "BBC Science & Environment",
+    "title": "COP30: Five key takeaways from a deeply divisive climate summit",
+    "content": "",
+    "link": "https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&at_campaign=rss",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Climate Crisis",
+    "title": "Trump administration to dismantle key climate research center in Colorado",
+    "content": "",
+    "link": "https://www.theguardian.com/us-news/2025/dec/17/trump-boulder-ncar-climate-lab",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "SVT Nyheter",
+    "title": "Demonstrationer påstås ta över julmarknader i Stockholm – väcker ilska i sociala medier",
+    "content": "",
+    "link": "https://www.svt.se/nyheter/lokalt/stockholm/demonstrationer-pastas-ta-over-julmarknader-i-stockholm-vacker-ilska-i-sociala-medier",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Finlands statsminister ber asiatiska länder om ursäkt efter rasismskandal",
+    "content": "",
+    "link": "https://www.dn.se/varlden/finlands-statsminister-ber-asiatiska-lander-om-ursakt-efter-rasismskandal/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "Dagens Nyheter",
+    "title": "Sverige tappar en ubåt till Polen i stor affär",
+    "content": "",
+    "link": "https://www.dn.se/sverige/sverige-tappar-en-ubat-till-polen-i-stor-affar/",
+    "category": "tech_general",
+    "relevance_score": 25,
+    "geographic_region": "Sverige"
+  },
+  {
+    "source": "TechCrunch",
+    "title": "Instacart’s AI-driven pricing tool attracted attention — now the FTC has questions",
+    "content": "",
+    "link": "https://techcrunch.com/2025/12/17/instacarts-ai-driven-pricing-tool-attracted-attention-now-the-ftc-has-questions/",
+    "category": "tech_ai",
+    "relevance_score": 40,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Guardian Environment",
+    "title": "Trump administration to dismantle key climate research center in Colorado",
+    "content": "",
+    "link": "https://www.theguardian.com/us-news/2025/dec/17/trump-boulder-ncar-climate-lab",
+    "category": "climate_global",
+    "relevance_score": 90,
+    "geographic_region": "Global"
+  },
+  {
+    "source": "Miljö & Utveckling",
+    "title": "Tre nya vägledningar ska hjälpa småföretag med hållbarhetsrapportering",
+    "content": "",
+    "link": "https://miljo-utveckling.se/hallbarhetsrapportering-smaforetag-efrag-vagledning/",
+    "category": "environment_global",
+    "relevance_score": 85,
+    "geographic_region": "Global"
+  }
+]

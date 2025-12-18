@@ -28,6 +28,10 @@ env/
 audio/*.mp3
 audio/*.wav
 
+# Genererat public-output (GitHub Pages-läge). Lägg bara till medvetet via `git add -f`.
+public/audio/*.mp3
+public/audio/*.wav
+
 # Logs
 *.log
 generation_log.txt
@@ -65,3 +69,15 @@ test_dialogue.txt
 test_*.txt
 *_test_*.mp3
 test_*.mp3
+
+# Lokala engångsskript/testkörningar (commit:a bara om du verkligen vill)
+fix_unicode_history.py
+generate_rss_clean.py
+generate_rss_old.py
+generate_rss_old_r2.py
+test_complete_pipeline.py
+test_eu_pronunciation.py
+test_multispeaker.py
+test_pronunciation_length.py
+test_quality_today.py
+test_quality_with_today.py

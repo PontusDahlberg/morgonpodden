@@ -89,6 +89,118 @@ SWEDISH_MONTHS = {
     12: 'december'
 }
 
+# Stopwords för enkel titel-fingerprinting (för att undvika dagliga upprepningar)
+_TITLE_STOPWORDS = {
+    'och', 'eller', 'men', 'att', 'som', 'det', 'den', 'detta', 'dessa', 'en', 'ett', 'i', 'på', 'av', 'till',
+    'för', 'med', 'utan', 'över', 'under', 'efter', 'före', 'om', 'när', 'där', 'här', 'från', 'mot',
+    'säger', 'sa', 'uppger', 'enligt', 'nya', 'ny', 'nu', 'idag', 'igår', 'imorgon',
+    'the', 'a', 'an', 'and', 'or', 'but', 'to', 'of', 'in', 'on', 'for', 'with', 'from', 'by', 'as', 'at',
+}
+
+# Diagnostics
+DIAGNOSTICS_FILE = os.getenv('MMM_DIAGNOSTICS_FILE', 'diagnostics.jsonl')
+_CURRENT_RUN_ID: Optional[str] = None
+
+
+def set_run_id(run_id: str) -> None:
+    global _CURRENT_RUN_ID
+    _CURRENT_RUN_ID = run_id
+
+
+def log_diagnostic(event: str, payload: Dict) -> None:
+    """Skriv en strukturerad rad till diagnostics.jsonl utan att spamma huvudloggen."""
+    try:
+        entry = {
+            'ts': datetime.now().isoformat(timespec='seconds'),
+            'run_id': _CURRENT_RUN_ID,
+            'event': event,
+            **payload,
+        }
+        with open(DIAGNOSTICS_FILE, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    except Exception:
+        # Diagnostik får aldrig stoppa körningen
+        pass
+
+
+def _canonicalize_url(url: str) -> str:
+    """Skapa stabil URL-nyckel som inte påverkas av tracking-parametrar."""
+    if not url:
+        return ""
+    try:
+        from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
+
+        parsed = urlparse(url.strip())
+        query_pairs = [(k, v) for k, v in parse_qsl(parsed.query, keep_blank_values=True)
+                       if not k.lower().startswith('utm_') and k.lower() not in {'fbclid', 'gclid'}]
+        cleaned = parsed._replace(query=urlencode(query_pairs, doseq=True), fragment="")
+
+        # Normalisera bort trailing slash
+        normalized = urlunparse(cleaned).rstrip('/')
+        return normalized
+    except Exception:
+        return url.strip().rstrip('/')
+
+
+def _title_fingerprint(title: str) -> str:
+    """Skapa en grov "fingerprint" av en titel för dedupe mellan dagar."""
+    if not title:
+        return ""
+    text = title.lower()
+    text = re.sub(r'[^\w\såäöÅÄÖ-]', ' ', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    tokens = [t for t in text.split(' ') if len(t) >= 4 and t not in _TITLE_STOPWORDS and not t.isdigit()]
+    if not tokens:
+        return ""
+    # Sortera och ta en begränsad mängd token för stabilitet
+    tokens = sorted(set(tokens))
+    return ' '.join(tokens[:12])
+
+
+def _is_follow_up_article(title: str, content: str) -> bool:
+    """Heuristik: uppföljningar är okej, men daglig repetition ska bort."""
+    text = f"{title} {content}".lower()
+    follow_up_markers = [
+        'uppfölj', 'fortsatt', 'ytterligare', 'igen', 'senaste', 'nu', 'efter', 'rättegång', 'dom',
+        'dömd', 'överklag', 'åtal', 'åtalad', 'fäll', 'frias', 'nya uppgifter', 'utred',
+        'follow-up', 'update', 'latest', 'new details'
+    ]
+    return any(m in text for m in follow_up_markers)
+
+
+def extract_referenced_articles(podcast_content: str, candidate_articles: List[Dict], max_results: int = 8) -> List[Dict]:
+    """Försök avgöra vilka av kandidat-artiklarna som faktiskt refereras i manuset.
+
+    Vi matchar på stabila titel-token (inte exakta strängar) för att undvika att RSS listar källor
+    som aldrig nämndes i avsnittet.
+    """
+    if not podcast_content or not candidate_articles:
+        return []
+
+    haystack = podcast_content.lower()
+    haystack = re.sub(r'[^\w\såäöÅÄÖ-]', ' ', haystack)
+    haystack = re.sub(r'\s+', ' ', haystack)
+
+    scored: List[tuple[int, Dict]] = []
+    for article in candidate_articles:
+        title = (article.get('title') or '').strip()
+        source = (article.get('source') or '').strip()
+        fp = _title_fingerprint(title)
+        if not fp:
+            continue
+
+        tokens = fp.split(' ')
+        token_hits = sum(1 for t in tokens if t in haystack)
+        source_hit = 1 if source and source.lower() in haystack else 0
+        score = token_hits + source_hit
+
+        # Kräver minst en rimlig träff för att räknas
+        if score >= 2 or (score >= 1 and any(len(t) >= 10 and t in haystack for t in tokens)):
+            scored.append((score, article))
+
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [a for _, a in scored[:max_results]]
+
 def get_swedish_weather() -> str:
     """Hämta aktuell väderdata från SMHI för svenska landskap"""
     try:
@@ -187,14 +299,15 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     weekday = today.strftime('%A')
     swedish_weekday = SWEDISH_WEEKDAYS.get(weekday, weekday)
     
-    # Läs tidigare använda artiklar för upprepningsfilter (senaste 7 dagarna)
+    # Läs tidigare använda artiklar för upprepningsfilter (senaste 21 dagarna)
+    # (viktigt för att undvika att samma nyhet tas upp dag efter dag)
     used_articles = set()
     try:
         import glob
         article_files = glob.glob('episode_articles_*.json')
         
-        # Filtrera på datum - bara senaste 7 dagarna
-        cutoff_date = datetime.now() - timedelta(days=7)
+        # Filtrera på datum - bara senaste 21 dagarna
+        cutoff_date = datetime.now() - timedelta(days=21)
         recent_files = []
         for article_file in article_files:
             try:
@@ -211,10 +324,15 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
                 with open(article_file, 'r', encoding='utf-8') as f:
                     prev_articles = json.load(f)
                     for article in prev_articles:
-                        # Använd länk som unik identifierare, eller titel om länk saknas
-                        unique_id = article.get('link') or article.get('title', '').lower()
-                        if unique_id:
-                            used_articles.add(unique_id)
+                        # Lägg in både canonical URL och titel-fingerprint för robust dedupe
+                        prev_link = article.get('link', '')
+                        prev_title = article.get('title', '')
+                        url_key = _canonicalize_url(prev_link)
+                        fp_key = _title_fingerprint(prev_title)
+                        if url_key:
+                            used_articles.add(url_key)
+                        if fp_key:
+                            used_articles.add(fp_key)
             except Exception as e:
                 logger.warning(f"[HISTORY] Kunde inte läsa {article_file}: {e}")
         logger.info(f"[HISTORY] Laddade {len(used_articles)} tidigare använda artiklar för upprepningsfilter")
@@ -265,6 +383,52 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     # Skapa artikelreferenser för AI
     article_refs = ""
     if available_articles:
+        # Filtrera bort upprepningar (men tillåt uppföljningar)
+        filtered_articles = []
+        skipped_count = 0
+        for a in available_articles:
+            url_key = _canonicalize_url(a.get('link', ''))
+            fp_key = _title_fingerprint(a.get('title', ''))
+
+            is_repeat_by_url = bool(url_key and url_key in used_articles)
+            is_repeat_by_fp = bool(fp_key and fp_key in used_articles)
+            is_repeat = is_repeat_by_url or is_repeat_by_fp
+            is_follow_up = _is_follow_up_article(a.get('title', ''), a.get('content', ''))
+
+            if is_repeat and not is_follow_up:
+                skipped_count += 1
+                logger.info(f"[HISTORY] Skipping repeat: {a.get('source', '')} - {a.get('title', '')[:80]}")
+                log_diagnostic('article_skipped_repeat', {
+                    'source': a.get('source', ''),
+                    'title': a.get('title', ''),
+                    'link': a.get('link', ''),
+                    'repeat_by_url': is_repeat_by_url,
+                    'repeat_by_title_fingerprint': is_repeat_by_fp,
+                    'url_key': url_key,
+                    'title_fingerprint': fp_key,
+                })
+                continue
+
+            if is_repeat and is_follow_up:
+                log_diagnostic('article_allowed_follow_up', {
+                    'source': a.get('source', ''),
+                    'title': a.get('title', ''),
+                    'link': a.get('link', ''),
+                    'repeat_by_url': is_repeat_by_url,
+                    'repeat_by_title_fingerprint': is_repeat_by_fp,
+                })
+
+            filtered_articles.append(a)
+
+        if skipped_count:
+            logger.info(f"[HISTORY] Filtrerade bort {skipped_count} upprepade artiklar")
+            log_diagnostic('dedupe_summary', {
+                'skipped_repeat_count': skipped_count,
+                'remaining_article_count': len(filtered_articles),
+            })
+
+        available_articles = filtered_articles
+
         article_refs = "\n\nTILLGÄNGLIGA ARTIKLAR ATT REFERERA TILL:\n"
         for i, article in enumerate(available_articles[:10], 1):
             article_refs += f"{i}. {article['source']}: {article['title']}\n   Innehåll: {article['content']}\n   [Referera som: {article['source']}]\n\n"
@@ -300,6 +464,11 @@ INNEHÅLLSKRAV OCH ÄMNESFÖRDELNING:
 - Inkludera siffror, fakta och konkreta exempel
 - Nämn specifika företag, forskare eller organisationer
 
+REDATIONELL LINJE (KRITISKT):
+- MMM Senaste Nytt är INTE för kärnkraft som klimatlösning. Presentera inte kärnkraft som "lösningen".
+- Om kärnkraft nämns: var saklig och kritisk (mycket höga kostnader, långa byggtider som försenar fossil undanträngning,
+  avfallsfrågan/slutförvar i mycket lång tid, och att det riskerar tränga undan snabbare alternativ).
+
 KÄLLHÄNVISNING - MYCKET VIKTIGT:
 - ANVÄND ENDAST artiklarna listade ovan som källor för dina nyheter - ALDRIG sociala medier eller opålitliga källor
 - VARJE nyhet MÅSTE baseras på en specifik artikel från seriösa medier (SVT, DN, BBC, Reuters etc.)
@@ -318,7 +487,7 @@ OUTRO-KRAV (MYCKET VIKTIGT):
 - STARK koppling till huvudpodden "Människa Maskin Miljö"
 - Förklara att MMM Senaste Nytt är en del av Människa Maskin Miljö-familjen
 - Uppmana lyssnare att kolla in huvudpodden för djupare analyser
-- OBLIGATORISK AI-BRASKLAPP: Lisa och Pelle ska ödmjukt förklara att de är <phoneme alphabet="ipa" ph="ɑːːiːː">AI</phoneme>-röster och att information kan innehålla fel, hänvisa till länkarna i avsnittsinformationen för verifiering
+- OBLIGATORISK AI-BRASKLAPP: Lisa och Pelle ska ödmjukt förklara att de är AI-röster och att information kan innehålla fel, hänvisa till länkarna i avsnittsinformationen för verifiering
 
 DIALOGREGLER:
 - Använd naturliga övergångar: "Det påminner mig om...", "Apropå det...", "Interessant nog..."
@@ -539,9 +708,41 @@ def generate_audio_with_gemini_dialog(script_content: str, weather_info: str, ou
         
         generator = GeminiTTSDialogGenerator()
         
-        # Skapa dialog-script från innehåll
-        dialog_script = generator.create_dialog_script(script_content, weather_info)
-        logger.info("[AUDIO] Dialog-script skapat för Lisa och Pelle")
+        # Om manus redan är en dialog (Lisa:/Pelle:), använd det i stället för att
+        # bygga om via heuristisk split (som kan skapa rader utan talarprefix).
+        if any(tag in script_content for tag in ("Lisa:", "Pelle:", "LISA:", "PELLE:")):
+            parsed_segments = parse_podcast_text(script_content)
+
+            dialog_lines = []
+            fallback_speaker = "Lisa"
+            for seg in parsed_segments:
+                speaker_raw = (seg.get('speaker') or '').strip()
+                text = (seg.get('text') or '').strip()
+                if not text:
+                    continue
+
+                speaker_lower = speaker_raw.lower()
+                if 'lisa' in speaker_lower:
+                    speaker = "Lisa"
+                elif 'pelle' in speaker_lower:
+                    speaker = "Pelle"
+                else:
+                    # Skulle bara inträffa om manus innehåller annan talare.
+                    speaker = fallback_speaker
+                    fallback_speaker = "Pelle" if fallback_speaker == "Lisa" else "Lisa"
+
+                dialog_lines.append(f"{speaker}: {text}")
+
+            dialog_script = "\n".join(dialog_lines).strip()
+            logger.info(f"[AUDIO] Dialog-script byggt från {len(dialog_lines)} parsade repliker")
+        else:
+            # Skapa dialog-script från innehåll (fallback)
+            dialog_script = generator.create_dialog_script(script_content, weather_info)
+            logger.info("[AUDIO] Dialog-script skapat för Lisa och Pelle")
+
+        if not dialog_script:
+            logger.warning("[AUDIO] Tomt dialog-script för Gemini, faller tillbaka")
+            return False
         
         # Generera audio med freeform dialog
         success = generator.synthesize_dialog_freeform(
@@ -770,6 +971,10 @@ def main():
         # Generera datum och filnamn
         today = datetime.now()
         timestamp = today.strftime('%Y%m%d_%H%M%S')
+
+        # Sätt run-id så att diagnostics kan korreleras mellan moduler
+        set_run_id(timestamp)
+        os.environ['MMM_RUN_ID'] = timestamp
         
         # Skapa output-mappar
         os.makedirs('audio', exist_ok=True)
@@ -915,15 +1120,40 @@ def main():
         # Skapa episode data med artiklar som faktiskt refererades i avsnittet
         file_size = os.path.getsize(audio_filepath)
         
-        # Debug: Kolla om vi har artiklar att visa
-        logger.info(f"[RSS] Antal tillgängliga artiklar: {len(referenced_articles)}")
-        
-        # Använd artiklar som faktiskt refererades under genereringen
+        # För RSS: lista bara källor som sannolikt faktiskt nämns i manuset
+        logger.info(f"[RSS] Antal kandidat-artiklar: {len(referenced_articles)}")
+
+        rss_referenced_articles = extract_referenced_articles(podcast_content, referenced_articles, max_results=6)
+        logger.info(f"[RSS] Antal matchade artiklar i manus: {len(rss_referenced_articles)}")
+
+        # Diagnostics: visa vilka som inte matchades (hjälper felsöka "källor som inte var med")
+        try:
+            matched_keys = set()
+            for a in rss_referenced_articles:
+                key = _canonicalize_url(a.get('link', '')) or _title_fingerprint(a.get('title', ''))
+                if key:
+                    matched_keys.add(key)
+
+            unmatched = []
+            for a in referenced_articles:
+                key = _canonicalize_url(a.get('link', '')) or _title_fingerprint(a.get('title', ''))
+                if key and key not in matched_keys:
+                    unmatched.append({'source': a.get('source', ''), 'title': a.get('title', ''), 'link': a.get('link', '')})
+
+            if unmatched:
+                log_diagnostic('rss_sources_unmatched', {
+                    'candidate_count': len(referenced_articles),
+                    'matched_count': len(rss_referenced_articles),
+                    'unmatched_count': len(unmatched),
+                    'examples': unmatched[:10],
+                })
+        except Exception:
+            pass
+
         article_links = []
-        for i, article in enumerate(referenced_articles[:6]):  # Max 6 artiklar
+        for i, article in enumerate(rss_referenced_articles):
             logger.info(f"[RSS] Artikel {i+1}: {article.get('source', 'N/A')} - {article.get('title', 'N/A')[:50]}...")
             if article.get('link') and article.get('title'):
-                # Korta titlar för bättre läsbarhet
                 short_title = article['title'][:60] + "..." if len(article['title']) > 60 else article['title']
                 source_name = article.get('source', 'Okänd källa')
                 article_links.append(f"{source_name}: {short_title}\n  {article['link']}")
@@ -934,16 +1164,6 @@ def main():
             logger.info(f"[RSS] Lade till {len(article_links)} källor i RSS-beskrivning")
         else:
             logger.warning("[RSS] Inga källor att visa i RSS-beskrivning!")
-            # Fallback: använd sources.json som backup
-            try:
-                config = load_config()
-                if config and 'sources' in config:
-                    fallback_sources = [s['name'] for s in config['sources'][:4] if s.get('enabled', True)]
-                    if fallback_sources:
-                        sources_text = f"\n\nKällor: {', '.join(fallback_sources)}"
-                        logger.info(f"[RSS] Använder fallback-källor: {fallback_sources}")
-            except Exception as e:
-                logger.error(f"[RSS] Fel vid fallback-källor: {e}")
         
         month_swedish = SWEDISH_MONTHS[today.month]
         weekday_swedish = SWEDISH_WEEKDAYS.get(today.strftime('%A'), today.strftime('%A'))

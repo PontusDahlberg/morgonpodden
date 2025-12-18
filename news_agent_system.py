@@ -186,6 +186,14 @@ class RelevanceAgent:
         if 'wired' in article.source.lower() or 'verge' in article.source.lower():
             if article.category in [NewsCategory.TECH_GENERAL, NewsCategory.TECH_AI]:
                 article.relevance_score -= 20
+
+        # Redaktionell linje: undvik att driva kärnkraft som "lösning".
+        # Vi tillåter kärnkraftsnyheter, men sänker prioriteten om de inte tydligt handlar om problem/konsekvenser.
+        text = f"{article.title} {article.content}".lower()
+        mentions_nuclear = any(k in text for k in ['kärnkraft', 'karnkraft', 'nuclear', 'smr', 'reaktor', 'reactor'])
+        nuclear_problem_context = any(k in text for k in ['dyr', 'kostnad', 'försening', 'försen', 'slutförvar', 'avfall', 'waste', 'delay', 'overrun'])
+        if mentions_nuclear and not nuclear_problem_context:
+            article.relevance_score -= 10
         
         logger.info(f"[RELEVANCE] Score {article.relevance_score}: {article.title[:60]}")
         return article
@@ -276,6 +284,18 @@ class NewsQualityAgent:
         # Allmän politik utan klimatfokus
         (r'riksdag.*motion|minister.*avgång|election.*result|political.*scandal',
          "Allmän politik utan klimatfokus är inte relevant"),
+
+        # Brott och våld (aldrig relevant för tech/klimat-podd)
+        (r'våldtäkt|misshandel|mord|skjutning|knivskuren|brottsoffer|rape|assault|murder|polisinsats',
+         "Våldsbrott är aldrig relevanta för denna podd"),
+
+        # Personliga anekdoter och familjehistorier (ofta från Reddit/sociala medier)
+        (r'min familj|min fru|min man|min dotter|min son|my family|my wife|my husband|reddit|flashback|familjeliv|jag känner|min upplevelse',
+         "Personliga anekdoter och forumtrådar är inte nyheter"),
+
+        # Jakt och viltvård (specifikt vargfrågan som ofta dyker upp felaktigt)
+        (r'varg|jakt|licensjakt|älgjakt|wolf|hunting',
+         "Jakt- och viltvårdsfrågor är inte relevanta för tech/klimat"),
     ]
     
     # Mönster för VERKLIGT relevanta klimatnyheter

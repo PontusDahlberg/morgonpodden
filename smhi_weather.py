@@ -6,7 +6,7 @@ Officiell svensk väderdata från SMHI:s öppna API
 
 import requests
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Dict, List, Optional, Tuple
 
 logger = logging.getLogger(__name__)
@@ -114,10 +114,29 @@ class SMHIWeatherService:
             humidity = self.get_parameter_value(parameters, "r")     # Luftfuktighet i %
             weather_symbol = self.get_parameter_value(parameters, "Wsymb2")  # Vädersymbol
             precipitation = self.get_parameter_value(parameters, "pmean")  # Nederbörd
+
+            # Räkna temperaturintervall (min/max) för kommande ~24h
+            horizon = current_time + timedelta(hours=24)
+            temps: List[float] = []
+            for forecast in data.get("timeSeries", []):
+                try:
+                    forecast_time = datetime.fromisoformat(forecast["validTime"].replace("Z", "+00:00"))
+                except Exception:
+                    continue
+                if forecast_time < current_time or forecast_time > horizon:
+                    continue
+                t_val = self.get_parameter_value(forecast.get("parameters", []), "t")
+                if t_val is not None:
+                    temps.append(float(t_val))
+
+            temp_min = min(temps) if temps else temperature
+            temp_max = max(temps) if temps else temperature
             
             return {
                 "city": city,
                 "temperature": temperature,
+                "temp_min": temp_min,
+                "temp_max": temp_max,
                 "wind_speed": wind_speed,
                 "humidity": humidity, 
                 "weather_symbol": int(weather_symbol) if weather_symbol else None,
@@ -143,11 +162,30 @@ class SMHIWeatherService:
                 
                 if weather:
                     temp = weather["temperature"]
+                    temp_min = weather.get("temp_min")
+                    temp_max = weather.get("temp_max")
                     wind_speed = weather["wind_speed"]
                     symbol = weather["weather_symbol"]
                     
                     if temp is not None and wind_speed is not None and symbol is not None:
-                        temp_str = f"{temp:.0f} grader"
+                        # Visa temperatur som intervall per landsdel (min–max) om möjligt
+                        if temp_min is not None and temp_max is not None:
+                            tmin_i = int(round(float(temp_min)))
+                            tmax_i = int(round(float(temp_max)))
+                            if tmin_i == tmax_i:
+                                temp_str = f"{tmin_i} grader"
+                            else:
+                                # Undvik "-12--6"; använd "till" när negativa tal förekommer
+                                # eller när intervallet korsar noll (för tydlighet med plus).
+                                crosses_zero = tmin_i < 0 < tmax_i
+                                has_negative = tmin_i < 0 or tmax_i < 0
+                                if has_negative or crosses_zero:
+                                    tmax_fmt = f"+{tmax_i}" if crosses_zero and tmax_i > 0 else f"{tmax_i}"
+                                    temp_str = f"{tmin_i} till {tmax_fmt} grader"
+                                else:
+                                    temp_str = f"{tmin_i}-{tmax_i} grader"
+                        else:
+                            temp_str = f"{temp:.0f} grader"
                         weather_desc = self.get_weather_symbol_description(symbol)
                         wind_desc = self.get_wind_description(wind_speed)
                         

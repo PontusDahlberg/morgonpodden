@@ -6,11 +6,31 @@ Primär TTS-leverantör som ersätter ElevenLabs
 
 import os
 import logging
+import json
 from typing import Dict, List, Optional, Tuple
 from google.cloud import texttospeech
 from pydub import AudioSegment
 
 logger = logging.getLogger(__name__)
+
+# Diagnostics (JSONL). Körningen kan sätta MMM_RUN_ID i environment.
+_DIAGNOSTICS_FILE = os.getenv('MMM_DIAGNOSTICS_FILE', 'diagnostics.jsonl')
+
+
+def _log_diagnostic(event: str, payload: dict) -> None:
+    try:
+        from datetime import datetime
+
+        entry = {
+            'ts': datetime.now().isoformat(timespec='seconds'),
+            'run_id': os.getenv('MMM_RUN_ID', ''),
+            'event': event,
+            **payload,
+        }
+        with open(_DIAGNOSTICS_FILE, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
 
 class GoogleCloudTTS:
     """Google Cloud TTS-integration med Chirp3-HD röster"""
@@ -66,18 +86,10 @@ class GoogleCloudTTS:
                     with open(cred_file, 'r') as f:
                         cred_data = json.load(f)
                     
-                    # DEBUG: Kolla private key format
-                    private_key = cred_data["private_key"]
-                    logger.info(f"🔍 Private key typ: {type(private_key)}")
-                    logger.info(f"🔍 Private key längd: {len(private_key)}")
-                    logger.info(f"🔍 Private key börjar med: {private_key[:50]}...")
-                    logger.info(f"🔍 Private key slutar med: ...{private_key[-50:]}")
-                    
-                    # Försök fixa private key format
+                    # Försök fixa private key-format (utan att logga hemligheter)
+                    private_key = cred_data.get("private_key")
                     if isinstance(private_key, str):
-                        # Säkerställ korrekt newline-format
                         fixed_private_key = private_key.replace('\\n', '\n')
-                        logger.info(f"🔧 Fixade private key newlines")
                     else:
                         fixed_private_key = private_key
                     
@@ -120,28 +132,6 @@ class GoogleCloudTTS:
                         
             except Exception as e:
                 logger.warning(f"⚠️ DRASTISK FIX failade: {e}")
-                
-            # SISTA UTVÄG: Försök utan explicit credentials alls
-            try:
-                logger.info("🆘 SISTA UTVÄG: Försöker utan explicit credentials")
-                # Ta bort alla credential environment vars
-                if 'GOOGLE_APPLICATION_CREDENTIALS' in os.environ:
-                    del os.environ['GOOGLE_APPLICATION_CREDENTIALS']
-                    
-                # Återställ från secret
-                import json
-                with open('google-cloud-service-account.json', 'r') as f:
-                    cred_data = json.load(f)
-                    
-                # Sätt bara project
-                os.environ['GOOGLE_CLOUD_PROJECT'] = cred_data['project_id']
-                
-                self.client = texttospeech.TextToSpeechClient()
-                logger.info("✅ SISTA UTVÄG LYCKADES - TTS-klient utan credentials!")
-                return True
-                
-            except Exception as e:
-                logger.warning(f"⚠️ SISTA UTVÄG failade: {e}")
             
             # Fallback: Skapa TTS-klient med environment credentials
             logger.info("🔄 Försöker med environment credentials...")
@@ -165,28 +155,9 @@ class GoogleCloudTTS:
             logger.info("🔧 Tar bort GOOGLE_CLOUD_KEY från environment för att tvinga fil-läge")
             del os.environ['GOOGLE_CLOUD_KEY']
         
-        # Debug info
+        # Debug info (logga aldrig hemligheter/innehåll)
         logger.info(f"🔍 GOOGLE_APPLICATION_CREDENTIALS = {os.getenv('GOOGLE_APPLICATION_CREDENTIALS')}")
         logger.info(f"🔍 Working directory = {os.getcwd()}")
-        
-        # DEBUG: Kolla innehållet i credentials-filen
-        cred_file = 'google-cloud-service-account.json'
-        if os.path.exists(cred_file):
-            try:
-                with open(cred_file, 'r') as f:
-                    content = f.read()
-                logger.info(f"🔍 Credentials fil storlek: {len(content)} tecken")
-                logger.info(f"🔍 Första 100 tecken: {content[:100]}...")
-                logger.info(f"🔍 Sista 50 tecken: ...{content[-50:]}")
-                
-                # Försök parsa JSON
-                import json
-                parsed = json.loads(content)
-                logger.info(f"🔍 JSON keys: {list(parsed.keys())}")
-                logger.info(f"🔍 Project ID: {parsed.get('project_id', 'NOT FOUND')}")
-                
-            except Exception as e:
-                logger.error(f"❌ Fel vid läsning av credentials fil: {e}")
         
         # Prioritera absolut sökväg från environment
         credentials_file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
@@ -259,9 +230,9 @@ class GoogleCloudTTS:
         text = self._remove_word_duplicates(text)
         
         # Använd SSML med IPA för korrekt svenskt uttal
-        # AI: långt A, långt I med tydlig betoning (dubblerad vokal ger längre uttal)
-        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑːː.iːː">AI</phoneme>', text)
-        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑːː.iːː">Ai</phoneme>', text)
+        # AI: långt A, långt I (standardlängd, ej överdrivet)
+        text = re.sub(r'\bAI\b', '<phoneme alphabet="ipa" ph="ɑː.iː">AI</phoneme>', text)
+        text = re.sub(r'\bAi\b', '<phoneme alphabet="ipa" ph="ɑː.iː">Ai</phoneme>', text)
         # EU: långt E, långt U med tydlig betoning (dubblerad vokal ger längre uttal)
         text = re.sub(r'\bEU\b', '<phoneme alphabet="ipa" ph="eːː.ʉːː">EU</phoneme>', text)
         text = re.sub(r'\bEu\b', '<phoneme alphabet="ipa" ph="eːː.ʉːː">Eu</phoneme>', text)
@@ -300,6 +271,50 @@ class GoogleCloudTTS:
             cleaned = re.sub(pattern_abbr, abbr, cleaned, flags=re.IGNORECASE)
         
         return cleaned
+
+    def _sanitize_text(self, text: str) -> str:
+        """Sanitera text innan SSML byggs.
+
+        Google TTS får INVALID_ARGUMENT om SSML innehåller o-escapade tecken
+        som `&`, `<`, `>` eller kontrolltecken. Vi ersätter dessa tidigt,
+        innan vi lägger på <speak>/<phoneme>.
+        """
+        import re
+        import unicodedata
+
+        if not text:
+            return ""
+
+        original = text
+
+        # Normalisera unicode för stabilare output
+        text = unicodedata.normalize('NFC', text)
+
+        # Byt ut radbrytningar/tabbar till mellanslag (SSML är känsligt)
+        text = re.sub(r"[\r\n\t]+", " ", text)
+
+        # Ta bort kontrolltecken (ASCII C0 + DEL)
+        text = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]", "", text)
+
+        # SSML/XML-reserverade tecken: ersätt hellre än att försöka escapa
+        # (vi vill inte riskera att escapa våra egna <phoneme>-taggar senare).
+        text = text.replace("&amp;", " och ")
+        text = text.replace("&", " och ")
+        text = text.replace("<", " ")
+        text = text.replace(">", " ")
+
+        # Komprimera whitespace
+        text = re.sub(r"\s{2,}", " ", text).strip()
+
+        if text != original:
+            _log_diagnostic('tts_text_sanitized', {
+                'original_len': len(original),
+                'sanitized_len': len(text),
+                'original_snippet': original[:120],
+                'sanitized_snippet': text[:120],
+            })
+
+        return text
     
     def generate_audio(self, text: str, voice: str = "sanna") -> Optional[bytes]:
         """
@@ -340,8 +355,11 @@ class GoogleCloudTTS:
                 volume_gain_db=0.0       # Normal volym
             )
             
+            # Sanitera råtext innan vi bygger SSML
+            sanitized_text = self._sanitize_text(text)
+
             # Preprocessa text för bättre uttal
-            processed_text = self._preprocess_text(text)
+            processed_text = self._preprocess_text(sanitized_text)
             
             # Skapa input - använd SSML om vi har fonetiska markeringar
             if '<phoneme' in processed_text or processed_text.startswith('<speak>'):
@@ -364,7 +382,14 @@ class GoogleCloudTTS:
             return response.audio_content
             
         except Exception as e:
-            logger.error(f"❌ Fel vid audiogenerering: {e}")
+            logger.exception(f"❌ Fel vid audiogenerering: {e}")
+            _log_diagnostic('tts_generate_audio_error', {
+                'voice': voice,
+                'voice_name': voice_config.get('name', ''),
+                'text_len': len(text or ''),
+                'text_snippet': (text or '')[:120],
+                'error': str(e),
+            })
             return None
     
     def generate_podcast_audio(self, segments: List[Dict]) -> Optional[str]:
@@ -391,8 +416,19 @@ class GoogleCloudTTS:
         os.makedirs('audio/temp', exist_ok=True)
         
         try:
+            max_retries = 3
+            skip_indices = set()
+
             # Generera varje segment
             for i, segment in enumerate(segments):
+                if i in skip_indices:
+                    logger.warning(f"⏭️ Skipping segment {i+1} (markerat som beroende av misslyckat segment)")
+                    _log_diagnostic('tts_segment_dependency_skipped', {
+                        'segment_index': i,
+                        'segment_number': i + 1,
+                    })
+                    continue
+
                 text = segment.get('text', '')
                 voice = segment.get('voice', 'sanna')
                 
@@ -401,10 +437,32 @@ class GoogleCloudTTS:
                 
                 logger.info(f"🎤 Segment {i+1}/{len(segments)}: {voice}")
                 
-                # Generera audio för segmentet
-                audio_data = self.generate_audio(text, voice)
+                # Generera audio för segmentet med retry-logik
+                audio_data = None
+                
+                for attempt in range(max_retries):
+                    audio_data = self.generate_audio(text, voice)
+                    if audio_data:
+                        break
+                    logger.warning(f"⚠️ Försök {attempt+1}/{max_retries} misslyckades för segment {i+1}")
+                    import time
+                    time.sleep(2)
+                
                 if not audio_data:
-                    logger.warning(f"⚠️ Misslyckades generera segment {i+1}")
+                    logger.error(f"❌ Kunde inte generera segment {i+1} efter {max_retries} försök. Hoppar över segmentet för att undvika trasig dialog.")
+                    # Hoppa även över nästa segment (ofta en direkt replik på det missade)
+                    skip_indices.add(i)
+                    if i + 1 < len(segments):
+                        skip_indices.add(i + 1)
+                    _log_diagnostic('tts_segment_failed_and_skipped', {
+                        'segment_index': i,
+                        'segment_number': i + 1,
+                        'voice': voice,
+                        'text_len': len(text or ''),
+                        'text_snippet': (text or '')[:120],
+                        'retries': max_retries,
+                        'also_skipped_next_segment': bool(i + 1 < len(segments)),
+                    })
                     continue
                 
                 # Spara temporärt segment

@@ -32,6 +32,13 @@ audio/*.wav
 *.log
 generation_log.txt
 test_*.log
+diagnostics.jsonl
+
+# Genererade körfiler (ska inte in i git)
+episode_articles_*.json
+podcast_script_*.txt
+scripts/podcast_script_*.txt
+episode_history_*.json
 
 # Python cache
 __pycache__/
@@ -57,3 +64,4 @@ Thumbs.db
 test_dialogue.txt
 test_*.txt
 *_test_*.mp3
+test_*.mp3

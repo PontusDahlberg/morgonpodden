@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 18 Dec 2025 04:16:56 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 19 Dec 2025 04:18:58 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 19 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 19 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Armand Duplantis vald till världens bäste idrottare i BBC:s ...
+  https://www.svt.se/sport/friidrott/armand-duplantis-vald-till-varldens-baste-idrottsman-i-bbcs-omrostning
+• SVT Nyheter: Klart: Tiktok säljer sin verksamhet i USA
+  https://www.svt.se/nyheter/utrikes/klart-tiktok-saljer-del-av-verksamheten-till-usa
+• Sveriges Natur: Sveriges mest försenade tåg
+  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
+• Euronews: Japanese woman &#x27;marries&#x27; ChatGPT AI character in symbolic ce...
+  http://www.euronews.com/next/2025/12/18/japanese-woman-marries-chatgpt-ai-character-in-symbolic-ceremony
+• TechCrunch: ChatGPT launches an app store, lets developers know it’s ope...
+  https://techcrunch.com/2025/12/18/chatgpt-launches-an-app-store-lets-developers-know-its-open-for-business/
+• TechCrunch: ChatGPT’s mobile app hits new milestone of $3B in consumer s...
+  https://techcrunch.com/2025/12/18/chatgpts-mobile-app-hits-new-milestone-of-3b-in-consumer-spending/</description>
+            <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251219_041721.mp3" length="7526252" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251219_041721.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 18 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 18 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251210_041528.mp3" length="6892268" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251210_041528.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 9 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 9 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
-  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
-• SVT Nyheter: Haverikommissionen: Sjukdomsfall bakom bussolyckan i Stockho...
-  https://www.svt.se/nyheter/lokalt/stockholm/haverikommissionen-sjukdomsfall-bakom-bussolyckan-i-stockholm
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• Guardian Environment: Drinking water contaminated with Pfas probably increases ris...
-  https://www.theguardian.com/us-news/2025/dec/08/drinking-water-pfas-infant-mortality-study
-• Dagens Nyheter: Kristina Lindquist: I regeringens Sverige är vissa barn mer ...
-  https://www.dn.se/kultur/kristina-lindquist-i-regeringens-sverige-ar-vissa-barn-mer-barn-an-andra/
-• Sveriges Natur: EU-kommissionen ger Sverige bakläxa om vargen
-  https://www.sverigesnatur.org/aktuellt/eu-kommissionen-ger-sverige-baklaxa-om-vargen/</description>
-            <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251209_041222.mp3" length="9288044" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251209_041222.mp3</guid>
         </item>
     </channel>
 </rss>

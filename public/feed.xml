@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 19 Dec 2025 04:18:58 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 20 Dec 2025 04:13:26 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 20 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 20 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Insändare. Svar: Värnplikten är till för Sveriges försvar, i...
+  https://www.dn.se/insandare/svar-varnplikten-ar-till-for-sveriges-forsvar-inte-konspolitik/
+• SVT Nyheter: Tvåspråkig undervisning läggs ned i Göteborg
+  https://www.svt.se/nyheter/uutiset/svenska/tvasprakig-undervisning-laggs-ned-i-goteborg
+• Sveriges Natur: Sveriges mest försenade tåg
+  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
+• TechCrunch: OpenAI adds new teen safety rules to ChatGPT as lawmakers we...
+  https://techcrunch.com/2025/12/19/openai-adds-new-teen-safety-rules-to-models-as-lawmakers-weigh-ai-standards-for-minors/
+• The Verge: ChatGPT will now let you pick how nice it is
+  https://www.theverge.com/news/848435/openai-chatgpt-characteristics-update-warmth-enthusiasm
+• SVT Nyheter: Filerna ur Epstein-utredningen släppta
+  https://www.svt.se/nyheter/utrikes/nu-slapps-filerna-ur-epstein-utredningen</description>
+            <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251220_041133.mp3" length="7840748" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251220_041133.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 19 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 19 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251211_041718.mp3" length="7394156" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251211_041718.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 10 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 10 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
-  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC News: UN environment report &#x27;hijacked&#x27; by US and others over fossi...
-  https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&amp;at_campaign=rss
-• Miljö &amp; Utveckling: Efter Omnibus: EU föreslår ytterligare lättnader i miljörapp...
-  https://miljo-utveckling.se/efter-omnibus-eu-foreslar-ytterligare-lattnader-i-miljorapporteringen/
-• SVT Nyheter: Region Stockholm i stabsläge – problem att  ringa till sjukh...
-  https://www.svt.se/nyheter/lokalt/stockholm/region-stockholm-i-stabslage-gar-inte-ringa-till-sjukhus
-• Dagens Nyheter: Birgit Johansson är äldst i Sverige – fyller 110
-  https://www.dn.se/sverige/birgit-johansson-ar-aldst-i-sverige-fyller-110/</description>
-            <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251210_041528.mp3" length="6892268" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251210_041528.mp3</guid>
         </item>
     </channel>
 </rss>

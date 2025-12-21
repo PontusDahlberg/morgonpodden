@@ -290,14 +290,16 @@ def get_openrouter_response(messages: List[Dict], model: str = "openai/gpt-4o-mi
         logger.error(f"[ERROR] OpenRouter API error: {e}")
         raise
 
-def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Dict]]:
+def generate_structured_podcast_content(weather_info: str, today: Optional[datetime] = None) -> tuple[str, List[Dict]]:
     """Generera strukturerat podcast-innehåll med AI och riktig väderdata"""
     
     # Dagens datum för kontext
-    today = datetime.now()
+    today = today or datetime.now()
     date_str = today.strftime('%Y-%m-%d')
     weekday = today.strftime('%A')
     swedish_weekday = SWEDISH_WEEKDAYS.get(weekday, weekday)
+    swedish_month = SWEDISH_MONTHS.get(today.month, today.strftime('%B').lower())
+    date_context = f"{swedish_weekday} den {today.day} {swedish_month} {today.year}"
     
     # Läs tidigare använda artiklar för upprepningsfilter (senaste 21 dagarna)
     # (viktigt för att undvika att samma nyhet tas upp dag efter dag)
@@ -435,7 +437,7 @@ def generate_structured_podcast_content(weather_info: str) -> tuple[str, List[Di
     
     prompt = f"""Skapa ett KOMPLETT och DETALJERAT manus för dagens avsnitt av "MMM Senaste Nytt" - en svensk daglig nyhetspodcast om teknik, AI och klimat.
 
-DATUM: {date_str} ({swedish_weekday})
+DATUM (KRITISKT): {date_str} ({date_context})
 VÄDER: {weather_info}
 LÄNGD: Absolut mål är 10 minuter (minst 1800-2200 ord för talat innehåll)
 VÄRDAR: Lisa (kvinnlig, professionell men vänlig) och Pelle (manlig, nyfiken och engagerad)
@@ -451,6 +453,7 @@ DETALJERAD STRUKTUR:
 6. OUTRO & MMM-KOPPLING (60-90 sekunder) - STARK koppling till huvudpodden "Människa Maskin Miljö"
 
 INNEHÅLLSKRAV OCH ÄMNESFÖRDELNING:
+- KRITISKT: Utgå från DATUM (KRITISKT) ovan (= dagens datum för denna körning). Nämn inte fel månad (t.ex. "november") eller fel datum.
 - Lisa säger "MMM Senaste Nytt" naturligt och professionellt (inte överdrivet)
 - Använd RIKTIG väderdata: "{weather_info}" - inte påhittade kommentarer om "fin dag i Stockholm"
 - Minst 6 konkreta nyheter från svenska och internationella källor
@@ -504,7 +507,7 @@ FÖRBJUDET: **, ##, ---, ###, rubriker, markeringar, lyssnarfrågor, "nästa avs
 
 EXEMPEL INTRO:
 Lisa: Hej och välkommen till MMM Senaste Nytt! Jag heter Lisa.
-Pelle: Och jag heter Pelle. Idag är det {swedish_weekday} den {today.strftime('%d')} {today.strftime('%B').lower()}, och {weather_info.lower()}.
+Pelle: Och jag heter Pelle. Idag är det {swedish_weekday} den {today.day} {swedish_month} {today.year}, och {weather_info.lower()}.
 Lisa: Ja, det stämmer! Men vi har mycket spännande att prata om idag inom teknik, AI och klimat.
 
 VIKTIGT: Endast dialog - inga rubriker eller formatering! Bara "Namn: Text" rad för rad.
@@ -524,9 +527,19 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
 
 def generate_fallback_content(date_str: str, weekday: str, weather_info: str) -> str:
     """Fallback-innehåll om AI inte fungerar"""
+    try:
+        dt = datetime.strptime(date_str, '%Y-%m-%d')
+        month_swedish = SWEDISH_MONTHS.get(dt.month, dt.strftime('%B').lower())
+        day = dt.day
+        year = dt.year
+    except Exception:
+        month_swedish = datetime.now().strftime('%B').lower()
+        day = int(datetime.now().strftime('%d'))
+        year = datetime.now().year
+
     return f"""Lisa: Hej och välkommen till MMM Senaste Nytt! Jag heter Lisa.
 
-Pelle: Och jag heter Pelle. Idag är det {weekday} den {datetime.now().strftime('%d')} oktober, och {weather_info.lower()}.
+Pelle: Och jag heter Pelle. Idag är det {weekday} den {day} {month_swedish} {year}, och {weather_info.lower()}.
 
 Lisa: Precis! Vi har mycket att prata om idag inom teknik, AI och klimat.
 
@@ -982,7 +995,7 @@ def main():
         
         # Generera strukturerat podcast-innehåll med riktig väderdata
         logger.info("[AI] Genererar strukturerat podcast-innehåll...")
-        podcast_content, referenced_articles = generate_structured_podcast_content(weather_info)
+        podcast_content, referenced_articles = generate_structured_podcast_content(weather_info, today=today)
 
         weekday_swedish = SWEDISH_WEEKDAYS.get(today.strftime('%A'), today.strftime('%A'))
         month_swedish = SWEDISH_MONTHS.get(today.month, today.strftime('%B').lower())
@@ -1093,21 +1106,50 @@ def main():
         # Generera filnamn
         audio_filename = f"MMM_senaste_nytt_{timestamp}.mp3"
         audio_filepath = os.path.join('audio', audio_filename)
+
+        require_gemini_tts = os.getenv('MMM_FORCE_GEMINI_TTS', '').strip().lower() in {'1', 'true', 'yes', 'y'}
         
         # Försök först med Gemini TTS för naturlig dialog
         logger.info("[TTS] Försöker generera naturlig dialog med Gemini TTS...")
+        log_diagnostic('tts_provider_attempt', {
+            'provider': 'gemini',
+            'output_file': audio_filepath,
+            'require_gemini': require_gemini_tts,
+        })
         gemini_success = generate_audio_with_gemini_dialog(podcast_content, weather_info, audio_filepath)
         
         if not gemini_success:
+            log_diagnostic('tts_provider_result', {
+                'provider': 'gemini',
+                'success': False,
+            })
+
+            if require_gemini_tts:
+                logger.error("[TTS] MMM_FORCE_GEMINI_TTS är aktivt: avbryter istället för fallback")
+                return False
+
             # Fallback till standard Google Cloud TTS
             logger.info("[TTS] Använder standard Google Cloud TTS som fallback...")
+            log_diagnostic('tts_provider_fallback', {
+                'from_provider': 'gemini',
+                'to_provider': 'google_cloud',
+            })
             success = generate_audio_google_cloud(segments, audio_filepath)
+
+            log_diagnostic('tts_provider_result', {
+                'provider': 'google_cloud',
+                'success': bool(success),
+            })
             
             if not success:
                 logger.error("[ERROR] Audio-generering misslyckades")
                 return False
         else:
             logger.info("[TTS] ✅ Naturlig dialog genererad med Gemini TTS!")
+            log_diagnostic('tts_provider_result', {
+                'provider': 'gemini',
+                'success': True,
+            })
         
         # Lägg till musik och bryggkor
         audio_filepath = add_music_to_podcast(audio_filepath)
@@ -1212,5 +1254,25 @@ def main():
         return False
 
 if __name__ == '__main__':
-    success = main()
-    sys.exit(0 if success else 1)
+        if any(arg in {'-h', '--help'} for arg in sys.argv[1:]):
+                print(
+                        """Usage:
+    python run_podcast_complete.py
+
+Genererar MMM Senaste Nytt (nyheter + väder + TTS + musik + RSS).
+
+Valfria env vars (felsökning):
+    MMM_FORCE_GEMINI_TTS=1
+        - Avbryter körningen om Gemini-TTS misslyckas (ingen tyst fallback).
+
+    GEMINI_TTS_PROMPT_MAX_BYTES=850
+        - Maxstorlek för prompt (UTF-8 bytes).
+
+    GEMINI_TTS_MAX_BYTES=3900
+        - Maxstorlek per chunk i TTS-input (UTF-8 bytes).
+"""
+                )
+                sys.exit(0)
+
+        success = main()
+        sys.exit(0 if success else 1)

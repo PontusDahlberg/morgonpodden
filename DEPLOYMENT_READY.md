@@ -80,6 +80,16 @@ Kör workflow manuellt i GitHub Actions för att testa innan automatisk daglig k
 
 ---
 
+## 🧪 TTS Debug (valfritt)
+
+Följande env vars kan användas för att felsöka/undvika tyst fallback:
+
+- `MMM_FORCE_GEMINI_TTS=1` → Avbryt körningen om Gemini-TTS misslyckas (ingen fallback).
+- `GEMINI_TTS_PROMPT_MAX_BYTES=850` → Maxstorlek för prompt (UTF-8 bytes).
+- `GEMINI_TTS_MAX_BYTES=3900` → Maxstorlek per chunk i TTS-input (UTF-8 bytes).
+
+---
+
 ## 📊 FÖRVÄNTAD OUTPUT
 
 **Titel:** MMM Senaste Nytt - [Veckodag] [Datum] [År] [Nyheter/Fördjupning]

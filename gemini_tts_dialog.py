@@ -10,6 +10,7 @@ from typing import Dict, List, Optional, Tuple
 from google.cloud import texttospeech
 import json
 import tempfile
+import re
 
 from pydub import AudioSegment
 
@@ -106,6 +107,33 @@ class GeminiTTSDialogGenerator:
 
     def _utf8_len(self, s: str) -> int:
         return len((s or '').encode('utf-8'))
+
+    def _extract_limit_bytes_from_error(self, error: Exception) -> Optional[int]:
+        """Parse API error messages like: "limit of 900 bytes"."""
+        try:
+            msg = str(error)
+            m = re.search(r"limit of (\d+) bytes", msg)
+            if not m:
+                return None
+            value = int(m.group(1))
+            return value if value > 0 else None
+        except Exception:
+            return None
+
+    def _sanitize_dialog_script(self, dialog_script: str) -> str:
+        """Best-effort sanitization to avoid known invalid-argument failures."""
+        if not dialog_script:
+            return ""
+
+        # Remove ASCII control chars except newlines/tabs
+        dialog_script = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]", "", dialog_script)
+
+        # Replace ampersand which has historically triggered invalid-argument errors
+        dialog_script = dialog_script.replace("&", "och")
+
+        # Normalize whitespace but keep line breaks (speaker turns)
+        dialog_script = "\n".join(" ".join(line.split()) for line in dialog_script.splitlines())
+        return dialog_script.strip()
 
     def _truncate_utf8(self, s: str, max_bytes: int) -> str:
         if self._utf8_len(s) <= max_bytes:
@@ -205,24 +233,87 @@ class GeminiTTSDialogGenerator:
         """
         try:
             # Natural language prompt för hela dialogen
-            style_prompt = """
-            You are creating a Swedish news podcast called 'MMM Senaste Nytt'. 
-            Lisa is a professional, friendly news presenter with a clear and engaging tone.
-            Pelle is an enthusiastic tech expert and co-presenter, energetic and curious.
-            
-            Present the news in a conversational, professional but accessible way.
-            Use natural Swedish pronunciation and intonation.
-            Make the conversation flow naturally between the two speakers.
-            """
+            # NOTE: Gemini/Vertex endpoints have shown varying byte limits.
+            # Keep the prompt small and retry with a smaller chunk limit if the API reports one.
+            prompt_max_bytes = int(os.getenv('GEMINI_TTS_PROMPT_MAX_BYTES', '850'))
+            chunk_max_bytes_default = int(os.getenv('GEMINI_TTS_MAX_BYTES', '3900'))
 
-            style_prompt = style_prompt.strip()
-            # Prompt har också en byte-limit; håll även den inom rimlig gräns.
-            style_prompt = self._truncate_utf8(style_prompt, 3900)
+            style_prompt = (
+                "Swedish news podcast (MMM Senaste Nytt). "
+                "Lisa: professional, warm, clear. "
+                "Pelle: energetic, curious, explains simply. "
+                "Natural Swedish pronunciation and smooth conversational flow."
+            )
+            style_prompt = self._truncate_utf8(style_prompt.strip(), prompt_max_bytes)
 
-            # Chunking för att undvika Gemini 4000-bytes-gränsen
-            chunks = self._split_text_by_bytes(dialog_script, max_bytes=3900)
-            if len(chunks) > 1:
-                logger.info(f"[GEMINI-TTS] Dialogen är {self._utf8_len(dialog_script)} bytes; splittar i {len(chunks)} chunks")
+            dialog_script = self._sanitize_dialog_script(dialog_script)
+            if not dialog_script:
+                logger.warning("[GEMINI-TTS] Tomt dialog-script efter sanering")
+                return False
+
+            def build_chunks(max_bytes: int) -> List[str]:
+                return self._split_text_by_bytes(dialog_script, max_bytes=max_bytes)
+
+            # Attempt 1: default chunk size
+            attempt_limits = [chunk_max_bytes_default]
+
+            def run_synthesis_for_chunks(chunks_to_use: List[str]) -> None:
+                if len(chunks_to_use) == 1:
+                    synthesis_input = texttospeech.SynthesisInput(
+                        text=chunks_to_use[0],
+                        prompt=style_prompt
+                    )
+
+                    logger.info("[GEMINI-TTS] Genererar dialog mellan Lisa och Pelle...")
+                    response = self.client.synthesize_speech(
+                        input=synthesis_input,
+                        voice=voice,
+                        audio_config=audio_config
+                    )
+
+                    os.makedirs(os.path.dirname(output_file) or '.', exist_ok=True)
+                    with open(output_file, "wb") as out:
+                        out.write(response.audio_content)
+
+                    logger.info(f"[GEMINI-TTS] Dialog sparad: {output_file}")
+                    return
+
+                tmp_files: List[str] = []
+                try:
+                    logger.info(
+                        f"[GEMINI-TTS] Dialogen är {self._utf8_len(dialog_script)} bytes; "
+                        f"splittar i {len(chunks_to_use)} chunks (max_bytes={max(self._utf8_len(c) for c in chunks_to_use)})"
+                    )
+
+                    for idx, chunk in enumerate(chunks_to_use, start=1):
+                        synthesis_input = texttospeech.SynthesisInput(
+                            text=chunk,
+                            prompt=style_prompt
+                        )
+
+                        logger.info(f"[GEMINI-TTS] Genererar chunk {idx}/{len(chunks_to_use)} ({self._utf8_len(chunk)} bytes)")
+                        response = self.client.synthesize_speech(
+                            input=synthesis_input,
+                            voice=voice,
+                            audio_config=audio_config
+                        )
+
+                        fd, tmp_path = tempfile.mkstemp(prefix=f"gemini_tts_{idx}_", suffix=".mp3")
+                        os.close(fd)
+                        with open(tmp_path, "wb") as out:
+                            out.write(response.audio_content)
+                        tmp_files.append(tmp_path)
+
+                    self._stitch_mp3_segments(tmp_files, output_file)
+                    logger.info(f"[GEMINI-TTS] Dialog (chunkad) sparad: {output_file}")
+                finally:
+                    for p in tmp_files:
+                        try:
+                            os.remove(p)
+                        except Exception:
+                            pass
+
+            # We build voice/audio_config before attempting synthesis (existing code below)
             
             # Konfigurera multi-speaker voice
             multi_speaker_voice_config = texttospeech.MultiSpeakerVoiceConfig(
@@ -250,58 +341,32 @@ class GeminiTTSDialogGenerator:
                 audio_encoding=texttospeech.AudioEncoding.MP3,
                 sample_rate_hertz=24000
             )
-            
-            # Syntetisera (en eller flera chunks) och sy ihop
-            if len(chunks) == 1:
-                synthesis_input = texttospeech.SynthesisInput(
-                    text=chunks[0],
-                    prompt=style_prompt
-                )
 
-                logger.info("[GEMINI-TTS] Genererar dialog mellan Lisa och Pelle...")
-                response = self.client.synthesize_speech(
-                    input=synthesis_input,
-                    voice=voice,
-                    audio_config=audio_config
-                )
-
-                with open(output_file, "wb") as out:
-                    out.write(response.audio_content)
-
-                logger.info(f"[GEMINI-TTS] Dialog sparad: {output_file}")
-                return True
-
-            # Multi-chunk: skriv temp-filer, stitcha med pydub
-            tmp_files: List[str] = []
-            try:
-                for idx, chunk in enumerate(chunks, start=1):
-                    synthesis_input = texttospeech.SynthesisInput(
-                        text=chunk,
-                        prompt=style_prompt
+            # Attempt synthesis; if the API reports a lower byte-limit, retry with that.
+            last_error: Optional[Exception] = None
+            for attempt_index, max_bytes in enumerate(attempt_limits, start=1):
+                try:
+                    chunks = build_chunks(max_bytes=max_bytes)
+                    logger.info(
+                        f"[GEMINI-TTS] Försök {attempt_index}/{len(attempt_limits)} "
+                        f"(chunk_max_bytes={max_bytes}, prompt_bytes={self._utf8_len(style_prompt)})"
                     )
+                    run_synthesis_for_chunks(chunks)
+                    return True
+                except Exception as e:
+                    last_error = e
+                    limit = self._extract_limit_bytes_from_error(e)
+                    logger.warning(f"[GEMINI-TTS] Försök {attempt_index} misslyckades: {e}")
 
-                    logger.info(f"[GEMINI-TTS] Genererar chunk {idx}/{len(chunks)} ({self._utf8_len(chunk)} bytes)")
-                    response = self.client.synthesize_speech(
-                        input=synthesis_input,
-                        voice=voice,
-                        audio_config=audio_config
-                    )
+                    # If the API tells us the real limit, retry once with a safe margin.
+                    if limit is not None and len(attempt_limits) == 1:
+                        safe = max(200, limit - 50)
+                        attempt_limits.append(safe)
+                        logger.info(f"[GEMINI-TTS] Upptäckte byte-limit {limit}; retry med max_bytes={safe}")
+                        continue
+                    break
 
-                    fd, tmp_path = tempfile.mkstemp(prefix=f"gemini_tts_{idx}_", suffix=".mp3")
-                    os.close(fd)
-                    with open(tmp_path, "wb") as out:
-                        out.write(response.audio_content)
-                    tmp_files.append(tmp_path)
-
-                self._stitch_mp3_segments(tmp_files, output_file)
-                logger.info(f"[GEMINI-TTS] Dialog (chunkad) sparad: {output_file}")
-                return True
-            finally:
-                for p in tmp_files:
-                    try:
-                        os.remove(p)
-                    except Exception:
-                        pass
+            raise last_error if last_error is not None else RuntimeError("Gemini TTS failed")
             
         except Exception as e:
             logger.error(f"[GEMINI-TTS] Fel vid dialog-generering: {e}")
@@ -321,6 +386,13 @@ class GeminiTTSDialogGenerator:
             True om framgångsrik
         """
         try:
+            prompt_max_bytes = int(os.getenv('GEMINI_TTS_PROMPT_MAX_BYTES', '850'))
+            chunk_max_bytes_default = int(os.getenv('GEMINI_TTS_MAX_BYTES', '3900'))
+
+            def sanitize_turn_text(text: str) -> str:
+                # Reuse the same sanitization logic as freeform, but keep it single-line.
+                return self._sanitize_dialog_script(text).replace("\n", " ")
+
             # Bygg strukturerade turns
             turns = []
             
@@ -340,11 +412,11 @@ class GeminiTTSDialogGenerator:
             turns.extend([
                 texttospeech.MultiSpeakerMarkup.Turn(
                     speaker_alias="Lisa",
-                    text="Men först, hur ser vädret ut idag?"
+                    text=sanitize_turn_text("Men först, hur ser vädret ut idag?")
                 ),
                 texttospeech.MultiSpeakerMarkup.Turn(
                     speaker_alias="Pelle",
-                    text=f"[informative] {weather_info}"
+                    text=sanitize_turn_text(f"[informative] {weather_info}")
                 )
             ])
             
@@ -356,7 +428,7 @@ class GeminiTTSDialogGenerator:
                 turns.append(
                     texttospeech.MultiSpeakerMarkup.Turn(
                         speaker_alias=speaker,
-                        text=f"{emotion_tag} {segment['text']}"
+                        text=sanitize_turn_text(f"{emotion_tag} {segment['text']}")
                     )
                 )
             
@@ -373,14 +445,13 @@ class GeminiTTSDialogGenerator:
             ])
             
             # Style prompt
-            style_prompt = """
-            Create a Swedish news podcast with natural conversation flow.
-            Lisa speaks with professional authority but warmth.
-            Pelle brings enthusiasm and explains complex topics simply.
-            Use proper Swedish pronunciation and natural intonation.
-            """
-
-            style_prompt = self._truncate_utf8(style_prompt.strip(), 3900)
+            style_prompt = (
+                "Swedish news podcast (MMM Senaste Nytt). "
+                "Lisa: professional, warm, clear. "
+                "Pelle: energetic, curious, explains simply. "
+                "Natural Swedish pronunciation and smooth conversational flow."
+            )
+            style_prompt = self._truncate_utf8(style_prompt.strip(), prompt_max_bytes)
 
             # Voice config (samma som freeform)
             multi_speaker_voice_config = texttospeech.MultiSpeakerVoiceConfig(
@@ -406,69 +477,117 @@ class GeminiTTSDialogGenerator:
                 audio_encoding=texttospeech.AudioEncoding.MP3,
                 sample_rate_hertz=24000
             )
-            
-            # Om det blir för mycket: chunk turns och stitcha audio.
-            # Vi chunkar på summan av turn-texter som grov proxy för bytes.
-            approx_bytes = sum(self._utf8_len(getattr(t, 'text', '')) + 1 for t in turns)
-            if approx_bytes <= 3900:
-                synthesis_input = texttospeech.SynthesisInput(
-                    multi_speaker_markup=texttospeech.MultiSpeakerMarkup(turns=turns),
-                    prompt=style_prompt
-                )
-                response = self.client.synthesize_speech(
-                    input=synthesis_input,
-                    voice=voice, 
-                    audio_config=audio_config
-                )
-                with open(output_file, "wb") as out:
-                    out.write(response.audio_content)
-                logger.info(f"[GEMINI-TTS] Strukturerad dialog sparad: {output_file}")
-                return True
 
-            logger.info(f"[GEMINI-TTS] Strukturerad dialog är ~{approx_bytes} bytes; chunkar turns")
-            tmp_files: List[str] = []
-            try:
-                current_turns: List[texttospeech.MultiSpeakerMarkup.Turn] = []
-                current_bytes = 0
-                chunks: List[List[texttospeech.MultiSpeakerMarkup.Turn]] = []
-
+            def normalize_turns(max_bytes: int) -> List[texttospeech.MultiSpeakerMarkup.Turn]:
+                """Ensure no single turn exceeds max_bytes by splitting long turns."""
+                normalized: List[texttospeech.MultiSpeakerMarkup.Turn] = []
                 for t in turns:
-                    t_bytes = self._utf8_len(getattr(t, 'text', '')) + 1
-                    if current_turns and current_bytes + t_bytes > 3900:
-                        chunks.append(current_turns)
-                        current_turns = []
-                        current_bytes = 0
-                    current_turns.append(t)
-                    current_bytes += t_bytes
-                if current_turns:
-                    chunks.append(current_turns)
+                    speaker_alias = getattr(t, 'speaker_alias', None)
+                    txt = getattr(t, 'text', '') or ''
+                    if self._utf8_len(txt) <= max_bytes:
+                        normalized.append(t)
+                        continue
 
-                for idx, chunk_turns in enumerate(chunks, start=1):
+                    # Split very long turn text into multiple turns with same speaker
+                    parts = self._split_text_by_bytes(txt, max_bytes=max(200, max_bytes - 10))
+                    for part in parts:
+                        normalized.append(
+                            texttospeech.MultiSpeakerMarkup.Turn(
+                                speaker_alias=speaker_alias,
+                                text=part
+                            )
+                        )
+                return normalized
+
+            def chunk_turns(max_bytes: int) -> List[List[texttospeech.MultiSpeakerMarkup.Turn]]:
+                normalized = normalize_turns(max_bytes=max_bytes)
+                chunks: List[List[texttospeech.MultiSpeakerMarkup.Turn]] = []
+                current: List[texttospeech.MultiSpeakerMarkup.Turn] = []
+                current_bytes = 0
+
+                for t in normalized:
+                    t_bytes = self._utf8_len(getattr(t, 'text', '')) + 1
+                    if current and current_bytes + t_bytes > max_bytes:
+                        chunks.append(current)
+                        current = []
+                        current_bytes = 0
+                    current.append(t)
+                    current_bytes += t_bytes
+
+                if current:
+                    chunks.append(current)
+                return chunks
+
+            def run_synthesis(turn_chunks: List[List[texttospeech.MultiSpeakerMarkup.Turn]]) -> None:
+                if len(turn_chunks) == 1:
                     synthesis_input = texttospeech.SynthesisInput(
-                        multi_speaker_markup=texttospeech.MultiSpeakerMarkup(turns=chunk_turns),
+                        multi_speaker_markup=texttospeech.MultiSpeakerMarkup(turns=turn_chunks[0]),
                         prompt=style_prompt
                     )
-                    logger.info(f"[GEMINI-TTS] Genererar structured chunk {idx}/{len(chunks)}")
                     response = self.client.synthesize_speech(
                         input=synthesis_input,
-                        voice=voice, 
+                        voice=voice,
                         audio_config=audio_config
                     )
-                    fd, tmp_path = tempfile.mkstemp(prefix=f"gemini_tts_struct_{idx}_", suffix=".mp3")
-                    os.close(fd)
-                    with open(tmp_path, "wb") as out:
+                    os.makedirs(os.path.dirname(output_file) or '.', exist_ok=True)
+                    with open(output_file, "wb") as out:
                         out.write(response.audio_content)
-                    tmp_files.append(tmp_path)
+                    logger.info(f"[GEMINI-TTS] Strukturerad dialog sparad: {output_file}")
+                    return
 
-                self._stitch_mp3_segments(tmp_files, output_file)
-                logger.info(f"[GEMINI-TTS] Strukturerad dialog (chunkad) sparad: {output_file}")
-                return True
-            finally:
-                for p in tmp_files:
-                    try:
-                        os.remove(p)
-                    except Exception:
-                        pass
+                logger.info(f"[GEMINI-TTS] Strukturerad dialog kräver {len(turn_chunks)} chunks")
+                tmp_files: List[str] = []
+                try:
+                    for idx, chunk_turns in enumerate(turn_chunks, start=1):
+                        synthesis_input = texttospeech.SynthesisInput(
+                            multi_speaker_markup=texttospeech.MultiSpeakerMarkup(turns=chunk_turns),
+                            prompt=style_prompt
+                        )
+                        chunk_bytes = sum(self._utf8_len(getattr(t, 'text', '')) + 1 for t in chunk_turns)
+                        logger.info(f"[GEMINI-TTS] Genererar structured chunk {idx}/{len(turn_chunks)} (~{chunk_bytes} bytes)")
+                        response = self.client.synthesize_speech(
+                            input=synthesis_input,
+                            voice=voice,
+                            audio_config=audio_config
+                        )
+                        fd, tmp_path = tempfile.mkstemp(prefix=f"gemini_tts_struct_{idx}_", suffix=".mp3")
+                        os.close(fd)
+                        with open(tmp_path, "wb") as out:
+                            out.write(response.audio_content)
+                        tmp_files.append(tmp_path)
+
+                    self._stitch_mp3_segments(tmp_files, output_file)
+                    logger.info(f"[GEMINI-TTS] Strukturerad dialog (chunkad) sparad: {output_file}")
+                finally:
+                    for p in tmp_files:
+                        try:
+                            os.remove(p)
+                        except Exception:
+                            pass
+
+            last_error: Optional[Exception] = None
+            attempt_limits = [chunk_max_bytes_default]
+            for attempt_index, max_bytes in enumerate(attempt_limits, start=1):
+                try:
+                    turn_chunks = chunk_turns(max_bytes=max_bytes)
+                    logger.info(
+                        f"[GEMINI-TTS] Structured försök {attempt_index}/{len(attempt_limits)} "
+                        f"(chunk_max_bytes={max_bytes}, prompt_bytes={self._utf8_len(style_prompt)})"
+                    )
+                    run_synthesis(turn_chunks)
+                    return True
+                except Exception as e:
+                    last_error = e
+                    limit = self._extract_limit_bytes_from_error(e)
+                    logger.warning(f"[GEMINI-TTS] Structured försök {attempt_index} misslyckades: {e}")
+                    if limit is not None and len(attempt_limits) == 1:
+                        safe = max(200, limit - 50)
+                        attempt_limits.append(safe)
+                        logger.info(f"[GEMINI-TTS] Upptäckte byte-limit {limit}; retry med chunk_max_bytes={safe}")
+                        continue
+                    break
+
+            raise last_error if last_error is not None else RuntimeError("Gemini structured TTS failed")
             
         except Exception as e:
             logger.error(f"[GEMINI-TTS] Fel vid strukturerad dialog: {e}")

@@ -8,6 +8,7 @@ on:
 
 env:
   PYTHON_VERSION: '3.10'
+  TZ: Europe/Stockholm
 
 jobs:
   test-code:
@@ -99,6 +100,8 @@ jobs:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/google-cloud-service-account.json
         USE_GOOGLE_CLOUD_TTS: true
+        TZ: Europe/Stockholm
+        MMM_FORCE_GEMINI_TTS: ${{ vars.MMM_FORCE_GEMINI_TTS }}
         # Explicitly unset GOOGLE_CLOUD_KEY to force using file
         GOOGLE_CLOUD_KEY: ""
       run: |

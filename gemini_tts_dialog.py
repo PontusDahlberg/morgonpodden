@@ -177,22 +177,42 @@ class GeminiTTSDialogGenerator:
 
             # Om en enskild rad är för lång: splitta grovt på meningar.
             if not current:
-                parts = []
+                # Behåll ev. talarprefix ("Lisa:"/"Pelle:") för varje del-chunk.
+                m = re.match(r"^\s*([^:\n]{1,24}):\s*(.*)$", ln)
+                speaker_prefix = None
+                body = ln
+                if m:
+                    speaker_prefix = m.group(1).strip() + ":"
+                    body = m.group(2).strip()
+
+                parts: List[str] = []
                 buf = ""
-                for sentence in ln.replace('! ', '!|').replace('? ', '?|').replace('. ', '.|').split('|'):
+
+                def with_prefix(s: str) -> str:
+                    if speaker_prefix:
+                        return f"{speaker_prefix} {s}".strip()
+                    return s
+
+                for sentence in body.replace('! ', '!|').replace('? ', '?|').replace('. ', '.|').split('|'):
                     sentence = sentence.strip()
                     if not sentence:
                         continue
-                    candidate2 = (buf + " " + sentence).strip() if buf else sentence
+
+                    candidate_piece = (buf + " " + sentence).strip() if buf else sentence
+                    candidate2 = with_prefix(candidate_piece)
+
                     if self._utf8_len(candidate2) <= max_bytes:
-                        buf = candidate2
+                        buf = candidate_piece
                     else:
                         if buf:
-                            parts.append(buf)
+                            parts.append(with_prefix(buf))
                         # Fallback: hård trunkering om en mening är extremt lång
-                        buf = self._truncate_utf8(sentence, max_bytes)
+                        truncated = self._truncate_utf8(sentence, max_bytes - (self._utf8_len(speaker_prefix + " ") if speaker_prefix else 0))
+                        buf = truncated
+
                 if buf:
-                    parts.append(buf)
+                    parts.append(with_prefix(buf))
+
                 chunks.extend(parts)
             else:
                 flush()

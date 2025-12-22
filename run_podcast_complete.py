@@ -100,6 +100,7 @@ _TITLE_STOPWORDS = {
 # Diagnostics
 DIAGNOSTICS_FILE = os.getenv('MMM_DIAGNOSTICS_FILE', 'diagnostics.jsonl')
 _CURRENT_RUN_ID: Optional[str] = None
+_LAST_GEMINI_ERROR: Optional[str] = None
 
 
 def set_run_id(run_id: str) -> None:
@@ -121,6 +122,11 @@ def log_diagnostic(event: str, payload: Dict) -> None:
     except Exception:
         # Diagnostik får aldrig stoppa körningen
         pass
+
+
+def _set_last_gemini_error(message: Optional[str]) -> None:
+    global _LAST_GEMINI_ERROR
+    _LAST_GEMINI_ERROR = message
 
 
 def _canonicalize_url(url: str) -> str:
@@ -714,6 +720,7 @@ def generate_audio_with_gemini_dialog(script_content: str, weather_info: str, ou
     """Generera audio med Gemini TTS för naturlig dialog mellan Lisa och Pelle"""
     if not GEMINI_TTS_AVAILABLE:
         logger.info("[AUDIO] Gemini TTS inte tillgänglig, använder standard-metod")
+        _set_last_gemini_error("GEMINI_TTS_AVAILABLE=False (importfel eller saknade dependencies)")
         return False
     
     try:
@@ -765,13 +772,16 @@ def generate_audio_with_gemini_dialog(script_content: str, weather_info: str, ou
         
         if success:
             logger.info(f"[AUDIO] ✅ Gemini TTS dialog sparad: {output_file}")
+            _set_last_gemini_error(None)
             return True
         else:
             logger.warning("[AUDIO] Gemini TTS misslyckades, faller tillbaka till standard")
+            _set_last_gemini_error("synthesize_dialog_freeform returned False (see [GEMINI-TTS] logs)")
             return False
             
     except Exception as e:
-        logger.error(f"[AUDIO] Gemini TTS fel: {e}")
+        _set_last_gemini_error(f"{type(e).__name__}: {e}")
+        logger.exception("[AUDIO] Gemini TTS fel")
         logger.info("[AUDIO] Faller tillbaka till standard TTS")
         return False
 
@@ -1122,6 +1132,7 @@ def main():
             log_diagnostic('tts_provider_result', {
                 'provider': 'gemini',
                 'success': False,
+                'error': _LAST_GEMINI_ERROR,
             })
 
             if require_gemini_tts:

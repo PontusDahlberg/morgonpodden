@@ -88,6 +88,65 @@ jobs:
         ls -la google-cloud-service-account.json
         echo "📄 Första rader av filen:"
         head -n 3 google-cloud-service-account.json
+
+        echo "🔍 Project/service account info:"
+        python - <<'PY'
+        import json
+        p = json.load(open('google-cloud-service-account.json', 'r', encoding='utf-8'))
+        print('project_id=', p.get('project_id'))
+        print('client_email=', p.get('client_email'))
+        PY
+
+    - name: 🔍 Verify Gemini TTS access (multi-speaker)
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/google-cloud-service-account.json
+        MMM_FORCE_GEMINI_TTS: ${{ vars.MMM_FORCE_GEMINI_TTS }}
+      run: |
+        set +e
+        python - <<'PY'
+        from google.cloud import texttospeech
+
+        client = texttospeech.TextToSpeechClient()
+
+        multi = texttospeech.MultiSpeakerVoiceConfig(
+            speaker_voice_configs=[
+                texttospeech.MultispeakerPrebuiltVoice(speaker_alias='Lisa', speaker_id='Gacrux'),
+                texttospeech.MultispeakerPrebuiltVoice(speaker_alias='Pelle', speaker_id='Iapetus'),
+            ]
+        )
+
+        voice = texttospeech.VoiceSelectionParams(
+            language_code='sv-SE',
+            model_name='gemini-2.5-pro-tts',
+            multi_speaker_voice_config=multi,
+        )
+
+        audio_config = texttospeech.AudioConfig(
+            audio_encoding=texttospeech.AudioEncoding.MP3,
+            sample_rate_hertz=24000,
+        )
+
+        synthesis_input = texttospeech.SynthesisInput(
+            text='Lisa: Hej! Pelle: Hej! Det här är ett kort test.',
+            prompt='Swedish news podcast. Natural Swedish pronunciation.'
+        )
+
+        resp = client.synthesize_speech(input=synthesis_input, voice=voice, audio_config=audio_config)
+        print('✅ Gemini TTS self-test ok, bytes=', len(resp.audio_content))
+        PY
+        status=$?
+        if [ $status -ne 0 ]; then
+          echo "❌ Gemini TTS self-test failed (exit=$status)"
+          case "${MMM_FORCE_GEMINI_TTS}" in
+            1|true|TRUE|yes|YES|y|Y)
+              echo "MMM_FORCE_GEMINI_TTS is enabled; failing workflow."
+              exit $status
+              ;;
+            *)
+              echo "Continuing (MMM_FORCE_GEMINI_TTS not enabled)."
+              ;;
+          esac
+        fi
         
     - name: 📰 Scrape fresh news content
       run: |
@@ -130,6 +189,7 @@ jobs:
           public/feed.xml
           podcast_script_*.txt
           podcast_generation.log
+          diagnostics.jsonl
         retention-days: 90
         if-no-files-found: warn
         

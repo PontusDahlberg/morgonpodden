@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # Manuell körning från GitHub Actions UI
 
 env:
-  PYTHON_VERSION: '3.10'
+  PYTHON_VERSION: '3.11'
   TZ: Europe/Stockholm
 
 jobs:

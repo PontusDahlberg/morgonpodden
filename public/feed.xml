@@ -16,8 +16,26 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 22 Dec 2025 07:43:30 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 22 Dec 2025 08:00:37 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 22 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 22 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Prisade Västra Götaland kritiseras – ”Finns betydande briste...
+  https://www.svt.se/nyheter/nyhetstecken/prisade-vastra-gotaland-kritiseras-finns-betydande-brister
+• TechCrunch: New York Governor Kathy Hochul signs RAISE Act to regulate A...
+  https://techcrunch.com/2025/12/20/new-york-governor-kathy-hochul-signs-raise-act-to-regulate-ai-safety/
+• SVT Nyheter: Ny lag skulle stoppa stöldligor vid gränsen – men få har åkt...
+  https://www.svt.se/nyheter/lokalt/stockholm/ny-lag-skulle-stoppa-stoldligor-vid-gransen-men-fa-har-akt-fast
+• SVT Nyheter: Uppgifter: Jättebeslag av kokain i Nykvarn
+  https://www.svt.se/nyheter/lokalt/sodertalje/uppgifter-rekordbeslag-av-kokain-i-nykvarn
+• TechCrunch: OpenAI allows users to directly adjust ChatGPT’s enthusiasm ...
+  https://techcrunch.com/2025/12/20/openai-allows-users-to-directly-adjust-chatgpts-warmth-and-enthusiasm/</description>
+            <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_075233.mp3" length="9249644" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_075233.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 22 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 22 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251215_042237.mp3" length="7503980" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251215_042237.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 14 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 14 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Miljö &amp; Utveckling: Etisk Handel Sverige startar ny arbetsgrupp: möter risker in...
-  https://miljo-utveckling.se/etisk-handel-sverige-startar-ny-arbetsgrupp-moter-risker-inom-fornybar-energi/
-• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
-  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: UN environment report &#x27;hijacked&#x27; by US and others over fossi...
-  https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&amp;at_campaign=rss
-• SVT Nyheter: Läkemedelsjätten Johnson &amp; Johnson döms betala miljonskadest...
-  https://www.svt.se/nyheter/utrikes/lakemedelsjatten-johnson-och-johnson-doms-betala-miljonskadestand
-• SVT Nyheter: Fem gripna för terrorplaner mot julmarknad i Tyskland
-  https://www.svt.se/nyheter/utrikes/fem-gripna-for-terrorplaner-mot-julmarknad-i-tyskland</description>
-            <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251214_041940.mp3" length="8065004" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251214_041940.mp3</guid>
         </item>
     </channel>
 </rss>

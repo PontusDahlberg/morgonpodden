@@ -25,8 +25,10 @@ from episode_history import EpisodeHistory
 try:
     from gemini_tts_dialog import GeminiTTSDialogGenerator
     GEMINI_TTS_AVAILABLE = True
+    GEMINI_TTS_IMPORT_ERROR: Optional[str] = None
 except ImportError as e:
     GEMINI_TTS_AVAILABLE = False
+    GEMINI_TTS_IMPORT_ERROR = str(e)
 
 # Import KRITISK faktakontroll-agent
 try:
@@ -975,6 +977,11 @@ def main():
         logger.info("[SYSTEM] Gemini TTS tillgänglig för naturlig dialog")
     else:
         logger.warning("[SYSTEM] Gemini TTS inte tillgänglig - använder standard TTS")
+
+    log_diagnostic('system_tts_capabilities', {
+        'gemini_tts_available': bool(GEMINI_TTS_AVAILABLE),
+        'gemini_tts_import_error': GEMINI_TTS_IMPORT_ERROR,
+    })
     
     # Log Fact Checker status
     if FACT_CHECKER_AVAILABLE:

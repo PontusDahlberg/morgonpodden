@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 21 Dec 2025 04:22:12 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 22 Dec 2025 05:24:17 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 22 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 22 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Kultur riskerar försvinna när scener stänger ned i Stockholm
+  https://www.svt.se/nyheter/lokalt/stockholm/kultur-riskerar-forsvinna-nar-scener-stanger-ned-i-stockholm
+• TechCrunch: New York Governor Kathy Hochul signs RAISE Act to regulate A...
+  https://techcrunch.com/2025/12/20/new-york-governor-kathy-hochul-signs-raise-act-to-regulate-ai-safety/
+• Sveriges Natur: Sveriges mest försenade tåg
+  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
+• TechCrunch: OpenAI allows users to directly adjust ChatGPT’s enthusiasm ...
+  https://techcrunch.com/2025/12/20/openai-allows-users-to-directly-adjust-chatgpts-warmth-and-enthusiasm/
+• SVT Nyheter: Lamine Yamal bakom allt när Barcelona bortaslog Villareal
+  https://www.svt.se/sport/fotboll/lamine-yamal-bakom-allt-nar-barcelona-bortaslog-villareal
+• SVT Nyheter: Sol i hela Sverige – på årets mörkaste dag
+  https://www.svt.se/nyheter/inrikes/sol-i-hela-sverige-pa-arets-morkaste-dag</description>
+            <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_052226.mp3" length="7857260" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_052226.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 21 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 21 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 13 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251213_041127.mp3" length="7750508" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251213_041127.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 12 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 12 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Insändare. Svar: Kärnkraften kan göra Sverige fossilt oberoe...
-  https://www.dn.se/insandare/svar-karnkraften-kan-gora-sverige-fossilt-oberoende/
-• Miljö &amp; Utveckling: Etisk Handel Sverige startar ny arbetsgrupp: möter risker in...
-  https://miljo-utveckling.se/etisk-handel-sverige-startar-ny-arbetsgrupp-moter-risker-inom-fornybar-energi/
-• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
-  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
-• Miljö &amp; Utveckling: EU enas om klimatmål: 90 procents utsläppsminskning till 204...
-  https://miljo-utveckling.se/eu-enas-om-klimatmal-90-procents-utslappsminskning-till-2040/
-• SVT Nyheter: Regeringen om vårdköerna: ”Möjligt trendbrott”
-  https://www.svt.se/nyheter/inrikes/regeringen-om-vardkoerna-mojligt-trendbrott
-• Dagens Nyheter: Malmö förlorade i Portugal – i praktiken utslaget
-  https://www.dn.se/sport/malmo-forlorade-i-portugal-i-praktiken-utslaget/</description>
-            <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251212_041634.mp3" length="8517740" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251212_041634.mp3</guid>
         </item>
     </channel>
 </rss>

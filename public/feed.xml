@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 22 Dec 2025 08:00:37 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 23 Dec 2025 05:25:02 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 23 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 23 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
+  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
+• SVT Nyheter: Regeringens klartecken: Polisen får nya lokaler i Linköping
+  https://www.svt.se/nyheter/lokalt/ost/regeringens-klartecken-polisen-far-nya-lokaler-i-linkoping
+• Sveriges Natur: Sveriges mest försenade tåg
+  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
+• TechCrunch: OpenAI says AI browsers may always be vulnerable to prompt i...
+  https://techcrunch.com/2025/12/22/openai-says-ai-browsers-may-always-be-vulnerable-to-prompt-injection-attacks/
+• TechCrunch: ChatGPT launches a year-end review like Spotify Wrapped
+  https://techcrunch.com/2025/12/22/chatgpt-launches-a-year-end-review-like-spotify-wrapped/
+• SVT Nyheter: Alexander Isak har opererats
+  https://www.svt.se/sport/fotboll/alexander-isak-har-opererats</description>
+            <pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251223_051956.mp3" length="7041644" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251223_051956.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 22 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 22 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 16 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251216_041741.mp3" length="7497452" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251216_041741.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 15 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 15 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Miljö &amp; Utveckling: Etisk Handel Sverige startar ny arbetsgrupp: möter risker in...
-  https://miljo-utveckling.se/etisk-handel-sverige-startar-ny-arbetsgrupp-moter-risker-inom-fornybar-energi/
-• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
-  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• BBC Science &amp; Environment: UN environment report &#x27;hijacked&#x27; by US and others over fossi...
-  https://www.bbc.com/news/articles/c1w9ge93w9po?at_medium=RSS&amp;at_campaign=rss
-• SVT Nyheter: Bröderna Boris och Iván i Nyköping är bäst i Sverige på flip...
-  https://www.svt.se/nyheter/lokalt/sormland/broderna-boris-och-ivan-i-nykoping-ar-bast-i-sverige-pa-flipper
-• Dagens Nyheter: Nathan Shachar: Israels ledare lägger skulden på Australiens...
-  https://www.dn.se/varlden/nathan-shachar-israels-ledare-lagger-skulden-pa-australiens-regering/</description>
-            <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251215_042237.mp3" length="7503980" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251215_042237.mp3</guid>
         </item>
     </channel>
 </rss>

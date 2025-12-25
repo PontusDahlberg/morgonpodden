@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 24 Dec 2025 05:26:32 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 25 Dec 2025 05:27:39 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 25 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 25 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Monica bjöd in till julbord för ensamma på sitt café i Hälle...
+  https://www.svt.se/nyheter/lokalt/sormland/monica-bjod-in-till-julbord-for-ensamma-pa-sitt-cafe-i-halleforsnas-finns-ett-behov
+• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
+  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
+• SVT Nyheter: Man livshotande skadad i trafikolycka utanför Helsingborg
+  https://www.svt.se/nyheter/lokalt/helsingborg/man-livshotande-skadad-i-trafikolycka-utanfor-helsingborg
+• Sveriges Natur: Sveriges mest försenade tåg
+  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
+• SVT Nyheter: Allvarlig trafikolycka i Alingsås – en skadad
+  https://www.svt.se/nyheter/lokalt/vast/allvarlig-trafikolycka-i-alingsas-en-skadad
+• Miljö &amp; Utveckling: Fem hållbarhetschefer om omnibus – så här ska de rapportera ...
+  https://miljo-utveckling.se/fem-hallbarhetschefer-om-omnibus-sa-har-ska-de-rapportera-framat/</description>
+            <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251225_052006.mp3" length="8303852" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251225_052006.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 24 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 24 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251218_041540.mp3" length="5794796" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251218_041540.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 17 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 17 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Fängelse för klimataktion vid Finlands ambassad i Stockholm
-  https://www.sverigesnatur.org/aktuellt/fangelse-for-klimataktion-vid-finlands-ambassad-i-stockholm/
-• BBC Science &amp; Environment: COP30: Five key takeaways from a deeply divisive climate sum...
-  https://www.bbc.com/news/articles/cp84m16mdm1o?at_medium=RSS&amp;at_campaign=rss
-• Miljö &amp; Utveckling: Tre nya vägledningar ska hjälpa småföretag med hållbarhetsra...
-  https://miljo-utveckling.se/hallbarhetsrapportering-smaforetag-efrag-vagledning/
-• Dagens Nyheter: Gina Gustavsson: Nej, det är inte läxorna som sticker ut i S...
-  https://www.dn.se/ledare/gina-gustavsson-nej-det-ar-inte-laxorna-som-sticker-ut-i-sverige-schulman-det-ar-kaoset/
-• Miljö &amp; Utveckling: 50 göteborgare ska ta fram förslag för en hållbar stad
-  https://miljo-utveckling.se/50-goteborgare-ska-ta-fram-forslag-for-en-hallbar-stad/
-• SVT Nyheter: Stor uppslutning vid första begravningen i Sydney
-  https://www.svt.se/nyheter/utrikes/stor-uppslutning-vid-forsta-begravningen-i-sydney</description>
-            <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251217_041535.mp3" length="6470636" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251217_041535.mp3</guid>
         </item>
     </channel>
 </rss>

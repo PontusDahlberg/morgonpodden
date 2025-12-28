@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 27 Dec 2025 05:22:01 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 28 Dec 2025 05:31:01 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 28 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 28 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
+  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
+• SVT Nyheter: Stormen Johannes drar in över Sverige – SMHI varnar
+  https://www.svt.se/nyheter/inrikes/stormen-johannes-drar-in-over-sverige-smhi-varnar
+• SVT Nyheter: Ny studie: Konstgräs bättre för miljön än naturgräs
+  https://www.svt.se/nyheter/lokalt/ost/ny-studie-konstgras-battre-for-miljon-an-naturgras
+• SVT Nyheter: Stormen Johannes drar in över Sverige – se SMHI:s varningar
+  https://www.svt.se/nyheter/inrikes/stormen-johannes-drar-in-over-sverige-se-varningarna
+• SVT Nyheter: Här förvarades Sveriges guldreserv under andra världskriget
+  https://www.svt.se/nyheter/lokalt/jonkoping/har-forvarades-sveriges-guldreserv-under-andra-varldskriget
+• SVT Nyheter: Misstänkte gärningsmannens mamma: ”Behövde hjälp”
+  https://www.svt.se/nyheter/lokalt/norrbotten/misstankte-garningsmannens-mamma-behovde-hjalp</description>
+            <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251228_052431.mp3" length="7322732" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251228_052431.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 27 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 27 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251221_042027.mp3" length="8435948" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251221_042027.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 20 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 20 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Insändare. Svar: Värnplikten är till för Sveriges försvar, i...
-  https://www.dn.se/insandare/svar-varnplikten-ar-till-for-sveriges-forsvar-inte-konspolitik/
-• SVT Nyheter: Tvåspråkig undervisning läggs ned i Göteborg
-  https://www.svt.se/nyheter/uutiset/svenska/tvasprakig-undervisning-laggs-ned-i-goteborg
-• Sveriges Natur: Sveriges mest försenade tåg
-  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
-• TechCrunch: OpenAI adds new teen safety rules to ChatGPT as lawmakers we...
-  https://techcrunch.com/2025/12/19/openai-adds-new-teen-safety-rules-to-models-as-lawmakers-weigh-ai-standards-for-minors/
-• The Verge: ChatGPT will now let you pick how nice it is
-  https://www.theverge.com/news/848435/openai-chatgpt-characteristics-update-warmth-enthusiasm
-• SVT Nyheter: Filerna ur Epstein-utredningen släppta
-  https://www.svt.se/nyheter/utrikes/nu-slapps-filerna-ur-epstein-utredningen</description>
-            <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251220_041133.mp3" length="7840748" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251220_041133.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 29 Dec 2025 05:34:01 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 30 Dec 2025 05:29:41 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 30 december 2025</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 30 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
+  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
+• Dagens Nyheter: Björck glänste på nytt – Sverige tog tredje raka
+  https://www.dn.se/sport/bjorck-glanste-pa-nytt-sverige-tog-tredje-raka/
+• SVT Nyheter: 60 sekunder: Så drabbade stormen Johannes Sverige
+  https://www.svt.se/nyheter/lokalt/gavleborg/60-sekunder-sa-drabbade-stormen-johannes-sverige
+• TechCrunch: How to use the new ChatGPT app integrations, including DoorD...
+  https://techcrunch.com/2025/12/29/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/
+• Sveriges Natur: Sveriges mest försenade tåg
+  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
+• Miljö &amp; Utveckling: Fem hållbarhetschefer om omnibus – så här ska de rapportera ...
+  https://miljo-utveckling.se/fem-hallbarhetschefer-om-omnibus-sa-har-ska-de-rapportera-framat/</description>
+            <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251230_052100.mp3" length="10267628" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251230_052100.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 29 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 29 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_074148.mp3" length="8328428" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_074148.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 22 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 22 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Kultur riskerar försvinna när scener stänger ned i Stockholm
-  https://www.svt.se/nyheter/lokalt/stockholm/kultur-riskerar-forsvinna-nar-scener-stanger-ned-i-stockholm
-• TechCrunch: New York Governor Kathy Hochul signs RAISE Act to regulate A...
-  https://techcrunch.com/2025/12/20/new-york-governor-kathy-hochul-signs-raise-act-to-regulate-ai-safety/
-• Sveriges Natur: Sveriges mest försenade tåg
-  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
-• TechCrunch: OpenAI allows users to directly adjust ChatGPT’s enthusiasm ...
-  https://techcrunch.com/2025/12/20/openai-allows-users-to-directly-adjust-chatgpts-warmth-and-enthusiasm/
-• SVT Nyheter: Lamine Yamal bakom allt när Barcelona bortaslog Villareal
-  https://www.svt.se/sport/fotboll/lamine-yamal-bakom-allt-nar-barcelona-bortaslog-villareal
-• SVT Nyheter: Sol i hela Sverige – på årets mörkaste dag
-  https://www.svt.se/nyheter/inrikes/sol-i-hela-sverige-pa-arets-morkaste-dag</description>
-            <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_052226.mp3" length="7857260" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_052226.mp3</guid>
         </item>
     </channel>
 </rss>

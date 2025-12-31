@@ -14,6 +14,8 @@ from summarizer import PodcastSummarizer
 from tts_generator import PodcastGenerator
 from rss_generator import RSSGenerator
 from intro_generator import IntroGenerator
+from news_dedupe import filter_scraped_data_for_freshness
+from script_guards import apply_all_guards
 
 load_dotenv()
 logging.basicConfig(
@@ -46,6 +48,26 @@ class MorgonPoddService:
             # Step 1: Scrape content
             logger.info("Step 1: Scraping content...")
             scraped_data = await self.scraper.scrape_all()
+
+            # Step 1b: De-duplicate/avoid repeated news across days
+            # This prevents the same stories from being reused day after day.
+            try:
+                filtered_data, dedupe_stats = filter_scraped_data_for_freshness(
+                    scraped_data,
+                    history_path="news_history.json",
+                    dedupe_days=21,
+                    retain_days=60,
+                    allow_followups=True,
+                )
+                logger.info(
+                    "[DEDUPE] Items in=%s, out=%s, skipped=%s",
+                    dedupe_stats.total_items_in,
+                    dedupe_stats.total_items_out,
+                    dedupe_stats.skipped_repeats,
+                )
+                scraped_data = filtered_data
+            except Exception as e:
+                logger.warning(f"[DEDUPE] Freshness filtering failed, continuing without it: {e}")
             
             # Save scraped data
             with open('scraped_content.json', 'w', encoding='utf-8') as f:
@@ -54,6 +76,18 @@ class MorgonPoddService:
             # Step 2: Generate script
             logger.info("Step 2: Generating podcast script...")
             script = self.summarizer.create_podcast_script(scraped_data)
+
+            # Step 2b: Safety/accuracy guards (e.g. outdated minister names)
+            guard_result = apply_all_guards(script)
+            if guard_result.warnings:
+                for w in guard_result.warnings:
+                    logger.warning(f"[GUARD] {w}")
+            if guard_result.critical:
+                for c in guard_result.critical:
+                    logger.error(f"[GUARD] {c}")
+                raise RuntimeError("Script guards reported critical issues")
+            script = guard_result.updated_text
+
             script_file = self.summarizer.save_script(script)
             
             # Step 3: Generate intro audio

@@ -43,6 +43,7 @@ episode_articles_*.json
 podcast_script_*.txt
 scripts/podcast_script_*.txt
 episode_history_*.json
+news_history.json
 
 # Python cache
 __pycache__/

@@ -26,6 +26,8 @@ class BasicFactChecker:
             ],
             'outdated_positions': [
                 'johan pehrson.*arbetsmarknadsminister',  # Inte längre minister
+                'tobias billström.*utrikesminister',  # Inte längre utrikesminister
+                'sveriges utrikesminister.*tobias billström',  # Explicit fel roll
             ],
             'suspicious_patterns': [
                 r'investering.*6.*miljarder.*northvolt',  # Northvolt-investeringar
@@ -51,7 +53,14 @@ class BasicFactChecker:
         # Kontrollera utdaterade positioner (KRITISKT)
         for position_pattern in self.known_issues['outdated_positions']:
             if re.search(position_pattern, text_lower):
-                critical_issues.append(f"KRITISKT: Utdaterad ministerpost mentioned - Johan Pehrson är inte längre arbetsmarknadsminister")
+                if 'billström' in position_pattern:
+                    critical_issues.append(
+                        "KRITISKT: Utdaterad ministerpost: Tobias Billström är inte Sveriges utrikesminister (numera Maria Malmer Stenergard)"
+                    )
+                else:
+                    critical_issues.append(
+                        "KRITISKT: Utdaterad ministerpost mentioned - Johan Pehrson är inte längre arbetsmarknadsminister"
+                    )
         
         # Kontrollera misstänkta mönster (KRITISKT)
         for pattern in self.known_issues['suspicious_patterns']:

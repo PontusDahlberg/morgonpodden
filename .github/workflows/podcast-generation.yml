@@ -70,6 +70,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: ♻️ Restore news dedupe history
+      uses: actions/cache@v4
+      with:
+        path: news_history.json
+        key: news-history-${{ github.ref_name }}-${{ github.run_id }}
+        restore-keys: |
+          news-history-${{ github.ref_name }}-
         
     - name: 🎵 Install FFmpeg
       uses: FedericoCarboni/setup-ffmpeg@v3

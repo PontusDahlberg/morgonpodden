@@ -311,13 +311,27 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
     
     # Läs tidigare använda artiklar för upprepningsfilter (senaste 21 dagarna)
     # (viktigt för att undvika att samma nyhet tas upp dag efter dag)
+    dedupe_days = 21
     used_articles = set()
+
+    # Primärt: använd en persistent historikfil (fungerar i GitHub Actions via cache)
+    history = None
+    try:
+        from src.news_dedupe import NewsHistory
+
+        history = NewsHistory("news_history.json")
+        history.load()
+        history.prune(keep_days=60)
+        logger.info("[HISTORY] news_history.json loaded (%s keys)", len(history.data.get('items', {})))
+    except Exception as e:
+        history = None
+        logger.warning(f"[HISTORY] Kunde inte initiera news_history.json: {e}")
     try:
         import glob
         article_files = glob.glob('episode_articles_*.json')
         
         # Filtrera på datum - bara senaste 21 dagarna
-        cutoff_date = datetime.now() - timedelta(days=21)
+        cutoff_date = datetime.now() - timedelta(days=dedupe_days)
         recent_files = []
         for article_file in article_files:
             try:
@@ -400,8 +414,21 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
             url_key = _canonicalize_url(a.get('link', ''))
             fp_key = _title_fingerprint(a.get('title', ''))
 
+            # Matcha både "legacy" (episode_articles_*.json) och persistent historik (news_history.json)
+            hist_url_key = f"url:{url_key}" if url_key else ""
+            hist_fp_key = f"title:{fp_key}" if fp_key else ""
+
             is_repeat_by_url = bool(url_key and url_key in used_articles)
             is_repeat_by_fp = bool(fp_key and fp_key in used_articles)
+
+            if history is not None:
+                try:
+                    is_repeat_by_url = is_repeat_by_url or bool(hist_url_key and history.seen_within_days(hist_url_key, dedupe_days))
+                    is_repeat_by_fp = is_repeat_by_fp or bool(hist_fp_key and history.seen_within_days(hist_fp_key, dedupe_days))
+                except Exception:
+                    # Historik ska aldrig stoppa körningen
+                    pass
+
             is_repeat = is_repeat_by_url or is_repeat_by_fp
             is_follow_up = _is_follow_up_article(a.get('title', ''), a.get('content', ''))
 
@@ -430,6 +457,13 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
 
             filtered_articles.append(a)
 
+            # Markera som sedd i persistent historik när vi väljer att behålla artikeln
+            if history is not None:
+                try:
+                    history.mark_seen([hist_url_key, hist_fp_key])
+                except Exception:
+                    pass
+
         if skipped_count:
             logger.info(f"[HISTORY] Filtrerade bort {skipped_count} upprepade artiklar")
             log_diagnostic('dedupe_summary', {
@@ -438,6 +472,14 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
             })
 
         available_articles = filtered_articles
+
+        # Spara persistent historik (om den är aktiverad)
+        if history is not None:
+            try:
+                history.save()
+                logger.info("[HISTORY] news_history.json saved")
+            except Exception as e:
+                logger.warning(f"[HISTORY] Kunde inte spara news_history.json: {e}")
 
         article_refs = "\n\nTILLGÄNGLIGA ARTIKLAR ATT REFERERA TILL:\n"
         for i, article in enumerate(available_articles[:10], 1):

@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 31 Dec 2025 05:28:32 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 01 Jan 2026 05:32:50 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 1 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 1 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Målfyrverkeri när Sverige vann över mästarna – möter Lettlan...
+  https://www.dn.se/sport/malfyrverkeri-nar-sverige-vann-over-mastarna-nu-vantar-lettland/
+• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
+  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
+• SVT Nyheter: Norra Sverige saknar räddningshundar – brukshundsklubben slå...
+  https://www.svt.se/nyheter/lokalt/norrbotten/norra-sverige-saknar-raddningshundar-brukshundsklubben-slar-larm
+• Dagens Nyheter: Språken som riskerar dö ut: ”Sverige borde göra mer”
+  https://www.dn.se/sverige/spraken-som-riskerar-do-ut-sverige-borde-gora-mer/
+• SVT Nyheter: SMHI: Röd vädervarning i Gävleborg
+  https://www.svt.se/nyheter/lokalt/gavleborg/smhi-rod-vadervarning-i-gavleborg
+• Miljö &amp; Utveckling: Studie: Hållbarhetsrapportering kopplas till bättre ekonomi
+  https://miljo-utveckling.se/studie-hallbarhetsrapportering-kopplas-till-battre-ekonomi/</description>
+            <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260101_052602.mp3" length="7914860" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260101_052602.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 31 december 2025</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 31 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,24 +217,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251223_051956.mp3" length="7041644" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251223_051956.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 22 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 22 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Prisade Västra Götaland kritiseras – ”Finns betydande briste...
-  https://www.svt.se/nyheter/nyhetstecken/prisade-vastra-gotaland-kritiseras-finns-betydande-brister
-• TechCrunch: New York Governor Kathy Hochul signs RAISE Act to regulate A...
-  https://techcrunch.com/2025/12/20/new-york-governor-kathy-hochul-signs-raise-act-to-regulate-ai-safety/
-• SVT Nyheter: Ny lag skulle stoppa stöldligor vid gränsen – men få har åkt...
-  https://www.svt.se/nyheter/lokalt/stockholm/ny-lag-skulle-stoppa-stoldligor-vid-gransen-men-fa-har-akt-fast
-• SVT Nyheter: Uppgifter: Jättebeslag av kokain i Nykvarn
-  https://www.svt.se/nyheter/lokalt/sodertalje/uppgifter-rekordbeslag-av-kokain-i-nykvarn
-• TechCrunch: OpenAI allows users to directly adjust ChatGPT’s enthusiasm ...
-  https://techcrunch.com/2025/12/20/openai-allows-users-to-directly-adjust-chatgpts-warmth-and-enthusiasm/</description>
-            <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_075233.mp3" length="9249644" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251222_075233.mp3</guid>
         </item>
     </channel>
 </rss>

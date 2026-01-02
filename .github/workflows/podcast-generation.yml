@@ -214,6 +214,7 @@ jobs:
         git add public/feed.xml 2>/dev/null || echo "Ingen ny RSS-feed"
         git add podcast_script_*.txt 2>/dev/null || echo "Inga nya script-filer"
         git add episode_*.json 2>/dev/null || echo "Inga nya episode-filer"
+        git add news_history.json 2>/dev/null || echo "Ingen news_history.json"
         
         # Kolla om det finns ändringar att committa
         if git diff --staged --quiet; then

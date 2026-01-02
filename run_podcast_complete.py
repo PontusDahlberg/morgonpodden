@@ -168,10 +168,12 @@ def _title_fingerprint(title: str) -> str:
 def _is_follow_up_article(title: str, content: str) -> bool:
     """Heuristik: uppföljningar är okej, men daglig repetition ska bort."""
     text = f"{title} {content}".lower()
+    # Viktigt: håll detta strikt. Många rubriker innehåller ord som "nu"/"senaste" utan att vara
+    # en verklig uppföljning, vilket annars gör att samma nyheter slinker igenom dag efter dag.
     follow_up_markers = [
-        'uppfölj', 'fortsatt', 'ytterligare', 'igen', 'senaste', 'nu', 'efter', 'rättegång', 'dom',
-        'dömd', 'överklag', 'åtal', 'åtalad', 'fäll', 'frias', 'nya uppgifter', 'utred',
-        'follow-up', 'update', 'latest', 'new details'
+        'uppfölj', 'fortsatt', 'ytterligare', 'nya uppgifter', 'uppdater',
+        'rättegång', 'dom', 'dömd', 'överklag', 'åtal', 'åtalad', 'fäll', 'frias', 'utred',
+        'follow-up', 'update', 'new details'
     ]
     return any(m in text for m in follow_up_markers)
 

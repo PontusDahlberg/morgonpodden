@@ -66,9 +66,9 @@ def is_follow_up_text(title: str, summary: str) -> bool:
     """Heuristic: allow some repeats if clearly framed as new development."""
     text = f"{title} {summary}".lower()
     markers = [
-        "uppdater", "uppfölj", "nya uppgifter", "senaste", "nu", "efter", "rättegång",
-        "dom", "dömd", "åtal", "utred", "fortsatt", "ytterligare",
-        "update", "latest", "new details",
+        "uppdater", "uppfölj", "nya uppgifter", "fortsatt", "ytterligare",
+        "rättegång", "dom", "dömd", "åtal", "utred",
+        "follow-up", "update", "new details",
     ]
     return any(m in text for m in markers)
 

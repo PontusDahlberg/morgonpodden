@@ -133,7 +133,31 @@ class GeminiTTSDialogGenerator:
 
         # Normalize whitespace but keep line breaks (speaker turns)
         dialog_script = "\n".join(" ".join(line.split()) for line in dialog_script.splitlines())
-        return dialog_script.strip()
+
+        # Ensure each non-empty line starts with a valid speaker alias (Lisa/Pelle).
+        # Missing/invalid prefixes have been correlated with "missing turns" in output.
+        allowed = {"lisa": "Lisa", "pelle": "Pelle"}
+        fixed_lines = []
+        last_speaker = "Lisa"
+        for raw in dialog_script.splitlines():
+            line = (raw or "").strip()
+            if not line:
+                continue
+
+            m = re.match(r"^\s*([^:\n]{1,24})\s*:\s*(.*)$", line)
+            if m:
+                who = (m.group(1) or "").strip().lower()
+                text = (m.group(2) or "").strip()
+                speaker = allowed.get(who)
+                if speaker and text:
+                    last_speaker = speaker
+                    fixed_lines.append(f"{speaker}: {text}")
+                    continue
+
+            # If no valid prefix: attach to last speaker.
+            fixed_lines.append(f"{last_speaker}: {line}")
+
+        return "\n".join(fixed_lines).strip()
 
     def _truncate_utf8(self, s: str, max_bytes: int) -> str:
         if self._utf8_len(s) <= max_bytes:
@@ -216,7 +240,47 @@ class GeminiTTSDialogGenerator:
                 chunks.extend(parts)
             else:
                 flush()
-                current.append(ln)
+                # Efter flush: om raden fortfarande är för lång, splitta den här också.
+                if self._utf8_len(ln) <= max_bytes:
+                    current.append(ln)
+                else:
+                    # Reuse the single-line splitting logic by handling as if "current" were empty.
+                    m = re.match(r"^\s*([^:\n]{1,24}):\s*(.*)$", ln)
+                    speaker_prefix = None
+                    body = ln
+                    if m:
+                        speaker_prefix = m.group(1).strip() + ":"
+                        body = m.group(2).strip()
+
+                    parts: List[str] = []
+                    buf = ""
+
+                    def with_prefix(s: str) -> str:
+                        if speaker_prefix:
+                            return f"{speaker_prefix} {s}".strip()
+                        return s
+
+                    prefix_bytes = self._utf8_len(speaker_prefix + " ") if speaker_prefix else 0
+                    for sentence in body.replace('! ', '!|').replace('? ', '?|').replace('. ', '.|').split('|'):
+                        sentence = sentence.strip()
+                        if not sentence:
+                            continue
+
+                        candidate_piece = (buf + " " + sentence).strip() if buf else sentence
+                        candidate2 = with_prefix(candidate_piece)
+
+                        if self._utf8_len(candidate2) <= max_bytes:
+                            buf = candidate_piece
+                        else:
+                            if buf:
+                                parts.append(with_prefix(buf))
+                            truncated = self._truncate_utf8(sentence, max(50, max_bytes - prefix_bytes))
+                            buf = truncated
+
+                    if buf:
+                        parts.append(with_prefix(buf))
+
+                    chunks.extend(parts)
 
         flush()
 

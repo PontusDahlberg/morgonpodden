@@ -16,8 +16,26 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 02 Jan 2026 05:28:12 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 03 Jan 2026 05:24:11 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 3 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 3 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Miljö &amp; Utveckling: Naturvårdsverkets regleringsbrev: Så påverkas kommuner, läns...
+  https://miljo-utveckling.se/naturvardsverkets-regleringsbrev-sa-paverkas-kommuner-lansstyrelser-och-foretag/
+• Dagens Nyheter: Drömmen om arbete i Sverige blev misstänkt människohandel
+  https://www.dn.se/sverige/drommen-om-arbete-i-sverige-blev-misstankt-manniskohandel/
+• Dagens Nyheter: Finländsk skräll gör att Sverige möter Finland i semi
+  https://www.dn.se/sport/frondells-dromstart-tog-sverige-till-semifinal-i-jvm/
+• Guardian Climate Crisis: Cop30, Trump and the fragile future of climate cooperation
+  https://www.theguardian.com/environment/2026/jan/01/cop30-trump-and-the-fragile-future-of-climate-cooperation
+• SVT Nyheter: Sverige till JVM-semi efter tiosekundersmål: ”Ville sätta to...
+  https://www.svt.se/sport/ishockey/sverige-till-jvm-semi-efter-tiosekundersmal</description>
+            <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260103_051511.mp3" length="8819180" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260103_051511.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 2 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 2 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -197,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251225_052006.mp3" length="8303852" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251225_052006.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 24 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 24 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• SVT Nyheter: 70-åring dubbellurad av bedragare – blev åtalad och frikänd
-  https://www.svt.se/nyheter/lokalt/vasterbotten/70-aring-dubbellurad-av-bedragare-blev-atalad-och-frikand
-• SVT Nyheter: Finska kyrkan i Stockholm firade sitt 300-årsjubileum
-  https://www.svt.se/nyheter/uutiset/svenska/finska-kyrkan-i-stockholm-firade-sitt-300-arsjubileum
-• Dagens Nyheter: Insändare. Skydda Sverige från ryssar och kineser
-  https://www.dn.se/insandare/skydda-sverige-fran-ryssar-och-kineser/
-• TechCrunch: OpenAI says AI browsers may always be vulnerable to prompt i...
-  https://techcrunch.com/2025/12/22/openai-says-ai-browsers-may-always-be-vulnerable-to-prompt-injection-attacks/
-• Sveriges Natur: Sveriges mest försenade tåg
-  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/</description>
-            <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251224_051811.mp3" length="9596780" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251224_051811.mp3</guid>
         </item>
     </channel>
 </rss>

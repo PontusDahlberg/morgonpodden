@@ -16,8 +16,26 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 03 Jan 2026 05:24:11 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 04 Jan 2026 05:32:31 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 4 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 4 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Stockholmspolisen uppmanar bilister att stanna hemma efter v...
+  https://www.svt.se/nyheter/lokalt/stockholm/stockholmspolisen-uppmanar-bilister-att-stanna-hemma-efter-vadervarning
+• SVT Nyheter: Snökaos och varningar – men stockholmare nöjda med snön: ”Ly...
+  https://www.svt.se/nyheter/lokalt/stockholm/snokaos-och-varningar-men-stockholmare-nojda-med-snon-lyser-upp
+• Dagens Nyheter: Insändare. Sverige behöver sammanhållning och öppna dörrar
+  https://www.dn.se/insandare/sverige-behover-sammanhallning-och-oppna-dorrar/
+• Dagens Nyheter: Matchguide: Tajt rivalmöte att vänta i Sveriges semifinal
+  https://www.dn.se/sport/matchguide-tajt-rivalmote-att-vanta-i-sveriges-semifinal/
+• Wired: The US Invaded Venezuela and Captured Nicolás Maduro. ChatGP...
+  https://www.wired.com/story/us-invaded-venezuela-and-captured-nicolas-maduro-chatgpt-disagrees/</description>
+            <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260104_052624.mp3" length="7637996" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260104_052624.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 3 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 3 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251226_051747.mp3" length="8292332" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251226_051747.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 25 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 25 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Monica bjöd in till julbord för ensamma på sitt café i Hälle...
-  https://www.svt.se/nyheter/lokalt/sormland/monica-bjod-in-till-julbord-for-ensamma-pa-sitt-cafe-i-halleforsnas-finns-ett-behov
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• SVT Nyheter: Man livshotande skadad i trafikolycka utanför Helsingborg
-  https://www.svt.se/nyheter/lokalt/helsingborg/man-livshotande-skadad-i-trafikolycka-utanfor-helsingborg
-• Sveriges Natur: Sveriges mest försenade tåg
-  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
-• SVT Nyheter: Allvarlig trafikolycka i Alingsås – en skadad
-  https://www.svt.se/nyheter/lokalt/vast/allvarlig-trafikolycka-i-alingsas-en-skadad
-• Miljö &amp; Utveckling: Fem hållbarhetschefer om omnibus – så här ska de rapportera ...
-  https://miljo-utveckling.se/fem-hallbarhetschefer-om-omnibus-sa-har-ska-de-rapportera-framat/</description>
-            <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251225_052006.mp3" length="8303852" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251225_052006.mp3</guid>
         </item>
     </channel>
 </rss>

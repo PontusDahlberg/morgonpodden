@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 05 Jan 2026 05:38:39 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 06 Jan 2026 05:28:50 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 6 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 6 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Hvb-hem i Västsverige tvingas stänga efter slarv med registe...
+  https://www.dn.se/sverige/hvb-hem-i-vastsverige-tvingas-stanga-efter-slarv-med-registerkontroller/
+• Dagens Nyheter: Här åker stockholmarna skidor – mitt i stan
+  https://www.dn.se/sverige/har-aker-stockholmarna-skidor-mitt-i-stan/
+• Euronews: Future of autonomous driving and robots just went up a gear....
+  http://www.euronews.com/next/2026/01/06/future-of-autonomous-driving-and-robots-just-went-up-a-gear-nvidia-and-boston-dynamics-ces
+• IEEE Spectrum: Global Giants Are Investing in Clean Tech Despite Politics
+  https://spectrum.ieee.org/firms-bet-climate-tech
+• Dagens Nyheter: Sverige vann finalen i JVM – första guldet på 14 år
+  https://www.dn.se/sport/sverige-vann-finalen-i-jvm-forsta-guldet-pa-14-ar/
+• TechCrunch: Nvidia wants to be the Android of generalist robotics
+  https://techcrunch.com/2026/01/05/nvidia-wants-to-be-the-android-of-generalist-robotics/</description>
+            <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260106_052147.mp3" length="8143340" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260106_052147.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 5 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 5 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,26 +211,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251228_052431.mp3" length="7322732" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251228_052431.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 27 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 27 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• SVT Nyheter: Sorg i Boden efter dådet – mördade kvinnan arbetade inom För...
-  https://www.svt.se/nyheter/lokalt/norrbotten/sorg-i-boden-efter-dadet-mordade-kvinnan-arbetade-inom-forsvarsmakten
-• SVT Nyheter: Sverige ställs mot Slovakien i JVM-premiären
-  https://www.svt.se/sport/ishockey/sverige-stalls-mot-slovakien-i-jvm-premiaren
-• Dagens Nyheter: Sverige pressades i premiären – supertalangen avgjorde
-  https://www.dn.se/sport/sverige-pressades-i-premiaren-supertalangen-avgjorde/
-• SVT Nyheter: Julfesten nära att ställas in – på grund av Mondos succé
-  https://www.svt.se/sport/friidrott/julfesten-nara-att-stallas-in-pa-grund-av-mondos-succe
-• Miljö &amp; Utveckling: Fem hållbarhetschefer om omnibus – så här ska de rapportera ...
-  https://miljo-utveckling.se/fem-hallbarhetschefer-om-omnibus-sa-har-ska-de-rapportera-framat/</description>
-            <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251227_051448.mp3" length="8793836" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251227_051448.mp3</guid>
         </item>
     </channel>
 </rss>

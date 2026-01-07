@@ -16,8 +16,22 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 06 Jan 2026 05:28:50 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 07 Jan 2026 05:29:26 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 7 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 7 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• TechCrunch: Mobileye acquires humanoid robot startup Mentee Robotics for...
+  https://techcrunch.com/2026/01/06/mobileye-acquires-humanoid-robot-startup-mentee-robotics-for-900m/
+• Dagens Nyheter: En månad till vinter-OS – här är Sveriges 20 främsta guldhop...
+  https://www.dn.se/sport/en-manad-till-vinter-os-har-ar-sveriges-20-framsta-guldhopp/
+• SVT Nyheter: Här är Stockholmskommunerna som sänker skatten 2026
+  https://www.svt.se/nyheter/lokalt/stockholm/har-ar-stockholmskommunerna-som-sanker-skatten-2026</description>
+            <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260107_052210.mp3" length="8231276" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260107_052210.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 6 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 6 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,26 +205,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251229_052619.mp3" length="8537708" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251229_052619.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 28 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 28 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• SVT Nyheter: Stormen Johannes drar in över Sverige – SMHI varnar
-  https://www.svt.se/nyheter/inrikes/stormen-johannes-drar-in-over-sverige-smhi-varnar
-• SVT Nyheter: Ny studie: Konstgräs bättre för miljön än naturgräs
-  https://www.svt.se/nyheter/lokalt/ost/ny-studie-konstgras-battre-for-miljon-an-naturgras
-• SVT Nyheter: Stormen Johannes drar in över Sverige – se SMHI:s varningar
-  https://www.svt.se/nyheter/inrikes/stormen-johannes-drar-in-over-sverige-se-varningarna
-• SVT Nyheter: Här förvarades Sveriges guldreserv under andra världskriget
-  https://www.svt.se/nyheter/lokalt/jonkoping/har-forvarades-sveriges-guldreserv-under-andra-varldskriget
-• SVT Nyheter: Misstänkte gärningsmannens mamma: ”Behövde hjälp”
-  https://www.svt.se/nyheter/lokalt/norrbotten/misstankte-garningsmannens-mamma-behovde-hjalp</description>
-            <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251228_052431.mp3" length="7322732" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251228_052431.mp3</guid>
         </item>
     </channel>
 </rss>

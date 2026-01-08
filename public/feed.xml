@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 07 Jan 2026 05:29:26 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 08 Jan 2026 05:27:07 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 8 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 8 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Mikael Holmqvist: Nationalmuseums porträtt speglar inte makt...
+  https://www.dn.se/kultur/mikael-holmqvist-nationalmuseums-portratt-speglar-inte-makten-i-sverige/
+• SVT Nyheter: 17-åring greps på tåget till Stockholm – ska ha planerat ett...
+  https://www.svt.se/nyheter/lokalt/vasterbotten/17-aring-greps-pa-taget-till-stockholm-ska-ha-planerat-ett-sprangdad
+• SVT Nyheter: Blandade reaktioner efter regeringsförslag om ersättning til...
+  https://www.svt.se/nyheter/inrikes/blandade-reaktioner-efter-regeringsforslag-om-ersattning-till-skogsagare
+• Dagens Nyheter: Palicka blodig när Sverige vann EM-genrepet
+  https://www.dn.se/sport/palicka-blodig-nar-sverige-vann-em-genrepet/
+• SVT Nyheter: Tiotusentals dieselbilar kan stoppas av nya avgaskrav
+  https://www.svt.se/nyheter/inrikes/tiotusentals-dieselbilar-kan-stoppas-av-nya-avgaskrav
+• TechCrunch: OpenAI unveils ChatGPT Health, says 230 million users ask ab...
+  https://techcrunch.com/2026/01/07/openai-unveils-chatgpt-health-says-230-million-users-ask-about-health-each-week/</description>
+            <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260108_052131.mp3" length="7608812" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260108_052131.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 7 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 7 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -185,26 +205,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251230_052100.mp3" length="10267628" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251230_052100.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 29 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 29 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: DN Debatt. ”Sverige har inget att skämmas för vad gäller kli...
-  https://www.dn.se/debatt/sverige-har-inget-att-skammas-for-vad-galler-klimatet/
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• Sveriges Natur: Sveriges mest försenade tåg
-  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
-• BBC News: Executions in Iran estimated to have doubled in 2025, report...
-  https://www.bbc.com/news/articles/c3v1g227p4xo?at_medium=RSS&amp;at_campaign=rss
-• Miljö &amp; Utveckling: Fem hållbarhetschefer om omnibus – så här ska de rapportera ...
-  https://miljo-utveckling.se/fem-hallbarhetschefer-om-omnibus-sa-har-ska-de-rapportera-framat/
-• Dagens Nyheter: Sverige vände och tog ny seger: ”Stressat”
-  https://www.dn.se/sport/sverige-vande-och-tog-ny-seger/</description>
-            <pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251229_052619.mp3" length="8537708" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251229_052619.mp3</guid>
         </item>
     </channel>
 </rss>

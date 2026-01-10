@@ -16,8 +16,22 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 09 Jan 2026 05:29:32 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 10 Jan 2026 05:22:29 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 10 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 10 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Brist på nötkött i svenska matvarubutiker: ”Produktionen beh...
+  https://www.svt.se/nyheter/inrikes/brist-pa-notkott-i-svenska-matvarubutiker-produktionen-behover-oka
+• SVT Nyheter: Fortsatt stor oro i Venezuela efter bortförandet av Maduro
+  https://www.svt.se/nyheter/utrikes/fortsatt-stor-oro-i-venezuela-efter-bortforandet-av-maduro
+• Wired: OpenAI Is Asking Contractors to Upload Work From Past Jobs t...
+  https://www.wired.com/story/openai-contractor-upload-real-work-documents-ai-agents/</description>
+            <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260110_051625.mp3" length="7284332" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260110_051625.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 9 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 9 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -183,26 +197,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260101_052602.mp3" length="7914860" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260101_052602.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 31 december 2025</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 31 december 2025. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• Miljö &amp; Utveckling: Studie: Hållbarhetsrapportering kopplas till bättre ekonomi
-  https://miljo-utveckling.se/studie-hallbarhetsrapportering-kopplas-till-battre-ekonomi/
-• TechCrunch: How to use the new ChatGPT app integrations, including DoorD...
-  https://techcrunch.com/2025/12/29/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/
-• Dagens Nyheter: Sverige uttrycker ”allvarlig oro” över Gaza
-  https://www.dn.se/varlden/sverige-uttrycker-allvarlig-oro-over-gaza/
-• SVT Nyheter: ”Det ska inte vara livsfarligt att vara kvinna i Sverige”
-  https://www.svt.se/nyheter/inrikes/det-ska-inte-vara-livsfarligt-att-vara-kvinna-i-sverige
-• SVT Nyheter: Årsbokslut 2025: Sveriges regering erkände fel i minoritetsp...
-  https://www.svt.se/nyheter/uutiset/svenska/arsbokslut-2025-sveriges-regering-erkande-fel-i-minoritetspolitiken</description>
-            <pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251231_052033.mp3" length="8349932" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20251231_052033.mp3</guid>
         </item>
     </channel>
 </rss>

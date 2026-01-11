@@ -16,8 +16,24 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 10 Jan 2026 05:22:29 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 11 Jan 2026 05:32:45 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 11 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 11 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: DN Debatt. ”Sveriges framtid kräver nya politiska visioner”
+  https://www.dn.se/debatt/sveriges-framtid-kraver-nya-politiska-visioner/
+• SVT Nyheter: Norge: Fredspriset kan inte delas med Trump
+  https://www.svt.se/nyheter/utrikes/norge-fredspriset-kan-inte-delas-med-trump
+• SVT Nyheter: ”Kina bygger för en ny världsordning”
+  https://www.svt.se/nyheter/utrikes/kina-bygger-for-en-ny-varldsordning
+• TechCrunch: OpenAI is reportedly asking contractors to upload real work ...
+  https://techcrunch.com/2026/01/10/openai-is-reportedly-asking-contractors-to-upload-real-work-from-past-jobs/</description>
+            <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260111_052538.mp3" length="9051500" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260111_052538.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 10 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 10 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -177,26 +193,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 02 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260102_052231.mp3" length="7333868" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260102_052231.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 1 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 1 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Målfyrverkeri när Sverige vann över mästarna – möter Lettlan...
-  https://www.dn.se/sport/malfyrverkeri-nar-sverige-vann-over-mastarna-nu-vantar-lettland/
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• SVT Nyheter: Norra Sverige saknar räddningshundar – brukshundsklubben slå...
-  https://www.svt.se/nyheter/lokalt/norrbotten/norra-sverige-saknar-raddningshundar-brukshundsklubben-slar-larm
-• Dagens Nyheter: Språken som riskerar dö ut: ”Sverige borde göra mer”
-  https://www.dn.se/sverige/spraken-som-riskerar-do-ut-sverige-borde-gora-mer/
-• SVT Nyheter: SMHI: Röd vädervarning i Gävleborg
-  https://www.svt.se/nyheter/lokalt/gavleborg/smhi-rod-vadervarning-i-gavleborg
-• Miljö &amp; Utveckling: Studie: Hållbarhetsrapportering kopplas till bättre ekonomi
-  https://miljo-utveckling.se/studie-hallbarhetsrapportering-kopplas-till-battre-ekonomi/</description>
-            <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260101_052602.mp3" length="7914860" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260101_052602.mp3</guid>
         </item>
     </channel>
 </rss>

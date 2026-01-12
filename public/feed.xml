@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 11 Jan 2026 05:32:45 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 12 Jan 2026 05:32:43 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 12 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 12 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Lisa Magnusson: Regeringen måste sluta ta sms-lån i barnens ...
+  https://www.dn.se/ledare/lisa-magnusson-regeringen-maste-sluta-ta-sms-lan-i-barnens-namn/
+• Dagens Nyheter: DN Debatt. ”Sveriges säkerhet kräver mer än bara totalförsva...
+  https://www.dn.se/debatt/sveriges-sakerhet-kraver-mer-an-bara-totalforsvar/
+• Dagens Nyheter: Insändare. Sverige måste ge det iranska folket en röst
+  https://www.dn.se/insandare/sverige-maste-ge-det-iranska-folket-en-rost/
+• SVT Nyheter: Räddningstjänsten i Göteborg varnar för fallande istappar oc...
+  https://www.svt.se/nyheter/lokalt/vast/raddningstjansten-i-goteborg-varnar-for-fallande-istappar-och-snomassor
+• SVT Nyheter: SMHI utfärdar gul varning för kyla – risk för förfrysning
+  https://www.svt.se/nyheter/lokalt/norrbotten/smhi-utfardar-gula-varning-for-kyla-risk-for-forfrysning
+• Dagens Nyheter: Regeringen saknar plan för om USA drar sig ur Nato
+  https://www.dn.se/sverige/regeringen-saknar-plan-for-om-usa-drar-sig-ur-nato/</description>
+            <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260112_052719.mp3" length="6740588" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260112_052719.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 11 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 11 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -173,26 +193,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260103_051511.mp3" length="8819180" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260103_051511.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 2 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 2 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Nattågen från Stockholm till Berlin är några av Europas mest...
-  https://www.sverigesnatur.org/aktuellt/nattagen-fran-stockholm-till-berlin-ar-nagra-av-europas-mest-forsenade/
-• Dagens Nyheter: Insändare. Beskatta Sveriges superrika hårdare
-  https://www.dn.se/insandare/beskatta-sveriges-superrika-hardare/
-• Miljö &amp; Utveckling: Studie: Hållbarhetsrapportering kopplas till bättre ekonomi
-  https://miljo-utveckling.se/studie-hallbarhetsrapportering-kopplas-till-battre-ekonomi/
-• Dagens Nyheter: 2026 kan bli ett bra norrskensår – även i södra Sverige
-  https://www.dn.se/sverige/2026-kan-bli-ett-bra-norrskensar-aven-i-sodra-sverige/
-• Sveriges Natur: Sveriges mest försenade tåg
-  https://www.sverigesnatur.org/aktuellt/sveriges-mest-forsenade-tag/
-• Miljö &amp; Utveckling: Fem hållbarhetschefer om omnibus – så här ska de rapportera ...
-  https://miljo-utveckling.se/fem-hallbarhetschefer-om-omnibus-sa-har-ska-de-rapportera-framat/</description>
-            <pubDate>Fri, 02 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260102_052231.mp3" length="7333868" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260102_052231.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 12 Jan 2026 05:32:43 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 13 Jan 2026 05:30:22 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 13 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 13 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Sju åtalas för grova brott mot tjänstemän och politiker i St...
+  https://www.svt.se/nyheter/lokalt/stockholm/sju-personer-atalas-for-grova-brott-demokratihotande
+• SVT Nyheter: Flera äldrebedrägerier i Stockholm – misstänkt fångades av a...
+  https://www.svt.se/nyheter/lokalt/stockholm/flera-aldrebedragerier-i-stockholm-misstankt-fangades-av-anhorig
+• SVT Nyheter: SMHI varnar för plötslig ishalka i södra Sverige
+  https://www.svt.se/nyheter/lokalt/halland/smhi-varnar-for-plotslig-ishalka-i-vastsverige
+• TechCrunch: Anthropic announces Claude for Healthcare following OpenAI’s...
+  https://techcrunch.com/2026/01/12/anthropic-announces-claude-for-healthcare-following-openais-chatgpt-health-reveal/
+• Dagens Nyheter: Insändare. Skrota planerna på nya serverhallar i Mellansveri...
+  https://www.dn.se/insandare/skrota-planerna-pa-nya-serverhallar-i-mellansverige/
+• TechCrunch: OpenAI buys tiny health records startup Torch for, reportedl...
+  https://techcrunch.com/2026/01/12/openai-buys-tiny-health-records-startup-torch-for-reportedly-100m/</description>
+            <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260113_052151.mp3" length="8642924" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260113_052151.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 12 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 12 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -175,24 +195,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260104_052624.mp3" length="7637996" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260104_052624.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 3 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 3 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Miljö &amp; Utveckling: Naturvårdsverkets regleringsbrev: Så påverkas kommuner, läns...
-  https://miljo-utveckling.se/naturvardsverkets-regleringsbrev-sa-paverkas-kommuner-lansstyrelser-och-foretag/
-• Dagens Nyheter: Drömmen om arbete i Sverige blev misstänkt människohandel
-  https://www.dn.se/sverige/drommen-om-arbete-i-sverige-blev-misstankt-manniskohandel/
-• Dagens Nyheter: Finländsk skräll gör att Sverige möter Finland i semi
-  https://www.dn.se/sport/frondells-dromstart-tog-sverige-till-semifinal-i-jvm/
-• Guardian Climate Crisis: Cop30, Trump and the fragile future of climate cooperation
-  https://www.theguardian.com/environment/2026/jan/01/cop30-trump-and-the-fragile-future-of-climate-cooperation
-• SVT Nyheter: Sverige till JVM-semi efter tiosekundersmål: ”Ville sätta to...
-  https://www.svt.se/sport/ishockey/sverige-till-jvm-semi-efter-tiosekundersmal</description>
-            <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260103_051511.mp3" length="8819180" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260103_051511.mp3</guid>
         </item>
     </channel>
 </rss>

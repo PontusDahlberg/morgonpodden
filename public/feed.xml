@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 13 Jan 2026 05:30:22 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 14 Jan 2026 05:32:23 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 14 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 14 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Sopkaos efter snökaos – var fjärde hushåll i Göteborg drabba...
+  https://www.svt.se/nyheter/lokalt/vast/sopkaos-efter-snokaos-var-fjarde-hushall-i-goteborg-drabbat
+• Miljö &amp; Utveckling: Regeringen pressas för kostnader vid missade EU-mål
+  https://miljo-utveckling.se/regeringen-pressas-for-kostnader-vid-missade-eu-mal/
+• SVT Nyheter: Nato-tungviktaren om Trumps hot om Grönland: ”Jag hade vägra...
+  https://www.svt.se/nyheter/utrikes/nato-tungviktaren-om-trumps-hot-om-gronland-jag-hade-vagrat-lyda-order
+• SVT Nyheter: Elefant gick bärsärk i Indien – 20 döda
+  https://www.svt.se/nyheter/utrikes/elefant-gick-barsark-i-indien-20-doda
+• Guardian Environment: Ten Sydney Harbours’ worth of threatened species habitat app...
+  https://www.theguardian.com/environment/2026/jan/13/threatened-species-habitat-destruction-australia-15-year-high
+• SVT Nyheter: Experten om USA:s plan för Iran: ”Kommer bomba”
+  https://www.svt.se/nyheter/utrikes/experten-om-usas-plan-for-iran-kommer-bomba</description>
+            <pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260114_052553.mp3" length="8742380" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260114_052553.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 13 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 13 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -177,24 +197,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260105_053030.mp3" length="7915628" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260105_053030.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 4 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 4 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Stockholmspolisen uppmanar bilister att stanna hemma efter v...
-  https://www.svt.se/nyheter/lokalt/stockholm/stockholmspolisen-uppmanar-bilister-att-stanna-hemma-efter-vadervarning
-• SVT Nyheter: Snökaos och varningar – men stockholmare nöjda med snön: ”Ly...
-  https://www.svt.se/nyheter/lokalt/stockholm/snokaos-och-varningar-men-stockholmare-nojda-med-snon-lyser-upp
-• Dagens Nyheter: Insändare. Sverige behöver sammanhållning och öppna dörrar
-  https://www.dn.se/insandare/sverige-behover-sammanhallning-och-oppna-dorrar/
-• Dagens Nyheter: Matchguide: Tajt rivalmöte att vänta i Sveriges semifinal
-  https://www.dn.se/sport/matchguide-tajt-rivalmote-att-vanta-i-sveriges-semifinal/
-• Wired: The US Invaded Venezuela and Captured Nicolás Maduro. ChatGP...
-  https://www.wired.com/story/us-invaded-venezuela-and-captured-nicolas-maduro-chatgpt-disagrees/</description>
-            <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260104_052624.mp3" length="7637996" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260104_052624.mp3</guid>
         </item>
     </channel>
 </rss>

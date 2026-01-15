@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 14 Jan 2026 05:32:23 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 15 Jan 2026 05:30:50 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 15 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 15 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Efter äldrerånen i Huskvarna – så vill regeringen försvåra f...
+  https://www.svt.se/nyheter/lokalt/jonkoping/efter-aldreranen-i-huskvarna-sa-vill-regeringen-forsvara-for-kriminella
+• TechCrunch: Mira Murati’s startup, Thinking Machines Lab, is losing two ...
+  https://techcrunch.com/2026/01/14/mira-muratis-startup-thinking-machines-lab-is-losing-two-of-its-co-founders-to-openai/
+• SVT Nyheter: USA har börjat sälja venezuelansk olja
+  https://www.svt.se/nyheter/utrikes/usa-har-borjat-salja-venezuelansk-olja
+• TechCrunch: OpenAI signs deal, worth $10B, for compute from Cerebras
+  https://techcrunch.com/2026/01/14/openai-signs-deal-reportedly-worth-10-billion-for-compute-from-cerebras/
+• SVT Nyheter: En död efter villabrand i Älvsjö
+  https://www.svt.se/nyheter/lokalt/stockholm/en-dod-efter-villabrand-i-alvsjo
+• TechCrunch: Robotics software maker Skild AI hits $14B valuation
+  https://techcrunch.com/2026/01/14/robotic-software-maker-skild-ai-hits-14b-valuation/</description>
+            <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260115_052240.mp3" length="9138284" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260115_052240.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 14 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 14 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -179,24 +199,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260106_052147.mp3" length="8143340" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260106_052147.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 5 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 5 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Sverige klart för JVM-final – vann galen straffrysare mot Fi...
-  https://www.svt.se/sport/ishockey/sverige-klart-for-jvm-final-vann-galen-straffrysare-mot-finland
-• SVT Nyheter: Manifestation i Malmö – med ljus och tyst minut för kvinnor ...
-  https://www.svt.se/nyheter/lokalt/skane/manifestation-i-malmo-med-ljus-och-tyst-minut-for-kvinnor-som-mordats
-• Dagens Nyheter: Insändare. Säg ifrån mot politiker som skapar ett nytt fatti...
-  https://www.dn.se/insandare/sag-ifran-mot-politiker-som-skapar-ett-nytt-fattig-sverige/
-• Dagens Nyheter: Rysare när Sverige blev klart för final efter straffseger mo...
-  https://www.dn.se/sport/rysare-nar-sverige-blev-klart-for-final-efter-straffseger-mot-finland/
-• Euronews: CES 2026: Expect chip wars, new laptops, AI robots and a nod...
-  http://www.euronews.com/next/2026/01/04/ces-2026-expect-chip-wars-new-laptops-ai-robots-and-a-nod-to-autonomous-driving</description>
-            <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260105_053030.mp3" length="7915628" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260105_053030.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 15 Jan 2026 05:30:50 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 16 Jan 2026 05:27:42 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 16 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 16 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Sverige utanför pallen – trots Ponsiluomas monstersträcka
+  https://www.svt.se/sport/skidskytte/sverige-utanfor-pallen-trots-ponsiluomas-monsterstracka
+• TechCrunch: OpenAI invests in Sam Altman’s brain computer interface star...
+  https://techcrunch.com/2026/01/15/openai-invests-in-sam-altmans-brain-computer-interface-startup-merge-labs/
+• Wired: OpenAI Invests in Sam Altman’s New Brain-Tech Startup Merge ...
+  https://www.wired.com/story/openai-invests-in-sam-altmans-new-brain-tech-startup-merge-labs/
+• SVT Nyheter: Bildt: Sällan oproblematiskt att utvinna olja
+  https://www.svt.se/nyheter/inrikes/bildt-sallan-oproblematiskt-att-utvinna-olja
+• Wired: Inside OpenAI’s Raid on Thinking Machines Lab
+  https://www.wired.com/story/inside-openai-raid-on-thinking-machines-lab/
+• Dagens Nyheter: Peter Alestig: Så blev värmepumpar ett politiskt slagträ
+  https://www.dn.se/sverige/peter-alestig-sa-blev-varmepumpar-ett-politiskt-slagtra/</description>
+            <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260116_052201.mp3" length="7545452" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260116_052201.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 15 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 15 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -179,26 +199,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260107_052210.mp3" length="8231276" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260107_052210.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 6 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 6 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Hvb-hem i Västsverige tvingas stänga efter slarv med registe...
-  https://www.dn.se/sverige/hvb-hem-i-vastsverige-tvingas-stanga-efter-slarv-med-registerkontroller/
-• Dagens Nyheter: Här åker stockholmarna skidor – mitt i stan
-  https://www.dn.se/sverige/har-aker-stockholmarna-skidor-mitt-i-stan/
-• Euronews: Future of autonomous driving and robots just went up a gear....
-  http://www.euronews.com/next/2026/01/06/future-of-autonomous-driving-and-robots-just-went-up-a-gear-nvidia-and-boston-dynamics-ces
-• IEEE Spectrum: Global Giants Are Investing in Clean Tech Despite Politics
-  https://spectrum.ieee.org/firms-bet-climate-tech
-• Dagens Nyheter: Sverige vann finalen i JVM – första guldet på 14 år
-  https://www.dn.se/sport/sverige-vann-finalen-i-jvm-forsta-guldet-pa-14-ar/
-• TechCrunch: Nvidia wants to be the Android of generalist robotics
-  https://techcrunch.com/2026/01/05/nvidia-wants-to-be-the-android-of-generalist-robotics/</description>
-            <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260106_052147.mp3" length="8143340" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260106_052147.mp3</guid>
         </item>
     </channel>
 </rss>

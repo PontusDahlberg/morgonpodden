@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 16 Jan 2026 05:27:42 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 17 Jan 2026 05:22:16 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 17 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 17 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Hätsk debatt i riksdagen om gruvbrytning i alunskiffer i Ovi...
+  https://www.svt.se/nyheter/lokalt/jamtland/hatsk-debatt-i-riksdagen-om-gruvbrytning-i-alunskiffer-i-oviken
+• TechCrunch: From OpenAI’s offices to a deal with Eli Lilly — how Chai Di...
+  https://techcrunch.com/2026/01/16/from-openais-offices-to-a-deal-with-eli-lilly-how-chai-discovery-became-one-of-the-flashiest-names-in-ai-drug-development/
+• Dagens Nyheter: DN Debatt. ”Barnen i fokus – här är regeringens nya cancerst...
+  https://www.dn.se/debatt/barnen-i-fokus-har-ar-regeringens-nya-cancerstrategi/
+• Dagens Nyheter: Tågresor Stockholm-Göteborg blir 69 minuter längre
+  https://www.dn.se/ekonomi/tagresor-stockholm-goteborg-blir-69-minuter-langre/
+• Miljö &amp; Utveckling: Sverige saknar fortfarande handlingsplan för FN:s biodiversi...
+  https://miljo-utveckling.se/sverige-saknar-fortfarande-handlingsplan-for-fns-biodiversitetsmal-fran-2022/
+• The Verge: Ads are coming soon to ChatGPT, starting with shopping links
+  https://www.theverge.com/news/863428/openai-chatgpt-shopping-ads-test</description>
+            <pubDate>Sat, 17 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260117_051458.mp3" length="9298028" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260117_051458.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 16 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 16 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -185,20 +205,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260108_052131.mp3" length="7608812" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260108_052131.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 7 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 7 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• TechCrunch: Mobileye acquires humanoid robot startup Mentee Robotics for...
-  https://techcrunch.com/2026/01/06/mobileye-acquires-humanoid-robot-startup-mentee-robotics-for-900m/
-• Dagens Nyheter: En månad till vinter-OS – här är Sveriges 20 främsta guldhop...
-  https://www.dn.se/sport/en-manad-till-vinter-os-har-ar-sveriges-20-framsta-guldhopp/
-• SVT Nyheter: Här är Stockholmskommunerna som sänker skatten 2026
-  https://www.svt.se/nyheter/lokalt/stockholm/har-ar-stockholmskommunerna-som-sanker-skatten-2026</description>
-            <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260107_052210.mp3" length="8231276" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260107_052210.mp3</guid>
         </item>
     </channel>
 </rss>

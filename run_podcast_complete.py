@@ -1077,9 +1077,19 @@ def main():
         # 🛡️ SJÄLVKORRIGERANDE FAKTAKONTROLL - Automatisk korrigering av problem
         final_podcast_content = podcast_content
         max_correction_attempts = 3
+
+        # Sammanfattning som kan användas i kvalitetsrapport
+        fact_check_summary = {
+            'status': 'UNKNOWN',
+            'warnings': [],
+            'critical_issues_count': None,
+            'correction_attempts': 0,
+            'auto_correct_used': False,
+        }
         
         for correction_attempt in range(max_correction_attempts):
             logger.info(f"[FACT-CHECK] 🛡️ Faktakontroll försök {correction_attempt + 1}/{max_correction_attempts}")
+            fact_check_summary['correction_attempts'] = correction_attempt + 1
             
             # Grundläggande faktakontroll först (snabbast)
             fact_check_passed = False
@@ -1090,15 +1100,21 @@ def main():
                 if basic_result['safe_to_publish']:
                     # Visa varningar men godkänn ändå
                     warnings = basic_result.get('warnings', [])
+                    fact_check_summary['warnings'] = warnings
+                    fact_check_summary['critical_issues_count'] = 0
                     if warnings:
                         logger.info(f"[FACT-CHECK] ✅ Faktakontroll godkänd med varningar: {warnings}")
                     else:
                         logger.info("[FACT-CHECK] ✅ Faktakontroll godkänd helt")
+                    fact_check_summary['status'] = 'SAFE'
                     fact_check_passed = True
                     break
                 else:
                     critical_issues = basic_result.get('critical_issues', [])
                     warnings = basic_result.get('warnings', [])
+                    fact_check_summary['warnings'] = warnings
+                    fact_check_summary['critical_issues_count'] = len(critical_issues)
+                    fact_check_summary['status'] = 'REQUIRES_REVIEW'
                     logger.error(f"[FACT-CHECK] ❌ Kritiska problem hittade: {critical_issues}")
                     if warnings:
                         logger.info(f"[FACT-CHECK] ℹ️ Varningar (blockerar inte): {warnings}")
@@ -1114,6 +1130,7 @@ def main():
                         if correction_success:
                             logger.info("[FACT-CHECK] ✅ Automatisk korrigering lyckades!")
                             final_podcast_content = corrected_content
+                            fact_check_summary['auto_correct_used'] = True
                             
                             # Spara korrigerat manus
                             corrected_script_path = f"podcast_script_{timestamp}_corrected_v{correction_attempt + 1}.txt"
@@ -1132,6 +1149,7 @@ def main():
         # Final kontroll
         if not fact_check_passed:
             logger.error("🚨 PUBLICERING STOPPAD - FAKTAKONTROLL MISSLYCKADES!")
+            fact_check_summary['status'] = 'FAILED'
             
             # Spara rapport för manuell granskning
             final_report_path = f"fact_check_failed_{timestamp}.txt"
@@ -1296,6 +1314,32 @@ def main():
         with open(rss_path, 'w', encoding='utf-8') as f:
             f.write(rss_content)
         logger.info(f"[RSS] RSS-feed sparad med {len(recent_episodes)} episoder: {rss_path}")
+
+        # ============================================================
+        # KVALITETSRAPPORT (relevans/korrekthet/körningsproblem)
+        # ============================================================
+        try:
+            from src.episode_quality import generate_episode_quality_report, write_quality_reports
+
+            scraped_data_for_report = None
+            try:
+                with open('scraped_content.json', 'r', encoding='utf-8') as f:
+                    scraped_data_for_report = json.load(f)
+            except Exception:
+                scraped_data_for_report = None
+
+            quality_report = generate_episode_quality_report(
+                run_id=timestamp,
+                script_text=podcast_content,
+                referenced_articles=referenced_articles,
+                scraped_content=scraped_data_for_report,
+                diagnostics_file=DIAGNOSTICS_FILE,
+                fact_check_summary=fact_check_summary,
+            )
+            paths = write_quality_reports(report=quality_report, output_dir='episodes')
+            logger.info(f"[QUALITY] Rapport sparad: {paths.get('markdown')} | {paths.get('json')}")
+        except Exception as e:
+            logger.warning(f"[QUALITY] Kunde inte skapa kvalitetsrapport: {e}")
         
         # Logga framgång
         logger.info("[SUCCESS] Komplett podcast-generering slutförd!")

@@ -86,6 +86,51 @@ class PodcastSummarizer:
             return []
     
     def create_podcast_script(self, scraped_data: List[Dict[str, Any]]) -> str:
+        def infer_sport_label(title: str, link: str) -> Optional[str]:
+            title_l = (title or "").lower()
+            link_l = (link or "").lower()
+
+            # Prefer explicit sport words in title
+            sport_keywords = [
+                ("bandy", "bandy"),
+                ("fotboll", "fotboll"),
+                ("ishockey", "ishockey"),
+                ("hockey", "ishockey"),
+                ("handboll", "handboll"),
+                ("curling", "curling"),
+                ("skidskytte", "skidskytte"),
+                ("alpint", "alpint"),
+                ("friidrott", "friidrott"),
+                ("tennis", "tennis"),
+                ("golf", "golf"),
+                ("basket", "basket"),
+                ("innebandy", "innebandy"),
+                ("vm-kval", None),  # not a sport; avoid mislabel
+            ]
+
+            for kw, label in sport_keywords:
+                if kw in title_l and label:
+                    return label
+
+            # Fallback: infer from SVT-style URL path: /sport/<gren>/...
+            if "/sport/" in link_l:
+                try:
+                    after = link_l.split("/sport/", 1)[1]
+                    candidate = after.split("/", 1)[0].strip()
+                    # Normalize a few known variants
+                    if candidate in {"fotboll", "bandy", "handboll", "ishockey", "hockey", "curling", "friidrott", "alpint", "skidskytte"}:
+                        return "ishockey" if candidate == "hockey" else candidate
+                except Exception:
+                    pass
+
+            return None
+
+        def short_summary(text: str, max_len: int = 240) -> str:
+            if not text:
+                return ""
+            clean = " ".join(str(text).split())
+            return (clean[: max_len - 1] + "…") if len(clean) > max_len else clean
+
         # Prepare content for summarization
         content_sections = []
         
@@ -96,7 +141,20 @@ class PodcastSummarizer:
                     if source_data['type'] == 'weather':
                         section += f"- {item.get('description', 'Ingen väderinformation')}\n"
                     else:
-                        section += f"- {item.get('title', '')}\n"
+                        title = item.get('title', '')
+                        link = item.get('link', '')
+                        summary = item.get('summary', '')
+                        sport_label = infer_sport_label(title, link)
+
+                        # Include minimal disambiguation to prevent hallucinated sport swaps
+                        parts = [f"- {title}"]
+                        if sport_label:
+                            parts.append(f"(sport: {sport_label})")
+                        if link:
+                            parts.append(f"[{link}]")
+                        if summary:
+                            parts.append(f"— {short_summary(summary)}")
+                        section += " ".join(parts) + "\n"
                 content_sections.append(section)
         
         all_content = "\n".join(content_sections)
@@ -163,6 +221,13 @@ Skapa ett engagerande samtal där värdarna diskuterar dagens nyheter på ett na
             host1_style=host1.get('style', 'varm och konversationell'),
             host2_style=host2.get('style', 'informativ men lättsam')
         )
+
+        sport_guardrails = """
+    VIKTIGT (FAKTASÄKERHET OM SPORT):
+    - Gissa aldrig sport. Om sportgren inte står i underlaget: säg "idrott" eller "mästerskapet" utan att namnge sport.
+    - Byt aldrig sportgren mellan underlag och manus. Särskilt: blanda inte ihop bandy och fotboll.
+    - Om underlaget anger (sport: X) ska manus använda samma X när ni pratar om just den nyheten.
+    """
         
         # Get music context
         music_context = self.music_library.get_music_prompt_context()
@@ -209,6 +274,8 @@ Instruktioner för optimerad text-to-dialogue:
         emotional_design = self.config.get('podcastSettings', {}).get('emotional_design', default_emotional_design)
         
         prompt = f"""{formatted_prompt}
+
+    {sport_guardrails}
         
 TEMPORAL KONTEXT:
 - Datum: {swedish_weekday} den {swedish_date}

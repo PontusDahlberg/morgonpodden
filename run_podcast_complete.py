@@ -300,6 +300,36 @@ def get_openrouter_response(messages: List[Dict], model: str = "openai/gpt-4o-mi
         logger.error(f"[ERROR] OpenRouter API error: {e}")
         raise
 
+
+def _count_words(text: str) -> int:
+    if not text:
+        return 0
+    return len(re.findall(r"\S+", text))
+
+
+def _fallback_collect_articles_from_scraped(max_per_source: int = 5, max_total: int = 30) -> List[Dict]:
+    """Fallback: plocka ett litet urval artiklar direkt från scraped_content.json."""
+    available_articles: List[Dict] = []
+    try:
+        with open('scraped_content.json', 'r', encoding='utf-8') as f:
+            scraped_data = json.load(f)
+            for source_group in scraped_data:
+                source_name = source_group.get('source', 'Okänd')
+                items = source_group.get('items', [])
+                for item in items[:max_per_source]:
+                    if item.get('link') and item.get('title'):
+                        available_articles.append({
+                            'source': source_name,
+                            'title': item['title'][:100],
+                            'content': item.get('content', '')[:300],
+                            'link': item['link']
+                        })
+                    if len(available_articles) >= max_total:
+                        return available_articles
+    except Exception as e:
+        logger.error(f"❌ Fallback-filtrering misslyckades: {e}")
+    return available_articles
+
 def generate_structured_podcast_content(weather_info: str, today: Optional[datetime] = None) -> tuple[str, List[Dict]]:
     """Generera strukturerat podcast-innehåll med AI och riktig väderdata"""
     
@@ -373,38 +403,26 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
     logger.info("="*80)
     
     # Importera agent-systemet
+    available_articles: List[Dict] = []
     try:
         from news_curation_integration import curate_news_sync
-        
+
         # Använd agent-systemet för att kurera artiklar
         available_articles = curate_news_sync('scraped_content.json')
-        
-        logger.info(f"\n✅ Agent-systemet valde {len(available_articles)} artiklar för podcast")
+
+        # Viktigt: agent-systemet kan "lyckas" men ändå ge 0 artiklar. Då får vi
+        # ett extremt kort avsnitt (ex. 1 minut). Falla tillbaka till enkel filtrering.
+        if not available_articles:
+            logger.warning("⚠️ Agent-systemet returnerade 0 artiklar. Faller tillbaka på enkel filtrering...")
+            available_articles = _fallback_collect_articles_from_scraped()
+
+        logger.info(f"\n✅ Artikelurval klart: {len(available_articles)} artiklar för podcast")
         logger.info("="*80 + "\n")
-        
+
     except Exception as e:
         logger.error(f"❌ Agent-systemet misslyckades: {e}")
         logger.warning("Faller tillbaka på enkel filtrering...")
-        
-        # FALLBACK: Enkel filtrering om agent-systemet failar
-        available_articles: List[Dict] = []
-        try:
-            with open('scraped_content.json', 'r', encoding='utf-8') as f:
-                scraped_data = json.load(f)
-                for source_group in scraped_data:
-                    source_name = source_group.get('source', 'Okänd')
-                    items = source_group.get('items', [])
-                    for item in items[:5]:
-                        if item.get('link') and item.get('title'):
-                            available_articles.append({
-                                'source': source_name,
-                                'title': item['title'][:100],
-                                'content': item.get('content', '')[:300],
-                                'link': item['link']
-                            })
-        except Exception as fallback_error:
-            logger.error(f"❌ Även fallback-filtrering misslyckades: {fallback_error}")
-            available_articles = []
+        available_articles = _fallback_collect_articles_from_scraped()
     
     # Skapa artikelreferenser för AI
     article_refs = ""
@@ -412,6 +430,7 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
         # Filtrera bort upprepningar (men tillåt uppföljningar)
         filtered_articles = []
         skipped_count = 0
+        skipped_articles: List[Dict] = []
         for a in available_articles:
             url_key = _canonicalize_url(a.get('link', ''))
             fp_key = _title_fingerprint(a.get('title', ''))
@@ -436,6 +455,7 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
 
             if is_repeat and not is_follow_up:
                 skipped_count += 1
+                skipped_articles.append(a)
                 logger.info(f"[HISTORY] Skipping repeat: {a.get('source', '')} - {a.get('title', '')[:80]}")
                 log_diagnostic('article_skipped_repeat', {
                     'source': a.get('source', ''),
@@ -473,6 +493,27 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
                 'remaining_article_count': len(filtered_articles),
             })
 
+        # Om dedupe blir för aggressiv: fyll på med repeats så vi kan skapa ett fullängdsavsnitt.
+        # Hellre lite repetition än att publicera ~1 minut.
+        min_articles_env = os.getenv('MMM_MIN_ARTICLES', '').strip()
+        try:
+            min_articles = int(min_articles_env) if min_articles_env else 6
+        except ValueError:
+            min_articles = 6
+
+        if len(filtered_articles) < min_articles and skipped_articles:
+            needed = min_articles - len(filtered_articles)
+            logger.warning(f"[HISTORY] För få artiklar efter dedupe ({len(filtered_articles)}<{min_articles}). Återinför {needed} repeats för att nå miniminivå.")
+            log_diagnostic('dedupe_relaxed', {
+                'min_articles': min_articles,
+                'before_count': len(filtered_articles),
+                'skipped_available': len(skipped_articles),
+            })
+            filtered_articles.extend(skipped_articles[:needed])
+            log_diagnostic('dedupe_relaxed', {
+                'after_count': len(filtered_articles),
+            })
+
         available_articles = filtered_articles
 
         # Spara persistent historik (om den är aktiverad)
@@ -486,6 +527,16 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
         article_refs = "\n\nTILLGÄNGLIGA ARTIKLAR ATT REFERERA TILL:\n"
         for i, article in enumerate(available_articles[:10], 1):
             article_refs += f"{i}. {article['source']}: {article['title']}\n   Innehåll: {article['content']}\n   [Referera som: {article['source']}]\n\n"
+
+    # Absolut krav: om vi inte har någon artikel att basera avsnittet på ska vi inte försöka.
+    # Detta tenderar annars att ge superkorta/manuslösa avsnitt.
+    min_articles_env = os.getenv('MMM_MIN_ARTICLES', '').strip()
+    try:
+        min_articles = int(min_articles_env) if min_articles_env else 6
+    except ValueError:
+        min_articles = 6
+    if not available_articles or len(available_articles) < 1:
+        raise RuntimeError("Inga artiklar tillgängliga efter kurering/filtrering; avbryter för att undvika kort/okällat avsnitt")
     
     prompt = f"""Skapa ett KOMPLETT och DETALJERAT manus för dagens avsnitt av "MMM Senaste Nytt" - en svensk daglig nyhetspodcast om teknik, AI och klimat.
 
@@ -570,6 +621,27 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
     
     try:
         content = get_openrouter_response(messages)
+        # Guard: ibland svarar modellen alldeles för kort (t.ex. när källistan är tunn).
+        # Gör en explicit retry med skarpare instruktioner, annars riskerar vi 1-minutsavsnitt.
+        min_words_env = os.getenv('MMM_MIN_SCRIPT_WORDS', '').strip()
+        try:
+            min_words = int(min_words_env) if min_words_env else 1400
+        except ValueError:
+            min_words = 1400
+        wc = _count_words(content)
+        if wc < min_words:
+            logger.warning(f"[AI] Manus för kort ({wc} ord < {min_words}). Försöker en gång till med förtydligad prompt...")
+            log_diagnostic('ai_script_too_short_retry', {
+                'word_count': wc,
+                'min_words': min_words,
+                'model': 'openai/gpt-4o-mini',
+            })
+            retry_prompt = prompt + "\n\nVIKTIGT: Ditt förra svar blev för kort. Skriv om manuset till minst " + str(min_words) + " ord. Behåll exakt samma FORMAT (bara 'Namn: text') och använd de listade källorna."
+            content = get_openrouter_response([{"role": "user", "content": retry_prompt}])
+            wc2 = _count_words(content)
+            logger.info(f"[AI] Retry word count: {wc2}")
+            if wc2 < min_words:
+                raise RuntimeError(f"AI-manus för kort även efter retry ({wc2} ord < {min_words})")
         logger.info("[AI] Genererade podcast-innehåll med väderdata")
         return content, available_articles
     except Exception as e:
@@ -1338,6 +1410,20 @@ def main():
             )
             paths = write_quality_reports(report=quality_report, output_dir='episodes')
             logger.info(f"[QUALITY] Rapport sparad: {paths.get('markdown')} | {paths.get('json')}")
+
+            # Valfritt: mejla rapporten om SMTP/MMM_REPORT_EMAIL_* är konfigurerat
+            try:
+                from src.report_emailer import maybe_email_quality_report
+
+                emailed = maybe_email_quality_report(
+                    run_id=timestamp,
+                    markdown_path=paths.get('markdown'),
+                    json_path=paths.get('json'),
+                )
+                if emailed:
+                    logger.info("[QUALITY] ✅ Kvalitetsrapport mejlad")
+            except Exception as e:
+                logger.warning(f"[QUALITY] Kunde inte mejla kvalitetsrapport: {e}")
         except Exception as e:
             logger.warning(f"[QUALITY] Kunde inte skapa kvalitetsrapport: {e}")
         

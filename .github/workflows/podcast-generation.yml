@@ -78,6 +78,14 @@ jobs:
         key: news-history-${{ github.ref_name }}-${{ github.run_id }}
         restore-keys: |
           news-history-${{ github.ref_name }}-
+
+    - name: ♻️ Restore public audio cache (keep previous episodes)
+      uses: actions/cache@v4
+      with:
+        path: public/audio
+        key: public-audio-${{ github.ref_name }}-${{ github.run_id }}
+        restore-keys: |
+          public-audio-${{ github.ref_name }}-
         
     - name: 🎵 Install FFmpeg
       uses: FedericoCarboni/setup-ffmpeg@v3
@@ -186,6 +194,16 @@ jobs:
         grep -n "Service account konfigurerad från miljövariabel" google_cloud_tts.py || echo "No old text found"
         
         python run_podcast_complete.py
+
+    - name: 🧹 Prune old public audio files (keep last 90)
+      if: success()
+      run: |
+        set -e
+        mkdir -p public/audio
+        echo "Before prune:"; ls -1 public/audio | wc -l
+        # Behåll bara senaste 90 mp3-filerna i public/audio
+        ls -1t public/audio/MMM_senaste_nytt_*.mp3 2>/dev/null | tail -n +91 | xargs -r rm -f
+        echo "After prune:"; ls -1 public/audio | wc -l
         
     - name: 📁 Upload podcast artifacts
       uses: actions/upload-artifact@v4
@@ -196,6 +214,8 @@ jobs:
           public/audio/*.mp3
           public/feed.xml
           podcast_script_*.txt
+          episodes/quality_report_*.md
+          episodes/quality_report_*.json
           podcast_generation.log
           diagnostics.jsonl
         retention-days: 90

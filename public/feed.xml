@@ -16,8 +16,14 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 19 Jan 2026 05:34:20 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 20 Jan 2026 05:26:58 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 20 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 20 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.</description>
+            <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260120_052457.mp3" length="1874540" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260120_052457.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 19 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 19 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,20 +199,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260111_052538.mp3" length="9051500" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260111_052538.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 10 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 10 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Brist på nötkött i svenska matvarubutiker: ”Produktionen beh...
-  https://www.svt.se/nyheter/inrikes/brist-pa-notkott-i-svenska-matvarubutiker-produktionen-behover-oka
-• SVT Nyheter: Fortsatt stor oro i Venezuela efter bortförandet av Maduro
-  https://www.svt.se/nyheter/utrikes/fortsatt-stor-oro-i-venezuela-efter-bortforandet-av-maduro
-• Wired: OpenAI Is Asking Contractors to Upload Work From Past Jobs t...
-  https://www.wired.com/story/openai-contractor-upload-real-work-documents-ai-agents/</description>
-            <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260110_051625.mp3" length="7284332" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260110_051625.mp3</guid>
         </item>
     </channel>
 </rss>

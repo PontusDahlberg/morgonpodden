@@ -1,0 +1,57 @@
+name: 📧 SMTP Email Test
+
+on:
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  smtp-test:
+    name: 📧 Send test email
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: 📦 Install minimal deps
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: 📧 Send SMTP test email
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_USE_TLS: ${{ secrets.SMTP_USE_TLS }}
+          SMTP_USE_SSL: ${{ secrets.SMTP_USE_SSL }}
+          MMM_REPORT_EMAIL_TO: ${{ secrets.MMM_REPORT_EMAIL_TO }}
+          MMM_REPORT_EMAIL_FROM: ${{ secrets.MMM_REPORT_EMAIL_FROM }}
+        run: |
+          python - <<'PY'
+          import os
+          from src.report_emailer import send_email_with_attachments
+
+          to_raw = os.getenv('MMM_REPORT_EMAIL_TO', '').strip()
+          from_addr = os.getenv('MMM_REPORT_EMAIL_FROM', '').strip()
+          if not to_raw or not from_addr:
+              raise SystemExit('Missing MMM_REPORT_EMAIL_TO or MMM_REPORT_EMAIL_FROM in secrets')
+
+          to_addrs = [a.strip() for a in to_raw.split(',') if a.strip()]
+          send_email_with_attachments(
+              subject='MMM SMTP test (GitHub Actions)',
+              body_text='Det här är ett testmejl från GitHub Actions. Om du ser detta fungerar SMTP-konfigurationen.',
+              to_addrs=to_addrs,
+              from_addr=from_addr,
+              attachments=[],
+          )
+          print('✅ SMTP test email sent')
+          PY

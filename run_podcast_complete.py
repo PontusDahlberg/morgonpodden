@@ -13,7 +13,7 @@ import requests
 import re
 import html
 from datetime import datetime, timedelta, timezone
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 from dotenv import load_dotenv
 
 # Lägg till modules
@@ -126,6 +126,78 @@ def log_diagnostic(event: str, payload: Dict) -> None:
         pass
 
 
+def _write_run_diagnostics_extract(
+    *,
+    run_id: str,
+    diagnostics_file: str = DIAGNOSTICS_FILE,
+    output_dir: str = 'episodes',
+    max_lines: int = 2000,
+) -> Optional[str]:
+    """Write a filtered diagnostics.jsonl containing only entries for this run_id."""
+    try:
+        if not run_id:
+            return None
+        if not os.path.exists(diagnostics_file):
+            return None
+        os.makedirs(output_dir, exist_ok=True)
+        out_path = os.path.join(output_dir, f"diagnostics_{run_id}.jsonl")
+
+        kept = 0
+        with open(diagnostics_file, 'r', encoding='utf-8') as fin, open(out_path, 'w', encoding='utf-8') as fout:
+            for line in fin:
+                if not line.strip():
+                    continue
+                # Fast path: don't parse JSON unless likely match
+                if f'"run_id": "{run_id}"' not in line and f'"run_id":"{run_id}"' not in line:
+                    continue
+                try:
+                    obj = json.loads(line)
+                except Exception:
+                    continue
+                if obj.get('run_id') != run_id:
+                    continue
+                fout.write(json.dumps(obj, ensure_ascii=False) + "\n")
+                kept += 1
+                if kept >= max(1, int(max_lines)):
+                    break
+
+        if kept <= 0:
+            try:
+                os.remove(out_path)
+            except Exception:
+                pass
+            return None
+        return out_path
+    except Exception:
+        return None
+
+
+def _write_log_tail(
+    *,
+    run_id: str,
+    log_path: str = 'podcast_generation.log',
+    output_dir: str = 'episodes',
+    max_lines: int = 600,
+) -> Optional[str]:
+    """Write a short tail of the main log file for email attachment."""
+    try:
+        if not run_id:
+            return None
+        if not os.path.exists(log_path):
+            return None
+        os.makedirs(output_dir, exist_ok=True)
+        out_path = os.path.join(output_dir, f"log_tail_{run_id}.txt")
+
+        with open(log_path, 'r', encoding='utf-8', errors='replace') as f:
+            lines = f.readlines()
+        tail = lines[-max(50, int(max_lines)):] if lines else []
+        with open(out_path, 'w', encoding='utf-8') as out:
+            out.write("".join(tail))
+        return out_path
+    except Exception:
+        return None
+
+
 def _set_last_gemini_error(message: Optional[str]) -> None:
     global _LAST_GEMINI_ERROR
     _LAST_GEMINI_ERROR = message
@@ -176,6 +248,286 @@ def _is_follow_up_article(title: str, content: str) -> bool:
         'follow-up', 'update', 'new details'
     ]
     return any(m in text for m in follow_up_markers)
+
+
+def _format_swedish_date(dt: datetime) -> str:
+    month_swedish = SWEDISH_MONTHS.get(dt.month, dt.strftime('%B').lower())
+    return f"{dt.day} {month_swedish} {dt.year}"
+
+
+def _load_recent_episode_articles(within_days: int, today: datetime) -> List[Dict[str, Any]]:
+    """Load recent episode_articles_*.json entries.
+
+    Returns a flat list of dicts:
+    { 'date': datetime, 'source': str, 'title': str, 'link': str, 'content': str }
+    """
+    try:
+        import glob
+
+        cutoff_date = (today - timedelta(days=within_days)).date()
+        results: List[Dict[str, Any]] = []
+        for article_file in glob.glob('episode_articles_*.json'):
+            try:
+                # episode_articles_20251014_190405.json
+                date_part = article_file.split('_')[2]
+                file_date = datetime.strptime(date_part, '%Y%m%d').date()
+                if file_date < cutoff_date:
+                    continue
+            except Exception:
+                continue
+
+            try:
+                with open(article_file, 'r', encoding='utf-8') as f:
+                    prev_articles = json.load(f) or []
+                for a in prev_articles:
+                    results.append({
+                        'date': datetime.combine(file_date, datetime.min.time()),
+                        'source': (a.get('source') or '').strip(),
+                        'title': (a.get('title') or '').strip(),
+                        'link': (a.get('link') or '').strip(),
+                        'content': (a.get('content') or '').strip(),
+                    })
+            except Exception as e:
+                logger.warning(f"[HISTORY] Kunde inte läsa {article_file}: {e}")
+        return results
+    except Exception:
+        return []
+
+
+def _build_previous_coverage_hints(
+    current_articles: List[Dict[str, Any]],
+    recent_episode_articles: List[Dict[str, Any]],
+    today: datetime,
+    max_hints: int = 3,
+    min_overlap_tokens: int = 4,
+    min_jaccard: float = 0.50,
+    informative_max_freq: int = 2,
+    min_anchor_token_len: int = 7,
+    debug: bool = False,
+    debug_max_samples: int = 6,
+) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    """Find conservative "topic" matches between today's curated articles and recent episode archives.
+
+    Goal: enable safe callbacks like "senast vi var inne på ämnet".
+    We only emit hints when we have high confidence (rare anchor token overlap + similarity).
+    """
+    debug_info: Dict[str, Any] = {
+        'current_considered': 0,
+        'recent_items': 0,
+        'evaluated_pairs': 0,
+        'reasons': {
+            'no_title_tokens': 0,
+            'no_anchor_tokens': 0,
+            'identical_url': 0,
+            'identical_title_fp': 0,
+            'prev_already_used': 0,
+            'prev_is_today_or_future': 0,
+            'overlap_below_min': 0,
+            'no_anchor_overlap': 0,
+            'similarity_below_min': 0,
+            'no_candidate': 0,
+            'hint_emitted': 0,
+        },
+        'samples': [],
+    }
+
+    if not current_articles or not recent_episode_articles:
+        return [], debug_info
+
+    def _token_set_from_title(title: str) -> set:
+        fp = _title_fingerprint(title)
+        return set(fp.split(' ')) if fp else set()
+
+    def _jaccard(a: set, b: set) -> float:
+        if not a or not b:
+            return 0.0
+        inter = len(a & b)
+        union = len(a | b)
+        return (inter / union) if union else 0.0
+
+    # Precompute token sets for recent items + token frequency for "rarity".
+    recent: List[Tuple[Dict[str, Any], set]] = []
+    token_freq: Dict[str, int] = {}
+    for r in recent_episode_articles:
+        tset = _token_set_from_title(r.get('title', ''))
+        if not tset:
+            continue
+        recent.append((r, tset))
+        for t in tset:
+            token_freq[t] = token_freq.get(t, 0) + 1
+
+    debug_info['recent_items'] = len(recent)
+
+    hints: List[Dict[str, Any]] = []
+    used_prev_keys: set = set()
+
+    for cur in (current_articles or [])[:10]:
+        debug_info['current_considered'] += 1
+        cur_title = (cur.get('title') or '').strip()
+        cur_link = (cur.get('link') or '').strip()
+        cur_source = (cur.get('source') or '').strip()
+
+        cur_tokens = _token_set_from_title(cur_title)
+        if not cur_tokens:
+            debug_info['reasons']['no_title_tokens'] += 1
+            continue
+
+        cur_url_key = _canonicalize_url(cur_link)
+        cur_fp = _title_fingerprint(cur_title)
+
+        # Identify "anchor" tokens that are rare in the recent archive.
+        cur_informative = {
+            t for t in cur_tokens
+            if token_freq.get(t, 0) <= informative_max_freq and len(t) >= min_anchor_token_len
+        }
+        if not cur_informative:
+            debug_info['reasons']['no_anchor_tokens'] += 1
+            continue
+
+        best = None
+        best_score = 0.0
+        best_date = None
+        best_overlap_info = 0
+
+        # For diagnostics: what's the closest we got, even if not passing thresholds.
+        best_any_score = 0.0
+        best_any_prev_source = ""
+        best_any_prev_date = None
+
+        for prev, prev_tokens in recent:
+            prev_title = (prev.get('title') or '').strip()
+            prev_link = (prev.get('link') or '').strip()
+
+            debug_info['evaluated_pairs'] += 1
+
+            # Avoid identical items (dedupe already tries, but keep this strict)
+            if cur_url_key and cur_url_key == _canonicalize_url(prev_link):
+                debug_info['reasons']['identical_url'] += 1
+                continue
+            if cur_fp and cur_fp == _title_fingerprint(prev_title):
+                debug_info['reasons']['identical_title_fp'] += 1
+                continue
+
+            # Avoid mentioning the same historical item multiple times
+            prev_key = _canonicalize_url(prev_link) or _title_fingerprint(prev_title)
+            if prev_key and prev_key in used_prev_keys:
+                debug_info['reasons']['prev_already_used'] += 1
+                continue
+
+            # Avoid "today" as "previous"
+            try:
+                prev_date = prev.get('date')
+                if isinstance(prev_date, datetime) and prev_date.date() >= today.date():
+                    debug_info['reasons']['prev_is_today_or_future'] += 1
+                    continue
+            except Exception:
+                pass
+
+            overlap_total = len(cur_tokens & prev_tokens)
+            if overlap_total < min_overlap_tokens:
+                debug_info['reasons']['overlap_below_min'] += 1
+                continue
+
+            overlap_info = len(cur_informative & prev_tokens)
+            if overlap_info < 1:
+                debug_info['reasons']['no_anchor_overlap'] += 1
+                continue
+
+            score = _jaccard(cur_tokens, prev_tokens)
+
+            if score > best_any_score:
+                best_any_score = score
+                best_any_prev_source = (prev.get('source') or '').strip()
+                prev_dt_any = prev.get('date')
+                if isinstance(prev_dt_any, datetime):
+                    best_any_prev_date = prev_dt_any.date()
+                else:
+                    best_any_prev_date = None
+
+            if score < min_jaccard:
+                debug_info['reasons']['similarity_below_min'] += 1
+                continue
+
+            # Prefer the most recent prior mention ("förra gången").
+            prev_dt = prev.get('date')
+            prev_date_key = None
+            if isinstance(prev_dt, datetime):
+                prev_date_key = prev_dt.date()
+
+            if best is None:
+                best = prev
+                best_score = score
+                best_date = prev_date_key
+                best_overlap_info = overlap_info
+            else:
+                # Pick newer; break ties by stronger informative overlap, then higher similarity.
+                if prev_date_key and (best_date is None or prev_date_key > best_date):
+                    best = prev
+                    best_score = score
+                    best_date = prev_date_key
+                    best_overlap_info = overlap_info
+                elif prev_date_key == best_date:
+                    if overlap_info > best_overlap_info:
+                        best = prev
+                        best_score = score
+                        best_overlap_info = overlap_info
+                    elif overlap_info == best_overlap_info and score > best_score:
+                        best = prev
+                        best_score = score
+
+        if best and best_score >= min_jaccard:
+            prev_date = best.get('date')
+            if isinstance(prev_date, datetime):
+                prev_date_str = _format_swedish_date(prev_date)
+            else:
+                prev_date_str = str(prev_date) if prev_date else "(okänt datum)"
+
+            prev_title = (best.get('title') or '').strip()
+            prev_source = (best.get('source') or '').strip()
+            prev_link = (best.get('link') or '').strip()
+
+            hints.append({
+                'current_source': cur_source,
+                'current_title': cur_title,
+                'current_link': cur_link,
+                'topic_tokens': ' '.join(sorted(list(cur_informative))[:3]),
+                'previous_date': prev_date_str,
+                'previous_source': prev_source,
+                'previous_title': prev_title,
+                'previous_link': prev_link,
+                'score': round(best_score, 3),
+            })
+
+            prev_key = _canonicalize_url(prev_link) or _title_fingerprint(prev_title)
+            if prev_key:
+                used_prev_keys.add(prev_key)
+
+            debug_info['reasons']['hint_emitted'] += 1
+        else:
+            debug_info['reasons']['no_candidate'] += 1
+            if debug and len(debug_info.get('samples', [])) < max(0, int(debug_max_samples)):
+                debug_info['samples'].append({
+                    'current_source': cur_source,
+                    'current_title': _truncate_text(cur_title, 120),
+                    'anchor_tokens': ' '.join(sorted(list(cur_informative))[:3]),
+                    'best_any_score': round(best_any_score, 3),
+                    'best_any_prev_source': best_any_prev_source,
+                    'best_any_prev_date': str(best_any_prev_date) if best_any_prev_date else None,
+                })
+
+        if len(hints) >= max_hints:
+            break
+
+    # Sort by recency first (best effort), then score.
+    def _hint_sort_key(h: Dict[str, Any]) -> tuple:
+        try:
+            # previous_date is a Swedish string; sorting by score is fine for secondary
+            return (h.get('score', 0.0),)
+        except Exception:
+            return (0.0,)
+
+    hints.sort(key=_hint_sort_key, reverse=True)
+    return hints[:max_hints], debug_info
 
 
 def extract_referenced_articles(podcast_content: str, candidate_articles: List[Dict], max_results: int = 8) -> List[Dict]:
@@ -271,34 +623,60 @@ def load_config() -> Dict:
         return {}
 
 def get_openrouter_response(messages: List[Dict], model: str = "openai/gpt-4o-mini") -> str:
-    """Skicka förfrågan till OpenRouter API"""
+    """Skicka förfrågan till OpenRouter API.
+
+    Om OPENROUTER_API_KEY saknas men OPENAI_API_KEY finns, fall tillbaka till OpenAI direkt.
+    Detta förhindrar att pipeline hamnar i kort 'fallback'-manus p.g.a. saknad nyckel.
+    """
     api_key = os.getenv('OPENROUTER_API_KEY')
-    if not api_key:
-        raise ValueError("OPENROUTER_API_KEY saknas i miljövariabler")
-    
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "HTTP-Referer": "https://github.com/PontusDahlberg",
-        "X-Title": "MMM Podcast Generator",
-        "Content-Type": "application/json"
-    }
-    
-    data = {
-        "model": model,
-        "messages": messages,
-        "temperature": 0.7,
-        "max_tokens": 4000
-    }
-    
-    try:
-        response = requests.post(url, headers=headers, json=data, timeout=90)
-        response.raise_for_status()
-        result = response.json()
-        return result['choices'][0]['message']['content']
-    except requests.RequestException as e:
-        logger.error(f"[ERROR] OpenRouter API error: {e}")
-        raise
+    if api_key:
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "HTTP-Referer": "https://github.com/PontusDahlberg",
+            "X-Title": "MMM Podcast Generator",
+            "Content-Type": "application/json"
+        }
+
+        data = {
+            "model": model,
+            "messages": messages,
+            "temperature": 0.7,
+            "max_tokens": 4000
+        }
+
+        try:
+            response = requests.post(url, headers=headers, json=data, timeout=90)
+            response.raise_for_status()
+            result = response.json()
+            return result['choices'][0]['message']['content']
+        except requests.RequestException as e:
+            logger.error(f"[ERROR] OpenRouter API error: {e}")
+            raise
+
+    openai_api_key = os.getenv('OPENAI_API_KEY')
+    if openai_api_key:
+        try:
+            from openai import OpenAI
+
+            # OpenRouter-modellnamn kan vara t.ex. "openai/gpt-4o-mini".
+            # För OpenAI vill vi oftast ha "gpt-4o-mini".
+            default_openai_model = model.split('/', 1)[1] if '/' in model else model
+            openai_model = os.getenv('OPENAI_MODEL', '').strip() or default_openai_model
+
+            client = OpenAI(api_key=openai_api_key)
+            resp = client.chat.completions.create(
+                model=openai_model,
+                messages=messages,
+                temperature=0.7,
+                max_tokens=4000,
+            )
+            return (resp.choices[0].message.content or "").strip()
+        except Exception as e:
+            logger.error(f"[ERROR] OpenAI API error (fallback): {type(e).__name__}: {e}")
+            raise
+
+    raise ValueError("OPENROUTER_API_KEY saknas i miljövariabler (och OPENAI_API_KEY saknas också)")
 
 
 def _count_words(text: str) -> int:
@@ -330,6 +708,69 @@ def _fallback_collect_articles_from_scraped(max_per_source: int = 5, max_total: 
         logger.error(f"❌ Fallback-filtrering misslyckades: {e}")
     return available_articles
 
+
+def _truncate_text(text: str, max_chars: int) -> str:
+    if not text:
+        return ""
+    clean = " ".join(str(text).split())
+    if len(clean) <= max_chars:
+        return clean
+    return clean[: max(0, max_chars - 1)].rstrip() + "…"
+
+
+def _append_article_padding(script_text: str, articles: List[Dict], min_words: int) -> str:
+    """Pad:ar upp manuset med källbaserad dialog tills vi når min_words.
+
+    Viktigt: vi hittar inte på fakta; vi återger endast utdrag ur artikelns content-fält och
+    säger tydligt när detaljer saknas.
+    """
+    if not script_text:
+        script_text = ""
+
+    current_wc = _count_words(script_text)
+    if current_wc >= min_words:
+        return script_text
+
+    # Undvik att pad:en blir oändlig om articles är tom.
+    if not articles:
+        filler = (
+            "\n\nLisa: Vi rundar av med en sista påminnelse: kolla länkarna i avsnittsbeskrivningen för att verifiera uppgifterna.\n"
+            "Pelle: Och hör gärna av dig om du upptäcker något som behöver rättas.\n"
+        )
+        return (script_text + filler).strip()
+
+    # Bygg en “snabba nyheter”-sektion som nämner källa + titel-token för bättre RSS-match.
+    lines: List[str] = []
+    lines.append("\n\nLisa: Vi fortsätter med några snabba nyheter för att få med helheten i flödet.")
+    lines.append("Pelle: Perfekt – kör! Och säg gärna tydligt vilken källa det kommer från.")
+
+    # Iterera artiklar flera varv om det behövs, men med hård cap.
+    max_items = min(len(articles), 12)
+    safe_articles = articles[:max_items]
+    loops = 0
+    while _count_words(script_text + "\n" + "\n".join(lines)) < min_words and loops < 3:
+        for a in safe_articles:
+            if _count_words(script_text + "\n" + "\n".join(lines)) >= min_words:
+                break
+            source = (a.get('source') or 'Okänd källa').strip()
+            title = (a.get('title') or '').strip()
+            content_snip = _truncate_text(a.get('content', ''), 700)
+            if not content_snip:
+                content_snip = "Vi har begränsade detaljer i underlaget just nu, men rubriken pekar på en tydlig utveckling."
+
+            lines.append(f"\nLisa: Nästa punkt – {source} har en artikel med rubriken \"{_truncate_text(title, 160)}\".")
+            lines.append("Pelle: Okej, vad är det viktigaste vi ska ta med oss?")
+            lines.append(
+                "Lisa: "
+                + content_snip
+                + ("" if content_snip.endswith(('.', '!', '?')) else ".")
+            )
+            lines.append(
+                "Pelle: Bra. Och om det saknas siffror eller detaljer i källan så är det helt okej – då säger vi bara det.")
+        loops += 1
+
+    return (script_text + "\n" + "\n".join(lines)).strip()
+
 def generate_structured_podcast_content(weather_info: str, today: Optional[datetime] = None) -> tuple[str, List[Dict]]:
     """Generera strukturerat podcast-innehåll med AI och riktig väderdata"""
     
@@ -345,6 +786,14 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
     # (viktigt för att undvika att samma nyhet tas upp dag efter dag)
     dedupe_days = 21
     used_articles = set()
+    recent_episode_articles: List[Dict[str, Any]] = []
+
+    memory_days_env = os.getenv('MMM_MEMORY_DAYS', '').strip()
+    try:
+        memory_days = int(memory_days_env) if memory_days_env else 60
+    except ValueError:
+        memory_days = 60
+    memory_days = max(memory_days, dedupe_days)
 
     # Primärt: använd en persistent historikfil (fungerar i GitHub Actions via cache)
     history = None
@@ -359,38 +808,25 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
         history = None
         logger.warning(f"[HISTORY] Kunde inte initiera news_history.json: {e}")
     try:
-        import glob
-        article_files = glob.glob('episode_articles_*.json')
-        
-        # Filtrera på datum - bara senaste 21 dagarna
-        cutoff_date = datetime.now() - timedelta(days=dedupe_days)
-        recent_files = []
-        for article_file in article_files:
+        recent_episode_articles = _load_recent_episode_articles(within_days=memory_days, today=today)
+        cutoff_date = (today - timedelta(days=dedupe_days)).date()
+        for prev in recent_episode_articles:
             try:
-                # Extrahera datum från filnamn: episode_articles_20251014_190405.json
-                date_str = article_file.split('_')[2]  # 20251014
-                file_date = datetime.strptime(date_str, '%Y%m%d')
-                if file_date >= cutoff_date:
-                    recent_files.append(article_file)
-            except (IndexError, ValueError):
+                prev_dt = prev.get('date')
+                if isinstance(prev_dt, datetime) and prev_dt.date() < cutoff_date:
+                    continue
+            except Exception:
                 continue
-        
-        for article_file in recent_files:
-            try:
-                with open(article_file, 'r', encoding='utf-8') as f:
-                    prev_articles = json.load(f)
-                    for article in prev_articles:
-                        # Lägg in både canonical URL och titel-fingerprint för robust dedupe
-                        prev_link = article.get('link', '')
-                        prev_title = article.get('title', '')
-                        url_key = _canonicalize_url(prev_link)
-                        fp_key = _title_fingerprint(prev_title)
-                        if url_key:
-                            used_articles.add(url_key)
-                        if fp_key:
-                            used_articles.add(fp_key)
-            except Exception as e:
-                logger.warning(f"[HISTORY] Kunde inte läsa {article_file}: {e}")
+
+            prev_link = prev.get('link', '')
+            prev_title = prev.get('title', '')
+            url_key = _canonicalize_url(prev_link)
+            fp_key = _title_fingerprint(prev_title)
+            if url_key:
+                used_articles.add(url_key)
+            if fp_key:
+                used_articles.add(fp_key)
+
         logger.info(f"[HISTORY] Laddade {len(used_articles)} tidigare använda artiklar för upprepningsfilter")
     except Exception as e:
         logger.warning(f"[HISTORY] Upprepningsfilter misslyckades: {e}")
@@ -525,8 +961,151 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
                 logger.warning(f"[HISTORY] Kunde inte spara news_history.json: {e}")
 
         article_refs = "\n\nTILLGÄNGLIGA ARTIKLAR ATT REFERERA TILL:\n"
+        max_article_chars_env = os.getenv('MMM_PROMPT_ARTICLE_CHARS', '').strip()
+        try:
+            max_article_chars = int(max_article_chars_env) if max_article_chars_env else 650
+        except ValueError:
+            max_article_chars = 650
+
         for i, article in enumerate(available_articles[:10], 1):
-            article_refs += f"{i}. {article['source']}: {article['title']}\n   Innehåll: {article['content']}\n   [Referera som: {article['source']}]\n\n"
+            article_title = _truncate_text(article.get('title', ''), 140)
+            article_content = _truncate_text(article.get('content', ''), max_article_chars)
+            article_source = article.get('source', 'Okänd källa')
+            article_refs += f"{i}. {article_source}: {article_title}\n   Innehåll: {article_content}\n   [Referera som: {article_source}]\n\n"
+
+    callback_refs = ""
+    try:
+        max_callbacks_env = os.getenv('MMM_MEMORY_MAX_CALLBACKS', '').strip()
+        try:
+            max_callbacks = int(max_callbacks_env) if max_callbacks_env else 3
+        except ValueError:
+            max_callbacks = 3
+        max_callbacks = max(0, min(6, max_callbacks))
+
+        if max_callbacks and recent_episode_articles:
+            min_overlap_env = os.getenv('MMM_MEMORY_MIN_OVERLAP', '').strip()
+            min_jaccard_env = os.getenv('MMM_MEMORY_MIN_JACCARD', '').strip()
+            max_freq_env = os.getenv('MMM_MEMORY_ANCHOR_MAX_FREQ', '').strip()
+            min_len_env = os.getenv('MMM_MEMORY_ANCHOR_MIN_LEN', '').strip()
+            try:
+                min_overlap = int(min_overlap_env) if min_overlap_env else 4
+            except ValueError:
+                min_overlap = 4
+            try:
+                min_jaccard = float(min_jaccard_env) if min_jaccard_env else 0.50
+            except ValueError:
+                min_jaccard = 0.50
+            try:
+                anchor_max_freq = int(max_freq_env) if max_freq_env else 2
+            except ValueError:
+                anchor_max_freq = 2
+            try:
+                anchor_min_len = int(min_len_env) if min_len_env else 7
+            except ValueError:
+                anchor_min_len = 7
+
+            debug_env = os.getenv('MMM_MEMORY_DEBUG', '').strip().lower()
+            memory_debug = debug_env in {'1', 'true', 'yes', 'on'}
+            debug_samples_env = os.getenv('MMM_MEMORY_DEBUG_MAX_SAMPLES', '').strip()
+            try:
+                debug_max_samples = int(debug_samples_env) if debug_samples_env else 6
+            except ValueError:
+                debug_max_samples = 6
+
+            hints, debug_info = _build_previous_coverage_hints(
+                current_articles=available_articles[:10],
+                recent_episode_articles=recent_episode_articles,
+                today=today,
+                max_hints=max_callbacks,
+                min_overlap_tokens=max(2, min_overlap),
+                min_jaccard=max(0.10, min(0.90, min_jaccard)),
+                informative_max_freq=max(1, anchor_max_freq),
+                min_anchor_token_len=max(4, anchor_min_len),
+                debug=memory_debug,
+                debug_max_samples=max(0, debug_max_samples),
+            )
+
+            # Always log a compact summary so we can tune thresholds without guesswork.
+            try:
+                log_diagnostic('memory_match_summary', {
+                    'window_days': memory_days,
+                    'max_callbacks': max_callbacks,
+                    'min_overlap': min_overlap,
+                    'min_jaccard': min_jaccard,
+                    'anchor_max_freq': anchor_max_freq,
+                    'anchor_min_len': anchor_min_len,
+                    'current_considered': int((debug_info or {}).get('current_considered', 0)),
+                    'recent_items': int((debug_info or {}).get('recent_items', 0)),
+                    'evaluated_pairs': int((debug_info or {}).get('evaluated_pairs', 0)),
+                    'reasons': (debug_info or {}).get('reasons', {}),
+                    'samples': (debug_info or {}).get('samples', []) if memory_debug else [],
+                })
+            except Exception:
+                pass
+
+            # Optional: print to main log (Actions) for easier tuning.
+            if memory_debug:
+                try:
+                    reasons = (debug_info or {}).get('reasons', {}) or {}
+                    logger.info(
+                        "[MEMORY][DEBUG] Summary: considered=%s recent=%s pairs=%s emitted=%s no_candidate=%s no_anchor=%s overlap_below=%s sim_below=%s",
+                        (debug_info or {}).get('current_considered', 0),
+                        (debug_info or {}).get('recent_items', 0),
+                        (debug_info or {}).get('evaluated_pairs', 0),
+                        reasons.get('hint_emitted', 0),
+                        reasons.get('no_candidate', 0),
+                        reasons.get('no_anchor_tokens', 0),
+                        reasons.get('overlap_below_min', 0),
+                        reasons.get('similarity_below_min', 0),
+                    )
+                    samples = (debug_info or {}).get('samples', []) or []
+                    for s in samples[:max(0, debug_max_samples)]:
+                        logger.info(
+                            "[MEMORY][DEBUG] Sample: '%s' (%s) anchors='%s' best_score=%s prev=%s %s",
+                            s.get('current_title', ''),
+                            s.get('current_source', ''),
+                            s.get('anchor_tokens', ''),
+                            s.get('best_any_score', ''),
+                            s.get('best_any_prev_date', ''),
+                            s.get('best_any_prev_source', ''),
+                        )
+                except Exception:
+                    pass
+
+            if hints:
+                callback_refs = "\n\nMINNESKROKAR (INTERNT UNDERLAG – SKA INTE ÅTERGES SOM LISTA I MANUSET):\n"
+                callback_refs += (
+                    "- Endast om du är MYCKET säker på att det är samma ämne: lägg in EN naturlig mening i förbifarten, "
+                    "t.ex. 'Vi var inne på det här ämnet senast den ...'.\n"
+                    "- Om du är det minsta osäker: hoppa över återkopplingen helt.\n"
+                    "- Säg 'ämnet' (inte 'exakt samma nyhet') och nämn gärna datum, men undvik att återge den gamla rubriken.\n\n"
+                )
+                for h in hints:
+                    topic = (h.get('topic_tokens') or '').strip()
+                    topic_part = f" (ämnesord: {topic})" if topic else ""
+                    callback_refs += (
+                        f"MINNESKROK: Dagens källa {h.get('current_source','')}{topic_part}. "
+                        f"Senast vi var inne på ämnet: {h.get('previous_date','')} (källa: {h.get('previous_source','')}).\n"
+                    )
+
+                log_diagnostic('memory_callbacks_built', {
+                    'count': len(hints),
+                    'window_days': memory_days,
+                    'min_overlap': min_overlap,
+                    'min_jaccard': min_jaccard,
+                    'anchor_max_freq': anchor_max_freq,
+                    'anchor_min_len': anchor_min_len,
+                })
+            else:
+                log_diagnostic('memory_callbacks_none', {
+                    'window_days': memory_days,
+                    'min_overlap': min_overlap,
+                    'min_jaccard': min_jaccard,
+                    'anchor_max_freq': anchor_max_freq,
+                    'anchor_min_len': anchor_min_len,
+                })
+    except Exception as e:
+        logger.warning(f"[MEMORY] Kunde inte bygga återkopplingar: {e}")
 
     # Absolut krav: om vi inte har någon artikel att basera avsnittet på ska vi inte försöka.
     # Detta tenderar annars att ge superkorta/manuslösa avsnitt.
@@ -545,7 +1124,7 @@ VÄDER: {weather_info}
 LÄNGD: Absolut mål är 10 minuter (minst 1800-2200 ord för talat innehåll)
 VÄRDAR: Lisa (kvinnlig, professionell men vänlig) och Pelle (manlig, nyfiken och engagerad)
 
-{article_refs}
+{article_refs}{callback_refs}
 
 DETALJERAD STRUKTUR:
 1. INTRO & VÄLKOMST (90-120 sekunder) - Inkludera RIKTIG väderinfo från "{weather_info}"
@@ -619,6 +1198,74 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
 
     messages = [{"role": "user", "content": prompt}]
     
+    def generate_fallback_content_from_articles() -> str:
+        # Bygg ett längre, källbaserat manus utan LLM så att vi inte publicerar ~1 minut.
+        chosen = list(available_articles or [])
+        if not chosen:
+            chosen = _fallback_collect_articles_from_scraped(max_per_source=4, max_total=20)
+
+        # Försök få minst 8 nyheter. Om vi inte har det, ta det vi har.
+        chosen = chosen[:10]
+
+        intro = (
+            f"Lisa: Hej och välkommen till MMM Senaste Nytt! Jag heter Lisa.\n\n"
+            f"Pelle: Och jag heter Pelle. Idag är det {swedish_weekday} den {today.day} {swedish_month} {today.year}, och {weather_info.lower()}.\n\n"
+            "Lisa: Vi går igenom dagens viktigaste nyheter inom teknik, AI, klimat och miljö – och vi berättar tydligt vilka källor vi bygger på.\n\n"
+            "Pelle: Bra! Vi kör igång.\n"
+        )
+
+        overview_parts = []
+        for a in chosen[:8]:
+            overview_parts.append(f"{a.get('source','')}: {a.get('title','')}")
+        overview = (
+            "\nLisa: Här är en snabb översikt på vad vi tar upp idag.\n"
+            f"Pelle: { ' | '.join([p for p in overview_parts if p]) }.\n"
+        )
+
+        body_lines: List[str] = []
+        for idx, a in enumerate(chosen[:8], 1):
+            source = a.get('source', 'Okänd källa')
+            title = (a.get('title') or '').strip()
+            link = (a.get('link') or '').strip()
+            content_snip = _truncate_text(a.get('content', ''), 1100)
+            if not content_snip:
+                content_snip = "Detaljerna är begränsade i vårt underlag just nu, men rubriken ger en tydlig signal om vad som hänt."
+
+            body_lines.append(f"\nLisa: Nyhet {idx}. {source} rapporterar i artikeln \"{title}\".")
+            body_lines.append(f"Pelle: Okej, vad är kärnan här – och vad vet vi faktiskt?")
+            body_lines.append(
+                "Lisa: "
+                + content_snip
+                + ("" if content_snip.endswith(('.', '!', '?')) else ".")
+            )
+            body_lines.append(
+                "Pelle: Det här väcker ju frågan om konsekvenser och nästa steg. Finns det något som fortfarande är oklart?"
+            )
+            body_lines.append(
+                "Lisa: Ja – och det är viktigt att säga högt: om källtexten inte ger exakta siffror eller tidsplaner så låtsas vi inte. Vi följer upp när mer information finns."
+            )
+            body_lines.append(
+                "Pelle: Och som alltid: vi länkar till originalkällan så att du kan läsa mer själv och bedöma detaljerna."
+            )
+            if link:
+                body_lines.append(f"Pelle: Länk finns i avsnittsbeskrivningen – källa: {source}.")
+
+        outro = (
+            "\nLisa: Det var dagens genomgång. Kom ihåg: vi är AI-röster och vi kan göra fel, så dubbelkolla gärna via länkarna i avsnittsinformationen.\n"
+            "Pelle: Och vill du ha mer djup och sammanhang så finns huvudpodden Människa Maskin Miljö, där vi går längre i analysen.\n"
+            "Lisa: Tack för att du lyssnade på MMM Senaste Nytt!\n"
+        )
+
+        draft = (intro + "\n" + overview + "\n" + "\n".join(body_lines) + "\n" + outro).strip()
+
+        # Säkerställ minlängd även i fallback-läget.
+        min_words_env_local = os.getenv('MMM_MIN_SCRIPT_WORDS', '').strip()
+        try:
+            min_words_local = int(min_words_env_local) if min_words_env_local else 1400
+        except ValueError:
+            min_words_local = 1400
+        return _append_article_padding(draft, chosen, min_words_local)
+
     try:
         content = get_openrouter_response(messages)
         # Guard: ibland svarar modellen alldeles för kort (t.ex. när källistan är tunn).
@@ -641,13 +1288,26 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
             wc2 = _count_words(content)
             logger.info(f"[AI] Retry word count: {wc2}")
             if wc2 < min_words:
-                raise RuntimeError(f"AI-manus för kort även efter retry ({wc2} ord < {min_words})")
+                logger.warning(f"[AI] Retry fortfarande kort ({wc2} < {min_words}). Pad:ar upp med källbaserade snabba nyheter istället för att avbryta.")
+                log_diagnostic('ai_script_padded', {
+                    'word_count_before': wc2,
+                    'min_words': min_words,
+                })
+                content = _append_article_padding(content, available_articles, min_words)
+        else:
+            # Om första svaret är nära gränsen kan vi ändå pad:a lite för stabilt TTS/RSS.
+            if wc < min_words:
+                content = _append_article_padding(content, available_articles, min_words)
         logger.info("[AI] Genererade podcast-innehåll med väderdata")
         return content, available_articles
     except Exception as e:
         logger.error(f"[ERROR] Kunde inte generera AI-innehåll: {e}")
-        # Fallback till mock-innehåll
-        return generate_fallback_content(date_str, swedish_weekday, weather_info), available_articles
+        log_diagnostic('ai_script_generation_failed', {
+            'error': f"{type(e).__name__}: {e}",
+            'fallback': 'article_based',
+        })
+        # Fallback till källbaserat (längre) innehåll
+        return generate_fallback_content_from_articles(), available_articles
 
 def generate_fallback_content(date_str: str, weekday: str, weather_info: str) -> str:
     """Fallback-innehåll om AI inte fungerar"""
@@ -1320,6 +1980,14 @@ def main():
         rss_referenced_articles = extract_referenced_articles(podcast_content, referenced_articles, max_results=6)
         logger.info(f"[RSS] Antal matchade artiklar i manus: {len(rss_referenced_articles)}")
 
+        if not rss_referenced_articles and referenced_articles:
+            logger.warning("[RSS] 0 matchade artiklar i manus; faller tillbaka till topp-kandidater för källor i beskrivningen")
+            log_diagnostic('rss_sources_fallback_used', {
+                'candidate_count': len(referenced_articles),
+                'fallback_count': min(6, len(referenced_articles)),
+            })
+            rss_referenced_articles = referenced_articles[:6]
+
         # Diagnostics: visa vilka som inte matchades (hjälper felsöka "källor som inte var med")
         try:
             matched_keys = set()
@@ -1415,10 +2083,37 @@ def main():
             try:
                 from src.report_emailer import maybe_email_quality_report
 
+                diag_max_env = os.getenv('MMM_EMAIL_DIAG_MAX_LINES', '').strip()
+                log_tail_env = os.getenv('MMM_EMAIL_LOG_TAIL_LINES', '').strip()
+                try:
+                    diag_max_lines = int(diag_max_env) if diag_max_env else 2000
+                except ValueError:
+                    diag_max_lines = 2000
+                try:
+                    log_tail_lines = int(log_tail_env) if log_tail_env else 600
+                except ValueError:
+                    log_tail_lines = 600
+
+                diag_extract = _write_run_diagnostics_extract(
+                    run_id=timestamp,
+                    diagnostics_file=DIAGNOSTICS_FILE,
+                    output_dir='episodes',
+                    max_lines=max(200, diag_max_lines),
+                )
+                log_tail = _write_log_tail(
+                    run_id=timestamp,
+                    log_path='podcast_generation.log',
+                    output_dir='episodes',
+                    max_lines=max(200, log_tail_lines),
+                )
+
+                extra_attachments = [p for p in [diag_extract, log_tail] if p]
+
                 emailed = maybe_email_quality_report(
                     run_id=timestamp,
                     markdown_path=paths.get('markdown'),
                     json_path=paths.get('json'),
+                    extra_attachments=extra_attachments,
                 )
                 if emailed:
                     logger.info("[QUALITY] ✅ Kvalitetsrapport mejlad")

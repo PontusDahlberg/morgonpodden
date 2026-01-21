@@ -4,7 +4,7 @@ import os
 import smtplib
 from email.message import EmailMessage
 from pathlib import Path
-from typing import Iterable, Optional
+from typing import Iterable, Optional, Sequence
 
 
 def _truthy(value: str | None) -> bool:
@@ -87,7 +87,13 @@ def send_email_with_attachments(
             server.send_message(msg)
 
 
-def maybe_email_quality_report(*, run_id: str, markdown_path: Optional[str], json_path: Optional[str]) -> bool:
+def maybe_email_quality_report(
+    *,
+    run_id: str,
+    markdown_path: Optional[str],
+    json_path: Optional[str],
+    extra_attachments: Optional[Sequence[str | Path]] = None,
+) -> bool:
     """Email the quality report if configured.
 
     Controlled by env vars:
@@ -120,9 +126,18 @@ def maybe_email_quality_report(*, run_id: str, markdown_path: Optional[str], jso
     if json_path:
         attachments.append(Path(json_path))
 
+    if extra_attachments:
+        for a in extra_attachments:
+            try:
+                attachments.append(Path(a))
+            except Exception:
+                continue
+
     subject = f"MMM kvalitetsrapport – körning {run_id}"
     body = (
         "Här kommer automatiskt genererad kvalitetsrapport för senaste MMM Senaste Nytt-körningen.\n"
+        "\n"
+        "Bilagor kan innehålla diagnostik/loggutdrag för enklare felsökning.\n"
         "\n"
         "(Om detta mejl kom oväntat: stäng av via MMM_REPORT_EMAIL_ENABLED=false.)\n"
     )

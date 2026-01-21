@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import json
 import logging
+import os
+import re
+from urllib.parse import urljoin, urlparse
 from typing import List, Dict, Any
 import feedparser
 
@@ -22,38 +25,209 @@ class NewsScraper:
     def __init__(self, sources_file: str = "sources.json"):
         with open(sources_file, 'r', encoding='utf-8') as f:
             self.config = json.load(f)
-        self.sources = self.config['sources']
-    
-    async def fetch_url(self, session: aiohttp.ClientSession, url: str, source_type: str = None) -> str:
+        self.sources = [s for s in self.config['sources'] if s.get('enabled', True)]
+
+        self.auto_fix_feeds = os.getenv('MMM_AUTO_FIX_FEEDS', '1').strip().lower() not in {'0', 'false', 'no'}
+        self.feed_cache_path = os.getenv('MMM_FEED_URL_CACHE', 'feed_url_cache.json')
+        self.feed_url_cache: Dict[str, Dict[str, Any]] = self._load_feed_url_cache(self.feed_cache_path)
+
+        # Apply cached URLs first (best-effort)
+        for source in self.sources:
+            cached = self.feed_url_cache.get(source.get('name', ''))
+            if cached and isinstance(cached, dict) and cached.get('url'):
+                source.setdefault('original_url', source.get('url'))
+                source['url'] = cached['url']
+
+    @staticmethod
+    def _looks_like_html(text: str) -> bool:
+        if not text:
+            return False
+        head = text.lstrip()[:500].lower()
+        return '<html' in head or '<!doctype html' in head
+
+    @staticmethod
+    def _derive_homepage_url(url: str) -> str:
+        """Derive a reasonable homepage URL from any source URL."""
         try:
-            # Use different user agents for different source types
-            if source_type == 'weather' and 'wttr.in' in url:
-                # Use curl-like user agent for wttr.in to get plain text
-                headers = {
-                    'User-Agent': 'curl/7.68.0'
-                }
+            parsed = urlparse(url)
+            if not parsed.scheme or not parsed.netloc:
+                return url
+            return f"{parsed.scheme}://{parsed.netloc}/"
+        except Exception:
+            return url
+
+    @staticmethod
+    def _extract_candidate_feed_urls(base_url: str, html: str) -> List[str]:
+        """Extract likely RSS/Atom URLs from an HTML document."""
+        if not html:
+            return []
+        soup = BeautifulSoup(html, 'html.parser')
+        found: set[str] = set()
+
+        # <link rel="alternate" type="application/rss+xml" href="...">
+        for link in soup.find_all('link'):
+            href = link.get('href')
+            if not href:
+                continue
+            rel = link.get('rel') or []
+            rel = [str(x).lower() for x in rel]
+            typ = (link.get('type') or '').lower()
+            if 'alternate' in rel and any(x in typ for x in ['rss', 'atom', 'xml']):
+                found.add(urljoin(base_url, href))
+
+        # Anchors
+        for a in soup.find_all('a'):
+            href = a.get('href')
+            if not href:
+                continue
+            href_l = href.lower()
+            if any(k in href_l for k in ['rss', 'feed', 'atom', '.xml', '.rss']):
+                found.add(urljoin(base_url, href))
+
+        # Regex sweep (some sites embed feed URLs in scripts)
+        for m in re.finditer(r"https?://[^\s\"'>]+", html):
+            u = m.group(0)
+            ul = u.lower()
+            if any(k in ul for k in ['rss', 'feed', 'atom', '.xml', '.rss']):
+                found.add(u.split('#')[0])
+
+        # De-dup + stable order
+        return sorted(found)
+
+    @staticmethod
+    def _load_feed_url_cache(path: str) -> Dict[str, Dict[str, Any]]:
+        try:
+            if not path or not os.path.exists(path):
+                return {}
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return data if isinstance(data, dict) else {}
+        except Exception:
+            return {}
+
+    def _save_feed_url_cache(self) -> None:
+        try:
+            with open(self.feed_cache_path, 'w', encoding='utf-8') as f:
+                json.dump(self.feed_url_cache, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            logger.warning(f"⚠️ Could not write feed URL cache {self.feed_cache_path}: {e}")
+
+    async def _validate_rss_url(self, session: aiohttp.ClientSession, url: str, source_type: str | None) -> Dict[str, Any] | None:
+        meta = await self.fetch_url_with_meta(session, url, source_type)
+        text = meta.get('text', '')
+        status = meta.get('status')
+        if not text or (status and status >= 400) or self._looks_like_html(text):
+            return None
+        feed = feedparser.parse(text)
+        if not feed.entries:
+            return None
+        return {
+            'url': url,
+            'feed_title': feed.feed.get('title'),
+            'entries': len(feed.entries),
+            'http_status': status,
+            'content_type': meta.get('content_type', ''),
+            'final_url': meta.get('final_url', url),
+        }
+
+    async def _autofix_rss_source_url(self, session: aiohttp.ClientSession, source: Dict[str, Any]) -> str | None:
+        if not self.auto_fix_feeds:
+            return None
+
+        homepage = source.get('homepage') or self._derive_homepage_url(source.get('original_url') or source.get('url', ''))
+        meta = await self.fetch_url_with_meta(session, homepage, source.get('type'))
+        html = meta.get('text', '')
+        if not html:
+            return None
+
+        candidates = self._extract_candidate_feed_urls(meta.get('final_url', homepage), html)
+        # Prefer URLs that look most like feeds
+        preferred = []
+        others = []
+        for c in candidates:
+            cl = c.lower()
+            if any(k in cl for k in ['/feed', '/rss', '.rss', 'rss', 'atom']):
+                preferred.append(c)
             else:
-                # Use browser-like user agent for regular websites
-                headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-                }
-            
-            logger.info(f"🌐 Fetching {url} with User-Agent: {headers['User-Agent'][:50]}...")
-            
-            async with session.get(url, headers=headers, timeout=aiohttp.ClientTimeout(total=10)) as response:
-                content = await response.text()
-                logger.info(f"✅ Successfully fetched {len(content)} characters from {url}")
+                others.append(c)
+        ordered = preferred + others
+
+        for candidate in ordered[:15]:
+            validated = await self._validate_rss_url(session, candidate, source.get('type'))
+            if validated:
+                return validated['url']
+        return None
+
+    async def fetch_url_with_meta(
+        self,
+        session: aiohttp.ClientSession,
+        url: str,
+        source_type: str = None
+    ) -> Dict[str, Any]:
+        """Fetch URL and return content plus HTTP metadata for better diagnostics."""
+        # Use different user agents for different source types
+        if source_type == 'weather' and 'wttr.in' in url:
+            headers = {
+                'User-Agent': 'curl/7.68.0'
+            }
+        else:
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+                'Accept': 'application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.9, text/html;q=0.8, */*;q=0.7',
+                'Accept-Language': 'sv-SE,sv;q=0.9,en-US;q=0.8,en;q=0.7'
+            }
+
+        logger.info(f"🌐 Fetching {url} with User-Agent: {headers['User-Agent'][:50]}...")
+
+        try:
+            async with session.get(url, headers=headers, timeout=aiohttp.ClientTimeout(total=20)) as response:
+                content_type = response.headers.get('Content-Type', '')
+                final_url = str(response.url)
+                status = response.status
+
+                try:
+                    content = await response.text()
+                except UnicodeDecodeError:
+                    content = (await response.read()).decode('utf-8', errors='ignore')
+
+                logger.info(f"✅ Fetched {len(content)} characters from {url} (HTTP {status}, {content_type})")
                 logger.info(f"📝 Content preview: {content[:200]}...")
-                return content
+
+                return {
+                    'text': content,
+                    'status': status,
+                    'content_type': content_type,
+                    'final_url': final_url,
+                    'error': None,
+                }
         except Exception as e:
             logger.error(f"❌ Error fetching {url}: {e}")
-            return ""
+            return {
+                'text': "",
+                'status': None,
+                'content_type': "",
+                'final_url': url,
+                'error': str(e),
+            }
+    
+    async def fetch_url(self, session: aiohttp.ClientSession, url: str, source_type: str = None) -> str:
+        meta = await self.fetch_url_with_meta(session, url, source_type)
+        return meta.get('text', '')
     
     async def scrape_source(self, session: aiohttp.ClientSession, source: Dict[str, Any]) -> Dict[str, Any]:
         logger.info(f"🔍 Scraping {source['name']} ({source['url']})...")
         
         # Check if this is an RSS feed
-        if source.get('format') == 'rss' or source['url'].endswith('.rss') or '/rss' in source['url'] or '/feed' in source['url']:
+        url_lower = source['url'].lower()
+        if (
+            source.get('format') == 'rss'
+            or url_lower.endswith('.rss')
+            or '/rss' in url_lower
+            or '/feed' in url_lower
+            or 'lab_viewport=rss' in url_lower
+            or 'viewport=rss' in url_lower
+            or 'format=rss' in url_lower
+        ):
             return await self.scrape_rss_source(session, source)
         else:
             return await self.scrape_html_source(session, source)
@@ -361,10 +535,67 @@ class NewsScraper:
         logger.info(f"📡 RSS feed detected for {source['name']}")
         
         try:
-            feed_data = await self.fetch_url(session, source['url'], source.get('type'))
+            attempted_url = source['url']
+            meta = await self.fetch_url_with_meta(session, attempted_url, source.get('type'))
+            feed_data = meta.get('text', '')
+            http_status = meta.get('status')
+            content_type = meta.get('content_type', '')
+            final_url = meta.get('final_url', attempted_url)
+
+            # Self-heal if feed is broken (HTTP error or HTML block page)
+            if (
+                (http_status and http_status >= 400)
+                or (feed_data and self._looks_like_html(feed_data))
+                or (not feed_data)
+            ):
+                new_url = await self._autofix_rss_source_url(session, source)
+                if new_url and new_url != attempted_url:
+                    logger.warning(f"🛠️ Auto-fixed RSS URL for {source['name']}: {attempted_url} -> {new_url}")
+                    source.setdefault('original_url', attempted_url)
+                    source['url'] = new_url
+                    # retry with new url
+                    attempted_url = new_url
+                    meta = await self.fetch_url_with_meta(session, attempted_url, source.get('type'))
+                    feed_data = meta.get('text', '')
+                    http_status = meta.get('status')
+                    content_type = meta.get('content_type', '')
+                    final_url = meta.get('final_url', attempted_url)
+
+                    # persist cache (best-effort)
+                    self.feed_url_cache[source['name']] = {
+                        'url': new_url,
+                        'updated_at': datetime.now().isoformat(),
+                        'from_url': source.get('original_url')
+                    }
+                    self._save_feed_url_cache()
+
             if not feed_data:
                 logger.warning(f"❌ Failed to fetch RSS feed from {source['name']}")
-                return self.create_empty_result(source, 'Failed to fetch RSS feed')
+                return self.create_empty_result(
+                    source,
+                    f"Failed to fetch RSS feed: {meta.get('error') or 'empty response'}",
+                    http_status=http_status,
+                    content_type=content_type,
+                    final_url=final_url,
+                )
+
+            if http_status and http_status >= 400:
+                return self.create_empty_result(
+                    source,
+                    f"HTTP error while fetching feed: {http_status}",
+                    http_status=http_status,
+                    content_type=content_type,
+                    final_url=final_url,
+                )
+
+            if self._looks_like_html(feed_data):
+                return self.create_empty_result(
+                    source,
+                    "Expected RSS/XML but got HTML",
+                    http_status=http_status,
+                    content_type=content_type,
+                    final_url=final_url,
+                )
             
             logger.info(f"✅ Successfully fetched RSS feed ({len(feed_data)} characters)")
             
@@ -457,7 +688,11 @@ class NewsScraper:
                 'items': items,
                 'scraped_count': len(items),
                 'format': 'rss',
-                'feed_title': feed.feed.get('title', source['name'])
+                'feed_title': feed.feed.get('title', source['name']),
+                'http_status': http_status,
+                'content_type': content_type,
+                'final_url': final_url,
+                'original_url': source.get('original_url')
             }
             
         except Exception as e:
@@ -465,11 +700,30 @@ class NewsScraper:
             return self.create_empty_result(source, f'RSS parsing error: {str(e)}')
     
     async def scrape_html_source(self, session: aiohttp.ClientSession, source: Dict[str, Any]) -> Dict[str, Any]:
-        html = await self.fetch_url(session, source['url'], source.get('type'))
-        
+        meta = await self.fetch_url_with_meta(session, source['url'], source.get('type'))
+        html = meta.get('text', '')
+        http_status = meta.get('status')
+        content_type = meta.get('content_type', '')
+        final_url = meta.get('final_url', source['url'])
+
         if not html:
             logger.warning(f"❌ Failed to fetch HTML content from {source['name']}")
-            return self.create_empty_result(source, 'Failed to fetch HTML')
+            return self.create_empty_result(
+                source,
+                f"Failed to fetch HTML: {meta.get('error') or 'empty response'}",
+                http_status=http_status,
+                content_type=content_type,
+                final_url=final_url,
+            )
+
+        if http_status and http_status >= 400:
+            return self.create_empty_result(
+                source,
+                f"HTTP error while fetching HTML: {http_status}",
+                http_status=http_status,
+                content_type=content_type,
+                final_url=final_url,
+            )
         
         logger.info(f"✅ Successfully fetched HTML ({len(html)} characters from {source['name']})")
         
@@ -548,16 +802,33 @@ class NewsScraper:
             'priority': source.get('priority', 3),
             'items': items,
             'scraped_count': len(items),
-            'format': 'html'
+            'format': 'html',
+            'http_status': http_status,
+            'content_type': content_type,
+            'final_url': final_url
         }
     
-    def create_empty_result(self, source: Dict[str, Any], error: str) -> Dict[str, Any]:
-        return {
+    def create_empty_result(
+        self,
+        source: Dict[str, Any],
+        error: str,
+        http_status: int | None = None,
+        content_type: str | None = None,
+        final_url: str | None = None,
+    ) -> Dict[str, Any]:
+        result: Dict[str, Any] = {
             'source': source['name'],
             'type': source['type'],
             'items': [],
             'error': error
         }
+        if http_status is not None:
+            result['http_status'] = http_status
+        if content_type:
+            result['content_type'] = content_type
+        if final_url:
+            result['final_url'] = final_url
+        return result
     
     def extract_weather(self, soup: BeautifulSoup) -> Dict[str, str]:
         try:

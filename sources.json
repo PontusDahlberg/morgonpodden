@@ -25,7 +25,7 @@
     },
     {
       "name": "Svenska Dagbladet",
-      "url": "https://www.svd.se/rss.xml",
+      "url": "https://www.svd.se/feed/articles.rss",
       "type": "news",
       "category": "svenska_nyheter",
       "maxItems": 18,
@@ -45,7 +45,7 @@
       "type": "news", 
       "category": "internationella_nyheter",
       "maxItems": 18,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Associated Press",
@@ -53,6 +53,38 @@
       "type": "news",
       "category": "internationella_nyheter", 
       "maxItems": 15,
+      "enabled": false
+    },
+    {
+      "name": "New York Times - World",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+      "type": "news",
+      "category": "internationella_nyheter",
+      "maxItems": 15,
+      "enabled": true
+    },
+    {
+      "name": "NPR - World",
+      "url": "https://feeds.npr.org/1004/rss.xml",
+      "type": "news",
+      "category": "internationella_nyheter",
+      "maxItems": 12,
+      "enabled": true
+    },
+    {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "type": "news",
+      "category": "internationella_nyheter",
+      "maxItems": 12,
+      "enabled": true
+    },
+    {
+      "name": "France 24",
+      "url": "https://www.france24.com/en/rss",
+      "type": "news",
+      "category": "internationella_nyheter",
+      "maxItems": 10,
       "enabled": true
     },
     {
@@ -81,7 +113,7 @@
     },
     {
       "name": "Computer Sweden",
-      "url": "https://computersweden.idg.se/rss/allanyheter",
+      "url": "https://computersweden.se/feed/",
       "type": "tech",
       "category": "teknik",
       "maxItems": 12,
@@ -89,7 +121,7 @@
     },
     {
       "name": "Ny Teknik",
-      "url": "https://www.nyteknik.se/rss/senaste",
+      "url": "https://www.nyteknik.se/?lab_viewport=rss",
       "type": "tech",
       "category": "teknik",
       "maxItems": 10,
@@ -97,7 +129,7 @@
     },
     {
       "name": "Breakit Tech",
-      "url": "https://www.breakit.se/feed",
+      "url": "https://www.breakit.se/feed/artiklar",
       "type": "tech",
       "maxItems": 6,
       "enabled": true
@@ -111,7 +143,7 @@
     },
     {
       "name": "NWT - Nya Wermlands-Tidningen",
-      "url": "https://www.nwt.se/rss.xml",
+      "url": "https://www.nwt.se/feed/",
       "type": "news",
       "maxItems": 8,
       "enabled": true,
@@ -186,7 +218,7 @@
     },
     {
       "name": "Climate Central",
-      "url": "https://www.climatecentral.org/rss.xml",
+      "url": "https://www.climatecentral.org/rss",
       "type": "climate",
       "category": "miljö",
       "maxItems": 8,
@@ -249,9 +281,9 @@
       }
     ],
     "promptTemplates": {
-      "main_prompt": "Du skapar ett naturligt samtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: DAGLIG NYHETSPODCAST (10 MINUTER EXAKT). Sammanfatta dagens viktigaste händelser inom:\n• Människa: Hur teknik påverkar våra liv, jobb och samhälle\n• Maskin: AI-utveckling, nya tekniker och digitala lösningar\n• Miljö: Klimat, hållbarhet och grön teknik\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'Reuters skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, Reuters, Euronews, Politico Europe\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). OBLIGATORISKT:\n\n1. DJUP ANALYS per nyhet:\n   - Minst 2-3 minuter diskussion per huvudnyhet\n   - Lisa och Pelle diskuterar implikationer i detalj\n   - Konkreta exempel och verkliga konsekvenser\n   - Framtidsperspektiv och trendanalys\n\n2. INTERAKTIV DIALOG:\n   - Lisa och Pelle ställer frågor till varandra\n   - Följdfrågor och fördjupningar\n   - Olika perspektiv och meningsskiljaktigheter\n   - Personliga reflektioner och expertkommentarer\n\n3. PRAKTISKA KOPPLINGAR:\n   - Hur påverkar detta vanliga människor?\n   - Vilka åtgärder kan lyssnare ta?\n   - Kopplingar till tidigare nyheter och trender\n   - Svenska perspektiv på internationella nyheter\n\n4. OMFATTANDE INNEHÅLL:\n   - 8-10 olika nyhetsämnen diskuteras\n   - Varje ämne behandlas i minst 1 minut\n   - Naturliga övergångar mellan ämnen\n   - Avslutande reflektion och sammanfattning\n\nVIKTIGT: Om innehållet blir kortare än 4000 ord, EXPANDERA med:\n- Mer detaljerade förklaringar\n- Fler konkreta exempel\n- Djupare diskussioner mellan värdarna\n- Historisk kontext och jämförelser\n- Fler följdfrågor och interaktioner\n\nStil: Expertperspektiv men tillgängligt. Professionella men vänliga värdar som lär av varandra.\n\nInnan du levererar: Kontrollera att samtalet är MINST 4000 ord för att nå 10-minuters mål.",
+      "main_prompt": "Du skapar ett naturligt samtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: DAGLIG NYHETSPODCAST (10 MINUTER EXAKT). Sammanfatta dagens viktigaste händelser inom:\n• Människa: Hur teknik påverkar våra liv, jobb och samhälle\n• Maskin: AI-utveckling, nya tekniker och digitala lösningar\n• Miljö: Klimat, hållbarhet och grön teknik\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'New York Times skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, New York Times, NPR, Al Jazeera, France 24, Euronews, Politico Europe, Deutsche Welle\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). OBLIGATORISKT:\n\n1. DJUP ANALYS per nyhet:\n   - Minst 2-3 minuter diskussion per huvudnyhet\n   - Lisa och Pelle diskuterar implikationer i detalj\n   - Konkreta exempel och verkliga konsekvenser\n   - Framtidsperspektiv och trendanalys\n\n2. INTERAKTIV DIALOG:\n   - Lisa och Pelle ställer frågor till varandra\n   - Följdfrågor och fördjupningar\n   - Olika perspektiv och meningsskiljaktigheter\n   - Personliga reflektioner och expertkommentarer\n\n3. PRAKTISKA KOPPLINGAR:\n   - Hur påverkar detta vanliga människor?\n   - Vilka åtgärder kan lyssnare ta?\n   - Kopplingar till tidigare nyheter och trender\n   - Svenska perspektiv på internationella nyheter\n\n4. OMFATTANDE INNEHÅLL:\n   - 8-10 olika nyhetsämnen diskuteras\n   - Varje ämne behandlas i minst 1 minut\n   - Naturliga övergångar mellan ämnen\n   - Avslutande reflektion och sammanfattning\n\nVIKTIGT: Om innehållet blir kortare än 4000 ord, EXPANDERA med:\n- Mer detaljerade förklaringar\n- Fler konkreta exempel\n- Djupare diskussioner mellan värdarna\n- Historisk kontext och jämförelser\n- Fler följdfrågor och interaktioner\n\nStil: Expertperspektiv men tillgängligt. Professionella men vänliga värdar som lär av varandra.\n\nInnan du levererar: Kontrollera att samtalet är MINST 4000 ord för att nå 10-minuters mål.",
       
-      "weekend_prompt": "Du skapar ett fördjupande helgsamtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: HELG-FÖRDJUPNING (10 MINUTER EXAKT). Fokus på 'Den Gröna Tråden' - hur nyheter hänger ihop:\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'Reuters skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, Reuters, Euronews, Politico Europe\n\n🧩 HELGKONCEPT:\n• Färre nyheter (3-5 stycken) men MYCKET djupare analys\n• Fokus på SAMBAND mellan nyheterna\n• Mer DIALOG mellan Lisa och Pelle - de resonerar tillsammans\n• FÖRKLARAR för varandra hur saker hänger ihop\n\n📊 DIALOGSTIL (KRITISKT!):\n- 'Pelle, kan du förklara hur det här hänger ihop med...?'\n- 'Lisa, det där får mig att tänka på...'\n- 'Vänta, betyder det att...?'\n- 'Ja precis! Och det påverkar ju också...'\n- 'Det är intressant, för i veckan såg vi ju att...'\n\n🔗 TEMATISKA KOPPLINGAR:\n- Visa hur 3 olika nyheter egentligen handlar om samma trend\n- Förklara längre kedjor: AI → energi → klimat → politik → samhälle\n- Historiska perspektiv: 'För 5 år sedan..., nu ser vi...'\n- Framtidsspekulationer: 'Om den här trenden fortsätter...'\n\n💭 REFLEKTION OCH ANALYS:\n- 'Vad betyder det här på lång sikt?'\n- 'Vilka är de dolda konsekvenserna?'\n- 'Hur påverkar det våra barn?'\n- 'Vad borde vi som samhälle göra?'\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE, DIALOGISKT samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). \n\nEXEMPEL PÅ HELGSTIL:\n'Pelle, det här med Googles nya AI-chip som minskar energi... kan du hjälpa mig förstå hur det hänger ihop med EU:s datacenter-regler?'\n'Ja Lisa, det är ju fascinerande! För det visar ju hur teknikjättarna nu måste...'\n\nStil: Nyfikna experter som utforskar samband tillsammans. Mer reflektion, mindre rapportering.\n\nInnan du levererar: Kontrollera DIALOG-INTENSITET och att samtalet är MINST 4000 ord.",
+      "weekend_prompt": "Du skapar ett fördjupande helgsamtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: HELG-FÖRDJUPNING (10 MINUTER EXAKT). Fokus på 'Den Gröna Tråden' - hur nyheter hänger ihop:\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'New York Times skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, New York Times, NPR, Al Jazeera, France 24, Euronews, Politico Europe, Deutsche Welle\n\n🧩 HELGKONCEPT:\n• Färre nyheter (3-5 stycken) men MYCKET djupare analys\n• Fokus på SAMBAND mellan nyheterna\n• Mer DIALOG mellan Lisa och Pelle - de resonerar tillsammans\n• FÖRKLARAR för varandra hur saker hänger ihop\n\n📊 DIALOGSTIL (KRITISKT!):\n- 'Pelle, kan du förklara hur det här hänger ihop med...?'\n- 'Lisa, det där får mig att tänka på...'\n- 'Vänta, betyder det att...?'\n- 'Ja precis! Och det påverkar ju också...'\n- 'Det är intressant, för i veckan såg vi ju att...'\n\n🔗 TEMATISKA KOPPLINGAR:\n- Visa hur 3 olika nyheter egentligen handlar om samma trend\n- Förklara längre kedjor: AI → energi → klimat → politik → samhälle\n- Historiska perspektiv: 'För 5 år sedan..., nu ser vi...'\n- Framtidsspekulationer: 'Om den här trenden fortsätter...'\n\n💭 REFLEKTION OCH ANALYS:\n- 'Vad betyder det här på lång sikt?'\n- 'Vilka är de dolda konsekvenserna?'\n- 'Hur påverkar det våra barn?'\n- 'Vad borde vi som samhälle göra?'\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE, DIALOGISKT samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). \n\nEXEMPEL PÅ HELGSTIL:\n'Pelle, det här med Googles nya AI-chip som minskar energi... kan du hjälpa mig förstå hur det hänger ihop med EU:s datacenter-regler?'\n'Ja Lisa, det är ju fascinerande! För det visar ju hur teknikjättarna nu måste...'\n\nStil: Nyfikna experter som utforskar samband tillsammans. Mer reflektion, mindre rapportering.\n\nInnan du levererar: Kontrollera DIALOG-INTENSITET och att samtalet är MINST 4000 ord.",
       
       "conversation_style": "expert_environmental_tech"
     },

@@ -125,11 +125,29 @@ class PodcastSummarizer:
 
             return None
 
-        def short_summary(text: str, max_len: int = 240) -> str:
+        def short_summary(text: str, max_len: int = 600) -> str:
             if not text:
                 return ""
             clean = " ".join(str(text).split())
             return (clean[: max_len - 1] + "…") if len(clean) > max_len else clean
+
+        def related_snippets(item: Dict[str, Any], max_related: int = 2) -> str:
+            rel = item.get('related')
+            if not isinstance(rel, list) or not rel:
+                return ""
+            parts: List[str] = []
+            for r in rel[:max_related]:
+                if not isinstance(r, dict):
+                    continue
+                rt = (r.get('title') or '').strip()
+                rl = (r.get('link') or '').strip()
+                rs = (r.get('summary') or '').strip()
+                snippet = short_summary(rs or rt, max_len=260)
+                if rl:
+                    parts.append(f"Relaterat: {snippet} [{rl}]")
+                else:
+                    parts.append(f"Relaterat: {snippet}")
+            return " | " + " | ".join(parts) if parts else ""
 
         # Prepare content for summarization
         content_sections = []
@@ -154,7 +172,11 @@ class PodcastSummarizer:
                             parts.append(f"[{link}]")
                         if summary:
                             parts.append(f"— {short_summary(summary)}")
-                        section += " ".join(parts) + "\n"
+
+                        # If scraper enriched with related sources, include a couple of snippets
+                        parts.append(related_snippets(item))
+
+                        section += " ".join([p for p in parts if p]) + "\n"
                 content_sections.append(section)
         
         all_content = "\n".join(content_sections)
@@ -273,6 +295,88 @@ Instruktioner för optimerad text-to-dialogue:
         
         emotional_design = self.config.get('podcastSettings', {}).get('emotional_design', default_emotional_design)
         
+        def _parse_weekday_value(v: Any) -> Optional[int]:
+            if v is None:
+                return None
+            if isinstance(v, int):
+                return v if 0 <= v <= 6 else None
+            if isinstance(v, str):
+                s = v.strip().lower()
+                # Swedish + English
+                map_name = {
+                    'måndag': 0, 'mandag': 0, 'mon': 0, 'monday': 0,
+                    'tisdag': 1, 'tuesday': 1, 'tue': 1,
+                    'onsdag': 2, 'wednesday': 2, 'wed': 2,
+                    'torsdag': 3, 'thursday': 3, 'thu': 3,
+                    'fredag': 4, 'friday': 4, 'fri': 4,
+                    'lördag': 5, 'lordag': 5, 'saturday': 5, 'sat': 5,
+                    'söndag': 6, 'sondag': 6, 'sunday': 6, 'sun': 6,
+                }
+                if s in map_name:
+                    return map_name[s]
+                try:
+                    n = int(s)
+                    return n if 0 <= n <= 6 else None
+                except Exception:
+                    return None
+            return None
+
+        def _should_include_aftertalk(today_dt: datetime) -> bool:
+            cfg = self.config.get('podcastSettings', {}).get('aftertalk', {})
+            if not isinstance(cfg, dict):
+                return False
+            if not bool(cfg.get('enabled', False)):
+                return False
+
+            weekdays_cfg = cfg.get('weekdays')
+            if weekdays_cfg is None:
+                weekdays_cfg = cfg.get('weekday')
+
+            weekdays: List[int] = []
+            if isinstance(weekdays_cfg, list):
+                for x in weekdays_cfg:
+                    w = _parse_weekday_value(x)
+                    if w is not None:
+                        weekdays.append(w)
+            else:
+                w = _parse_weekday_value(weekdays_cfg)
+                if w is not None:
+                    weekdays.append(w)
+
+            # Default: when enabled but not configured, do Saturdays
+            if not weekdays:
+                weekdays = [5]
+
+            return today_dt.weekday() in set(weekdays)
+
+        # Discourage padding/aftertalk by default. Prefer more depth from sources, and allow shorter episodes.
+        after_cfg = self.config.get('podcastSettings', {}).get('aftertalk', {})
+        aftertalk_today = _should_include_aftertalk(today)
+        aftertalk_style = (
+            (after_cfg.get('style') if isinstance(after_cfg, dict) else None)
+            or "informellt eftersnack med ironi, smågnäll och lätt sarkasm – som bakom kulisserna"
+        )
+        target_seconds = int(after_cfg.get('target_seconds', 120) or 120) if isinstance(after_cfg, dict) else 120
+        min_seconds = int(after_cfg.get('min_seconds', 90) or 90) if isinstance(after_cfg, dict) else 90
+        max_seconds = int(after_cfg.get('max_seconds', 150) or 150) if isinstance(after_cfg, dict) else 150
+
+        aftertalk_instructions = ""
+        if aftertalk_today:
+            aftertalk_instructions = f"""
+    EFTERSNACK (LÖRDAGSPECIAL):
+    - Lägg ALLTID in en separat sektion på slutet märkt 'EFTERSNACK:' (oavsett avsnittets längd).
+    - Längd: cirka {target_seconds} sekunder (håll dig inom {min_seconds}–{max_seconds} sekunder).
+    - Stil: {aftertalk_style}
+    - Inget metaprat om att ni 'fyller ut tid'. Det ska kännas som ett extra, kul bonusinslag.
+    - Inga nya stora nyheter här – håll det till reaktioner, små observationer, interna skämt och märkliga anekdoter.
+"""
+        else:
+            aftertalk_instructions = """
+EFTERSNACK:
+- Inget eftersnack som standard.
+- Avsluta tight: säg hejdå och SLUTA direkt efter avslutningsfrasen.
+"""
+
         prompt = f"""{formatted_prompt}
 
     {sport_guardrails}
@@ -290,6 +394,13 @@ Dagens innehåll att diskutera:
 {music_context}
 
 {emotional_design}
+KVALITET & LÄNGD:
+- Prioritera substans framför utfyllnad. Om underlaget inte räcker: gör hellre ett kortare, tajtare avsnitt än att fluffa.
+- Försök alltid fördjupa genom att jämföra flera källor om de finns i underlaget (inkl. 'Relaterat'-snuttar).
+- Undvik metaprata om att ni 'hanterar nyheterna' eller att ni 'tackar för er' och sedan fortsätter prata.
+ - Om andra instruktioner i prompten säger "exakt 10 minuter": prioritera reglerna här ovan.
+
+{aftertalk_instructions}
 4. Inkludera naturliga övergångar med emotionell förändring
 5. {host1['name']} börjar med energi anpassad till {time_context}
 6. {host2['name']} balanserar med analytisk men engagerad ton
@@ -300,7 +411,7 @@ Dagens innehåll att diskutera:
 11. Referera naturligt till temporala element ({swedish_weekday}, {season})
 12. Avsluta med både värdarna i en passande känsloton för {time_context}
 
-Mål: Ett 8-12 minuters samtal som maximerar ElevenLabs emotionella röstteknologi för naturlig, engagerande podcast-upplevelse."""
+Mål: Cirka 6–10 minuters samtal (hellre kortare än utfyllnad) som maximerar ElevenLabs emotionella röstteknologi för naturlig, engagerande podcast-upplevelse."""
 
         if not self.client:
             logger.warning("No OpenAI client available, using fallback script")

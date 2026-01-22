@@ -49,6 +49,26 @@ Alla inställningar finns i `sources.json`:
 - TTS-inställningar och röstval
 - AI-prompter för innehållsgenerering
 
+### Podcast Settings (GUI)
+
+"Podcast Settings" är en sida i den lokala Streamlit-GUI:n (inte i GitHub Actions).
+
+Starta GUI (Windows/macOS/Linux):
+```bash
+python -m streamlit run src/gui_app.py
+```
+
+Alternativ (större GUI):
+```bash
+python -m streamlit run src/enhanced_gui.py
+```
+
+När den startar skriver Streamlit ut en URL (oftast `http://localhost:8501`). Där hittar du sidan **Podcast Settings** i sidomenyn.
+
+Tips: I **Podcast Settings** finns även sektionen **Aftertalk (Komiskt eftersnack)** (scrolla ner) där du kan slå på/av och välja veckodagar.
+
+GitHub Actions läser bara konfigen från `sources.json` när workflow körs. Vill du ändra settings “i produktion” gör du det genom att uppdatera `sources.json` och pusha till GitHub.
+
 ## 🎯 Användning
 
 **Lokal generering:**
@@ -77,7 +97,7 @@ python create_test_episode.py
 ## 🎤 Röster
 
 - **Lisa** (Gacrux): Kvinnlig svensk röst, expert inom hållbar teknik
-- **Pelle** (Charon): Manlig svensk röst, specialist på AI och miljö
+- **Pelle** (Iapetus): Manlig svensk röst, specialist på AI och miljö
 
 ## 📈 Kvalitet
 

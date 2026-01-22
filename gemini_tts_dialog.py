@@ -27,20 +27,48 @@ class GeminiTTSDialogGenerator:
             logger.info(f"[GEMINI-TTS] Använder credentials: {cred_file}")
         
         self.client = texttospeech.TextToSpeechClient()
-        
-        # Svenska Gemini TTS röster för Lisa och Pelle
+
+        # Svenska Gemini TTS röster för Lisa och Pelle (default)
         self.voices = {
             "Lisa": {
-                "speaker_id": "Gacrux",  # Kvinnlig röst (samma som vi använder nu)
+                "speaker_id": "Gacrux",  # Kvinnlig röst
                 "personality": "professionell och vänlig nyhetspresentatör",
                 "style": "klar och engagerad, med ett vänligt men auktoritativt tonfall"
             },
             "Pelle": {
-                "speaker_id": "Iapetus",  # Manlig röst (samma som vi använder nu)  
+                "speaker_id": "Iapetus",  # Manlig röst
                 "personality": "entusiastisk teknikexpert och medpresentatör",
                 "style": "energisk och nyfiken, med fokus på att förklara komplexa ämnen enkelt"
             }
         }
+
+        # Låt sources.json styra speaker_id/persona/stil så att GUI "Podcast Settings" stämmer.
+        try:
+            with open('sources.json', 'r', encoding='utf-8') as f:
+                cfg = json.load(f)
+            ps = cfg.get('podcastSettings', {}) if isinstance(cfg.get('podcastSettings'), dict) else {}
+            hosts = ps.get('hosts', []) if isinstance(ps.get('hosts'), list) else []
+
+            def norm(s: str) -> str:
+                return (s or '').strip().lower()
+
+            for h in hosts:
+                if not isinstance(h, dict):
+                    continue
+                name = h.get('name')
+                if norm(name) == 'lisa':
+                    speaker_id = (h.get('gemini_speaker_id') or '').strip() or self.voices['Lisa']['speaker_id']
+                    personality = (h.get('personality') or '').strip() or self.voices['Lisa']['personality']
+                    style = (h.get('style') or '').strip() or self.voices['Lisa']['style']
+                    self.voices['Lisa'] = {"speaker_id": speaker_id, "personality": personality, "style": style}
+                elif norm(name) == 'pelle':
+                    speaker_id = (h.get('gemini_speaker_id') or '').strip() or self.voices['Pelle']['speaker_id']
+                    personality = (h.get('personality') or '').strip() or self.voices['Pelle']['personality']
+                    style = (h.get('style') or '').strip() or self.voices['Pelle']['style']
+                    self.voices['Pelle'] = {"speaker_id": speaker_id, "personality": personality, "style": style}
+        except Exception:
+            # Best-effort only
+            pass
     
     def create_dialog_script(self, news_content: str, weather_info: str) -> str:
         """

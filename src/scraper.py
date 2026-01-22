@@ -9,6 +9,7 @@ import re
 from urllib.parse import urljoin, urlparse
 from typing import List, Dict, Any
 import feedparser
+from urllib.parse import quote_plus
 
 # Optional imports for JavaScript rendering
 try:
@@ -925,6 +926,195 @@ class NewsScraper:
             location = text.split(':')[0].strip()
             return location.title() if location else ''
         return ''
+
+    @staticmethod
+    def _is_thin_item(item: Dict[str, Any]) -> bool:
+        summary = (item.get('summary') or '').strip()
+        title = (item.get('title') or '').strip()
+        if not title or len(title) < 12:
+            return True
+        if not summary:
+            return True
+        return len(summary) < 320
+
+    @staticmethod
+    def _build_search_query_from_title(title: str) -> str:
+        """Build a conservative keyword query from a Swedish/English headline."""
+        t = (title or '').strip()
+        if not t:
+            return ''
+
+        # Remove punctuation and collapse whitespace
+        t = re.sub(r"[^\w\s\-åäöÅÄÖ]", " ", t)
+        t = re.sub(r"\s+", " ", t).strip()
+
+        stop = {
+            'och', 'att', 'som', 'för', 'med', 'utan', 'i', 'på', 'av', 'till', 'från', 'om', 'när',
+            'den', 'det', 'de', 'en', 'ett', 'the', 'a', 'an', 'to', 'of', 'in', 'on', 'for', 'with',
+            'är', 'var', 'blir', 'blev', 'kan', 'ska', 'har', 'hade', 'får', 'fick', 'nya', 'ny',
+        }
+
+        parts = [p for p in t.split(' ') if p and p.lower() not in stop]
+        # Keep it short to avoid overly broad searches
+        parts = parts[:10]
+        return ' '.join(parts)
+
+    @staticmethod
+    def _google_news_rss_url(query: str, *, hl: str = 'sv', gl: str = 'SE', ceid: str = 'SE:sv') -> str:
+        q = quote_plus(query)
+        return f"https://news.google.com/rss/search?q={q}&hl={hl}&gl={gl}&ceid={ceid}"
+
+    async def _fetch_google_news_rss_entries(
+        self,
+        session: aiohttp.ClientSession,
+        query: str,
+        *,
+        max_entries: int = 6,
+        require_domain: str | None = None,
+    ) -> List[Dict[str, Any]]:
+        if not query:
+            return []
+        url = self._google_news_rss_url(query)
+        meta = await self.fetch_url_with_meta(session, url, 'rss')
+        xml = meta.get('text', '')
+        if not xml or self._looks_like_html(xml):
+            return []
+
+        feed = feedparser.parse(xml)
+        out: List[Dict[str, Any]] = []
+        for e in (feed.entries or [])[: max_entries * 2]:
+            link = (e.get('link') or '').strip()
+            title = (e.get('title') or '').strip()
+            if not link or not title:
+                continue
+
+            if require_domain:
+                try:
+                    if require_domain.lower() not in (urlparse(link).netloc or '').lower():
+                        # Sometimes Google News links are on news.google.com; allow and rely on redirects.
+                        if 'news.google.com' not in (urlparse(link).netloc or '').lower():
+                            continue
+                except Exception:
+                    continue
+
+            out.append({'title': title, 'link': link})
+            if len(out) >= max_entries:
+                break
+        return out
+
+    async def _enrich_item_with_related(
+        self,
+        session: aiohttp.ClientSession,
+        item: Dict[str, Any],
+        *,
+        max_related: int,
+        provider: str,
+        omni_only: bool,
+    ) -> None:
+        title = (item.get('title') or '').strip()
+        if not title:
+            return
+
+        query = self._build_search_query_from_title(title)
+        if not query:
+            return
+
+        require_domain = 'omni.se' if omni_only else None
+        entries: List[Dict[str, Any]] = []
+
+        if provider in {'google_news', 'google'}:
+            # If omni_only is set, bias heavily towards omni results.
+            q = f"site:omni.se {query}" if omni_only else query
+            entries = await self._fetch_google_news_rss_entries(session, q, max_entries=max_related, require_domain=require_domain)
+        else:
+            return
+
+        if not entries:
+            return
+
+        existing_url = (item.get('link') or '').strip()
+        related: List[Dict[str, Any]] = item.get('related', []) if isinstance(item.get('related'), list) else []
+
+        for e in entries:
+            link = (e.get('link') or '').strip()
+            if not link or link == existing_url:
+                continue
+            try:
+                content = await self.fetch_article_content(session, link)
+            except Exception:
+                content = ''
+            content = (content or '').strip()
+            if len(content) < 450:
+                continue
+            related.append({
+                'title': (e.get('title') or '').strip(),
+                'link': link,
+                'summary': content[:2000] + '...' if len(content) > 2000 else content,
+                'provider': provider,
+            })
+            if len(related) >= max_related:
+                break
+
+        if related:
+            item['related'] = related
+
+    async def _enrich_thin_items(self, results: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Best-effort enrichment: if an item is too 'thin', try to fetch 1-2 related sources."""
+        enabled = os.getenv('MMM_ENRICH_THIN_ITEMS', '1').strip().lower() not in {'0', 'false', 'no'}
+        if not enabled:
+            return results
+
+        provider = os.getenv('MMM_ENRICH_PROVIDER', 'google_news').strip().lower() or 'google_news'
+        max_items_total = int(os.getenv('MMM_ENRICH_MAX_ITEMS', '6') or 6)
+        max_related = int(os.getenv('MMM_ENRICH_MAX_RELATED_PER_ITEM', '2') or 2)
+        omni_only = os.getenv('MMM_ENRICH_OMNI_ONLY', '0').strip().lower() in {'1', 'true', 'yes'}
+
+        if max_items_total <= 0 or max_related <= 0:
+            return results
+
+        logger.info(
+            "🧩 Enrichment enabled: provider=%s, max_items=%s, max_related=%s, omni_only=%s",
+            provider,
+            max_items_total,
+            max_related,
+            omni_only,
+        )
+
+        enriched = 0
+        async with aiohttp.ClientSession() as session:
+            for group in results or []:
+                if enriched >= max_items_total:
+                    break
+                if not isinstance(group, dict):
+                    continue
+                if group.get('type') in {'weather'}:
+                    continue
+                items = group.get('items') or []
+                if not isinstance(items, list):
+                    continue
+
+                for item in items:
+                    if enriched >= max_items_total:
+                        break
+                    if not isinstance(item, dict):
+                        continue
+                    if not self._is_thin_item(item):
+                        continue
+                    try:
+                        await self._enrich_item_with_related(
+                            session,
+                            item,
+                            max_related=max_related,
+                            provider=provider,
+                            omni_only=omni_only,
+                        )
+                        if item.get('related'):
+                            enriched += 1
+                            logger.info("🧩 Enriched thin item: %s... (+%s related)", (item.get('title') or '')[:60], len(item.get('related') or []))
+                    except Exception as e:
+                        logger.debug(f"Enrichment failed for item: {e}")
+
+        return results
     
     async def scrape_all(self) -> List[Dict[str, Any]]:
         logger.info(f"🚀 Starting scraping from {len(self.sources)} sources...")
@@ -932,6 +1122,12 @@ class NewsScraper:
         async with aiohttp.ClientSession() as session:
             tasks = [self.scrape_source(session, source) for source in self.sources]
             results = await asyncio.gather(*tasks)
+
+        # Optional best-effort enrichment for items that are too short to summarize well
+        try:
+            results = await self._enrich_thin_items(results)
+        except Exception as e:
+            logger.warning(f"🧩 Enrichment step failed, continuing without it: {e}")
         
         # Sort by priority
         results.sort(key=lambda x: x.get('priority', 99))

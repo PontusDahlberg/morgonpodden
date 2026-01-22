@@ -43,7 +43,7 @@ ELEVENLABS_VOICE_ID_SANNA=your_voice_id_here
 ELEVENLABS_VOICE_ID_GEORGE=your_voice_id_here
 
 # Cloudflare R2 för deployment
-CLOUDFLARE_API_TOKEN=your_cloudflare_token_here
+CLOUDFLARE_API_TOKEN=
 CLOUDFLARE_R2_BUCKET=your_bucket_name_here
 CLOUDFLARE_R2_PUBLIC_URL=https://your-public-url.com
 

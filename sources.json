@@ -254,38 +254,50 @@
     }
   ],
   "podcastSettings": {
-    "title": "Människa Maskin Miljö - Veckans AI & Klimat",
-    "description": "Veckosammanfattning av AI, grön teknik och hållbarhet. Automatiskt genererat komplement till Människa Maskin Miljö.",
-    "author": "Människa Maskin Miljö AI",
+    "title": "MMM Senaste Nytt",
+    "description": "Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.",
+    "author": "Människa Maskin Miljö",
     "language": "sv-SE", 
     "category": "Technology",
     "explicit": false,
     "timezone": "Europe/Stockholm",
-    "generateTime": "07:00",
-    "schedule": "weekly_wednesday",
+    "generateTime": "06:00",
+    "schedule": "daily",
     "maxDuration": 600,
     "publicUrl": "https://pub-5b4c915c1917445e9a2efc8dafcbce45.r2.dev",
     "cover_image": "public/cover.jpg",
     "hosts": [
       {
-        "name": "Anna",
-        "voice_id": "4xkUqaR9MYOJHoaC1Nak",
-        "personality": "Expertvärd inom hållbar teknik och AI, brinner för miljöfrågor och innovation",
-        "style": "engagerad och kunnig, fokuserad på gröna lösningar"
+        "name": "Lisa",
+        "voice_id": "",
+        "google_voice_name": "sv-SE-Chirp3-HD-Gacrux",
+        "gemini_speaker_id": "Gacrux",
+        "personality": "Professionell men varm nyhetspresentatör med fokus på klimat, miljö och samhälle",
+        "style": "klar, engagerad och trovärdig"
       },
       {
-        "name": "Erik", 
-        "voice_id": "nPczCjzI2devNBz1zQrb",
-        "personality": "Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar",
-        "style": "tekniskt orienterad men tillgänglig, fokus på praktiska lösningar"
+        "name": "Pelle",
+        "voice_id": "",
+        "google_voice_name": "sv-SE-Chirp3-HD-Iapetus",
+        "gemini_speaker_id": "Iapetus",
+        "personality": "Nyfiken och engagerad medpresentatör med teknik- och AI-fokus, bra på följdfrågor",
+        "style": "energisk, nyfiken och lättsam"
       }
     ],
+    "aftertalk": {
+      "enabled": true,
+      "weekdays": [5],
+      "target_seconds": 120,
+      "min_seconds": 90,
+      "max_seconds": 150,
+      "style": "informellt, lätt sarkastiskt och självironiskt – dåliga skämt, märkliga anekdoter och lite smågnäll som lättar upp efter veckan. Fortfarande snällt och charmigt, inte elakt."
+    },
     "promptTemplates": {
       "main_prompt": "Du skapar ett naturligt samtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: DAGLIG NYHETSPODCAST (10 MINUTER EXAKT). Sammanfatta dagens viktigaste händelser inom:\n• Människa: Hur teknik påverkar våra liv, jobb och samhälle\n• Maskin: AI-utveckling, nya tekniker och digitala lösningar\n• Miljö: Klimat, hållbarhet och grön teknik\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'New York Times skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, New York Times, NPR, Al Jazeera, France 24, Euronews, Politico Europe, Deutsche Welle\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). OBLIGATORISKT:\n\n1. DJUP ANALYS per nyhet:\n   - Minst 2-3 minuter diskussion per huvudnyhet\n   - Lisa och Pelle diskuterar implikationer i detalj\n   - Konkreta exempel och verkliga konsekvenser\n   - Framtidsperspektiv och trendanalys\n\n2. INTERAKTIV DIALOG:\n   - Lisa och Pelle ställer frågor till varandra\n   - Följdfrågor och fördjupningar\n   - Olika perspektiv och meningsskiljaktigheter\n   - Personliga reflektioner och expertkommentarer\n\n3. PRAKTISKA KOPPLINGAR:\n   - Hur påverkar detta vanliga människor?\n   - Vilka åtgärder kan lyssnare ta?\n   - Kopplingar till tidigare nyheter och trender\n   - Svenska perspektiv på internationella nyheter\n\n4. OMFATTANDE INNEHÅLL:\n   - 8-10 olika nyhetsämnen diskuteras\n   - Varje ämne behandlas i minst 1 minut\n   - Naturliga övergångar mellan ämnen\n   - Avslutande reflektion och sammanfattning\n\nVIKTIGT: Om innehållet blir kortare än 4000 ord, EXPANDERA med:\n- Mer detaljerade förklaringar\n- Fler konkreta exempel\n- Djupare diskussioner mellan värdarna\n- Historisk kontext och jämförelser\n- Fler följdfrågor och interaktioner\n\nStil: Expertperspektiv men tillgängligt. Professionella men vänliga värdar som lär av varandra.\n\nInnan du levererar: Kontrollera att samtalet är MINST 4000 ord för att nå 10-minuters mål.",
       
       "weekend_prompt": "Du skapar ett fördjupande helgsamtal mellan Lisa och Pelle för podcasten 'MMM Senaste Nytt'.\n\nLisa: Expert inom hållbar teknik och AI, brinner för miljöfrågor och innovation\nPelle: Specialist på AI och förnybar energi, analytisk approach till klimatutmaningar\n\nFormat: HELG-FÖRDJUPNING (10 MINUTER EXAKT). Fokus på 'Den Gröna Tråden' - hur nyheter hänger ihop:\n\n🔍 KÄLLREFERENSER - ABSOLUT KRAV:\n• VARJE nyhet MÅSTE ha en källa angiven\n• Ange källan NATURLIGT i samtalet: 'Enligt BBC...', 'SVT rapporterar att...', 'New York Times skriver att...'\n• Använd varierade källintroduktioner: 'DN berättar om...', 'Vi kan läsa i SvD att...', 'Euronews rapporterar...'\n• ALDRIG nämn nyheter utan att ange varifrån de kommer\n• Källorna ska vara de som faktiskt finns i RSS-flödena: SVT, DN, SvD, BBC, New York Times, NPR, Al Jazeera, France 24, Euronews, Politico Europe, Deutsche Welle\n\n🧩 HELGKONCEPT:\n• Färre nyheter (3-5 stycken) men MYCKET djupare analys\n• Fokus på SAMBAND mellan nyheterna\n• Mer DIALOG mellan Lisa och Pelle - de resonerar tillsammans\n• FÖRKLARAR för varandra hur saker hänger ihop\n\n📊 DIALOGSTIL (KRITISKT!):\n- 'Pelle, kan du förklara hur det här hänger ihop med...?'\n- 'Lisa, det där får mig att tänka på...'\n- 'Vänta, betyder det att...?'\n- 'Ja precis! Och det påverkar ju också...'\n- 'Det är intressant, för i veckan såg vi ju att...'\n\n🔗 TEMATISKA KOPPLINGAR:\n- Visa hur 3 olika nyheter egentligen handlar om samma trend\n- Förklara längre kedjor: AI → energi → klimat → politik → samhälle\n- Historiska perspektiv: 'För 5 år sedan..., nu ser vi...'\n- Framtidsspekulationer: 'Om den här trenden fortsätter...'\n\n💭 REFLEKTION OCH ANALYS:\n- 'Vad betyder det här på lång sikt?'\n- 'Vilka är de dolda konsekvenserna?'\n- 'Hur påverkar det våra barn?'\n- 'Vad borde vi som samhälle göra?'\n\nKRITISKT FÖR LÄNGD: Skapa ett OMFATTANDE, DIALOGISKT samtal som fyller EXAKT 10 MINUTER (cirka 4000-5000 ord). \n\nEXEMPEL PÅ HELGSTIL:\n'Pelle, det här med Googles nya AI-chip som minskar energi... kan du hjälpa mig förstå hur det hänger ihop med EU:s datacenter-regler?'\n'Ja Lisa, det är ju fascinerande! För det visar ju hur teknikjättarna nu måste...'\n\nStil: Nyfikna experter som utforskar samband tillsammans. Mer reflektion, mindre rapportering.\n\nInnan du levererar: Kontrollera DIALOG-INTENSITET och att samtalet är MINST 4000 ord.",
-      
-      "conversation_style": "expert_environmental_tech"
+
+      "conversation_style": "natural_dialogue"
     },
     "textToDialogue": {
       "enabled": false,

@@ -62,6 +62,39 @@ class GoogleCloudTTS:
                 "description": "Pelle (Iapetus) - Professionell manlig röst"
             }
         }
+
+        # Låt sources.json styra google_voice_name så att GUI "Hosts Configuration" gäller i produktion.
+        try:
+            with open('sources.json', 'r', encoding='utf-8') as f:
+                cfg = json.load(f)
+            ps = cfg.get('podcastSettings', {}) if isinstance(cfg.get('podcastSettings'), dict) else {}
+            hosts = ps.get('hosts', []) if isinstance(ps.get('hosts'), list) else []
+
+            def norm(s: str) -> str:
+                return (s or '').strip().lower()
+
+            for h in hosts:
+                if not isinstance(h, dict):
+                    continue
+
+                host_name = norm(h.get('name'))
+                google_voice_name = (h.get('google_voice_name') or '').strip()
+                if not google_voice_name:
+                    continue
+
+                if host_name == 'lisa':
+                    for alias in ('lisa', 'sanna'):
+                        if alias in self.voice_mapping:
+                            self.voice_mapping[alias]['name'] = google_voice_name
+                            self.voice_mapping[alias]['description'] = f"Lisa ({google_voice_name}) - Konfigurerad via sources.json"
+                elif host_name == 'pelle':
+                    for alias in ('pelle', 'george'):
+                        if alias in self.voice_mapping:
+                            self.voice_mapping[alias]['name'] = google_voice_name
+                            self.voice_mapping[alias]['description'] = f"Pelle ({google_voice_name}) - Konfigurerad via sources.json"
+        except Exception:
+            # Best-effort only
+            pass
         
         self._init_client()
     

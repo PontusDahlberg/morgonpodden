@@ -685,6 +685,144 @@ def _count_words(text: str) -> int:
     return len(re.findall(r"\S+", text))
 
 
+def _parse_weekday_value(value: Any) -> Optional[int]:
+    """Parse weekday to Python weekday int (Mon=0..Sun=6)."""
+    if value is None:
+        return None
+    if isinstance(value, int):
+        if 0 <= value <= 6:
+            return value
+        return None
+    if isinstance(value, str):
+        raw = value.strip().lower()
+        if not raw:
+            return None
+        if raw.isdigit():
+            try:
+                n = int(raw)
+            except ValueError:
+                return None
+            return n if 0 <= n <= 6 else None
+
+        # English + Swedish (common variants)
+        mapping = {
+            'monday': 0, 'mon': 0, 'måndag': 0,
+            'tuesday': 1, 'tue': 1, 'tisdag': 1,
+            'wednesday': 2, 'wed': 2, 'onsdag': 2,
+            'thursday': 3, 'thu': 3, 'torsdag': 3,
+            'friday': 4, 'fri': 4, 'fredag': 4,
+            'saturday': 5, 'sat': 5, 'lördag': 5, 'lordag': 5,
+            'sunday': 6, 'sun': 6, 'söndag': 6, 'sondag': 6,
+        }
+        return mapping.get(raw)
+
+    return None
+
+
+def _aftertalk_config_for_today(today: datetime, config: Dict) -> Dict[str, Any]:
+    """Return effective aftertalk config if it should run today, else {}."""
+    podcast_settings = (config or {}).get('podcastSettings') or {}
+    aftertalk = (podcast_settings.get('aftertalk') or {}) if isinstance(podcast_settings, dict) else {}
+
+    enabled = bool(aftertalk.get('enabled', False))
+    if not enabled:
+        return {}
+
+    weekdays_raw = aftertalk.get('weekdays', [])
+    weekdays: List[int] = []
+    if isinstance(weekdays_raw, (list, tuple)):
+        for w in weekdays_raw:
+            parsed = _parse_weekday_value(w)
+            if parsed is not None:
+                weekdays.append(parsed)
+
+    # Default: Saturdays (5)
+    if not weekdays:
+        weekdays = [5]
+
+    if today.weekday() not in set(weekdays):
+        return {}
+
+    # Clamp seconds to sane bounds
+    def _as_int(v: Any, default: int) -> int:
+        try:
+            return int(v)
+        except Exception:
+            return default
+
+    target_s = _as_int(aftertalk.get('target_seconds'), 120)
+    min_s = _as_int(aftertalk.get('min_seconds'), max(45, target_s - 30))
+    max_s = _as_int(aftertalk.get('max_seconds'), target_s + 30)
+    min_s = max(30, min_s)
+    max_s = max(min_s, max_s)
+
+    style = (aftertalk.get('style') or '').strip()
+    return {
+        'enabled': True,
+        'weekdays': weekdays,
+        'target_seconds': target_s,
+        'min_seconds': min_s,
+        'max_seconds': max_s,
+        'style': style,
+    }
+
+
+def _split_outro_block(script_text: str) -> tuple[str, str]:
+    """Best-effort split of (body, outro) so padding can be inserted before outro."""
+    if not script_text:
+        return "", ""
+    lines = script_text.splitlines()
+    if not lines:
+        return script_text, ""
+
+    outro_markers = (
+        'tack för att du lyssnade',
+        'tack för idag',
+        'det var dagens',
+        'vi är ai',
+        'ai-röster',
+        'dubbelkolla',
+        'avsnittsinformationen',
+        'människa maskin miljö',
+        'mmm senaste nytt',
+    )
+
+    last_match = None
+    for i in range(len(lines) - 1, -1, -1):
+        s = lines[i].strip().lower()
+        if not s:
+            continue
+        if s.startswith('lisa:') or s.startswith('pelle:'):
+            if any(m in s for m in outro_markers):
+                last_match = i
+                break
+
+    if last_match is None:
+        return script_text, ""
+
+    # Expand backwards a bit to capture the rest of the outro block.
+    start = last_match
+    max_back = 10
+    while start > 0 and max_back > 0:
+        prev = lines[start - 1].strip().lower()
+        if not prev:
+            start -= 1
+            max_back -= 1
+            continue
+        if prev.startswith('lisa:') or prev.startswith('pelle:'):
+            # Stop if it looks like we are back into dense main content.
+            if len(prev) > 260 and not any(m in prev for m in outro_markers):
+                break
+            start -= 1
+            max_back -= 1
+            continue
+        break
+
+    body = "\n".join(lines[:start]).rstrip()
+    outro = "\n".join(lines[start:]).lstrip()
+    return body, outro
+
+
 def _fallback_collect_articles_from_scraped(max_per_source: int = 5, max_total: int = 30) -> List[Dict]:
     """Fallback: plocka ett litet urval artiklar direkt från scraped_content.json."""
     available_articles: List[Dict] = []
@@ -731,26 +869,30 @@ def _append_article_padding(script_text: str, articles: List[Dict], min_words: i
     if current_wc >= min_words:
         return script_text
 
+    body, outro = _split_outro_block(script_text)
+
     # Undvik att pad:en blir oändlig om articles är tom.
     if not articles:
         filler = (
-            "\n\nLisa: Vi rundar av med en sista påminnelse: kolla länkarna i avsnittsbeskrivningen för att verifiera uppgifterna.\n"
+            "\n\nLisa: Innan vi rundar av – en sista påminnelse: kolla länkarna i avsnittsbeskrivningen för att verifiera uppgifterna.\n"
             "Pelle: Och hör gärna av dig om du upptäcker något som behöver rättas.\n"
         )
-        return (script_text + filler).strip()
+        combined = (body + filler).strip() if body else (script_text + filler).strip()
+        return (combined + ("\n\n" + outro if outro else "")).strip()
 
     # Bygg en “snabba nyheter”-sektion som nämner källa + titel-token för bättre RSS-match.
     lines: List[str] = []
-    lines.append("\n\nLisa: Vi fortsätter med några snabba nyheter för att få med helheten i flödet.")
+    lines.append("\n\nLisa: Innan vi sammanfattar och rundar av – här är några snabba nyheter för att få med helheten i flödet.")
     lines.append("Pelle: Perfekt – kör! Och säg gärna tydligt vilken källa det kommer från.")
 
     # Iterera artiklar flera varv om det behövs, men med hård cap.
     max_items = min(len(articles), 12)
     safe_articles = articles[:max_items]
     loops = 0
-    while _count_words(script_text + "\n" + "\n".join(lines)) < min_words and loops < 3:
+    base_text = (body if body else script_text)
+    while _count_words(base_text + "\n" + "\n".join(lines)) < min_words and loops < 3:
         for a in safe_articles:
-            if _count_words(script_text + "\n" + "\n".join(lines)) >= min_words:
+            if _count_words(base_text + "\n" + "\n".join(lines)) >= min_words:
                 break
             source = (a.get('source') or 'Okänd källa').strip()
             title = (a.get('title') or '').strip()
@@ -769,13 +911,18 @@ def _append_article_padding(script_text: str, articles: List[Dict], min_words: i
                 "Pelle: Bra. Och om det saknas siffror eller detaljer i källan så är det helt okej – då säger vi bara det.")
         loops += 1
 
-    return (script_text + "\n" + "\n".join(lines)).strip()
+    combined = (base_text + "\n" + "\n".join(lines)).strip()
+    return (combined + ("\n\n" + outro if outro else "")).strip()
 
 def generate_structured_podcast_content(weather_info: str, today: Optional[datetime] = None) -> tuple[str, List[Dict]]:
     """Generera strukturerat podcast-innehåll med AI och riktig väderdata"""
     
     # Dagens datum för kontext
     today = today or datetime.now()
+
+    # Eftertalk/eftersnack styrs av sources.json (så att GitHub Actions kan styra beteendet)
+    config = load_config()
+    aftertalk_cfg = _aftertalk_config_for_today(today, config)
     date_str = today.strftime('%Y-%m-%d')
     weekday = today.strftime('%A')
     swedish_weekday = SWEDISH_WEEKDAYS.get(weekday, weekday)
@@ -1117,6 +1264,25 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
     if not available_articles or len(available_articles) < 1:
         raise RuntimeError("Inga artiklar tillgängliga efter kurering/filtrering; avbryter för att undvika kort/okällat avsnitt")
     
+    aftertalk_instructions = ""
+    if aftertalk_cfg:
+        style = aftertalk_cfg.get('style', '')
+        style_block = f"\nSTIL (eftersnack): {style}\n" if style else ""
+        aftertalk_instructions = (
+            "\n\nEFTERSNACK (ENBART IDAG - KRITISKT):\n"
+            f"- Lägg till ett kort EFTERSNACK precis i slutet, efter ordinarie outro (eller som en tydligt separerad bonus på slutet).\n"
+            f"- Längd: cirka {aftertalk_cfg.get('target_seconds', 120)} sekunder (tillåtet spann {aftertalk_cfg.get('min_seconds', 90)}–{aftertalk_cfg.get('max_seconds', 150)} sek).\n"
+            "- Innehåll: meta, lätt komiskt, självdistanserat bakom-kulisserna-snack om hur dagens manus byggdes, utan nya fakta eller nya nyheter.\n"
+            "- INGA nya källor, inga nya påståenden, inga nya rubriker. Bara reflektion/ton.\n"
+            + style_block
+        )
+    else:
+        aftertalk_instructions = (
+            "\n\nEFTERSNACK (FÖRBJUDET - KRITISKT):\n"
+            "- Lägg INTE till eftersnack/efterprat/bonussegment.\n"
+            "- Avsluta när outrot är klart, och skriv inga extra repliker efter sista avslutningen.\n"
+        )
+
     prompt = f"""Skapa ett KOMPLETT och DETALJERAT manus för dagens avsnitt av "MMM Senaste Nytt" - en svensk daglig nyhetspodcast om teknik, AI och klimat.
 
 DATUM (KRITISKT): {date_str} ({date_context})
@@ -1173,6 +1339,11 @@ OUTRO-KRAV (MYCKET VIKTIGT):
 - Förklara att MMM Senaste Nytt är en del av Människa Maskin Miljö-familjen
 - Uppmana lyssnare att kolla in huvudpodden för djupare analyser
 - OBLIGATORISK AI-BRASKLAPP: Lisa och Pelle ska ödmjukt förklara att de är AI-röster och att information kan innehålla fel, hänvisa till länkarna i avsnittsinformationen för verifiering
+
+SLUTREGLER (KRITISKT):
+- Ingen utfyllnad efter outrot (om inte EFTERSNACK är explicit tillåtet idag).
+- Ingen "vi fortsätter", "en sista grej", "bonus" eller liknande efter att ni sagt tack och rundat av.
+{aftertalk_instructions}
 
 DIALOGREGLER:
 - Använd naturliga övergångar: "Det påminner mig om...", "Apropå det...", "Interessant nog..."
@@ -1682,7 +1853,23 @@ def clean_xml_text(text: Optional[str]) -> str:
 
 
 def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
-    """Generera RSS-feed för GitHub Pages"""
+    """Generera RSS-feed.
+
+    Metadata för kanalen hämtas från sources.json (podcastSettings) för att
+    ändringar i "Podcast Settings" ska slå igenom i produktion.
+    """
+    config = load_config() or {}
+    ps = (config.get('podcastSettings') or {}) if isinstance(config.get('podcastSettings'), dict) else {}
+
+    channel_title = (ps.get('title') or "MMM Senaste Nytt").strip()
+    channel_description = (ps.get('description') or "").strip() or (
+        "Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. "
+        "En del av Människa Maskin Miljö-familjen."
+    )
+    itunes_author = (ps.get('author') or "").strip() or "Pontus Dahlberg"
+    itunes_explicit = bool(ps.get('explicit', False))
+    itunes_category = (ps.get('category') or "Technology").strip()
+    itunes_email = os.getenv('PODCAST_EMAIL', '').strip() or "podcast@example.com"
     rss_items = []
     
     for episode in episodes_data:
@@ -1722,19 +1909,17 @@ def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
     rss_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
     <channel>
-        <title>MMM Senaste Nytt - MÄNNISKA MASKIN MILJÖ</title>
-        <description>Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.</description>
+        <title>{clean_xml_text(channel_title)}</title>
+        <description>{clean_xml_text(channel_description)}</description>
         <link>{base_url}</link>
         <language>sv-SE</language>
-        <itunes:category text="Technology"/>
-        <itunes:category text="Science"/>
-        <itunes:category text="News"/>
-        <itunes:explicit>false</itunes:explicit>
-        <itunes:author>Pontus Dahlberg</itunes:author>
-        <itunes:summary>Daglig nyhetspodcast om AI, teknik och klimat - en del av Människa Maskin Miljö-familjen</itunes:summary>
+        <itunes:category text="{clean_xml_text(itunes_category)}"/>
+        <itunes:explicit>{'true' if itunes_explicit else 'false'}</itunes:explicit>
+        <itunes:author>{clean_xml_text(itunes_author)}</itunes:author>
+        <itunes:summary>{clean_xml_text(channel_description)}</itunes:summary>
         <itunes:owner>
-            <itunes:name>Pontus Dahlberg</itunes:name>
-            <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
+            <itunes:name>{clean_xml_text(itunes_author)}</itunes:name>
+            <itunes:email>{clean_xml_text(itunes_email)}</itunes:email>
         </itunes:owner>
         <itunes:image href="{base_url}/cover.jpg"/>
         <lastBuildDate>{datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')}</lastBuildDate>

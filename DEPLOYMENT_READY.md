@@ -33,6 +33,12 @@ https://manniska-maskin-miljo.com/rss.xml
 
 ## 📋 NÄSTA STEG
 
+### 0. Ändra Podcast Settings
+"Podcast Settings" är inte en GitHub Actions-inställning. Den styrs av `sources.json`.
+
+- **Lokalt GUI:** `python -m streamlit run src/gui_app.py` (alternativt `src/enhanced_gui.py`)
+- **I produktion:** ändra `sources.json` och pusha till GitHub så plockar workflow upp det.
+
 ### 1. GitHub Push
 ```bash
 git add .
@@ -45,7 +51,7 @@ Lägg till följande secrets i GitHub repository settings:
 
 #### Obligatoriska:
 - `OPENROUTER_API_KEY` - AI textgeneration
-- `CLOUDFLARE_API_TOKEN` - Din token: 9vm0_041NMWwbuloT2YAd6abf0Y8j6FOCIRQgoFB
+- `CLOUDFLARE_API_TOKEN` - Cloudflare API-token (läggs in som GitHub Secret)
 - `CLOUDFLARE_R2_ACCOUNT_ID` - Ditt account ID
 - `CLOUDFLARE_R2_BUCKET_NAME` - manniska-maskin-miljo  
 - `GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON` - TTS service
@@ -75,7 +81,7 @@ Kör workflow manuellt i GitHub Actions för att testa innan automatisk daglig k
 
 ### 🎵 Audio System:
 - **Lisa**: Gacrux (professionell kvinnlig röst)
-- **Pelle**: Charon (vänlig manlig röst)  
+- **Pelle**: Iapetus (professionell manlig röst)  
 - **Kostnad**: ~$0.004/1000 tecken (mycket kostnadseffektiv)
 
 ---

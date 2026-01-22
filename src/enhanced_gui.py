@@ -417,6 +417,11 @@ def show_dashboard(config):
 
 def show_podcast_settings(config):
     st.header("⚙️ Podcast Settings")
+
+    st.info(
+        "Ändringar här sparas i `sources.json` på din dator. "
+        "För att GitHub Actions ska använda ändringarna måste du commit:a och pusha `sources.json` (eller ändra filen direkt på GitHub och committa där)."
+    )
     
     settings = config['podcastSettings']
     
@@ -425,19 +430,42 @@ def show_podcast_settings(config):
     col1, col2 = st.columns(2)
     
     with col1:
-        settings['title'] = st.text_input("Podcast Title", value=settings.get('title', 'Morgonpodd'))
-        settings['author'] = st.text_input("Author", value=settings.get('author', 'Morgonpodd AI'))
+        settings['title'] = st.text_input(
+            "Podcast Title",
+            value=settings.get('title', 'Morgonpodd'),
+            help="Det här är poddens titel i metadata/RSS."
+        )
+        settings['author'] = st.text_input(
+            "Author",
+            value=settings.get('author', 'Morgonpodd AI'),
+            help="Visas som 'author' i RSS/metadata."
+        )
         settings['language'] = st.selectbox("Language", ['sv-SE', 'en-US'], 
                                           index=0 if settings.get('language') == 'sv-SE' else 1)
     
     with col2:
-        settings['description'] = st.text_area("Description", 
-                                             value=settings.get('description', 'Din dagliga sammanfattning'))
-        generate_time = st.time_input("Generate Time", 
-                                     value=datetime.strptime(settings.get('generateTime', '06:00'), '%H:%M').time())
+        settings['description'] = st.text_area(
+            "Description", 
+            value=settings.get('description', 'Din dagliga sammanfattning'),
+            help="Kort beskrivning av podden (syns i podcastappar)."
+        )
+
+        default_time = datetime.strptime('06:00', '%H:%M').time()
+        try:
+            current_time = datetime.strptime(settings.get('generateTime', '06:00'), '%H:%M').time()
+        except Exception:
+            current_time = default_time
+            st.warning("generateTime i sources.json hade fel format. Återställer till 06:00 i UI.")
+
+        generate_time = st.time_input(
+            "Generate Time", 
+            value=current_time,
+            help="Tidpunkt (lokalt) då du vill att schemat ska köra. Notera: GitHub Actions styrs av workflow-schemat."
+        )
         settings['generateTime'] = generate_time.strftime('%H:%M')
         settings['maxDuration'] = st.slider("Max Duration (seconds)", 300, 1200, 
-                                           value=settings.get('maxDuration', 600))
+                                           value=settings.get('maxDuration', 600),
+                                           help="Målduration i GUI. Den aktiva GitHub Actions-pipelinen styr primärt längd via manuskrav i run_podcast_complete.py.")
     
     # Logo/Cover Image Upload
     st.subheader("🎨 Podcast Logo & Cover")
@@ -507,12 +535,48 @@ def show_podcast_settings(config):
             col1, col2 = st.columns(2)
             
             with col1:
-                host['name'] = st.text_input(f"Name", value=host['name'], key=f"host_{i}_name")
-                host['voice_id'] = st.text_input(f"ElevenLabs Voice ID", value=host['voice_id'], key=f"host_{i}_voice")
+                host['name'] = st.text_input(
+                    f"Name",
+                    value=host['name'],
+                    key=f"host_{i}_name",
+                    help="Namnet som används i prompten (t.ex. Lisa/Pelle)."
+                )
+
+                host['google_voice_name'] = st.text_input(
+                    "Google Voice (Chirp3-HD name)",
+                    value=str(host.get('google_voice_name', '') or ''),
+                    key=f"host_{i}_google_voice_name",
+                    help="Används i fallback-TTS (Google Cloud TTS). Ex: sv-SE-Chirp3-HD-Gacrux / sv-SE-Chirp3-HD-Iapetus."
+                )
+
+                host['gemini_speaker_id'] = st.text_input(
+                    "Gemini speaker_id",
+                    value=str(host.get('gemini_speaker_id', '') or ''),
+                    key=f"host_{i}_gemini_speaker_id",
+                    help="Används för Gemini multi-speaker (t.ex. Gacrux / Iapetus)."
+                )
             
             with col2:
-                host['personality'] = st.text_area(f"Personality", value=host['personality'], key=f"host_{i}_personality")
-                host['style'] = st.text_input(f"Speaking Style", value=host['style'], key=f"host_{i}_style")
+                host['personality'] = st.text_area(
+                    f"Personality",
+                    value=host['personality'],
+                    key=f"host_{i}_personality",
+                    help="Kort beskrivning av värdens persona (används i prompten)."
+                )
+                host['style'] = st.text_input(
+                    f"Speaking Style",
+                    value=host['style'],
+                    key=f"host_{i}_style",
+                    help="Språk-/tontips för värden (används i prompten)."
+                )
+
+            with st.expander("Legacy (ElevenLabs)"):
+                host['voice_id'] = st.text_input(
+                    "ElevenLabs Voice ID (legacy)",
+                    value=str(host.get('voice_id', '') or ''),
+                    key=f"host_{i}_voice_id_legacy",
+                    help="Lämna tomt om du kör GitHub Actions (Google/Gemini används i produktion)."
+                )
     
     # Intro settings
     st.subheader("🎵 Intro Settings")
@@ -553,6 +617,78 @@ def show_podcast_settings(config):
             st.success(f"✅ Jingle saved: {jingle_path}")
     
     settings['intro'] = intro_settings
+
+    # Aftertalk settings (weekly comedic aftertalk, e.g. Saturdays)
+    st.subheader("🎙️ Aftertalk (Komiskt eftersnack)")
+
+    if 'aftertalk' not in settings or not isinstance(settings.get('aftertalk'), dict):
+        settings['aftertalk'] = {
+            'enabled': False,
+            'weekdays': [5],
+            'target_seconds': 120,
+            'min_seconds': 90,
+            'max_seconds': 150,
+            'style': 'informellt, lätt sarkastiskt och självironiskt – dåliga skämt, märkliga anekdoter och lite smågnäll. Snällt och charmigt, inte elakt.'
+        }
+
+    after = settings['aftertalk']
+
+    col1, col2 = st.columns(2)
+    with col1:
+        after['enabled'] = st.checkbox(
+            "Aktivera komiskt eftersnack",
+            value=bool(after.get('enabled', False)),
+            help="När detta är på: valda dagar får avsnittet ett bonus-EFTERSNACK på slutet. Övriga dagar: inget eftersnack."
+        )
+
+        weekday_names = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag']
+        current_weekdays = after.get('weekdays', [5])
+        if not isinstance(current_weekdays, list):
+            current_weekdays = [5]
+        current_weekdays = [w for w in current_weekdays if isinstance(w, int) and 0 <= w <= 6]
+        if not current_weekdays:
+            current_weekdays = [5]
+
+        selected_names = [weekday_names[w] for w in current_weekdays]
+        selected_names = st.multiselect(
+            "Days for aftertalk",
+            options=weekday_names,
+            default=selected_names,
+            help="Välj vilka dagar som ska få extra eftersnack. Standard: Lördag."
+        )
+        after['weekdays'] = [weekday_names.index(n) for n in selected_names] if selected_names else [5]
+
+    with col2:
+        after['target_seconds'] = int(st.slider(
+            "Aftertalk target (seconds)",
+            30, 240,
+            value=int(after.get('target_seconds', 120) or 120),
+            step=5,
+            help="Ungefärlig längd för eftersnacket."
+        ))
+        after['min_seconds'] = int(st.slider(
+            "Aftertalk min (seconds)",
+            20, 240,
+            value=int(after.get('min_seconds', 90) or 90),
+            step=5,
+            help="Undre gräns för eftersnackets längd."
+        ))
+        after['max_seconds'] = int(st.slider(
+            "Aftertalk max (seconds)",
+            30, 300,
+            value=int(after.get('max_seconds', 150) or 150),
+            step=5,
+            help="Övre gräns för eftersnackets längd."
+        ))
+
+        if after['min_seconds'] > after['max_seconds']:
+            st.warning("Min seconds is greater than max seconds. Please adjust.")
+
+    after['style'] = st.text_area(
+        "Aftertalk style",
+        value=str(after.get('style', '') or ''),
+        help="Kort beskrivning av stil/ton för eftersnacket (informellt, skämt, anekdoter, osv)."
+    )
     
     # Prompt templates
     st.subheader("📝 AI Prompt Templates")

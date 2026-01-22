@@ -16,8 +16,28 @@
             <itunes:email>pontus.dahlberg@gmail.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 21 Jan 2026 05:26:46 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 22 Jan 2026 05:35:16 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 22 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 22 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Guardian Climate Crisis: Half of world’s CO2 emissions come from just 32 fossil fuel ...
+  https://www.theguardian.com/environment/2026/jan/21/carbon-dioxide-co2-emissions-fossil-fuel-firms-study
+• Dagens Nyheter: Sverige krossade Kroatien i gruppfinalen
+  https://www.dn.se/sport/sverige-krossade-kroatien-i-gruppfinalen/
+• Miljö &amp; Utveckling: Regeringen föreslår nya regler för hållbarhetsbetyg
+  https://miljo-utveckling.se/regeringen-foreslar-nya-regler-for-hallbarhetsbetyg/
+• SVT Nyheter: Man skjuten i park i Malmö
+  https://www.svt.se/nyheter/lokalt/skane/man-skjuten-pa-biljardhall-i-malmo
+• The Verge: Apple is turning Siri into an AI bot that’s more like ...
+  https://www.theverge.com/news/865172/apple-siri-ai-chatbot-chatgpt
+• TechCrunch: Not to be outdone by OpenAI, Apple is reportedly developing ...
+  https://techcrunch.com/2026/01/21/not-to-be-outdone-by-openai-apple-is-reportedly-developing-an-ai-wearable/</description>
+            <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260122_052559.mp3" length="9203180" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260122_052559.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 21 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 21 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.</description>
             <pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate>
@@ -169,26 +189,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260113_052151.mp3" length="8642924" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260113_052151.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 12 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 12 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Lisa Magnusson: Regeringen måste sluta ta sms-lån i barnens ...
-  https://www.dn.se/ledare/lisa-magnusson-regeringen-maste-sluta-ta-sms-lan-i-barnens-namn/
-• Dagens Nyheter: DN Debatt. ”Sveriges säkerhet kräver mer än bara totalförsva...
-  https://www.dn.se/debatt/sveriges-sakerhet-kraver-mer-an-bara-totalforsvar/
-• Dagens Nyheter: Insändare. Sverige måste ge det iranska folket en röst
-  https://www.dn.se/insandare/sverige-maste-ge-det-iranska-folket-en-rost/
-• SVT Nyheter: Räddningstjänsten i Göteborg varnar för fallande istappar oc...
-  https://www.svt.se/nyheter/lokalt/vast/raddningstjansten-i-goteborg-varnar-for-fallande-istappar-och-snomassor
-• SVT Nyheter: SMHI utfärdar gul varning för kyla – risk för förfrysning
-  https://www.svt.se/nyheter/lokalt/norrbotten/smhi-utfardar-gula-varning-for-kyla-risk-for-forfrysning
-• Dagens Nyheter: Regeringen saknar plan för om USA drar sig ur Nato
-  https://www.dn.se/sverige/regeringen-saknar-plan-for-om-usa-drar-sig-ur-nato/</description>
-            <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260112_052719.mp3" length="6740588" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260112_052719.mp3</guid>
         </item>
     </channel>
 </rss>

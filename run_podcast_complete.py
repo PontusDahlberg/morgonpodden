@@ -914,6 +914,10 @@ def _append_article_padding(script_text: str, articles: List[Dict], min_words: i
     combined = (base_text + "\n" + "\n".join(lines)).strip()
     return (combined + ("\n\n" + outro if outro else "")).strip()
 
+
+def _should_pad_short_scripts() -> bool:
+    return os.getenv('MMM_PAD_SHORT_SCRIPTS', '0').strip().lower() in {'1', 'true', 'yes'}
+
 def generate_structured_podcast_content(weather_info: str, today: Optional[datetime] = None) -> tuple[str, List[Dict]]:
     """Generera strukturerat podcast-innehåll med AI och riktig väderdata"""
     
@@ -1435,7 +1439,9 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
             min_words_local = int(min_words_env_local) if min_words_env_local else 1400
         except ValueError:
             min_words_local = 1400
-        return _append_article_padding(draft, chosen, min_words_local)
+        if _should_pad_short_scripts():
+            return _append_article_padding(draft, chosen, min_words_local)
+        return draft
 
     try:
         content = get_openrouter_response(messages)
@@ -1459,16 +1465,19 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
             wc2 = _count_words(content)
             logger.info(f"[AI] Retry word count: {wc2}")
             if wc2 < min_words:
-                logger.warning(f"[AI] Retry fortfarande kort ({wc2} < {min_words}). Pad:ar upp med källbaserade snabba nyheter istället för att avbryta.")
-                log_diagnostic('ai_script_padded', {
-                    'word_count_before': wc2,
-                    'min_words': min_words,
-                })
-                content = _append_article_padding(content, available_articles, min_words)
-        else:
-            # Om första svaret är nära gränsen kan vi ändå pad:a lite för stabilt TTS/RSS.
-            if wc < min_words:
-                content = _append_article_padding(content, available_articles, min_words)
+                if _should_pad_short_scripts():
+                    logger.warning(
+                        f"[AI] Retry fortfarande kort ({wc2} < {min_words}). Pad:ar upp med rubrikrunda (MMM_PAD_SHORT_SCRIPTS=1)."
+                    )
+                    log_diagnostic('ai_script_padded', {
+                        'word_count_before': wc2,
+                        'min_words': min_words,
+                    })
+                    content = _append_article_padding(content, available_articles, min_words)
+                else:
+                    logger.warning(
+                        f"[AI] Retry fortfarande kort ({wc2} < {min_words}). Lämnar manuset kort (MMM_PAD_SHORT_SCRIPTS=0)."
+                    )
         logger.info("[AI] Genererade podcast-innehåll med väderdata")
         return content, available_articles
     except Exception as e:

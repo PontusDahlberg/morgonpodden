@@ -307,12 +307,18 @@ def show_podcast_settings(config):
                     help="Språk-/tontips för värden (används i prompten)."
                 )
 
-            with st.expander("Legacy (ElevenLabs)"):
+            # Streamlit tillåter inte nested expanders.
+            show_legacy = st.checkbox(
+                "Visa legacy (ElevenLabs)",
+                value=False,
+                key=f"host_{i}_show_legacy",
+                help="Visar gamla ElevenLabs-fält. Lämna tomt om du kör GitHub Actions (Google/Gemini används i produktion).",
+            )
+            if show_legacy:
                 host['voice_id'] = st.text_input(
                     "ElevenLabs Voice ID (legacy)",
                     value=str(host.get('voice_id', '') or ''),
                     key=f"host_{i}_voice_id_legacy",
-                    help="Lämna tomt om du kör GitHub Actions (Google/Gemini används i produktion)."
                 )
     
     # Prompt templates

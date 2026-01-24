@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 23 Jan 2026 05:32:38 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 24 Jan 2026 05:26:34 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 24 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 24 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Johansson sköt skarpt när Sverige tog fjärde EM-segern
+  https://www.dn.se/sport/sverige-vande-och-tog-fjarde-raka-em-segern/
+• SVT Nyheter: Nora Lindahl om kritikerna: ”De tycker att jag sviker Sverig...
+  https://www.svt.se/sport/friidrott/nora-lindahl-om-kritikerna-de-tycker-att-jag-sviker-sverige
+• SVT Nyheter: Sverigefinsk pappa om det finska förvaltningsområdet: ”För m...
+  https://www.svt.se/nyheter/uutiset/svenska/sverigefinsk-pappa-om-det-finska-forvaltningsomradet-for-mig-ar-det-viktigt
+• MIT Technology Review: “Dr. Google” had its issues. Can ChatGPT Health do better?
+  https://www.technologyreview.com/2026/01/22/1131692/dr-google-had-its-issues-can-chatgpt-health-do-better/
+• TechCrunch: OpenAI chief Sam Altman plans India visit as AI leaders conv...
+  https://techcrunch.com/2026/01/23/openai-chief-sam-altman-plans-india-visit-as-ai-leaders-converge-in-new-delhi-sources/
+• MIT Technology Review: The Download: chatbots for health, and US fights over AI reg...
+  https://www.technologyreview.com/2026/01/23/1131708/the-download-chatbots-for-health-and-us-fights-over-ai-regulation/</description>
+            <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260124_051857.mp3" length="9360620" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260124_051857.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 23 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 23 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -167,26 +187,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260115_052240.mp3" length="9138284" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260115_052240.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 14 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 14 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Sopkaos efter snökaos – var fjärde hushåll i Göteborg drabba...
-  https://www.svt.se/nyheter/lokalt/vast/sopkaos-efter-snokaos-var-fjarde-hushall-i-goteborg-drabbat
-• Miljö &amp; Utveckling: Regeringen pressas för kostnader vid missade EU-mål
-  https://miljo-utveckling.se/regeringen-pressas-for-kostnader-vid-missade-eu-mal/
-• SVT Nyheter: Nato-tungviktaren om Trumps hot om Grönland: ”Jag hade vägra...
-  https://www.svt.se/nyheter/utrikes/nato-tungviktaren-om-trumps-hot-om-gronland-jag-hade-vagrat-lyda-order
-• SVT Nyheter: Elefant gick bärsärk i Indien – 20 döda
-  https://www.svt.se/nyheter/utrikes/elefant-gick-barsark-i-indien-20-doda
-• Guardian Environment: Ten Sydney Harbours’ worth of threatened species habitat app...
-  https://www.theguardian.com/environment/2026/jan/13/threatened-species-habitat-destruction-australia-15-year-high
-• SVT Nyheter: Experten om USA:s plan för Iran: ”Kommer bomba”
-  https://www.svt.se/nyheter/utrikes/experten-om-usas-plan-for-iran-kommer-bomba</description>
-            <pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260114_052553.mp3" length="8742380" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260114_052553.mp3</guid>
         </item>
     </channel>
 </rss>

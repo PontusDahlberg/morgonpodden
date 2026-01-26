@@ -1,5 +1,13 @@
 [
   {
+    "title": "MMM Senaste Nytt - 26 januari 2026",
+    "description": "Dagens nyheter inom AI, teknik och klimat - måndag den 26 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.\n\nKällor som refereras i detta avsnitt:\n• NWT - Nya Wermlands-Tidningen: Pär, 55, först i Sverige – seglar ensam nonstop runt jorden:...\n  https://www.nwt.se/2026/01/25/par-55-forst-i-sverige-seglar-ensam-nonstop-runt-jorden-ar-besatt-4d887/\n• Dagens Nyheter: Sveriges första förlust i handbolls-EM – efter mardrömshalvl...\n  https://www.dn.se/sport/sveriges-forsta-forlust-i-handbolls-em-efter-mardromshalvlek/\n• TechCrunch: ChatGPT is pulling answers from Elon Musk’s Grokipedia\n  https://techcrunch.com/2026/01/25/chatgpt-is-pulling-answers-from-elon-musks-grokipedia/\n• SVT Nyheter: SMHI: Orange varning för snö i söder\n  https://www.svt.se/nyheter/lokalt/skane/orange-varning-for-sno\n• Svenska Dagbladet: Sveriges första förlust – efter mardrömshalvlek\n  https://www.svd.se/a/QJxx0q/sveriges-forsta-forlust-i-handbolls-em-efter-mardromshalvlek\n• MIT Technology Review: The Download: chatbots for health, and US fights over AI reg...\n  https://www.technologyreview.com/2026/01/23/1131708/the-download-chatbots-for-health-and-us-fights-over-ai-regulation/",
+    "date": "2026-01-26",
+    "filename": "MMM_senaste_nytt_20260126_053416.mp3",
+    "size": 7530092,
+    "duration": "7:00"
+  },
+  {
     "title": "MMM Senaste Nytt - 25 januari 2026",
     "description": "Dagens nyheter inom AI, teknik och klimat - söndag den 25 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.\n\nKällor som refereras i detta avsnitt:\n• Dagens Nyheter: Experter: Sverige sitter fast i USA:s molntjänster\n  https://www.dn.se/ekonomi/experter-sverige-sitter-fast-i-usas-molntjanster/\n• Ny Teknik: Plötsligt händer det: nu får Sverige sitt första fristående ...\n  https://www.nyteknik.se/tech/ploetsligt-haender-det-nu-far-sverige-sitt-foersta-fristaende-5g-naetverk/4429048\n• SVT Nyheter: Vill stoppa pengar till ICE: Stridslystna agenter\n  https://www.svt.se/nyheter/utrikes/senatorer-inga-mer-pengar-till-ice\n• Miljö & Utveckling: Regeringen föreslår nya regler för hållbarhetsbetyg\n  https://miljo-utveckling.se/regeringen-foreslar-nya-regler-for-hallbarhetsbetyg/\n• MIT Technology Review: Yann LeCun’s new venture is a contrarian bet against large l...\n  https://www.technologyreview.com/2026/01/22/1131661/yann-lecuns-new-venture-ami-labs/",
     "date": "2026-01-25",
@@ -70,13 +78,5 @@
     "filename": "MMM_senaste_nytt_20260117_051458.mp3",
     "size": 9298028,
     "duration": "9:00"
-  },
-  {
-    "title": "MMM Senaste Nytt - 16 januari 2026",
-    "description": "Dagens nyheter inom AI, teknik och klimat - fredag den 16 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.\n\nKällor som refereras i detta avsnitt:\n• SVT Nyheter: Sverige utanför pallen – trots Ponsiluomas monstersträcka\n  https://www.svt.se/sport/skidskytte/sverige-utanfor-pallen-trots-ponsiluomas-monsterstracka\n• TechCrunch: OpenAI invests in Sam Altman’s brain computer interface star...\n  https://techcrunch.com/2026/01/15/openai-invests-in-sam-altmans-brain-computer-interface-startup-merge-labs/\n• Wired: OpenAI Invests in Sam Altman’s New Brain-Tech Startup Merge ...\n  https://www.wired.com/story/openai-invests-in-sam-altmans-new-brain-tech-startup-merge-labs/\n• SVT Nyheter: Bildt: Sällan oproblematiskt att utvinna olja\n  https://www.svt.se/nyheter/inrikes/bildt-sallan-oproblematiskt-att-utvinna-olja\n• Wired: Inside OpenAI’s Raid on Thinking Machines Lab\n  https://www.wired.com/story/inside-openai-raid-on-thinking-machines-lab/\n• Dagens Nyheter: Peter Alestig: Så blev värmepumpar ett politiskt slagträ\n  https://www.dn.se/sverige/peter-alestig-sa-blev-varmepumpar-ett-politiskt-slagtra/",
-    "date": "2026-01-16",
-    "filename": "MMM_senaste_nytt_20260116_052201.mp3",
-    "size": 7545452,
-    "duration": "8:00"
   }
 ]

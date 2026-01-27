@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 26 Jan 2026 05:41:46 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 27 Jan 2026 05:33:38 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 27 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 27 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Susanne Nyström: Alla måste vara med och betala – du har väl...
+  https://www.dn.se/ledare/susanne-nystrom-alla-maste-vara-med-och-betala-du-har-val-inte-missat-sveriges-tickande-kostnadsbomb/
+• Dagens Nyheter: DN Debatt. ”Kommunerna trotsar regeringen – de vill ha fler ...
+  https://www.dn.se/debatt/kommunerna-trotsar-regeringen-de-vill-ha-fler-migranter/
+• Miljö &amp; Utveckling: Genomgång: Nytt klimatmål till 2030 får stöd – men kritiken ...
+  https://miljo-utveckling.se/genomgang-nytt-klimatmal-till-2030-far-stod-men-kritiken-vaxer-mot-genvagar/
+• TechCrunch: YouTubers sue Snap for alleged copyright infringement in tra...
+  https://techcrunch.com/2026/01/26/youtubers-sue-snap-for-alleged-copyright-infringement-in-training-its-ai-models/
+• CleanTechnica: Adoption of Electric Vehicles Tied to Real-World Reductions ...
+  https://cleantechnica.com/2026/01/26/adoption-of-electric-vehicles-tied-to-real-world-reductions-in-air-pollution-study-finds/
+• MIT Technology Review: Inside OpenAI’s big play for science
+  https://www.technologyreview.com/2026/01/26/1131728/inside-openais-big-play-for-science/</description>
+            <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260127_052506.mp3" length="8228204" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260127_052506.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 26 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 26 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -165,26 +185,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260118_052252.mp3" length="7257452" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260118_052252.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 17 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 17 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Hätsk debatt i riksdagen om gruvbrytning i alunskiffer i Ovi...
-  https://www.svt.se/nyheter/lokalt/jamtland/hatsk-debatt-i-riksdagen-om-gruvbrytning-i-alunskiffer-i-oviken
-• TechCrunch: From OpenAI’s offices to a deal with Eli Lilly — how Chai Di...
-  https://techcrunch.com/2026/01/16/from-openais-offices-to-a-deal-with-eli-lilly-how-chai-discovery-became-one-of-the-flashiest-names-in-ai-drug-development/
-• Dagens Nyheter: DN Debatt. ”Barnen i fokus – här är regeringens nya cancerst...
-  https://www.dn.se/debatt/barnen-i-fokus-har-ar-regeringens-nya-cancerstrategi/
-• Dagens Nyheter: Tågresor Stockholm-Göteborg blir 69 minuter längre
-  https://www.dn.se/ekonomi/tagresor-stockholm-goteborg-blir-69-minuter-langre/
-• Miljö &amp; Utveckling: Sverige saknar fortfarande handlingsplan för FN:s biodiversi...
-  https://miljo-utveckling.se/sverige-saknar-fortfarande-handlingsplan-for-fns-biodiversitetsmal-fran-2022/
-• The Verge: Ads are coming soon to ChatGPT, starting with shopping links
-  https://www.theverge.com/news/863428/openai-chatgpt-shopping-ads-test</description>
-            <pubDate>Sat, 17 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260117_051458.mp3" length="9298028" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260117_051458.mp3</guid>
         </item>
     </channel>
 </rss>

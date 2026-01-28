@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 27 Jan 2026 05:33:38 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 28 Jan 2026 05:30:05 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 28 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 28 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: DN Debatt. ”Sverige sticker ut – våra unga är ovanligt olyck...
+  https://www.dn.se/debatt/sverige-sticker-ut-vara-unga-ar-ovanligt-olyckliga/
+• SVT Nyheter: Sveriges äldsta havsörn hittad död på Öland – ringmärktes 19...
+  https://www.svt.se/nyheter/lokalt/smaland/sveriges-aldsta-havsorn-hittad-dod-pa-oland-ringmarktes-1989
+• SVT Nyheter: Ny misstänkt laserattack mot spårvagnsförare i Göteborg
+  https://www.svt.se/nyheter/lokalt/vast/ny-misstankt-laserattack-mot-sparvagnsforare-i-goteborg
+• Dagens Nyheter: Kryss för Sverige – nära nytt mästerskapsfiasko
+  https://www.dn.se/sport/kryss-for-sverige-nara-nytt-masterskapsfiasko/
+• TechCrunch: OpenAI launches Prism, a new AI workspace for scientists
+  https://techcrunch.com/2026/01/27/openai-launches-prism-a-new-ai-workspace-for-scientists/
+• TechCrunch: Anthropic and OpenAI CEOs condemn ICE violence, praise Trump
+  https://techcrunch.com/2026/01/27/anthropic-and-openai-ceos-condemn-ice-violence-praise-trump/</description>
+            <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260128_052412.mp3" length="6795500" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260128_052412.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 27 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 27 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -165,26 +185,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260119_052735.mp3" length="8697452" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260119_052735.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 18 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 18 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Sverige till VM-final – Finland bytte målvakt efter tavla
-  https://www.svt.se/sport/bandy/sverige-till-vm-final-finland-bytte-malvakt-efter-tavla
-• SVT Nyheter: Trump inför tioprocentiga strafftullar mot Sverige
-  https://www.svt.se/nyheter/utrikes/trump-infor-tioprocentiga-tullar-mot-sverige
-• Dagens Nyheter: Trump: Tullar mot Sverige på grund av Grönland
-  https://www.dn.se/varlden/trump-tullar-mot-sverige-pa-grund-av-gronland/
-• SVT Nyheter: Kraftiga reaktioner efter Trumps tullbesked i Grönlandsfråga...
-  https://www.svt.se/nyheter/inrikes/omvarldens-reaktioner-efter-donald-trumps-tullbesked-i-gronlandsfragan
-• SVT Nyheter: Kylan griper tag om strömlöst Kiev: ”Är en del av kampen”
-  https://www.svt.se/nyheter/utrikes/kylan-griper-tag-om-stromlost-kiev-ar-en-del-av-kampen
-• TechCrunch: Musk wants up to $134B in OpenAI lawsuit, despite $700B fort...
-  https://techcrunch.com/2026/01/17/musk-wants-up-to-134b-in-openai-lawsuit-despite-700b-fortune/</description>
-            <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260118_052252.mp3" length="7257452" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260118_052252.mp3</guid>
         </item>
     </channel>
 </rss>

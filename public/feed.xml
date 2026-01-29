@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 28 Jan 2026 05:30:05 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 29 Jan 2026 05:43:36 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 29 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 29 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Ledare: Miljöpartiet kommer inte att sitta i nästa regering
+  https://www.dn.se/ledare/miljopartiet-kommer-inte-att-sitta-i-nasta-regering/
+• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
+  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
+• Dagens Nyheter: Rapport: Sverige sämre på vindkraft än grannländerna
+  https://www.dn.se/sverige/rapport-sverige-samre-pa-vindkraft-an-grannlanderna/
+• SVT Nyheter: Regeringen: Mobilförbud i grundskolan i höst
+  https://www.svt.se/nyheter/lokalt/uppsala/regeringen-mobilforbud-i-grundskolan-i-host
+• SVT Nyheter: Här är Sveriges förutsättningar för att nå semifinal i handb...
+  https://www.svt.se/sport/handboll/har-ar-sveriges-forutsattningar-for-att-na-semifinal-i-handbolls-em
+• Svenska Dagbladet: EM-hoppet ute för Sverige – när Kroatien vände
+  https://www.svd.se/a/vrOw2X/em-hoppet-ute-for-sverige-nar-kroatien-vande</description>
+            <pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260129_053706.mp3" length="8030444" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260129_053706.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 28 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 28 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -165,26 +185,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260120_052457.mp3" length="1874540" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260120_052457.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 19 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 19 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Stökig final när Sverige vann tredje raka VM-guldet i bandy
-  https://www.svt.se/sport/bandy/stokig-final-nar-sverige-vann-tredje-raka-vm-guldet-i-bandy
-• SVT Nyheter: Taha Ali om framtiden och sitt återbud till landslaget: ”Ska...
-  https://www.svt.se/sport/fotboll/taha-ali-om-framtiden-och-sitt-aterbud-till-landslaget-ska-inte-ljuga
-• Dagens Nyheter: Ledare: Två val har vunnits på frågan – men i Sverige vågar ...
-  https://www.dn.se/ledare/tva-val-har-vunnits-pa-fragan-men-i-sverige-vagar-inget-parti-ta-chansen/
-• SVT Nyheter: Klas Eklund om Grönland: ”Viktigt att EU inte backar”
-  https://www.svt.se/nyheter/utrikes/klas-eklund-om-gronland-viktigt-att-eu-inte-backar
-• Dagens Nyheter: Guld för Sverige i bandy-VM – Edlund femmålsskytt
-  https://www.dn.se/sport/guld-for-sverige-i-bandy-vm-edlund-femmalsskytt/
-• TechCrunch: Moxie Marlinspike has a privacy-conscious alternative to Cha...
-  https://techcrunch.com/2026/01/18/moxie-marlinspike-has-a-privacy-conscious-alternative-to-chatgpt/</description>
-            <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260119_052735.mp3" length="8697452" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260119_052735.mp3</guid>
         </item>
     </channel>
 </rss>

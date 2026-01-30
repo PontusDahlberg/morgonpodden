@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 29 Jan 2026 05:43:36 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 30 Jan 2026 05:43:26 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 30 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 30 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Nya rapporter: Döva barns utsatthet och språkdeprivation i S...
+  https://www.svt.se/nyheter/nyhetstecken/nya-rapporter-dova-barns-utsatthet-och-sprakdeprivation-i-sverige
+• Dagens Nyheter: Fetare isbjörnar när klimatet förändras – ny studie överrask...
+  https://www.dn.se/varlden/fetare-isbjornar-nar-klimatet-forandras-ny-studie-overraskar/
+• SVT Nyheter: Kontroversiellt ryskt metalband uppträder i Sverige
+  https://www.svt.se/kultur/kontroversiellt-ryskt-metalband-upptrader-i-sverige
+• Miljö &amp; Utveckling: Forskning: Kvalitet viktigare än mängd i plaståtervinning
+  https://miljo-utveckling.se/forskning-kvalitet-viktigare-an-mangd-i-plastatervinning/
+• Svenska Dagbladet: Larm om explosion i Göteborg – bil i brand
+  https://www.svd.se/a/V61ozr/larm-om-explosion-i-goteborg-bil-i-brand
+• TechCrunch: Amazon is reportedly in talks to invest $50B in OpenAI
+  https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/</description>
+            <pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260130_053703.mp3" length="7636844" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260130_053703.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 29 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 29 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -179,12 +199,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260121_052358.mp3" length="1911404" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260121_052358.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 20 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 20 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.</description>
-            <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260120_052457.mp3" length="1874540" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260120_052457.mp3</guid>
         </item>
     </channel>
 </rss>

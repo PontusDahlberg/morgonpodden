@@ -279,6 +279,14 @@ class GoogleCloudTTS:
         # Brådskande: uttalas "bråsskande" med kort å (D-et hörs inte)
         text = re.sub(r'\bbrådskande\b', '<phoneme alphabet="ipa" ph="ˈbrɔs.skande">brådskande</phoneme>', text)
         text = re.sub(r'\bBrådskande\b', '<phoneme alphabet="ipa" ph="ˈbrɔs.skande">Brådskande</phoneme>', text)
+
+        # Förvar: betoning på "VAR" (som i "försvar")
+        # Viktigt: använd ordgränser så att vi inte påverkar t.ex. "slutförvar(et)".
+        # Håll IPA enkel: vi styr främst betoning (ˈ) och undviker extra längdmarkörer.
+        text = re.sub(r'\bförvaret\b', '<phoneme alphabet="ipa" ph="fœrˈvɑrɛt">förvaret</phoneme>', text)
+        text = re.sub(r'\bFörvaret\b', '<phoneme alphabet="ipa" ph="fœrˈvɑrɛt">Förvaret</phoneme>', text)
+        text = re.sub(r'\bförvar\b', '<phoneme alphabet="ipa" ph="fœrˈvɑr">förvar</phoneme>', text)
+        text = re.sub(r'\bFörvar\b', '<phoneme alphabet="ipa" ph="fœrˈvɑr">Förvar</phoneme>', text)
         
         # VIKTIGT: Omslut hela texten med <speak>-taggen som SSML kräver
         text = f"<speak>{text}</speak>"

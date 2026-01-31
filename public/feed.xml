@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 30 Jan 2026 05:43:26 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 31 Jan 2026 05:44:07 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 31 januari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 31 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: 5 tips: Köttbrist i Sverige – så får du till en köttfärssås ...
+  https://www.svt.se/nyheter/lokalt/sormland/lista-kottbrist-i-sverige-sa-far-du-till-en-kottfarssas-anda
+• SVT Nyheter: Mångmiljonvilla i Stockholm har tagits i förvar av polisen
+  https://www.svt.se/nyheter/lokalt/stockholm/mangmiljonvilla-i-stockholm-har-tagits-i-forvar-av-polisen
+• Computer Sweden: Open AI plockar bort äldre AI-modeller från Chat GPT
+  https://computersweden.se/article/4124948/open-ai-plockar-bort-aldre-ai-modeller-fran-chat-gpt.html
+• Ny Teknik: Vilka är Sveriges bästa unga teknikbolag 2026? Nominera till...
+  https://www.nyteknik.se/startup/vilka-aer-sveriges-baesta-unga-teknikbolag-2026-nominera-till-33-listan/4431409
+• Ny Teknik: Är det för sent för Sveriges och Europas datacenterbolag?
+  https://www.nyteknik.se/tech/aer-det-foer-sent-foer-sveriges-och-europas-datacenterbolag/4431552
+• Euronews: Italy leads in Azerbaijani energy imports, as SOFAZ reports ...
+  http://www.euronews.com/business/2026/01/30/italy-leads-in-azerbaijani-energy-imports-as-sofaz-reports-strong-2025-results</description>
+            <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260131_053509.mp3" length="10119788" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260131_053509.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 30 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 30 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,12 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260122_052559.mp3" length="9203180" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260122_052559.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 21 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 21 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.</description>
-            <pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260121_052358.mp3" length="1911404" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260121_052358.mp3</guid>
         </item>
     </channel>
 </rss>

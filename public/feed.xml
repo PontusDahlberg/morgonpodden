@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 31 Jan 2026 05:44:07 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 01 Feb 2026 05:55:44 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 1 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 1 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
+  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
+• SVT Nyheter: Misstänkt farligt föremål i Malmö – boende inryms
+  https://www.svt.se/nyheter/lokalt/skane/misstankt-farligt-foremal-i-malmo-boende-inryms-e8sluc
+• Dagens Nyheter: Sverige hanterar ”problemet” invandrare som om det vore snör...
+  https://www.dn.se/kultur/sverige-hanterar-problemet-invandrare-som-om-det-vore-snorojning/
+• TechCrunch: Nvidia CEO pushes back against report that his company’s $10...
+  https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/
+• Guardian Climate Crisis: The UK government didn&#x27;t want you to see this report on ecos...
+  https://www.theguardian.com/commentisfree/2026/jan/27/uk-government-report-ecosystem-collapse-foi-national-security</description>
+            <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260201_054853.mp3" length="8473580" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260201_054853.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 31 januari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 31 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +211,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260123_052343.mp3" length="10383980" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260123_052343.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 22 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 22 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Guardian Climate Crisis: Half of world’s CO2 emissions come from just 32 fossil fuel ...
-  https://www.theguardian.com/environment/2026/jan/21/carbon-dioxide-co2-emissions-fossil-fuel-firms-study
-• Dagens Nyheter: Sverige krossade Kroatien i gruppfinalen
-  https://www.dn.se/sport/sverige-krossade-kroatien-i-gruppfinalen/
-• Miljö &amp; Utveckling: Regeringen föreslår nya regler för hållbarhetsbetyg
-  https://miljo-utveckling.se/regeringen-foreslar-nya-regler-for-hallbarhetsbetyg/
-• SVT Nyheter: Man skjuten i park i Malmö
-  https://www.svt.se/nyheter/lokalt/skane/man-skjuten-pa-biljardhall-i-malmo
-• The Verge: Apple is turning Siri into an AI bot that’s more like ...
-  https://www.theverge.com/news/865172/apple-siri-ai-chatbot-chatgpt
-• TechCrunch: Not to be outdone by OpenAI, Apple is reportedly developing ...
-  https://techcrunch.com/2026/01/21/not-to-be-outdone-by-openai-apple-is-reportedly-developing-an-ai-wearable/</description>
-            <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260122_052559.mp3" length="9203180" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260122_052559.mp3</guid>
         </item>
     </channel>
 </rss>

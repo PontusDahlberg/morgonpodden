@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 01 Feb 2026 05:55:44 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 02 Feb 2026 05:51:20 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 2 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 2 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Skickade bild på vapen – så misstänks polis ha utnyttjat bar...
+  https://www.svt.se/nyheter/lokalt/sodertalje/skickade-bild-pa-vapen-sa-misstanks-polis-ha-utnyttjat-barn-via-snapchat
+• SVT Nyheter: Åkesson (SD): Beredd att axla rollen som statsminister
+  https://www.svt.se/nyheter/inrikes/akesson-sd-beredd-att-axla-rollen-som-statsminister
+• Sveriges Natur: Nato vill att Sverige satsar på järnvägen
+  https://www.sverigesnatur.org/aktuellt/nato-vill-att-sverige-satsar-pa-jarnvagen/
+• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
+  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
+• Dagens Nyheter: Statsministern: Dåligt omdöme av Mette-Marit
+  https://www.dn.se/varlden/statsministern-daligt-omdome-av-mette-marit/
+• Al Jazeera: Gaza’s daily nightmare vs US talk of AI-driven smart cities
+  https://www.aljazeera.com/video/the-bottom-line/2026/2/1/gazas-daily-nightmare-vs-us-talk-of-ai-driven-smart-cities?traffic_source=rss</description>
+            <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260202_054528.mp3" length="6316652" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260202_054528.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 1 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 1 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,26 +211,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260124_051857.mp3" length="9360620" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260124_051857.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 23 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 23 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Pontus Janssons hårda ord till Malmö FF: ”Tunn linje att van...
-  https://www.svt.se/sport/fotboll/pontus-janssons-harda-ord-till-mff-tunn-linje-att-vandra-pa
-• Dagens Nyheter: Göteborgarna om nya Volvon: ”Snygg utsida, lite besviken på ...
-  https://www.dn.se/ekonomi/goteborgarna-om-nya-volvon-snygg-utsida-lite-besviken-pa-insidan/
-• TechCrunch: OpenAI is coming for those sweet enterprise dollars in 2026
-  https://techcrunch.com/2026/01/22/openai-is-coming-for-those-sweet-enterprise-dollars-in-2026/
-• SVT Nyheter: Adrian Skogmar om att bli Malmö FF:s nästa jätteförsäljning
-  https://www.svt.se/sport/fotboll/adrian-skogmar-om-bli-malmo-ffs-nasta-jatteforsaljning
-• SVT Nyheter: Här hyllas Åge Hareide i Malmö: ”Du gav oss tron”
-  https://www.svt.se/sport/fotboll/har-hyllas-age-hareide-i-malmo-du-gav-oss-tron
-• TechCrunch: Inference startup Inferact lands $150M to commercialize vLLM
-  https://techcrunch.com/2026/01/22/inference-startup-inferact-lands-150m-to-commercialize-vllm/</description>
-            <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260123_052343.mp3" length="10383980" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260123_052343.mp3</guid>
         </item>
     </channel>
 </rss>

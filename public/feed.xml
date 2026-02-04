@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 03 Feb 2026 05:45:57 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 04 Feb 2026 05:44:03 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 4 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 4 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Lars von Trier gör konstutställning i Stockholm – hyllar sin...
+  https://www.dn.se/kultur/lars-von-trier-gor-konstutstallning-i-stockholm-hyllar-sina-foregangare/
+• The Verge: Apple’s Xcode adds OpenAI and Anthropic’s coding agents
+  https://www.theverge.com/news/873300/apple-xcode-openai-anthropic-ai-agentic-coding
+• SVT Nyheter: Explosion i trapphus i Malmö – en person gripen
+  https://www.svt.se/nyheter/lokalt/skane/larm-om-explosion-i-malmo-t45ksy
+• TechCrunch: Xcode moves into agentic coding with deeper OpenAI and Anthr...
+  https://techcrunch.com/2026/02/03/xcode-moves-into-agentic-coding-with-deeper-openai-and-anthropic-integrations/
+• TechCrunch: Gradient’s heat pumps get new smarts to enable old-building ...
+  https://techcrunch.com/2026/02/03/gradients-heat-pumps-get-new-smarts-to-enable-old-building-retrofits/</description>
+            <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260204_053712.mp3" length="8344940" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260204_053712.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 3 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 3 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,24 +211,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260126_053416.mp3" length="7530092" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260126_053416.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 25 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 25 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Experter: Sverige sitter fast i USA:s molntjänster
-  https://www.dn.se/ekonomi/experter-sverige-sitter-fast-i-usas-molntjanster/
-• Ny Teknik: Plötsligt händer det: nu får Sverige sitt första fristående ...
-  https://www.nyteknik.se/tech/ploetsligt-haender-det-nu-far-sverige-sitt-foersta-fristaende-5g-naetverk/4429048
-• SVT Nyheter: Vill stoppa pengar till ICE: Stridslystna agenter
-  https://www.svt.se/nyheter/utrikes/senatorer-inga-mer-pengar-till-ice
-• Miljö &amp; Utveckling: Regeringen föreslår nya regler för hållbarhetsbetyg
-  https://miljo-utveckling.se/regeringen-foreslar-nya-regler-for-hallbarhetsbetyg/
-• MIT Technology Review: Yann LeCun’s new venture is a contrarian bet against large l...
-  https://www.technologyreview.com/2026/01/22/1131661/yann-lecuns-new-venture-ami-labs/</description>
-            <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260125_052901.mp3" length="7124972" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260125_052901.mp3</guid>
         </item>
     </channel>
 </rss>

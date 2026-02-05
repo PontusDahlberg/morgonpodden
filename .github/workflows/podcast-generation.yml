@@ -98,8 +98,21 @@ jobs:
         fi
 
         echo "🔧 Installing ffmpeg via apt..."
-        sudo apt-get update
-        sudo apt-get install -y ffmpeg
+        for i in 1 2 3; do
+          echo "Attempt $i/3: apt-get update"
+          if sudo apt-get update; then
+            break
+          fi
+          sleep $((i * 5))
+        done
+
+        for i in 1 2 3; do
+          echo "Attempt $i/3: apt-get install ffmpeg"
+          if sudo apt-get install -y ffmpeg; then
+            break
+          fi
+          sleep $((i * 5))
+        done
 
         echo "✅ ffmpeg installed"
         ffmpeg -version | head -n 3

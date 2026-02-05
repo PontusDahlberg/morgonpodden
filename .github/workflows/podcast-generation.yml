@@ -87,9 +87,22 @@ jobs:
         restore-keys: |
           public-audio-${{ github.ref_name }}-
         
-    - name: 🎵 Install FFmpeg
-      uses: FedericoCarboni/setup-ffmpeg@v3
-      id: setup-ffmpeg
+    - name: 🎵 Ensure FFmpeg available
+      shell: bash
+      run: |
+        set -euo pipefail
+        if command -v ffmpeg >/dev/null 2>&1; then
+          echo "✅ ffmpeg already available"
+          ffmpeg -version | head -n 3
+          exit 0
+        fi
+
+        echo "🔧 Installing ffmpeg via apt..."
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+
+        echo "✅ ffmpeg installed"
+        ffmpeg -version | head -n 3
         
     - name: 🔧 Configure secrets
       run: |

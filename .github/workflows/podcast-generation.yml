@@ -199,6 +199,7 @@ jobs:
         echo "✅ Fresh content scraped and saved"
         
     - name: 🎙️ Generate podcast (Complete version)
+      timeout-minutes: 45
       env:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/google-cloud-service-account.json

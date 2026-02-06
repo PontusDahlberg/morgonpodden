@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 04 Feb 2026 05:44:03 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 06 Feb 2026 05:45:36 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 6 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 6 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Ny Teknik: Regeringen vill ta bort förbud mot kärnkraft längs kusterna
+  https://www.nyteknik.se/energi/regeringen-vill-ta-bort-foerbud-mot-kaernkraft-laengs-svenska-kusterna/4434208
+• Dagens Nyheter: Norges tidigare statsminister utreds efter Epsteinfilerna
+  https://www.dn.se/varlden/norges-tidigare-statsminister-utreds-efter-epsteinfilerna/
+• SVT Nyheter: Därför ett kommunalt veto mot alunskifferbrytning – hör klim...
+  https://www.svt.se/nyheter/lokalt/jamtland/darfor-ett-kommunalt-veto-mot-alunskifferbrytning-hor-klimat-och-miljoministern
+• Svenska Dagbladet: Norges ex-statsminister Jagland misstänks för grov korruptio...
+  https://www.svd.se/a/k037ok/norges-ex-statsminister-jagland-misstanks-for-grov-korruption
+• TechCrunch: OpenAI launches new agentic coding model only minutes after ...
+  https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/
+• Miljö &amp; Utveckling: Malmö rekordsatsar på klimatet – här är åtgärderna
+  https://miljo-utveckling.se/malmo-rekordsatsar-pa-klimatet-har-ar-atgarderna/</description>
+            <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260206_053852.mp3" length="7918701" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260206_053852.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 4 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 4 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,26 +211,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260127_052506.mp3" length="8228204" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260127_052506.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 26 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 26 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• NWT - Nya Wermlands-Tidningen: Pär, 55, först i Sverige – seglar ensam nonstop runt jorden:...
-  https://www.nwt.se/2026/01/25/par-55-forst-i-sverige-seglar-ensam-nonstop-runt-jorden-ar-besatt-4d887/
-• Dagens Nyheter: Sveriges första förlust i handbolls-EM – efter mardrömshalvl...
-  https://www.dn.se/sport/sveriges-forsta-forlust-i-handbolls-em-efter-mardromshalvlek/
-• TechCrunch: ChatGPT is pulling answers from Elon Musk’s Grokipedia
-  https://techcrunch.com/2026/01/25/chatgpt-is-pulling-answers-from-elon-musks-grokipedia/
-• SVT Nyheter: SMHI: Orange varning för snö i söder
-  https://www.svt.se/nyheter/lokalt/skane/orange-varning-for-sno
-• Svenska Dagbladet: Sveriges första förlust – efter mardrömshalvlek
-  https://www.svd.se/a/QJxx0q/sveriges-forsta-forlust-i-handbolls-em-efter-mardromshalvlek
-• MIT Technology Review: The Download: chatbots for health, and US fights over AI reg...
-  https://www.technologyreview.com/2026/01/23/1131708/the-download-chatbots-for-health-and-us-fights-over-ai-regulation/</description>
-            <pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260126_053416.mp3" length="7530092" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260126_053416.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 06 Feb 2026 05:45:36 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 07 Feb 2026 05:43:19 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 7 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 7 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Ny Teknik: Foodora vill byta ut bilarna – testar eldrivna trehjulingar ...
+  https://www.nyteknik.se/elbilar/foodora-vill-byta-ut-bilarna-testar-eldrivna-trehjulingar-i-stockholm/4432310
+• Svenska Dagbladet: Explosion vid port i Malmö – 15-åring gripen
+  https://www.svd.se/a/y57L8J/explosion-vid-port-i-malmo-15-aring-gripen
+• Sveriges Natur: Minskat hopp – en present till kommande regering
+  https://www.sverigesnatur.org/opinion/kronika/minskat-hopp-en-present-till-kommande-regering/
+• TechCrunch: Apple is working to make CarPlay compatible with AI chatbots...
+  https://techcrunch.com/2026/02/06/apple-is-working-to-make-carplay-compatible-with-ai-chatbots-like-chatgpt/
+• The Verge: Apple might let you use ChatGPT from CarPlay
+  https://www.theverge.com/transportation/875199/apple-carplay-third-party-chatbots-rumor</description>
+            <pubDate>Sat, 07 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260207_053642.mp3" length="8559597" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260207_053642.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 6 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 6 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,26 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260128_052412.mp3" length="6795500" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260128_052412.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 27 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 27 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Susanne Nyström: Alla måste vara med och betala – du har väl...
-  https://www.dn.se/ledare/susanne-nystrom-alla-maste-vara-med-och-betala-du-har-val-inte-missat-sveriges-tickande-kostnadsbomb/
-• Dagens Nyheter: DN Debatt. ”Kommunerna trotsar regeringen – de vill ha fler ...
-  https://www.dn.se/debatt/kommunerna-trotsar-regeringen-de-vill-ha-fler-migranter/
-• Miljö &amp; Utveckling: Genomgång: Nytt klimatmål till 2030 får stöd – men kritiken ...
-  https://miljo-utveckling.se/genomgang-nytt-klimatmal-till-2030-far-stod-men-kritiken-vaxer-mot-genvagar/
-• TechCrunch: YouTubers sue Snap for alleged copyright infringement in tra...
-  https://techcrunch.com/2026/01/26/youtubers-sue-snap-for-alleged-copyright-infringement-in-training-its-ai-models/
-• CleanTechnica: Adoption of Electric Vehicles Tied to Real-World Reductions ...
-  https://cleantechnica.com/2026/01/26/adoption-of-electric-vehicles-tied-to-real-world-reductions-in-air-pollution-study-finds/
-• MIT Technology Review: Inside OpenAI’s big play for science
-  https://www.technologyreview.com/2026/01/26/1131728/inside-openais-big-play-for-science/</description>
-            <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260127_052506.mp3" length="8228204" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260127_052506.mp3</guid>
         </item>
     </channel>
 </rss>

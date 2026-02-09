@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 08 Feb 2026 05:55:37 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 09 Feb 2026 05:53:03 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 9 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 9 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: DN Debatt. ”Dina data kan hamna hos Trump – men regeringen v...
+  https://www.dn.se/debatt/dina-data-kan-hamna-hos-trump-men-regeringen-vagrar-agera/
+• Ny Teknik: Regeringen vill ta bort förbud mot kärnkraft längs kusterna
+  https://www.nyteknik.se/energi/regeringen-vill-ta-bort-foerbud-mot-kaernkraft-laengs-svenska-kusterna/4434208
+• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
+  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
+• SVT Nyheter: Ätstörningsvården i Stockholm: Bättre statistik – sämre vård...
+  https://www.svt.se/nyheter/lokalt/stockholm/atstorningsvarden-i-stockholm-battre-statistik-samre-vard
+• Dagens Nyheter: Obesegrade Sverige stormar mot gruppsegern
+  https://www.dn.se/sport/obesegrade-sverige-stormar-mot-gruppsegern/
+• Miljö &amp; Utveckling: Malmö rekordsatsar på klimatet – här är åtgärderna
+  https://miljo-utveckling.se/malmo-rekordsatsar-pa-klimatet-har-ar-atgarderna/</description>
+            <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260209_054644.mp3" length="8662509" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260209_054644.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 8 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 8 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -189,26 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260130_053703.mp3" length="7636844" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260130_053703.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 29 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 29 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Ledare: Miljöpartiet kommer inte att sitta i nästa regering
-  https://www.dn.se/ledare/miljopartiet-kommer-inte-att-sitta-i-nasta-regering/
-• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
-  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
-• Dagens Nyheter: Rapport: Sverige sämre på vindkraft än grannländerna
-  https://www.dn.se/sverige/rapport-sverige-samre-pa-vindkraft-an-grannlanderna/
-• SVT Nyheter: Regeringen: Mobilförbud i grundskolan i höst
-  https://www.svt.se/nyheter/lokalt/uppsala/regeringen-mobilforbud-i-grundskolan-i-host
-• SVT Nyheter: Här är Sveriges förutsättningar för att nå semifinal i handb...
-  https://www.svt.se/sport/handboll/har-ar-sveriges-forutsattningar-for-att-na-semifinal-i-handbolls-em
-• Svenska Dagbladet: EM-hoppet ute för Sverige – när Kroatien vände
-  https://www.svd.se/a/vrOw2X/em-hoppet-ute-for-sverige-nar-kroatien-vande</description>
-            <pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260129_053706.mp3" length="8030444" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260129_053706.mp3</guid>
         </item>
     </channel>
 </rss>

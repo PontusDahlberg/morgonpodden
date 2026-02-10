@@ -14,8 +14,24 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 09 Feb 2026 05:53:03 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 10 Feb 2026 05:58:42 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 10 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 10 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
+  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
+• Miljö &amp; Utveckling: Shein slutar kommunicera nettonollmål efter rättslig process
+  https://miljo-utveckling.se/shein-slutar-kommunicera-nettonollmal-efter-rattslig-process/
+• SVT Nyheter: Färre slaktdagar på Jämtlandsgården, Hammerdal, i köttbriste...
+  https://www.svt.se/nyheter/lokalt/jamtland/farre-slaktdagar-pa-jamtlandsgarden-hammerdal-i-kottbristens-spar
+• TechCrunch: ChatGPT rolls out ads
+  https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/</description>
+            <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260210_055034.mp3" length="8881389" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260210_055034.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 9 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 9 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -189,26 +205,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260131_053509.mp3" length="10119788" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260131_053509.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 30 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 30 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Nya rapporter: Döva barns utsatthet och språkdeprivation i S...
-  https://www.svt.se/nyheter/nyhetstecken/nya-rapporter-dova-barns-utsatthet-och-sprakdeprivation-i-sverige
-• Dagens Nyheter: Fetare isbjörnar när klimatet förändras – ny studie överrask...
-  https://www.dn.se/varlden/fetare-isbjornar-nar-klimatet-forandras-ny-studie-overraskar/
-• SVT Nyheter: Kontroversiellt ryskt metalband uppträder i Sverige
-  https://www.svt.se/kultur/kontroversiellt-ryskt-metalband-upptrader-i-sverige
-• Miljö &amp; Utveckling: Forskning: Kvalitet viktigare än mängd i plaståtervinning
-  https://miljo-utveckling.se/forskning-kvalitet-viktigare-an-mangd-i-plastatervinning/
-• Svenska Dagbladet: Larm om explosion i Göteborg – bil i brand
-  https://www.svd.se/a/V61ozr/larm-om-explosion-i-goteborg-bil-i-brand
-• TechCrunch: Amazon is reportedly in talks to invest $50B in OpenAI
-  https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/</description>
-            <pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260130_053703.mp3" length="7636844" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260130_053703.mp3</guid>
         </item>
     </channel>
 </rss>

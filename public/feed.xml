@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 10 Feb 2026 05:58:42 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 11 Feb 2026 05:55:06 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 11 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 11 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Elpriser i Finland slår mot Sverige – rekordkonsumtion drive...
+  https://www.svt.se/nyheter/utrikes/elpriser-i-finland-slar-mot-sverige-rekordkonsumtion-driver-upp-kostnader
+• Dagens Nyheter: Stor ilska i New York – Trumps regering halar prideflagga
+  https://www.dn.se/varlden/stor-ilska-i-new-york-trumps-regering-halar-prideflagga/
+• SVT Nyheter: Skottlossning i Malmö – två personer till sjukhus
+  https://www.svt.se/nyheter/lokalt/skane/skottlossning-i-malmo-h6z45s
+• Miljö &amp; Utveckling: Genomgång: Här är regeringens nya strategi för biologisk mån...
+  https://miljo-utveckling.se/genomgang-har-ar-regeringens-nya-strategi-for-biologisk-mangfald/
+• Miljö &amp; Utveckling: EU:s klimatmål för 2040 klubbat – så tycker de svenska parla...
+  https://miljo-utveckling.se/eus-klimatmal-for-2040-faststalls-till-90-procents-utslappsminskning/
+• Dagens Nyheter: Insändare. Stoppa fler utförsäljningar av allmännyttan
+  https://www.dn.se/insandare/stoppa-fler-utforsaljningar-av-allmannyttan/</description>
+            <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260211_054911.mp3" length="6929901" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260211_054911.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 10 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 10 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -185,26 +205,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260201_054853.mp3" length="8473580" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260201_054853.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 31 januari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 31 januari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: 5 tips: Köttbrist i Sverige – så får du till en köttfärssås ...
-  https://www.svt.se/nyheter/lokalt/sormland/lista-kottbrist-i-sverige-sa-far-du-till-en-kottfarssas-anda
-• SVT Nyheter: Mångmiljonvilla i Stockholm har tagits i förvar av polisen
-  https://www.svt.se/nyheter/lokalt/stockholm/mangmiljonvilla-i-stockholm-har-tagits-i-forvar-av-polisen
-• Computer Sweden: Open AI plockar bort äldre AI-modeller från Chat GPT
-  https://computersweden.se/article/4124948/open-ai-plockar-bort-aldre-ai-modeller-fran-chat-gpt.html
-• Ny Teknik: Vilka är Sveriges bästa unga teknikbolag 2026? Nominera till...
-  https://www.nyteknik.se/startup/vilka-aer-sveriges-baesta-unga-teknikbolag-2026-nominera-till-33-listan/4431409
-• Ny Teknik: Är det för sent för Sveriges och Europas datacenterbolag?
-  https://www.nyteknik.se/tech/aer-det-foer-sent-foer-sveriges-och-europas-datacenterbolag/4431552
-• Euronews: Italy leads in Azerbaijani energy imports, as SOFAZ reports ...
-  http://www.euronews.com/business/2026/01/30/italy-leads-in-azerbaijani-energy-imports-as-sofaz-reports-strong-2025-results</description>
-            <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260131_053509.mp3" length="10119788" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260131_053509.mp3</guid>
         </item>
     </channel>
 </rss>

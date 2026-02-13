@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 12 Feb 2026 05:53:02 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 13 Feb 2026 05:49:17 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 13 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 13 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Johannes Klenell: Som Ulf Lundell mår, så mår också Sverige
+  https://www.dn.se/kultur/johannes-klenell-som-ulf-lundell-mar-sa-mar-ocksa-sverige/
+• Svenska Dagbladet: Dollarns fall fortsätter – kris kan slå mot Sverige
+  https://www.svd.se/a/2p85x4/harvardekonom-dollarn-utmanas-som-varldens-reservvaluta-av-bland-annat-euron
+• TechCrunch: A new version of OpenAI’s Codex is powered by a new dedicate...
+  https://techcrunch.com/2026/02/12/a-new-version-of-openais-codex-is-powered-by-a-new-dedicated-chip/
+• Miljö &amp; Utveckling: Ingka pausar stora delar av utsläppsrapporteringen
+  https://miljo-utveckling.se/ingka-pausar-stora-delar-av-utslappsrapporteringen/
+• SVT Nyheter: Här är Sveriges grupp i Nations League
+  https://www.svt.se/sport/fotboll/har-ar-sveriges-grupp-i-nations-league-pxgvdi
+• TechCrunch: Amid disappointing earnings, Pinterest claims it sees more s...
+  https://techcrunch.com/2026/02/12/amid-disappointing-earnings-pinterest-claims-it-sees-more-searches-than-chatgpt/</description>
+            <pubDate>Fri, 13 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260213_054246.mp3" length="8075757" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260213_054246.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 12 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 12 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -187,26 +207,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260203_053833.mp3" length="8938220" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260203_053833.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 2 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 2 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Skickade bild på vapen – så misstänks polis ha utnyttjat bar...
-  https://www.svt.se/nyheter/lokalt/sodertalje/skickade-bild-pa-vapen-sa-misstanks-polis-ha-utnyttjat-barn-via-snapchat
-• SVT Nyheter: Åkesson (SD): Beredd att axla rollen som statsminister
-  https://www.svt.se/nyheter/inrikes/akesson-sd-beredd-att-axla-rollen-som-statsminister
-• Sveriges Natur: Nato vill att Sverige satsar på järnvägen
-  https://www.sverigesnatur.org/aktuellt/nato-vill-att-sverige-satsar-pa-jarnvagen/
-• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
-  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
-• Dagens Nyheter: Statsministern: Dåligt omdöme av Mette-Marit
-  https://www.dn.se/varlden/statsministern-daligt-omdome-av-mette-marit/
-• Al Jazeera: Gaza’s daily nightmare vs US talk of AI-driven smart cities
-  https://www.aljazeera.com/video/the-bottom-line/2026/2/1/gazas-daily-nightmare-vs-us-talk-of-ai-driven-smart-cities?traffic_source=rss</description>
-            <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260202_054528.mp3" length="6316652" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260202_054528.mp3</guid>
         </item>
     </channel>
 </rss>

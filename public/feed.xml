@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 13 Feb 2026 05:49:17 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 14 Feb 2026 05:46:59 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 14 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 14 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Pål Jonson: Sverige deltar fullt ut i Natos kärnvapenavskräc...
+  https://www.dn.se/varlden/pal-jonson-sverige-deltar-fullt-ut-i-natos-karnvapenavskrackning/
+• Computer Sweden: Open AI påstår att Deepseek destillerat amerikanska AI-model...
+  https://computersweden.se/article/4132146/open-ai-pastar-att-deepseek-destillerat-amerikanska-ai-modeller.html
+• SVT Nyheter: Naturvårdsverket överklagar tillstånd för Volvos batterifabr...
+  https://www.svt.se/nyheter/lokalt/vast/naturvardsverket-overklagar-tillstand-for-volvos-batterifabrik-i-mariestad
+• CleanTechnica: Rideence To Start Local Assembly Of Electric Vehicles At AVA...
+  https://cleantechnica.com/2026/02/13/rideence-to-start-local-assembly-of-electric-vehicles-at-ava-plant-in-mombasa-kenya/
+• SVT Nyheter: Alla hjärtans dag fyller 70 år – så kom traditionen till Sve...
+  https://www.svt.se/nyheter/lokalt/vastmanland/alla-hjartans-dag-fyller-70-ar-sa-kom-traditionen-till-sverige
+• Dagens Nyheter: Sverige till semifinal efter drama: ”Min nya turdag”
+  https://www.dn.se/sport/efter-de-svarta-aren-sverige-till-semifinal-efter-drama/</description>
+            <pubDate>Sat, 14 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260214_053711.mp3" length="10540269" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260214_053711.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 13 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 13 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -187,26 +207,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260204_053712.mp3" length="8344940" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260204_053712.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 3 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 3 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Ny Teknik: Elbilar testade i extrem kyla: Nio tappade över 40 procent i...
-  https://www.nyteknik.se/nyheter/elbilar-testade-i-extrem-kyla-nio-tappade-oever-40-procent-i-raeckvidd/4432866
-• Dagens Nyheter: DN Debatt. ”Regeringens AI-satsning är ett högriskexperiment...
-  https://www.dn.se/debatt/regeringens-ai-satsning-ar-ett-hogriskexperiment/
-• TechCrunch: OpenAI launches new macOS app for agentic coding
-  https://techcrunch.com/2026/02/02/openai-launches-new-macos-app-for-agentic-coding/
-• Dagens Nyheter: Hon vill rikta designblickarna mot Stockholm
-  https://www.dn.se/kultur/hon-vill-rikta-designblickarna-mot-stockholm/
-• TechCrunch: What Snowflake’s deal with OpenAI tells us about the enterpr...
-  https://techcrunch.com/2026/02/02/what-snowflakes-deal-with-openai-tells-us-about-the-enterprise-ai-race/
-• Svenska Dagbladet: Kry svänger – tillbaka i Stockholm
-  https://www.svd.se/a/zOr3yr/kry-och-region-stockholm-overens-men-natlakaren-maste-betala-miljonbelopp</description>
-            <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260203_053833.mp3" length="8938220" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260203_053833.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 14 Feb 2026 05:46:59 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 15 Feb 2026 05:49:12 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 15 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 15 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Jonna Sundling körde hem silvret efter Sveriges mardrömssträ...
+  https://www.svt.se/sport/langdskidor/jonna-sundling-korde-hem-silvret-efter-sveriges-mardromsstracka-pa-os-stafetten
+• Dagens Nyheter: Sveriges fjärde raka – Kanada straffades för regelbrott
+  https://www.dn.se/sport/sveriges-fjarde-raka-kanada-straffades-for-regelbrott/
+• CleanTechnica: AI = Artificial Intelligence or Always Incorrect?
+  https://cleantechnica.com/2026/02/14/ai-artificial-intelligence-or-always-incorrect/
+• Dagens Nyheter: ”Sverige hade en plan för att ta oss på bar gärning”
+  https://www.dn.se/sport/sverige-hade-en-plan-for-att-ta-oss-pa-bar-garning/
+• TechCrunch: OpenAI removes access to sycophancy-prone GPT-4o model
+  https://techcrunch.com/2026/02/13/openai-removes-access-to-sycophancy-prone-gpt-4o-model/
+• Svenska Dagbladet: Hur kan det här vara Sveriges lägereld?
+  https://www.svd.se/a/16OymX/melodifestivalen-2026-lykke-eder-ekmans-tolv-tankar</description>
+            <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260215_054343.mp3" length="5631213" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260215_054343.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 14 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 14 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -189,24 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260206_053852.mp3" length="7918701" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260206_053852.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 4 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 4 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Lars von Trier gör konstutställning i Stockholm – hyllar sin...
-  https://www.dn.se/kultur/lars-von-trier-gor-konstutstallning-i-stockholm-hyllar-sina-foregangare/
-• The Verge: Apple’s Xcode adds OpenAI and Anthropic’s coding agents
-  https://www.theverge.com/news/873300/apple-xcode-openai-anthropic-ai-agentic-coding
-• SVT Nyheter: Explosion i trapphus i Malmö – en person gripen
-  https://www.svt.se/nyheter/lokalt/skane/larm-om-explosion-i-malmo-t45ksy
-• TechCrunch: Xcode moves into agentic coding with deeper OpenAI and Anthr...
-  https://techcrunch.com/2026/02/03/xcode-moves-into-agentic-coding-with-deeper-openai-and-anthropic-integrations/
-• TechCrunch: Gradient’s heat pumps get new smarts to enable old-building ...
-  https://techcrunch.com/2026/02/03/gradients-heat-pumps-get-new-smarts-to-enable-old-building-retrofits/</description>
-            <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260204_053712.mp3" length="8344940" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260204_053712.mp3</guid>
         </item>
     </channel>
 </rss>

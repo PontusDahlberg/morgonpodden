@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 16 Feb 2026 05:52:58 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 17 Feb 2026 05:49:51 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 17 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 17 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Sverige möter Schweiz: ”Största matchen i våra liv”
+  https://www.dn.se/sport/sverige-moter-schweiz-storsta-matchen-i-vara-liv/
+• Miljö &amp; Utveckling: Försäljningen av ekologiskt ökar i Europa – minskar i Sverig...
+  https://miljo-utveckling.se/forsaljningen-av-ekologiskt-okar-i-europa-minskar-i-sverige/
+• Miljö &amp; Utveckling: Eeva Primmer ny vd för Stockholm Environment Institute
+  https://miljo-utveckling.se/eeva-primmer-ny-vd-for-stockholm-environment-institute-2/
+• Dagens Nyheter: DN Debatt. ”S fifflade om elen – vad blir Tidöregeringens dr...
+  https://www.dn.se/debatt/s-fifflade-om-elen-vad-blir-tidoregeringens-drag-i-host/
+• Svenska Dagbladet: Lånar regeringen för mycket pengar?
+  https://www.svd.se/a/0pGJXA/lanar-regeringen-for-mycket-pengar</description>
+            <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260217_054123.mp3" length="9152109" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260217_054123.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 16 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 16 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,24 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260208_055011.mp3" length="7509357" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260208_055011.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 7 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 7 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Ny Teknik: Foodora vill byta ut bilarna – testar eldrivna trehjulingar ...
-  https://www.nyteknik.se/elbilar/foodora-vill-byta-ut-bilarna-testar-eldrivna-trehjulingar-i-stockholm/4432310
-• Svenska Dagbladet: Explosion vid port i Malmö – 15-åring gripen
-  https://www.svd.se/a/y57L8J/explosion-vid-port-i-malmo-15-aring-gripen
-• Sveriges Natur: Minskat hopp – en present till kommande regering
-  https://www.sverigesnatur.org/opinion/kronika/minskat-hopp-en-present-till-kommande-regering/
-• TechCrunch: Apple is working to make CarPlay compatible with AI chatbots...
-  https://techcrunch.com/2026/02/06/apple-is-working-to-make-carplay-compatible-with-ai-chatbots-like-chatgpt/
-• The Verge: Apple might let you use ChatGPT from CarPlay
-  https://www.theverge.com/transportation/875199/apple-carplay-third-party-chatbots-rumor</description>
-            <pubDate>Sat, 07 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260207_053642.mp3" length="8559597" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260207_053642.mp3</guid>
         </item>
     </channel>
 </rss>

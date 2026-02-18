@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 17 Feb 2026 05:49:51 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 18 Feb 2026 05:49:59 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 18 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 18 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Malin Fransson: ”I kvarten kan Sverige få betala priset för ...
+  https://www.dn.se/sport/malin-fransson-i-kvarten-kan-sverige-fa-betala-priset-for-de-markliga-besluten/
+• Dagens Nyheter: DN Debatt. ”Läkare flyr Sverige när familjer splittras”
+  https://www.dn.se/debatt/lakare-flyr-sverige-nar-familjer-splittras/
+• Computer Sweden: Kinesiska AI-modellen Qwen får utökat stöd för AI-agenter
+  https://computersweden.se/article/4133110/kinesiska-ai-modellen-qwen-far-utokat-stod-for-ai-agenter.html
+• Svenska Dagbladet: Kritiken: Risk för totalt sophaveri i Stockholm
+  https://www.svd.se/a/L45BAJ/kritik-mot-nya-lagen-om-fastighetsnara-insamling-stockholm-gar-mot-totalt-sophaveri
+• SVT Nyheter: Hög smäll i Malmö – bombskyddet inkallat
+  https://www.svt.se/nyheter/lokalt/skane/hog-small-i-malmo-bombskyddet-pa-vag
+• SVT Nyheter: Så fungerar energiväskan – reportern avslöjar flera tjuvar
+  https://www.svt.se/nyheter/lokalt/norrbotten/sa-fungerar-energivaskan-reportern-avslojar-flera-tjuvar</description>
+            <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260218_054240.mp3" length="8719725" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260218_054240.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 17 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 17 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -189,26 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260209_054644.mp3" length="8662509" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260209_054644.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 8 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 8 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Ny Teknik: Regeringen vill ta bort förbud mot kärnkraft längs kusterna
-  https://www.nyteknik.se/energi/regeringen-vill-ta-bort-foerbud-mot-kaernkraft-laengs-svenska-kusterna/4434208
-• Dagens Nyheter: Sverige krossade värdnationen – inför ”10 000 galna italiena...
-  https://www.dn.se/sport/sverige-tystade-hemmapubliken-korde-over-italien/
-• SVT Nyheter: En person död efter lägenhetsbrand i Biskopsgården i Götebor...
-  https://www.svt.se/nyheter/lokalt/vast/en-person-dod-efter-lagenhetsbrand-i-biskopsgarden-i-goteborg
-• Svenska Dagbladet: En död efter brand i Göteborg
-  https://www.svd.se/a/bOz99B/en-dod-efter-brand-i-goteborg
-• Guardian Environment: Trump’s environmental rollbacks contradict RFK Jr’s healthy ...
-  https://www.theguardian.com/us-news/2026/feb/04/trump-environmental-rollbacks-maha-promise
-• Miljö &amp; Utveckling: Malmö rekordsatsar på klimatet – här är åtgärderna
-  https://miljo-utveckling.se/malmo-rekordsatsar-pa-klimatet-har-ar-atgarderna/</description>
-            <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260208_055011.mp3" length="7509357" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260208_055011.mp3</guid>
         </item>
     </channel>
 </rss>

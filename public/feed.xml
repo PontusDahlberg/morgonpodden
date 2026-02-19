@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 18 Feb 2026 05:49:59 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 19 Feb 2026 05:48:37 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 19 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 19 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Breakit Tech: Gabriel Vasquez flög till Stockholm nio gånger på ett år – s...
+  https://www.breakit.se/artikel/45497/gabriel-vasquez-flog-till-stockholm-nio-ganger-pa-ett-ar-sa-scoutar-andreessen-horowitz-svenska-startups
+• SVT Nyheter: Tusentals furries intar Malmö
+  https://www.svt.se/nyheter/lokalt/skane/tusentals-furries-intar-malmo
+• Computer Sweden: Anthropic uppgraderar AI-modellen Claude Sonnet till 4.6
+  https://computersweden.se/article/4133715/anthropic-uppgraderar-ai-modellen-claude-sonnet-till-4-6.html
+• TechCrunch: OpenAI deepens India push with Pine Labs fintech partnership
+  https://techcrunch.com/2026/02/18/openai-deepens-india-push-with-pine-labs-fintech-partnership/
+• TechCrunch: Amazon halts Blue Jay robotics project after less than 6 mon...
+  https://techcrunch.com/2026/02/18/amazon-halts-blue-jay-robotics-project-after-less-than-six-months/
+• Miljö &amp; Utveckling: Han tar över klimat- och miljöfrågorna i regeringen
+  https://miljo-utveckling.se/han-tar-over-klimat-och-miljofragorna-i-regeringen/</description>
+            <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260219_054151.mp3" length="7643373" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260219_054151.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 18 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 18 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -189,26 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260210_055034.mp3" length="8881389" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260210_055034.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 9 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 9 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: DN Debatt. ”Dina data kan hamna hos Trump – men regeringen v...
-  https://www.dn.se/debatt/dina-data-kan-hamna-hos-trump-men-regeringen-vagrar-agera/
-• Ny Teknik: Regeringen vill ta bort förbud mot kärnkraft längs kusterna
-  https://www.nyteknik.se/energi/regeringen-vill-ta-bort-foerbud-mot-kaernkraft-laengs-svenska-kusterna/4434208
-• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
-  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
-• SVT Nyheter: Ätstörningsvården i Stockholm: Bättre statistik – sämre vård...
-  https://www.svt.se/nyheter/lokalt/stockholm/atstorningsvarden-i-stockholm-battre-statistik-samre-vard
-• Dagens Nyheter: Obesegrade Sverige stormar mot gruppsegern
-  https://www.dn.se/sport/obesegrade-sverige-stormar-mot-gruppsegern/
-• Miljö &amp; Utveckling: Malmö rekordsatsar på klimatet – här är åtgärderna
-  https://miljo-utveckling.se/malmo-rekordsatsar-pa-klimatet-har-ar-atgarderna/</description>
-            <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260209_054644.mp3" length="8662509" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260209_054644.mp3</guid>
         </item>
     </channel>
 </rss>

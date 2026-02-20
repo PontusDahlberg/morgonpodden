@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 19 Feb 2026 05:48:37 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 20 Feb 2026 05:47:05 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 20 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 20 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Ny Teknik: Kärnkraft och katapulter – franska flottans flaggskepp komme...
+  https://www.nyteknik.se/farkoster/kaernkraft-och-katapulter-franska-flottans-flaggskepp-kommer-till-sverige/4438115
+• SVT Nyheter: Schweiz avgjorde i förlängning – inget brons för Sverige
+  https://www.svt.se/sport/ishockey/har-tar-sverige-ledningen-i-bronsmatchen
+• SVT Nyheter: Meira Omar om Mello i Malmö: ”Låten är en stor kärleksförkla...
+  https://www.svt.se/kultur/meira-omar-om-mello-i-malmo-laten-ar-en-stor-karleksforklaring
+• Dagens Nyheter: Annika Ström Melin: Självgoda Sverige förstår inte att vi är...
+  https://www.dn.se/ledare/annika-strom-melin-sjalvgoda-sverige-forstar-inte-att-vi-ar-pa-vag-att-missa-revolutionen-i-eu/
+• CleanTechnica: Sierra Club Report: PFAS Found in Nearly All Alabama’s Water...
+  https://cleantechnica.com/2026/02/19/sierra-club-report-pfas-found-in-nearly-all-alabamas-waterways/
+• France 24: Trump is weighing initial limited strikes to force Iran into...
+  https://www.france24.com/en/tv-shows/a-propos/20260219-trump-is-weighing-initial-limited-strikes-to-force-iran-into-a-nuclear-deal-report</description>
+            <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260220_053847.mp3" length="8952429" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260220_053847.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 19 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 19 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,22 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260211_054911.mp3" length="6929901" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260211_054911.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 10 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 10 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Sveriges Natur: Kärnkraften i Belgien minskar – trots regeringens vilja
-  https://www.sverigesnatur.org/aktuellt/karnkraften-i-belgien-minskar-trots-regeringens-vilja/
-• Miljö &amp; Utveckling: Shein slutar kommunicera nettonollmål efter rättslig process
-  https://miljo-utveckling.se/shein-slutar-kommunicera-nettonollmal-efter-rattslig-process/
-• SVT Nyheter: Färre slaktdagar på Jämtlandsgården, Hammerdal, i köttbriste...
-  https://www.svt.se/nyheter/lokalt/jamtland/farre-slaktdagar-pa-jamtlandsgarden-hammerdal-i-kottbristens-spar
-• TechCrunch: ChatGPT rolls out ads
-  https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/</description>
-            <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260210_055034.mp3" length="8881389" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260210_055034.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 20 Feb 2026 05:47:05 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 21 Feb 2026 05:44:54 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 21 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 21 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Stickning lockar allt fler – skärmfria träffar i Värmland
+  https://www.svt.se/nyheter/lokalt/varmland/stickning-lockar-allt-fler-skarmfria-traffar-i-varmland
+• SVT Nyheter: Kritik mot skolmaten i Umeå – föräldrar skickar med matlådor...
+  https://www.svt.se/nyheter/lokalt/vasterbotten/kritik-mot-skolmaten-i-umea-foraldrar-skickar-med-matlador-till-barnen
+• SVT Nyheter: Kritiken mot regeringen efter skyfallen i Ångermanland: ”Fyr...
+  https://www.svt.se/nyheter/lokalt/vasternorrland/kritiken-mot-regeringen-efter-skyfallen-i-angermanland-fyrkantigt-bidragssystem
+• Breakit Tech: Regeringen presenterar ny AI-strategi – här är viktigaste pu...
+  https://www.breakit.se/artikel/45530/regeringen-presenterar-ny-ai-strategi-har-ar-viktigaste-punkterna-for-techsektorn
+• Svenska Dagbladet: Skickar tydlig AI-signal till Sverige
+  https://www.svd.se/a/6q6bPO/ai-toppmote-i-new-delhi-skickar-en-tydlig-signal-till-sverige
+• SVT Nyheter: Andrewskandalen – dödsstöten eller möjlighet till ett nytt k...
+  https://www.svt.se/nyheter/utrikes/andrewskandalen-dodsstoten-eller-mojlighet-till-ett-nytt-kungahus</description>
+            <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260221_053603.mp3" length="10285293" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260221_053603.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 20 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 20 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260212_054508.mp3" length="8995437" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260212_054508.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 11 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 11 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Elpriser i Finland slår mot Sverige – rekordkonsumtion drive...
-  https://www.svt.se/nyheter/utrikes/elpriser-i-finland-slar-mot-sverige-rekordkonsumtion-driver-upp-kostnader
-• Dagens Nyheter: Stor ilska i New York – Trumps regering halar prideflagga
-  https://www.dn.se/varlden/stor-ilska-i-new-york-trumps-regering-halar-prideflagga/
-• SVT Nyheter: Skottlossning i Malmö – två personer till sjukhus
-  https://www.svt.se/nyheter/lokalt/skane/skottlossning-i-malmo-h6z45s
-• Miljö &amp; Utveckling: Genomgång: Här är regeringens nya strategi för biologisk mån...
-  https://miljo-utveckling.se/genomgang-har-ar-regeringens-nya-strategi-for-biologisk-mangfald/
-• Miljö &amp; Utveckling: EU:s klimatmål för 2040 klubbat – så tycker de svenska parla...
-  https://miljo-utveckling.se/eus-klimatmal-for-2040-faststalls-till-90-procents-utslappsminskning/
-• Dagens Nyheter: Insändare. Stoppa fler utförsäljningar av allmännyttan
-  https://www.dn.se/insandare/stoppa-fler-utforsaljningar-av-allmannyttan/</description>
-            <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260211_054911.mp3" length="6929901" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260211_054911.mp3</guid>
         </item>
     </channel>
 </rss>

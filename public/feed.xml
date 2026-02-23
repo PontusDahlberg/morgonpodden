@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 22 Feb 2026 05:46:13 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 23 Feb 2026 05:52:41 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 23 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 23 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Sverige tar OS-guld i curling – slog Schweiz efter drama
+  https://www.svt.se/sport/curling/sverige-tar-os-guld-i-curling
+• Dagens Nyheter: Stockholm först ut i landet med att punktmarkera sexåringar
+  https://www.dn.se/sverige/stockholm-forst-ut-i-landet-med-att-punktmarkera-sexaringar/
+• Dagens Nyheter: DN Debatt. ”Så går integrationen i Sverige just nu”
+  https://www.dn.se/debatt/sa-gar-integrationen-i-sverige-just-nu/
+• Dagens Nyheter: Sveriges ambassadör: ”Borde inte vara här om jag inte var li...
+  https://www.dn.se/varlden/sveriges-ambassador-borde-inte-vara-har-om-jag-inte-var-lite-radd/
+• The Verge: Suspect in Tumbler Ridge school shooting described violent s...
+  https://www.theverge.com/ai-artificial-intelligence/882814/tumbler-ridge-school-shooting-chatgpt
+• Dagens Nyheter: Medaljregnet dag för dag – här är Sveriges rekord-OS
+  https://www.dn.se/sport/medaljregnet-dag-for-dag-har-ar-sveriges-rekord-os/</description>
+            <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260223_054605.mp3" length="7821165" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260223_054605.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 22 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 22 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 14 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260214_053711.mp3" length="10540269" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260214_053711.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 13 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 13 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Johannes Klenell: Som Ulf Lundell mår, så mår också Sverige
-  https://www.dn.se/kultur/johannes-klenell-som-ulf-lundell-mar-sa-mar-ocksa-sverige/
-• Svenska Dagbladet: Dollarns fall fortsätter – kris kan slå mot Sverige
-  https://www.svd.se/a/2p85x4/harvardekonom-dollarn-utmanas-som-varldens-reservvaluta-av-bland-annat-euron
-• TechCrunch: A new version of OpenAI’s Codex is powered by a new dedicate...
-  https://techcrunch.com/2026/02/12/a-new-version-of-openais-codex-is-powered-by-a-new-dedicated-chip/
-• Miljö &amp; Utveckling: Ingka pausar stora delar av utsläppsrapporteringen
-  https://miljo-utveckling.se/ingka-pausar-stora-delar-av-utslappsrapporteringen/
-• SVT Nyheter: Här är Sveriges grupp i Nations League
-  https://www.svt.se/sport/fotboll/har-ar-sveriges-grupp-i-nations-league-pxgvdi
-• TechCrunch: Amid disappointing earnings, Pinterest claims it sees more s...
-  https://techcrunch.com/2026/02/12/amid-disappointing-earnings-pinterest-claims-it-sees-more-searches-than-chatgpt/</description>
-            <pubDate>Fri, 13 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260213_054246.mp3" length="8075757" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260213_054246.mp3</guid>
         </item>
     </channel>
 </rss>

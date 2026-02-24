@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 23 Feb 2026 05:52:41 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 24 Feb 2026 05:49:41 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 24 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 24 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Breakit Tech: Sveriges AI-strategi saknar det viktigaste: Brådska
+  https://www.breakit.se/artikel/45545/sveriges-ai-strategi-saknar-det-viktigaste-bradska
+• SVT Nyheter: Teckenspråk i förskolan: Het debatt i Umeå kommunfullmäktige
+  https://www.svt.se/nyheter/nyhetstecken/teckensprak-i-forskolan-het-debatt-i-umea-kommunfullmaktige
+• Politico Europe: Swedish business leader Ehnbom proposed Epstein meet women s...
+  https://www.politico.eu/article/jeffrey-epstein-files-sweden-business-leader-ehnbom-proposed-meet-women/?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication
+• Politico Europe: Canada summons OpenAI reps over school shooting suspect’s Ch...
+  https://www.politico.com/news/2026/02/23/canada-openai-chatgpt-school-shooting-00793471?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication
+• TechCrunch: With AI, investor loyalty is (almost) dead: At least a dozen...
+  https://techcrunch.com/2026/02/23/with-ai-investor-loyalty-is-almost-dead-at-least-a-dozen-openai-vcs-now-also-back-anthropic/
+• TechCrunch: OpenAI calls in the consultants for its enterprise push
+  https://techcrunch.com/2026/02/23/openai-calls-in-the-consultants-for-its-enterprise-push/</description>
+            <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260224_054105.mp3" length="6705261" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260224_054105.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 23 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 23 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260215_054343.mp3" length="5631213" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260215_054343.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 14 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 14 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Pål Jonson: Sverige deltar fullt ut i Natos kärnvapenavskräc...
-  https://www.dn.se/varlden/pal-jonson-sverige-deltar-fullt-ut-i-natos-karnvapenavskrackning/
-• Computer Sweden: Open AI påstår att Deepseek destillerat amerikanska AI-model...
-  https://computersweden.se/article/4132146/open-ai-pastar-att-deepseek-destillerat-amerikanska-ai-modeller.html
-• SVT Nyheter: Naturvårdsverket överklagar tillstånd för Volvos batterifabr...
-  https://www.svt.se/nyheter/lokalt/vast/naturvardsverket-overklagar-tillstand-for-volvos-batterifabrik-i-mariestad
-• CleanTechnica: Rideence To Start Local Assembly Of Electric Vehicles At AVA...
-  https://cleantechnica.com/2026/02/13/rideence-to-start-local-assembly-of-electric-vehicles-at-ava-plant-in-mombasa-kenya/
-• SVT Nyheter: Alla hjärtans dag fyller 70 år – så kom traditionen till Sve...
-  https://www.svt.se/nyheter/lokalt/vastmanland/alla-hjartans-dag-fyller-70-ar-sa-kom-traditionen-till-sverige
-• Dagens Nyheter: Sverige till semifinal efter drama: ”Min nya turdag”
-  https://www.dn.se/sport/efter-de-svarta-aren-sverige-till-semifinal-efter-drama/</description>
-            <pubDate>Sat, 14 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260214_053711.mp3" length="10540269" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260214_053711.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 24 Feb 2026 05:49:41 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 25 Feb 2026 05:49:34 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 25 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 25 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Rasar mot ministerns besked om slopade klimatmål: ”Borde skä...
+  https://www.svt.se/nyheter/inrikes/rasar-mot-ministerns-besked-om-slopade-klimatmal-borde-skammas
+• Dagens Nyheter: Oppositionen rasar om klimatmålet: ”Regeringen borde skämmas...
+  https://www.dn.se/sverige/oppositionen-rasar-om-klimatmalet-regeringen-borde-skammas/
+• SVT Nyheter: Här närmar sig franska atomfartyget Malmö
+  https://www.svt.se/nyheter/lokalt/skane/har-narmar-sig-franska-atomfartyget-malmo
+• Miljö &amp; Utveckling: Regeringen förlänger klimatpremien för lätta ellastbilar
+  https://miljo-utveckling.se/regeringen-forlanger-klimatpremien-for-latta-ellastbilar/
+• TechCrunch: Spanish ‘soonicorn’ Multiverse Computing releases free compr...
+  https://techcrunch.com/2026/02/24/spanish-soonicorn-multiverse-computing-releases-free-compressed-ai-model/
+• SVT Nyheter: Se drönarbilderna: Unik upplevelse på isen
+  https://www.svt.se/nyheter/lokalt/ost/se-dronarbilderna-unik-upplevelse-pa-isen</description>
+            <pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260225_054228.mp3" length="8130669" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260225_054228.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 24 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 24 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260216_054643.mp3" length="6868461" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260216_054643.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 15 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 15 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Jonna Sundling körde hem silvret efter Sveriges mardrömssträ...
-  https://www.svt.se/sport/langdskidor/jonna-sundling-korde-hem-silvret-efter-sveriges-mardromsstracka-pa-os-stafetten
-• Dagens Nyheter: Sveriges fjärde raka – Kanada straffades för regelbrott
-  https://www.dn.se/sport/sveriges-fjarde-raka-kanada-straffades-for-regelbrott/
-• CleanTechnica: AI = Artificial Intelligence or Always Incorrect?
-  https://cleantechnica.com/2026/02/14/ai-artificial-intelligence-or-always-incorrect/
-• Dagens Nyheter: ”Sverige hade en plan för att ta oss på bar gärning”
-  https://www.dn.se/sport/sverige-hade-en-plan-for-att-ta-oss-pa-bar-garning/
-• TechCrunch: OpenAI removes access to sycophancy-prone GPT-4o model
-  https://techcrunch.com/2026/02/13/openai-removes-access-to-sycophancy-prone-gpt-4o-model/
-• Svenska Dagbladet: Hur kan det här vara Sveriges lägereld?
-  https://www.svd.se/a/16OymX/melodifestivalen-2026-lykke-eder-ekmans-tolv-tankar</description>
-            <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260215_054343.mp3" length="5631213" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260215_054343.mp3</guid>
         </item>
     </channel>
 </rss>

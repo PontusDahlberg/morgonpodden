@@ -4,6 +4,7 @@
 .env.*
 .env.local  
 .env.*.local
+!.env.example
 google-cloud-service-account.json
 google-cloud-credentials.json
 *-service-account.json

@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 25 Feb 2026 05:49:34 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 26 Feb 2026 05:46:52 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 26 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 26 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Guardian Climate Crisis: Tropical plants flowering months earlier or later because of...
+  https://www.theguardian.com/environment/2026/feb/25/tropical-plants-flower-shifted-months-climate-breakdown-aoe
+• Breakit Tech: Stora utdelningar och miljonintäkter – så mycket tjänar prof...
+  https://www.breakit.se/artikel/45571/stora-utdelningar-och-miljonintakter-sa-mycket-tjanar-profilerna-i-girls-of-stockholm
+• TechCrunch: Alphabet-owned robotics software company Intrinsic joins Goo...
+  https://techcrunch.com/2026/02/25/alphabet-owned-robotics-software-company-intrinsic-joins-google/
+• CleanTechnica: Autonomous Driving News: Tesla Sues, BMW Bails
+  https://cleantechnica.com/2026/02/25/autonomous-driving-news-tesla-sues-bmw-bails/
+• Dagens Nyheter: Franskt atomfartyg i Sverige: ”Vi står tillsammans”
+  https://www.dn.se/sverige/franskt-atomfartyg-i-sverige-stark-signal-om-att-vi-star-tillsammans/
+• Dagens Nyheter: Anders Haraldsson: Här är de 9 bästa evenemangen i Stockholm
+  https://www.dn.se/kultur/anders-haraldsson-har-ar-de-9-basta-evenemangen-i-stockholm/</description>
+            <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260226_054006.mp3" length="8137197" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260226_054006.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 25 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 25 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260217_054123.mp3" length="9152109" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260217_054123.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 16 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 16 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Sorsele kommun satsar på sockerfria måltider – kocken Ann-Ch...
-  https://www.svt.se/nyheter/lokalt/vasterbotten/sorsele-kommun-satsar-pa-sockerfria-maltider-kocken-ann-charlott-roligare-matlagning
-• Dagens Nyheter: Mardrömsväg kan vänta för Sverige – Lettland första hindret
-  https://www.dn.se/sport/mardromsvag-kan-vanta-for-sverige-lettland-forsta-hindret/
-• SVT Nyheter: Museernas uppdrag – rädda kulturarvet om kriget kommer
-  https://www.svt.se/nyheter/lokalt/ost/museernas-uppdrag-radda-kulturarvet-om-kriget-kommer
-• TechCrunch: OpenClaw creator Peter Steinberger joins OpenAI
-  https://techcrunch.com/2026/02/15/openclaw-creator-peter-steinberger-joins-openai/
-• Miljö &amp; Utveckling: Ingka pausar stora delar av utsläppsrapporteringen
-  https://miljo-utveckling.se/ingka-pausar-stora-delar-av-utslappsrapporteringen/
-• TechCrunch: India has 100M weekly active ChatGPT users, Sam Altman says
-  https://techcrunch.com/2026/02/15/india-has-100m-weekly-active-chatgpt-users-sam-altman-says/</description>
-            <pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260216_054643.mp3" length="6868461" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260216_054643.mp3</guid>
         </item>
     </channel>
 </rss>

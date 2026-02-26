@@ -49,6 +49,15 @@ Alla inställningar finns i `sources.json`:
 - TTS-inställningar och röstval
 - AI-prompter för innehållsgenerering
 
+### Innehallskvalitet (miljovariabler)
+
+Om underlaget blir tunt kan scraper automatiskt skarpa kraven och forsoka igen. Standarderna kan styras via miljovariabler:
+
+- `MMM_THIN_AUTO_STRICT=1` aktiverar automatisk omkoring med strikt innehallskrav
+- `MMM_THIN_RATIO_THRESHOLD=0.35` tröskel for andel tunna poster
+- `MMM_THIN_RATIO_MIN_ITEMS=6` minsta antal poster innan tröskeln galler
+- `MMM_REQUIRE_ARTICLE_CONTENT=false` (kan sattas till `true` for att alltid skippa tunna poster)
+
 ### Podcast Settings (GUI)
 
 "Podcast Settings" är en sida i den lokala Streamlit-GUI:n (inte i GitHub Actions).

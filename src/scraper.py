@@ -31,6 +31,10 @@ class NewsScraper:
         self.auto_fix_feeds = os.getenv('MMM_AUTO_FIX_FEEDS', '1').strip().lower() not in {'0', 'false', 'no'}
         self.feed_cache_path = os.getenv('MMM_FEED_URL_CACHE', 'feed_url_cache.json')
         self.feed_url_cache: Dict[str, Dict[str, Any]] = self._load_feed_url_cache(self.feed_cache_path)
+        self.require_article_content = os.getenv('MMM_REQUIRE_ARTICLE_CONTENT', '0').strip().lower() in {'1', 'true', 'yes'}
+        self.thin_ratio_threshold = float(os.getenv('MMM_THIN_RATIO_THRESHOLD', '0.35') or 0.35)
+        self.thin_ratio_auto_strict = os.getenv('MMM_THIN_AUTO_STRICT', '0').strip().lower() in {'1', 'true', 'yes'}
+        self.thin_ratio_min_items = int(os.getenv('MMM_THIN_RATIO_MIN_ITEMS', '6') or 6)
 
         # Apply cached URLs first (best-effort)
         for source in self.sources:
@@ -325,6 +329,19 @@ class NewsScraper:
         except Exception as e:
             logger.debug(f"Could not fetch article content from {url}: {e}")
             return ""
+
+    @staticmethod
+    def _clean_text(text: str) -> str:
+        if not text:
+            return ""
+        # Remove HTML tags if present and normalize whitespace
+        if "<" in text and ">" in text:
+            try:
+                soup = BeautifulSoup(text, 'html.parser')
+                text = soup.get_text(separator=' ', strip=True)
+            except Exception:
+                pass
+        return " ".join(str(text).split())
     
     async def fetch_javascript_content(self, url: str, wait_for_selector: str = None) -> str:
         """Fetch content from pages that require JavaScript rendering"""
@@ -609,6 +626,8 @@ class NewsScraper:
             logger.info(f"📡 RSS feed parsed: {len(feed.entries)} entries found")
             
             items = []
+            thin_items = 0
+            skipped_thin = 0
             
             # Dynamic max items: if few sources, get more items per source
             total_sources = len([s for s in self.sources if s.get('enabled', True)])
@@ -623,17 +642,26 @@ class NewsScraper:
             
             logger.info(f"📊 Using max {max_items} items (total sources: {total_sources})")
             
-            for entry in feed.entries[:max_items]:
-                title = entry.get('title', '').strip()
-                summary = entry.get('summary', '').strip()
+            for entry in feed.entries:
+                title = self._clean_text(entry.get('title', '').strip())
+                summary = self._clean_text(entry.get('summary', '').strip())
+                if not summary:
+                    summary = self._clean_text(entry.get('description', '').strip())
+                if not summary:
+                    content_list = entry.get('content', []) or []
+                    if isinstance(content_list, list) and content_list:
+                        summary = self._clean_text((content_list[0] or {}).get('value', '').strip())
                 
                 # Use title, or summary if no title
                 text = title if title else summary
                 
                 if text and len(text) > 10:
+                    entry_link = entry.get('link', '')
+                    if entry_link:
+                        entry_link = urljoin(final_url or attempted_url, entry_link)
                     item = {
                         'title': text,
-                        'link': entry.get('link', ''),
+                        'link': entry_link,
                         'timestamp': datetime.now().isoformat()
                     }
                     
@@ -664,21 +692,34 @@ class NewsScraper:
                         needs_full_content = True
                     
                     # Fetch full article content if needed
-                    if needs_full_content and entry.get('link'):
+                    if needs_full_content and entry_link:
                         logger.debug(f"  📄 Fetching full content for: {title[:50]}...")
-                        article_content = await self.fetch_article_content(session, entry.get('link'))
+                        article_content = await self.fetch_article_content(session, entry_link)
                         if article_content:
                             item['summary'] = article_content[:2000] + '...' if len(article_content) > 2000 else article_content
                             logger.debug(f"  ✓ Got {len(article_content)} chars of article content")
                         elif summary:
                             item['summary'] = summary[:1000] + '...' if len(summary) > 1000 else summary
+                        else:
+                            logger.warning(f"⚠️ No article content for: {title[:80]} ({entry_link})")
                     else:
                         # Use existing summary if it's good enough
                         if summary and summary != title and len(summary) > 10:
                             item['summary'] = summary[:2000] + '...' if len(summary) > 2000 else summary
+
+                    if not item.get('summary'):
+                        if self.require_article_content:
+                            logger.warning(f"⚠️ Skipping thin item (no content): {title[:80]}")
+                            skipped_thin += 1
+                            continue
+                        logger.warning(f"⚠️ Thin item (no content): {title[:80]}")
+                        thin_items += 1
                     
                     items.append(item)
                     logger.debug(f"  ✓ Added RSS item: {text[:80]}...")
+
+                    if len(items) >= max_items:
+                        break
             
             logger.info(f"✅ Successfully extracted {len(items)} RSS items from {source['name']}")
             
@@ -688,6 +729,8 @@ class NewsScraper:
                 'priority': source.get('priority', 3),
                 'items': items,
                 'scraped_count': len(items),
+                'thin_items': thin_items,
+                'skipped_thin_items': skipped_thin,
                 'format': 'rss',
                 'feed_title': feed.feed.get('title', source['name']),
                 'http_status': http_status,
@@ -743,6 +786,8 @@ class NewsScraper:
         
         soup = BeautifulSoup(html, 'html.parser')
         items = []
+        thin_items = 0
+        skipped_thin = 0
         
         if source['type'] == 'weather':
             # Special handling for weather
@@ -784,10 +829,30 @@ class NewsScraper:
                         link_elem = elem.find('a')
                         if link_elem:
                             link = link_elem.get('href', '')
+
+                    if link:
+                        link = urljoin(final_url or source['url'], link)
+
+                    summary = ''
+                    if link:
+                        article_content = await self.fetch_article_content(session, link)
+                        if article_content:
+                            summary = article_content[:2000] + '...' if len(article_content) > 2000 else article_content
+                        else:
+                            logger.warning(f"⚠️ No article content for: {text[:80]} ({link})")
+
+                    if not summary and self.require_article_content:
+                        logger.warning(f"⚠️ Skipping thin item (no content): {text[:80]}")
+                        skipped_thin += 1
+                        continue
+                    if not summary:
+                        logger.warning(f"⚠️ Thin item (no content): {text[:80]}")
+                        thin_items += 1
                     
                     items.append({
                         'title': text,
                         'link': link,
+                        'summary': summary,
                         'timestamp': datetime.now().isoformat()
                     })
                     logger.debug(f"  ✓ Added HTML item: {text[:80]}...")
@@ -803,6 +868,8 @@ class NewsScraper:
             'priority': source.get('priority', 3),
             'items': items,
             'scraped_count': len(items),
+            'thin_items': thin_items,
+            'skipped_thin_items': skipped_thin,
             'format': 'html',
             'http_status': http_status,
             'content_type': content_type,
@@ -1117,35 +1184,74 @@ class NewsScraper:
         return results
     
     async def scrape_all(self) -> List[Dict[str, Any]]:
-        logger.info(f"🚀 Starting scraping from {len(self.sources)} sources...")
-        results = []
-        async with aiohttp.ClientSession() as session:
-            tasks = [self.scrape_source(session, source) for source in self.sources]
-            results = await asyncio.gather(*tasks)
+        async def _scrape_once() -> List[Dict[str, Any]]:
+            logger.info(f"🚀 Starting scraping from {len(self.sources)} sources...")
+            async with aiohttp.ClientSession() as session:
+                tasks = [self.scrape_source(session, source) for source in self.sources]
+                scraped = await asyncio.gather(*tasks)
 
-        # Optional best-effort enrichment for items that are too short to summarize well
-        try:
-            results = await self._enrich_thin_items(results)
-        except Exception as e:
-            logger.warning(f"🧩 Enrichment step failed, continuing without it: {e}")
-        
-        # Sort by priority
-        results.sort(key=lambda x: x.get('priority', 99))
-        
-        # Log summary
-        total_items = sum(len(result.get('items', [])) for result in results)
-        successful_sources = len([r for r in results if r.get('items')])
-        
-        logger.info(f"📊 Scraping Summary:")
-        logger.info(f"  • Total sources: {len(self.sources)}")
-        logger.info(f"  • Successful sources: {successful_sources}")
-        logger.info(f"  • Total items extracted: {total_items}")
-        
-        for result in results:
-            item_count = len(result.get('items', []))
-            status = "✅" if item_count > 0 else "❌"
-            logger.info(f"  {status} {result['source']}: {item_count} items")
-        
+            # Optional best-effort enrichment for items that are too short to summarize well
+            try:
+                scraped = await self._enrich_thin_items(scraped)
+            except Exception as e:
+                logger.warning(f"🧩 Enrichment step failed, continuing without it: {e}")
+
+            # Sort by priority
+            scraped.sort(key=lambda x: x.get('priority', 99))
+            return scraped
+
+        def _compute_thin_stats(scraped: List[Dict[str, Any]]) -> Dict[str, int | float]:
+            total_items = sum(len(result.get('items', [])) for result in scraped)
+            successful_sources = len([r for r in scraped if r.get('items')])
+            total_thin = sum(int(result.get('thin_items', 0) or 0) for result in scraped)
+            total_skipped_thin = sum(int(result.get('skipped_thin_items', 0) or 0) for result in scraped)
+            total_seen = total_items + total_skipped_thin
+            thin_seen = total_thin + total_skipped_thin
+            thin_ratio = (thin_seen / total_seen) if total_seen else 0.0
+            return {
+                'total_items': total_items,
+                'successful_sources': successful_sources,
+                'total_thin': total_thin,
+                'total_skipped_thin': total_skipped_thin,
+                'total_seen': total_seen,
+                'thin_seen': thin_seen,
+                'thin_ratio': thin_ratio,
+            }
+
+        def _log_scrape_summary(scraped: List[Dict[str, Any]]) -> None:
+            stats = _compute_thin_stats(scraped)
+            logger.info(f"📊 Scraping Summary:")
+            logger.info(f"  • Total sources: {len(self.sources)}")
+            logger.info(f"  • Successful sources: {stats['successful_sources']}")
+            logger.info(f"  • Total items extracted: {stats['total_items']}")
+            if stats['total_thin'] or stats['total_skipped_thin']:
+                logger.warning(
+                    f"  ⚠️ Thin items (no content): {stats['total_thin']} (skipped: {stats['total_skipped_thin']})"
+                )
+
+            for result in scraped:
+                item_count = len(result.get('items', []))
+                status = "✅" if item_count > 0 else "❌"
+                logger.info(f"  {status} {result['source']}: {item_count} items")
+                thin_count = int(result.get('thin_items', 0) or 0)
+                skipped_count = int(result.get('skipped_thin_items', 0) or 0)
+                if thin_count or skipped_count:
+                    logger.warning(f"    ⚠️ Thin items: {thin_count} (skipped: {skipped_count})")
+
+        results = await _scrape_once()
+
+        # Auto-tighten if too many thin items and strict mode is allowed
+        if self.thin_ratio_auto_strict and not self.require_article_content:
+            stats = _compute_thin_stats(results)
+            if stats['total_seen'] >= self.thin_ratio_min_items and stats['thin_ratio'] >= self.thin_ratio_threshold:
+                logger.warning(
+                    "⚠️ High thin-item ratio (%.0f%%). Retrying with strict content requirement.",
+                    stats['thin_ratio'] * 100,
+                )
+                self.require_article_content = True
+                results = await _scrape_once()
+
+        _log_scrape_summary(results)
         return results
 
 async def main():

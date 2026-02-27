@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 26 Feb 2026 05:46:52 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 27 Feb 2026 05:44:53 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 27 februari 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 27 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Computer Sweden: Populära AI-modeller använder väldigt gärna kärnvapen i krig...
+  https://computersweden.se/article/4137914/populara-ai-modeller-anvander-valdigt-garna-karnvapen-i-krigssimuleringar.html
+• Svenska Dagbladet: Jonson öppnar för kärnvapen i Sverige i krigstid
+  https://www.svd.se/a/43oLGe/jonson-oppnar-for-karnvapen-i-sverige-i-krigstid
+• Dagens Nyheter: EU-lagen som regeringen inte vill ha: Så ska den genomföras
+  https://www.dn.se/sverige/eu-lagen-som-regeringen-inte-vill-ha-sa-ska-den-genomforas/
+• Miljö &amp; Utveckling: Hållbarhetschefen: Så blir klimatmålen relevanta i varje arb...
+  https://miljo-utveckling.se/hallbarhetschefen-sa-blir-klimatmalen-relevanta-i-varje-arbetsdag/
+• Ny Teknik: Så kan Sverige bli ingenjörernas förstahandsval
+  https://www.nyteknik.se/sponsrad/sverige-behoever-ingenjoerer-men-ingenjoerer-behoever-mer-aen-bara-jobb/4430197
+• Wired: OpenAI Announces Major Expansion of London Office
+  https://www.wired.com/story/openai-expands-london-office-major-research-hub/</description>
+            <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260227_053831.mp3" length="7943277" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260227_053831.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 26 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 26 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,24 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260218_054240.mp3" length="8719725" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260218_054240.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 17 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 17 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Sverige möter Schweiz: ”Största matchen i våra liv”
-  https://www.dn.se/sport/sverige-moter-schweiz-storsta-matchen-i-vara-liv/
-• Miljö &amp; Utveckling: Försäljningen av ekologiskt ökar i Europa – minskar i Sverig...
-  https://miljo-utveckling.se/forsaljningen-av-ekologiskt-okar-i-europa-minskar-i-sverige/
-• Miljö &amp; Utveckling: Eeva Primmer ny vd för Stockholm Environment Institute
-  https://miljo-utveckling.se/eeva-primmer-ny-vd-for-stockholm-environment-institute-2/
-• Dagens Nyheter: DN Debatt. ”S fifflade om elen – vad blir Tidöregeringens dr...
-  https://www.dn.se/debatt/s-fifflade-om-elen-vad-blir-tidoregeringens-drag-i-host/
-• Svenska Dagbladet: Lånar regeringen för mycket pengar?
-  https://www.svd.se/a/0pGJXA/lanar-regeringen-for-mycket-pengar</description>
-            <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260217_054123.mp3" length="9152109" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260217_054123.mp3</guid>
         </item>
     </channel>
 </rss>

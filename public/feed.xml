@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 28 Feb 2026 05:37:09 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 01 Mar 2026 05:50:08 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 1 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 1 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Ledare: Sverige är skrämmande oförmöget att stoppa mäns våld...
+  https://www.dn.se/ledare/sverige-ar-skrammande-oformoget-att-stoppa-mans-vald-mot-kvinnor/
+• Dagens Nyheter: Lättnad och oro bland iranier i Sverige: ”Vill bara ha bort ...
+  https://www.dn.se/sverige/lattnad-och-oro-bland-iranier-i-sverige-vill-bara-ha-bort-regimen/
+• Breakit Tech: Anna Ullman Sersé tar klubban i krisande e-handlaren PS of S...
+  https://www.breakit.se/artikel/45591/anna-ullman-serse-tar-klubban-i-krisande-e-handlaren-ps-of-sweden-100-miljoner-absolut-mojligt
+• Computer Sweden: Sveriges AI-strategi är inte mycket till strategi
+  https://computersweden.se/article/4138331/sveriges-ai-strategi-ar-inte-mycket-till-strategi.html
+• TechCrunch: OpenAI’s Sam Altman announces Pentagon deal with ‘technical ...
+  https://techcrunch.com/2026/02/28/openais-sam-altman-announces-pentagon-deal-with-technical-safeguards/
+• TechCrunch: OpenAI fires employee for using confidential info on predict...
+  https://techcrunch.com/2026/02/27/openai-fires-employee-for-using-confidential-info-on-prediction-markets/</description>
+            <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260301_054301.mp3" length="8884461" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260301_054301.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 28 februari 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 28 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260220_053847.mp3" length="8952429" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260220_053847.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 19 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 19 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Breakit Tech: Gabriel Vasquez flög till Stockholm nio gånger på ett år – s...
-  https://www.breakit.se/artikel/45497/gabriel-vasquez-flog-till-stockholm-nio-ganger-pa-ett-ar-sa-scoutar-andreessen-horowitz-svenska-startups
-• SVT Nyheter: Tusentals furries intar Malmö
-  https://www.svt.se/nyheter/lokalt/skane/tusentals-furries-intar-malmo
-• Computer Sweden: Anthropic uppgraderar AI-modellen Claude Sonnet till 4.6
-  https://computersweden.se/article/4133715/anthropic-uppgraderar-ai-modellen-claude-sonnet-till-4-6.html
-• TechCrunch: OpenAI deepens India push with Pine Labs fintech partnership
-  https://techcrunch.com/2026/02/18/openai-deepens-india-push-with-pine-labs-fintech-partnership/
-• TechCrunch: Amazon halts Blue Jay robotics project after less than 6 mon...
-  https://techcrunch.com/2026/02/18/amazon-halts-blue-jay-robotics-project-after-less-than-six-months/
-• Miljö &amp; Utveckling: Han tar över klimat- och miljöfrågorna i regeringen
-  https://miljo-utveckling.se/han-tar-over-klimat-och-miljofragorna-i-regeringen/</description>
-            <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260219_054151.mp3" length="7643373" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260219_054151.mp3</guid>
         </item>
     </channel>
 </rss>

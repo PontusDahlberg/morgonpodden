@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 02 Mar 2026 05:45:26 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 03 Mar 2026 05:44:48 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 3 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 3 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Susanne Nyström: Om bomberna fortsätter att falla kommer näs...
+  https://www.dn.se/ledare/susanne-nystrom-om-bomberna-fortsatter-att-falla-kommer-nasta-flyktingvag-snart-till-sverige/
+• Dagens Nyheter: Frankrike utökar antalet kärnvapen – vill öva med Sverige
+  https://www.dn.se/varlden/frankrike-utokar-antalet-karnvapen-vill-ova-med-sverige/
+• Computer Sweden: Stora brister i Sveriges arbete med cybersäkerhet
+  https://computersweden.se/article/4139199/stora-brister-i-sveriges-arbete-med-cybersakerhet.html
+• SVT Nyheter: Nu kan blivande A-traktorförare övningsköra på fyra hjul
+  https://www.svt.se/nyheter/lokalt/dalarna/nu-kan-blivande-a-traktorforare-ovningskora-pa-fyra-hjul
+• MIT Technology Review: OpenAI’s “compromise” with the Pentagon is what Anthropic fe...
+  https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/
+• TechCrunch: Users are ditching ChatGPT for Claude — here’s how to make t...
+  https://techcrunch.com/2026/03/02/users-are-ditching-chatgpt-for-claude-heres-how-to-make-the-switch/</description>
+            <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260303_053858.mp3" length="5967597" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260303_053858.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 2 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 2 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260222_053943.mp3" length="7439853" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260222_053943.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 21 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 21 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Stickning lockar allt fler – skärmfria träffar i Värmland
-  https://www.svt.se/nyheter/lokalt/varmland/stickning-lockar-allt-fler-skarmfria-traffar-i-varmland
-• SVT Nyheter: Kritik mot skolmaten i Umeå – föräldrar skickar med matlådor...
-  https://www.svt.se/nyheter/lokalt/vasterbotten/kritik-mot-skolmaten-i-umea-foraldrar-skickar-med-matlador-till-barnen
-• SVT Nyheter: Kritiken mot regeringen efter skyfallen i Ångermanland: ”Fyr...
-  https://www.svt.se/nyheter/lokalt/vasternorrland/kritiken-mot-regeringen-efter-skyfallen-i-angermanland-fyrkantigt-bidragssystem
-• Breakit Tech: Regeringen presenterar ny AI-strategi – här är viktigaste pu...
-  https://www.breakit.se/artikel/45530/regeringen-presenterar-ny-ai-strategi-har-ar-viktigaste-punkterna-for-techsektorn
-• Svenska Dagbladet: Skickar tydlig AI-signal till Sverige
-  https://www.svd.se/a/6q6bPO/ai-toppmote-i-new-delhi-skickar-en-tydlig-signal-till-sverige
-• SVT Nyheter: Andrewskandalen – dödsstöten eller möjlighet till ett nytt k...
-  https://www.svt.se/nyheter/utrikes/andrewskandalen-dodsstoten-eller-mojlighet-till-ett-nytt-kungahus</description>
-            <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260221_053603.mp3" length="10285293" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260221_053603.mp3</guid>
         </item>
     </channel>
 </rss>

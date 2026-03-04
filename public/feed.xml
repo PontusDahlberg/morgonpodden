@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 03 Mar 2026 05:44:48 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 04 Mar 2026 05:44:03 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 4 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 4 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Johanna Frändén: Sveriges VM-kvalresa blir rolig att följa
+  https://www.dn.se/sport/johanna-franden-sveriges-vm-kvalresa-blir-rolig-att-folja/
+• Dagens Nyheter: Angeldahl sköt segern till Sverige i VM-kvalet
+  https://www.dn.se/sport/angeldahl-skot-segern-till-sverige-i-vm-kvalet/
+• Dagens Nyheter: Lisa Magnusson: Självklart är systrarna Gonbadi våra, och sj...
+  https://www.dn.se/ledare/lisa-magnusson-sjalvklart-ar-systrarna-gonbadi-vara-och-sjalvklart-maste-sverige-hjalpa-dem-hem/
+• TechCrunch: ChatGPT’s new GPT-5.3 Instant model will stop telling you to...
+  https://techcrunch.com/2026/03/03/chatgpts-new-gpt-5-3-instant-model-will-stop-telling-you-to-calm-down/
+• Dagens Nyheter: Kvinnorna dominerar i Trumps regering: ”Blir farligare”
+  https://www.dn.se/varlden/kvinnorna-dominerar-i-trumps-regering-blir-farligare/
+• MIT Technology Review: The Download: The startup that says it can stop lightning, a...
+  https://www.technologyreview.com/2026/03/03/1133900/the-download-the-startup-that-says-it-can-stop-lightning-and-inside-openais-pentagon-deal/</description>
+            <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260304_053720.mp3" length="7369965" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260304_053720.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 3 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 3 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260223_054605.mp3" length="7821165" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260223_054605.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 22 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 22 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Damberg liknade regeringen vid Tottenham – ”orättvist” enlig...
-  https://www.svt.se/nyheter/inrikes/damberg-liknade-regeringen-vid-tottenham-orattvist-enligt-lofven
-• Dagens Nyheter: Matilda Källén: Malmös slask sipprade in i deltävlingen – me...
-  https://www.dn.se/kultur/matilda-kallen-malmos-slask-sipprade-in-i-deltavlingen-men-kul-med-ovantad-finalist/
-• Miljö &amp; Utveckling: Regeringen öppnar för ökat stöd till fossilgaskraft
-  https://miljo-utveckling.se/regeringen-oppnar-for-okat-stod-till-fossilgaskraft/
-• SVT Nyheter: Parken Zoo vill ha pensionärer som sommarjobbare: ”En bra mi...
-  https://www.svt.se/nyheter/lokalt/sormland/parken-zoo-vill-ha-pensionarer-som-sommarjobbare-en-bra-mix
-• BBC News: Tumbler Ridge suspect&#x27;s ChatGPT account banned before shooti...
-  https://www.bbc.com/news/articles/cn4gq352w89o?at_medium=RSS&amp;at_campaign=rss
-• France 24: Iran says will not &#x27;bow&#x27; to pressure amid US nuclear talks a...
-  https://www.france24.com/en/middle-east/20260221-iran-says-will-not-bow-to-pressure-amid-us-nuclear-talks-as-anti-govt-protests-reported-in-tehran</description>
-            <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260222_053943.mp3" length="7439853" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260222_053943.mp3</guid>
         </item>
     </channel>
 </rss>

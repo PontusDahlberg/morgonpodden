@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 04 Mar 2026 05:44:03 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 05 Mar 2026 05:45:33 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 5 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 5 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Svensk man gripen i Polen – misstänks för grova narkotikabro...
+  https://www.svt.se/nyheter/lokalt/skane/svensk-man-gripen-i-polen-misstanks-for-grova-narkotikabrott-i-malmo
+• TechCrunch: Jensen Huang says Nvidia is pulling back from OpenAI and Ant...
+  https://techcrunch.com/2026/03/04/jensen-huang-says-nvidia-is-pulling-back-from-openai-and-anthropic-but-his-explanation-raises-more-questions-than-it-answers/
+• Computer Sweden: Regeringen ger polisen AI-ansiktsigenkänning i realtid
+  https://computersweden.se/article/4140462/regeringen-ger-polisen-ai-ansiktsigenkanning-i-realtid.html
+• TechCrunch: Anthropic CEO Dario Amodei calls OpenAI’s messaging around m...
+  https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/
+• Svenska Dagbladet: Utfallet AI-modellen inte kunde förutse
+  https://www.svd.se/a/K8n22o/ai-rad-for-sparande-baseras-pa-ekonomiska-riskkalkyler-vager-inte-in-krig
+• Guardian Climate Crisis: Global sea levels have been underestimated due to poor model...
+  https://www.theguardian.com/environment/2026/mar/04/global-sea-levels-underestimated-poor-modelling-research</description>
+            <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260305_053813.mp3" length="6728685" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260305_053813.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 4 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 4 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +215,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260224_054105.mp3" length="6705261" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260224_054105.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 23 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 23 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Sverige tar OS-guld i curling – slog Schweiz efter drama
-  https://www.svt.se/sport/curling/sverige-tar-os-guld-i-curling
-• Dagens Nyheter: Stockholm först ut i landet med att punktmarkera sexåringar
-  https://www.dn.se/sverige/stockholm-forst-ut-i-landet-med-att-punktmarkera-sexaringar/
-• Dagens Nyheter: DN Debatt. ”Så går integrationen i Sverige just nu”
-  https://www.dn.se/debatt/sa-gar-integrationen-i-sverige-just-nu/
-• Dagens Nyheter: Sveriges ambassadör: ”Borde inte vara här om jag inte var li...
-  https://www.dn.se/varlden/sveriges-ambassador-borde-inte-vara-har-om-jag-inte-var-lite-radd/
-• The Verge: Suspect in Tumbler Ridge school shooting described violent s...
-  https://www.theverge.com/ai-artificial-intelligence/882814/tumbler-ridge-school-shooting-chatgpt
-• Dagens Nyheter: Medaljregnet dag för dag – här är Sveriges rekord-OS
-  https://www.dn.se/sport/medaljregnet-dag-for-dag-har-ar-sveriges-rekord-os/</description>
-            <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260223_054605.mp3" length="7821165" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260223_054605.mp3</guid>
         </item>
     </channel>
 </rss>

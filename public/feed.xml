@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Thu, 05 Mar 2026 05:45:33 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 06 Mar 2026 05:44:58 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 6 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 6 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: DN Debatt. ”Glöm landsbygden – Sverige behöver en stadsminis...
+  https://www.dn.se/debatt/glom-landsbygden-sverige-behover-en-stadsminister/
+• SVT Nyheter: Dousa: Svenska regeringen står upp för snuset
+  https://www.svt.se/nyheter/utrikes/dousa-svenska-regeringen-star-upp-for-snuset
+• Wired: OpenAI Had Banned Military Use. The Pentagon Tested Its Mode...
+  https://www.wired.com/story/openai-defense-department-ban-military-use-microsoft/
+• Dagens Nyheter: Så kan Sverige få hjälp av EU att evakuera
+  https://www.dn.se/varlden/sa-kan-sverige-fa-hjalp-av-eu-att-evakuera/
+• SVT Nyheter: Så tycker riksdagens partier om kärnvapen
+  https://www.svt.se/nyheter/inrikes/sa-tycker-riksdagens-partier-om-karnvapen</description>
+            <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260306_053730.mp3" length="7745901" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260306_053730.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 5 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 5 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -195,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260225_054228.mp3" length="8130669" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260225_054228.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 24 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 24 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Breakit Tech: Sveriges AI-strategi saknar det viktigaste: Brådska
-  https://www.breakit.se/artikel/45545/sveriges-ai-strategi-saknar-det-viktigaste-bradska
-• SVT Nyheter: Teckenspråk i förskolan: Het debatt i Umeå kommunfullmäktige
-  https://www.svt.se/nyheter/nyhetstecken/teckensprak-i-forskolan-het-debatt-i-umea-kommunfullmaktige
-• Politico Europe: Swedish business leader Ehnbom proposed Epstein meet women s...
-  https://www.politico.eu/article/jeffrey-epstein-files-sweden-business-leader-ehnbom-proposed-meet-women/?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication
-• Politico Europe: Canada summons OpenAI reps over school shooting suspect’s Ch...
-  https://www.politico.com/news/2026/02/23/canada-openai-chatgpt-school-shooting-00793471?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication
-• TechCrunch: With AI, investor loyalty is (almost) dead: At least a dozen...
-  https://techcrunch.com/2026/02/23/with-ai-investor-loyalty-is-almost-dead-at-least-a-dozen-openai-vcs-now-also-back-anthropic/
-• TechCrunch: OpenAI calls in the consultants for its enterprise push
-  https://techcrunch.com/2026/02/23/openai-calls-in-the-consultants-for-its-enterprise-push/</description>
-            <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260224_054105.mp3" length="6705261" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260224_054105.mp3</guid>
         </item>
     </channel>
 </rss>

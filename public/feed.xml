@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 08 Mar 2026 05:45:03 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 09 Mar 2026 05:48:17 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 9 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 9 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Lisa Magnusson: Skjutna apor och delfinshower – hur är det h...
+  https://www.dn.se/ledare/lisa-magnusson-skjutna-apor-och-delfinshower-hur-ar-det-har-ens-lagligt-i-sverige/
+• Dagens Nyheter: Insändare. Låt inte staten söva ner Stockholms city
+  https://www.dn.se/insandare/lat-inte-staten-sova-ner-stockholms-city/
+• Dagens Nyheter: DN Debatt. ”Nu stryps rättigheterna för Sveriges unga”
+  https://www.dn.se/debatt/nu-stryps-rattigheterna-for-sveriges-unga/
+• SVT Nyheter: Ekologiskt allt populärare i världen – men inte i Sverige
+  https://www.svt.se/nyheter/lokalt/sodertalje/ekologiskt-allt-popularare-i-varlden-men-inte-i-sverige
+• Ny Teknik: De byggde nya liv i Sverige – nu jobbar de som ingenjörer
+  https://www.nyteknik.se/karriaer/de-kom-till-sverige-med-en-droem-nu-jobbar-de-som-ingenjoerer/4430887
+• Guardian Climate Crisis: Global sea levels have been underestimated due to poor model...
+  https://www.theguardian.com/environment/2026/mar/04/global-sea-levels-underestimated-poor-modelling-research</description>
+            <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260309_054104.mp3" length="7525485" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260309_054104.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 8 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 8 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260228_053035.mp3" length="7570413" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260228_053035.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 27 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 27 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Computer Sweden: Populära AI-modeller använder väldigt gärna kärnvapen i krig...
-  https://computersweden.se/article/4137914/populara-ai-modeller-anvander-valdigt-garna-karnvapen-i-krigssimuleringar.html
-• Svenska Dagbladet: Jonson öppnar för kärnvapen i Sverige i krigstid
-  https://www.svd.se/a/43oLGe/jonson-oppnar-for-karnvapen-i-sverige-i-krigstid
-• Dagens Nyheter: EU-lagen som regeringen inte vill ha: Så ska den genomföras
-  https://www.dn.se/sverige/eu-lagen-som-regeringen-inte-vill-ha-sa-ska-den-genomforas/
-• Miljö &amp; Utveckling: Hållbarhetschefen: Så blir klimatmålen relevanta i varje arb...
-  https://miljo-utveckling.se/hallbarhetschefen-sa-blir-klimatmalen-relevanta-i-varje-arbetsdag/
-• Ny Teknik: Så kan Sverige bli ingenjörernas förstahandsval
-  https://www.nyteknik.se/sponsrad/sverige-behoever-ingenjoerer-men-ingenjoerer-behoever-mer-aen-bara-jobb/4430197
-• Wired: OpenAI Announces Major Expansion of London Office
-  https://www.wired.com/story/openai-expands-london-office-major-research-hub/</description>
-            <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260227_053831.mp3" length="7943277" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260227_053831.mp3</guid>
         </item>
     </channel>
 </rss>

@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 09 Mar 2026 05:48:17 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 10 Mar 2026 05:43:48 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 10 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 10 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Så kan börsoron slå mot Stockholms bostadsmarknad: ”Risken f...
+  https://www.svt.se/nyheter/lokalt/stockholm/sa-kan-borsoron-sla-mot-stockholms-bostadsmarknad-risken-finns
+• SVT Nyheter: Så agerar Trafikverket för att förhindra renolyckor i Härjed...
+  https://www.svt.se/nyheter/lokalt/jamtland/sa-agerar-trafikverket-for-att-forhindra-renolyckor-i-harjedalen
+• Svenska Dagbladet: Internt larm: Psykiatrin i Stockholm utarmas
+  https://www.svd.se/a/ExQy1o/varningen-psykiatrin-i-stockholm-lagger-ned-psykodynamiska-behandlingar
+• TechCrunch: Qualcomm’s partnership with Neura Robotics is just the begin...
+  https://techcrunch.com/2026/03/09/qualcomms-partnership-with-neura-robotics-is-just-the-beginning/
+• Miljö &amp; Utveckling: Studie: Den globala uppvärmningen accelererar
+  https://miljo-utveckling.se/studie-den-globala-uppvarmningen-accelererar/
+• TechCrunch: OpenAI acquires Promptfoo to secure its AI agents
+  https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/</description>
+            <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260310_053750.mp3" length="6856173" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260310_053750.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 9 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 9 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260301_054301.mp3" length="8884461" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260301_054301.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 28 februari 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 28 februari 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Erik de la Reguera: På bara några timmar skulle franska kärn...
-  https://www.dn.se/varlden/erik-de-la-reguera-pa-bara-nagra-timmar-skulle-franska-karnvapen-kunna-finnas-i-sverige/
-• SVT Nyheter: Valet i Sörmland: De är på väg ut ur riksdagen – och här är ...
-  https://www.svt.se/nyheter/lokalt/sormland/valet-i-sormland-de-ar-pa-vag-ut-ur-riksdagen-och-har-ar-politikerna-som-vill-in
-• BBC News: OpenAI vows safety policy changes after Tumbler Ridge shooti...
-  https://www.bbc.com/news/articles/cr73m4x8r2lo?at_medium=RSS&amp;at_campaign=rss
-• Ny Teknik: ”Energidelning på miniminivå – Sverige missar EU:s mål”
-  https://www.nyteknik.se/debatt/energidelning-pa-miniminiva-sverige-missar-eus-mal/4439529
-• Dagens Nyheter: Sverige ser ut att missa VM – förlorade mot Estland
-  https://www.dn.se/sport/sverige-ser-ut-att-missa-vm-forlorade-mot-estland/
-• Breakit Tech: OpenAI tar in monsterrunda – på 1000 miljarder
-  https://www.breakit.se/artikel/45606/openai-tar-in-monsterrunda-pa-1000-miljarder</description>
-            <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260228_053035.mp3" length="7570413" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260228_053035.mp3</guid>
         </item>
     </channel>
 </rss>

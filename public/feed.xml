@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 10 Mar 2026 05:43:48 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 11 Mar 2026 05:45:07 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 11 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 11 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Här rivs 60 år gamla ledningar – Stockholms elförsörjning sk...
+  https://www.svt.se/nyheter/lokalt/stockholm/har-rivs-60-ar-gamla-ledningar-stockholms-elforsorjning-ska-sakras
+• SVT Nyheter: Därför är det smog i Göteborg – och så länge väntas den stan...
+  https://www.svt.se/nyheter/lokalt/vast/darfor-ar-det-smog-i-goteborg-och-sa-lange-vantas-den-stanna
+• SVT Nyheter: Expo: Högerextrema aktiviteter ökar mest i Stockholms län
+  https://www.svt.se/nyheter/lokalt/sodertalje/expo-hogerextrema-aktiviteter-okar-mest-i-stockholms-lan
+• Ny Teknik: Avtagbar räckviddsförlängare kan göra elbilar till hybrider ...
+  https://www.nyteknik.se/elbilar/avtagbar-raeckviddsfoerlaengare-kan-goera-elbilar-till-hybrider-pa-langresorna/4443382
+• TechCrunch: Mandiant’s founder just raised $190M for his autonomous AI a...
+  https://techcrunch.com/2026/03/10/mandiants-founder-just-raised-190m-for-his-autonomous-ai-agent-security-startup/
+• TechCrunch: ChatGPT can now create interactive visuals to help you under...
+  https://techcrunch.com/2026/03/10/chatgpt-can-now-create-interactive-visuals-to-help-you-understand-math-and-science-concepts/</description>
+            <pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260311_053827.mp3" length="6509805" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260311_053827.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 10 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 10 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260302_053931.mp3" length="6886125" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260302_053931.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 1 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 1 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Ledare: Sverige är skrämmande oförmöget att stoppa mäns våld...
-  https://www.dn.se/ledare/sverige-ar-skrammande-oformoget-att-stoppa-mans-vald-mot-kvinnor/
-• Dagens Nyheter: Lättnad och oro bland iranier i Sverige: ”Vill bara ha bort ...
-  https://www.dn.se/sverige/lattnad-och-oro-bland-iranier-i-sverige-vill-bara-ha-bort-regimen/
-• Breakit Tech: Anna Ullman Sersé tar klubban i krisande e-handlaren PS of S...
-  https://www.breakit.se/artikel/45591/anna-ullman-serse-tar-klubban-i-krisande-e-handlaren-ps-of-sweden-100-miljoner-absolut-mojligt
-• Computer Sweden: Sveriges AI-strategi är inte mycket till strategi
-  https://computersweden.se/article/4138331/sveriges-ai-strategi-ar-inte-mycket-till-strategi.html
-• TechCrunch: OpenAI’s Sam Altman announces Pentagon deal with ‘technical ...
-  https://techcrunch.com/2026/02/28/openais-sam-altman-announces-pentagon-deal-with-technical-safeguards/
-• TechCrunch: OpenAI fires employee for using confidential info on predict...
-  https://techcrunch.com/2026/02/27/openai-fires-employee-for-using-confidential-info-on-prediction-markets/</description>
-            <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260301_054301.mp3" length="8884461" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260301_054301.mp3</guid>
         </item>
     </channel>
 </rss>

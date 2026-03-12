@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 11 Mar 2026 05:45:07 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 12 Mar 2026 05:46:29 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 12 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 12 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Sveriges största exklav Munsvattnet finns i Krokom – men til...
+  https://www.svt.se/nyheter/lokalt/jamtland/sveriges-storsta-exklav-munsvattnet-finns-i-krokom-men-tillhor-stromsund
+• SVT Nyheter: Jättesik fångad i Landösjön – kan vara Sveriges största
+  https://www.svt.se/nyheter/lokalt/jamtland/jattesik-fangad-i-landosjon-kan-vara-sveriges-storsta
+• SVT Nyheter: Forskning vid LTU: Svenskar vill ha tillbaka uroxen i skogen
+  https://www.svt.se/nyheter/lokalt/norrbotten/forskning-vid-ltu-svenskar-vill-ha-tillbaka-uroxen-i-skogen
+• The Verge: OpenAI’s Sora video generator is reportedly coming to ChatGP...
+  https://www.theverge.com/ai-artificial-intelligence/893189/openai-chatgpt-sora-integration
+• TechCrunch: Nuro is testing its autonomous vehicle tech on Tokyo’s stree...
+  https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/
+• Miljö &amp; Utveckling: Miljöorganisation kritiserar EU-parlamentets bostadsrapport
+  https://miljo-utveckling.se/miljoorganisation-kritiserar-eu-parlamentets-bostadsrapport/</description>
+            <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260312_053859.mp3" length="9302253" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260312_053859.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 11 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 11 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +213,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260303_053858.mp3" length="5967597" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260303_053858.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 2 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 2 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Antikroppar mot RS-virus till nyfödda har gett effekt i Dala...
-  https://www.svt.se/nyheter/lokalt/dalarna/antikroppar-mot-rs-virus-till-nyfodda-har-gett-effekt-i-dalarna-fantastiskt
-• Svenska Dagbladet: Expert: Högst osannolikt att Sverige dras in
-  https://www.svd.se/a/XMbevE/expert-hogst-osannolikt-att-sverige-dras-in
-• Miljö &amp; Utveckling: Hållbarhetschefen: Så blir klimatmålen relevanta i varje arb...
-  https://miljo-utveckling.se/hallbarhetschefen-sa-blir-klimatmalen-relevanta-i-varje-arbetsdag/
-• Dagens Nyheter: VM-drömmen lever – Sverige vann måstematchen
-  https://www.dn.se/sport/vm-drommen-lever-sverige-vann-mastematchen/
-• TechCrunch: OpenAI reveals more details about its agreement with the Pen...
-  https://techcrunch.com/2026/03/01/openai-shares-more-details-about-its-agreement-with-the-pentagon/
-• SVT Nyheter: V om nytt medborgarskap: ”Gör livet svårare för invandrare”
-  https://www.svt.se/nyheter/lokalt/norrbotten/v-om-nytt-medborgarskap-gor-livet-svarare-for-invandrare</description>
-            <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260302_053931.mp3" length="6886125" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260302_053931.mp3</guid>
         </item>
     </channel>
 </rss>

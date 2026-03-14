@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Fri, 13 Mar 2026 05:44:50 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 14 Mar 2026 05:45:17 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 14 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 14 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Ny Teknik: Regeringen: Kritiserade effektavgifter stoppas – ”Slagit för...
+  https://www.nyteknik.se/energi/regeringen-kritiserade-effektavgifter-stoppas-slagit-foer-hart-mot-hushall/4444638
+• Dagens Nyheter: Näringslivet: Migrationspolitiken dålig för Stockholm
+  https://www.dn.se/sverige/naringslivet-migrationspolitiken-dalig-for-stockholm/
+• TechCrunch: Travis Kalanick launches a new company called Atoms focused ...
+  https://techcrunch.com/2026/03/13/travis-kalanick-launches-a-new-company-called-atoms-focused-on-robotics/
+• IEEE Spectrum: Raquel Urtasun on Level-4 Autonomous Trucks
+  https://spectrum.ieee.org/level-4-autonomous-trucks
+• Guardian Environment: Nearly three-quarters of England’s woods inaccessible to pub...
+  https://www.theguardian.com/environment/2026/mar/13/nearly-three-quarters-of-englands-woods-inaccessible-to-public-study-finds</description>
+            <pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260314_053741.mp3" length="9221613" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260314_053741.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 13 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - fredag den 13 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -193,26 +211,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260305_053813.mp3" length="6728685" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260305_053813.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 4 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 4 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Johanna Frändén: Sveriges VM-kvalresa blir rolig att följa
-  https://www.dn.se/sport/johanna-franden-sveriges-vm-kvalresa-blir-rolig-att-folja/
-• Dagens Nyheter: Angeldahl sköt segern till Sverige i VM-kvalet
-  https://www.dn.se/sport/angeldahl-skot-segern-till-sverige-i-vm-kvalet/
-• Dagens Nyheter: Lisa Magnusson: Självklart är systrarna Gonbadi våra, och sj...
-  https://www.dn.se/ledare/lisa-magnusson-sjalvklart-ar-systrarna-gonbadi-vara-och-sjalvklart-maste-sverige-hjalpa-dem-hem/
-• TechCrunch: ChatGPT’s new GPT-5.3 Instant model will stop telling you to...
-  https://techcrunch.com/2026/03/03/chatgpts-new-gpt-5-3-instant-model-will-stop-telling-you-to-calm-down/
-• Dagens Nyheter: Kvinnorna dominerar i Trumps regering: ”Blir farligare”
-  https://www.dn.se/varlden/kvinnorna-dominerar-i-trumps-regering-blir-farligare/
-• MIT Technology Review: The Download: The startup that says it can stop lightning, a...
-  https://www.technologyreview.com/2026/03/03/1133900/the-download-the-startup-that-says-it-can-stop-lightning-and-inside-openais-pentagon-deal/</description>
-            <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260304_053720.mp3" length="7369965" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260304_053720.mp3</guid>
         </item>
     </channel>
 </rss>

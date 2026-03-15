@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sat, 14 Mar 2026 05:45:17 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 15 Mar 2026 05:57:19 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 15 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 15 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Skandalscener i svenska cupen – när Mjällby krossade Malmö
+  https://www.svt.se/sport/fotboll/skandalscener-i-svenska-cupen-mellan-mjallby-och-malmo
+• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning
+  https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/
+• SVT Nyheter: Fiskstammar kan slås ut av vattenkraft – regeringen begränsa...
+  https://www.svt.se/nyheter/lokalt/vasternorrland/fiskstammar-kan-slas-ut-av-vattenkraft-regeringen-begransar-miljoatgarder
+• TechCrunch: How to use the new ChatGPT app integrations, including DoorD...
+  https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/
+• SVT Nyheter: Handgranater och narkotika i polisens tillslag i Västsverige
+  https://www.svt.se/nyheter/lokalt/vast/handgranater-och-narkotika-i-polisens-tillslag-i-vastsverige</description>
+            <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260315_055120.mp3" length="9029997" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260315_055120.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 14 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - lördag den 14 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,26 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260306_053730.mp3" length="7745901" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260306_053730.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 5 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 5 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Svensk man gripen i Polen – misstänks för grova narkotikabro...
-  https://www.svt.se/nyheter/lokalt/skane/svensk-man-gripen-i-polen-misstanks-for-grova-narkotikabrott-i-malmo
-• TechCrunch: Jensen Huang says Nvidia is pulling back from OpenAI and Ant...
-  https://techcrunch.com/2026/03/04/jensen-huang-says-nvidia-is-pulling-back-from-openai-and-anthropic-but-his-explanation-raises-more-questions-than-it-answers/
-• Computer Sweden: Regeringen ger polisen AI-ansiktsigenkänning i realtid
-  https://computersweden.se/article/4140462/regeringen-ger-polisen-ai-ansiktsigenkanning-i-realtid.html
-• TechCrunch: Anthropic CEO Dario Amodei calls OpenAI’s messaging around m...
-  https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/
-• Svenska Dagbladet: Utfallet AI-modellen inte kunde förutse
-  https://www.svd.se/a/K8n22o/ai-rad-for-sparande-baseras-pa-ekonomiska-riskkalkyler-vager-inte-in-krig
-• Guardian Climate Crisis: Global sea levels have been underestimated due to poor model...
-  https://www.theguardian.com/environment/2026/mar/04/global-sea-levels-underestimated-poor-modelling-research</description>
-            <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260305_053813.mp3" length="6728685" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260305_053813.mp3</guid>
         </item>
     </channel>
 </rss>

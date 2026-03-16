@@ -14,8 +14,26 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 15 Mar 2026 05:57:19 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 16 Mar 2026 06:05:42 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 16 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 16 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Johanna Alm Dahlin: ”Staten måste ta ett större ansvar”
+  https://www.svt.se/nyheter/nyhetstecken/johanna-alm-dahlin-staten-maste-ta-ett-storre-ansvar
+• SVT Nyheter: Statusen på tolkyrket måste höjas: ”Fler väljer annat”
+  https://www.svt.se/nyheter/nyhetstecken/statusen-pa-tolkyrket-maste-hojas-fler-valjer-annat
+• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning
+  https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/
+• Miljö &amp; Utveckling: Rapport: EU:s livsmedelssystem måste ställas om för att klar...
+  https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/
+• SVT Nyheter: Vittnesmålet från slutenvården på Sunderbyn: ”Lättad att ha ...
+  https://www.svt.se/nyheter/lokalt/norrbotten/vittnesmalet-fran-slutenvarden-lattad-att-ha-overlevt</description>
+            <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260316_055825.mp3" length="8249709" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260316_055825.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 15 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 15 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -191,24 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260307_053501.mp3" length="8126061" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260307_053501.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 6 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 6 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: DN Debatt. ”Glöm landsbygden – Sverige behöver en stadsminis...
-  https://www.dn.se/debatt/glom-landsbygden-sverige-behover-en-stadsminister/
-• SVT Nyheter: Dousa: Svenska regeringen står upp för snuset
-  https://www.svt.se/nyheter/utrikes/dousa-svenska-regeringen-star-upp-for-snuset
-• Wired: OpenAI Had Banned Military Use. The Pentagon Tested Its Mode...
-  https://www.wired.com/story/openai-defense-department-ban-military-use-microsoft/
-• Dagens Nyheter: Så kan Sverige få hjälp av EU att evakuera
-  https://www.dn.se/varlden/sa-kan-sverige-fa-hjalp-av-eu-att-evakuera/
-• SVT Nyheter: Så tycker riksdagens partier om kärnvapen
-  https://www.svt.se/nyheter/inrikes/sa-tycker-riksdagens-partier-om-karnvapen</description>
-            <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260306_053730.mp3" length="7745901" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260306_053730.mp3</guid>
         </item>
     </channel>
 </rss>

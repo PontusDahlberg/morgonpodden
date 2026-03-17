@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Mon, 16 Mar 2026 06:05:42 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 17 Mar 2026 05:48:35 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 17 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 17 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Statsministerns brutna vallöfte – ingen satsning på Ostkustb...
+  https://www.svt.se/nyheter/lokalt/vasternorrland/statsministerns-brutna-vallofte-ingen-satsning-pa-ostkustbanan
+• Ny Teknik: Studie: Elbilar minskar utsläppen – men kan öka trängseln
+  https://www.nyteknik.se/elbilar/studie-elbilar-minskar-utslaeppen-men-kan-oeka-traengseln/4444845
+• Dagens Nyheter: Största beslaget av handgranater i Sverige
+  https://www.dn.se/sverige/storsta-beslaget-av-handgranater-i-sverige/
+• Svenska Dagbladet: De har makten över maten i Sverige
+  https://www.svd.se/a/Oko0Qk/de-ar-maktigaste-influencers-om-mat-och-halsa-i-sverige-enligt-medieakademien
+• TechCrunch: Memories AI is building the visual memory layer for wearable...
+  https://techcrunch.com/2026/03/16/memories-ai-is-building-the-visual-memory-layer-for-wearables-and-robotics/
+• TechCrunch: The dictionary sues OpenAI
+  https://techcrunch.com/2026/03/16/merriam-webster-openai-encyclopedia-brittanica-lawsuit/</description>
+            <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260317_054056.mp3" length="9173997" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260317_054056.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 16 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - måndag den 16 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -189,26 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260308_053737.mp3" length="7453293" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260308_053737.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 7 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - lördag den 7 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• SVT Nyheter: Alexandra utreder övergrepp mot barn på nätet – här är henne...
-  https://www.svt.se/nyheter/lokalt/sormland/alexandra-utreder-overgrepp-mot-barn-pa-natet-har-ar-hennes-tips-till-foraldrarna
-• Computer Sweden: Ny svensk e-legitimation klar i december – kallas Sverige-id
-  https://computersweden.se/article/4141805/ny-svensk-e-legitimation-klar-i-december-kallas-sverige-id.html
-• SVT Nyheter: Nu får strokepatienter rekordsnabb vård i Umeå
-  https://www.svt.se/nyheter/lokalt/vasterbotten/nu-far-strokepatienter-rekordsnabb-vard-i-umea
-• SVT Nyheter: Stolt mello-pappa inför Dino Medanhodzics finalsuccé – avslö...
-  https://www.svt.se/nyheter/lokalt/vastmanland/stolt-mello-pappa-infor-dino-medanhodzics-finalsucce-avslojar-hur-karriaren-borjade
-• Svenska Dagbladet: Sverige skickar sjukvårdspersonal till Mellanöstern
-  https://www.svd.se/a/zOEa4r/sverige-skickar-sjukvardspersonal-till-mellanostern
-• SVT Nyheter: Skott mot bil i Malmö
-  https://www.svt.se/nyheter/lokalt/skane/skott-mot-bil-i-malmo</description>
-            <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260307_053501.mp3" length="8126061" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260307_053501.mp3</guid>
         </item>
     </channel>
 </rss>

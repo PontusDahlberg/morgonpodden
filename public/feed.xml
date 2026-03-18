@@ -14,8 +14,28 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Tue, 17 Mar 2026 05:48:35 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 18 Mar 2026 05:51:57 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 18 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 18 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Sveriges Natur går mot strömmen – allt fler läser tidningen
+  https://www.sverigesnatur.org/aktuellt/sveriges-natur-gar-mot-strommen-allt-fler-laser-tidningen/
+• Dagens Nyheter: DN Debatt. ”Sveriges kunskapssyn är förlegad – vi kommer bli...
+  https://www.dn.se/debatt/sveriges-kunskapssyn-ar-forlegad-vi-kommer-bli-omsprungna/
+• Miljö &amp; Utveckling: Fler arter i Sverige – men biologisk mångfald minskar
+  https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/
+• SVT Nyheter: Malmö rasar efter avgörandet: ”Får hela hans röv i ansiktet”
+  https://www.svt.se/sport/ishockey/malmo-rasar-efter-avgorandet-far-hela-hans-rov-i-ansiktet
+• TechCrunch: Mistral bets on ‘build-your-own AI’ as it takes on OpenAI, A...
+  https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/
+• Dagens Nyheter: Eldfesten firades i Malmö: ”Extra viktigt nu”
+  https://www.dn.se/sverige/eldfesten-firades-i-malmo-extra-viktigt-nu/</description>
+            <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260318_054509.mp3" length="8662893" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260318_054509.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 17 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - tisdag den 17 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -189,26 +209,6 @@ Källor som refereras i detta avsnitt:
             <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260309_054104.mp3" length="7525485" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260309_054104.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 8 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - söndag den 8 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Max Hjelm: 87 vårdanställda larmar om vården – regeringen fr...
-  https://www.dn.se/ledare/max-hjelm-87-vardanstallda-larmar-om-varden-regeringen-fragar-ai-om-de-har-ratt/
-• SVT Nyheter: Här Sveriges topptippade konkurrenter i Eurovision song cont...
-  https://www.svt.se/kultur/har-sveriges-svaraste-motstandare-i-eurovision
-• Dagens Nyheter: Sverige klart för EM – vann enkelt mot Serbien
-  https://www.dn.se/sport/sverige-klart-for-em-vann-enkelt-mot-serbien/
-• TechCrunch: OpenAI robotics lead Caitlin Kalinowski quits in response to...
-  https://techcrunch.com/2026/03/07/openai-robotics-lead-caitlin-kalinowski-quits-in-response-to-pentagon-deal/
-• Dagens Nyheter: Missräkning för Sverige – historiskt poängtapp
-  https://www.dn.se/sport/missrakning-for-sverige-historiskt-poangtapp/
-• Dagens Nyheter: Göteborgs nya centralstation – en 22 meter hög ”katedral”
-  https://www.dn.se/sverige/goteborgs-nya-centralstation-en-22-meter-hog-katedral/</description>
-            <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260308_053737.mp3" length="7453293" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260308_053737.mp3</guid>
         </item>
     </channel>
 </rss>

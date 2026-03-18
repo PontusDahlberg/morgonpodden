@@ -372,9 +372,10 @@
       "pitch": 0.0
     },
     "system_prompt": "Du är en professionell AI som hjälper till att skapa naturliga samtal mellan poddvärdar på svenska. var noga med och dubbelkolla alltid att det blir korrekt svenska.",
-    "ai_provider": "openrouter",
+    "ai_provider": "gemini",
+    "gemini_model": "gemini-2.5-flash",
     "openai_model": "gpt-5-mini",
-    "openrouter_model": "anthropic/claude-3.7-sonnet",
+    "openrouter_model": "google/gemini-2.5-flash",
     "cloudflare": {
       "bucket": "manniska-maskin-miljo",
       "publicUrl": "https://pub-e9499080fa4548beaf10448e8ed8d638.r2.dev",

@@ -622,12 +622,117 @@ def load_config() -> Dict:
         logger.error(f"[ERROR] Fel i sources.json: {e}")
         return {}
 
-def get_openrouter_response(messages: List[Dict], model: str = "openai/gpt-4o-mini") -> str:
-    """Skicka förfrågan till OpenRouter API.
+def _normalize_gemini_model(model: str) -> str:
+    raw = (model or "").strip()
+    if not raw:
+        return "gemini-2.5-flash"
+    return raw.split('/', 1)[1] if '/' in raw else raw
 
-    Om OPENROUTER_API_KEY saknas men OPENAI_API_KEY finns, fall tillbaka till OpenAI direkt.
-    Detta förhindrar att pipeline hamnar i kort 'fallback'-manus p.g.a. saknad nyckel.
-    """
+
+def _get_gemini_direct_response(messages: List[Dict], model: str) -> str:
+    """Skicka förfrågan direkt till Gemini API (utan OpenRouter)."""
+    api_key = os.getenv('GEMINI_API_KEY', '').strip()
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY saknas i miljövariabler")
+
+    gemini_model = _normalize_gemini_model(model)
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{gemini_model}:generateContent"
+
+    max_tokens_env = os.getenv('MMM_MAX_TOKENS', '').strip()
+    try:
+        max_tokens = int(max_tokens_env) if max_tokens_env else 2200
+    except ValueError:
+        max_tokens = 2200
+
+    system_lines: List[str] = []
+    contents: List[Dict[str, Any]] = []
+    for msg in messages or []:
+        role = (msg.get('role') or 'user').strip().lower()
+        text = (msg.get('content') or '').strip()
+        if not text:
+            continue
+        if role == 'system':
+            system_lines.append(text)
+            continue
+        gemini_role = 'model' if role == 'assistant' else 'user'
+        contents.append({
+            'role': gemini_role,
+            'parts': [{'text': text}],
+        })
+
+    if not contents:
+        raise ValueError("Inga giltiga messages för Gemini-anrop")
+
+    payload: Dict[str, Any] = {
+        'contents': contents,
+        'generationConfig': {
+            'temperature': 0.7,
+            'maxOutputTokens': max_tokens,
+        }
+    }
+    if system_lines:
+        payload['systemInstruction'] = {
+            'parts': [{'text': "\n\n".join(system_lines)}]
+        }
+
+    try:
+        response = requests.post(
+            url,
+            params={'key': api_key},
+            json=payload,
+            timeout=90,
+        )
+        response.raise_for_status()
+        result = response.json()
+
+        candidates = result.get('candidates') or []
+        if not candidates:
+            raise RuntimeError("Gemini svar saknar candidates")
+        parts = (candidates[0].get('content') or {}).get('parts') or []
+        text = ''.join((p.get('text') or '') for p in parts).strip()
+        if not text:
+            raise RuntimeError("Gemini svar saknar text")
+        return text
+    except requests.RequestException as e:
+        logger.error(f"[ERROR] Gemini API error: {e}")
+        raise
+
+
+def get_openrouter_response(messages: List[Dict], model: str = "google/gemini-2.5-flash", provider: str = "openrouter") -> str:
+    """Skicka förfrågan till vald LLM-provider (gemini/openrouter/openai)."""
+    provider = (provider or 'openrouter').strip().lower()
+
+    if provider == 'gemini':
+        return _get_gemini_direct_response(messages, model)
+
+    if provider == 'openai':
+        openai_api_key = os.getenv('OPENAI_API_KEY')
+        if not openai_api_key:
+            raise ValueError("OPENAI_API_KEY saknas i miljövariabler")
+        try:
+            from openai import OpenAI
+
+            default_openai_model = model.split('/', 1)[1] if '/' in model else model
+            openai_model = os.getenv('OPENAI_MODEL', '').strip() or default_openai_model
+            max_tokens_env = os.getenv('MMM_MAX_TOKENS', '').strip()
+            try:
+                max_tokens = int(max_tokens_env) if max_tokens_env else 2200
+            except ValueError:
+                max_tokens = 2200
+
+            client = OpenAI(api_key=openai_api_key)
+            resp = client.chat.completions.create(
+                model=openai_model,
+                messages=messages,
+                temperature=0.7,
+                max_tokens=max_tokens,
+            )
+            return (resp.choices[0].message.content or "").strip()
+        except Exception as e:
+            logger.error(f"[ERROR] OpenAI API error: {type(e).__name__}: {e}")
+            raise
+
+    # Default: OpenRouter (med fallback till OpenAI om OpenRouter-nyckel saknas)
     api_key = os.getenv('OPENROUTER_API_KEY')
     if api_key:
         url = "https://openrouter.ai/api/v1/chat/completions"
@@ -638,11 +743,17 @@ def get_openrouter_response(messages: List[Dict], model: str = "openai/gpt-4o-mi
             "Content-Type": "application/json"
         }
 
+        max_tokens_env = os.getenv('MMM_MAX_TOKENS', '').strip()
+        try:
+            max_tokens = int(max_tokens_env) if max_tokens_env else 2200
+        except ValueError:
+            max_tokens = 2200
+
         data = {
             "model": model,
             "messages": messages,
             "temperature": 0.7,
-            "max_tokens": 4000
+            "max_tokens": max_tokens
         }
 
         try:
@@ -663,13 +774,18 @@ def get_openrouter_response(messages: List[Dict], model: str = "openai/gpt-4o-mi
             # För OpenAI vill vi oftast ha "gpt-4o-mini".
             default_openai_model = model.split('/', 1)[1] if '/' in model else model
             openai_model = os.getenv('OPENAI_MODEL', '').strip() or default_openai_model
+            max_tokens_env = os.getenv('MMM_MAX_TOKENS', '').strip()
+            try:
+                max_tokens = int(max_tokens_env) if max_tokens_env else 2200
+            except ValueError:
+                max_tokens = 2200
 
             client = OpenAI(api_key=openai_api_key)
             resp = client.chat.completions.create(
                 model=openai_model,
                 messages=messages,
                 temperature=0.7,
-                max_tokens=4000,
+                max_tokens=max_tokens,
             )
             return (resp.choices[0].message.content or "").strip()
         except Exception as e:
@@ -1114,11 +1230,18 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
         article_refs = "\n\nTILLGÄNGLIGA ARTIKLAR ATT REFERERA TILL:\n"
         max_article_chars_env = os.getenv('MMM_PROMPT_ARTICLE_CHARS', '').strip()
         try:
-            max_article_chars = int(max_article_chars_env) if max_article_chars_env else 650
+            max_article_chars = int(max_article_chars_env) if max_article_chars_env else 320
         except ValueError:
-            max_article_chars = 650
+            max_article_chars = 320
 
-        for i, article in enumerate(available_articles[:10], 1):
+        max_prompt_articles_env = os.getenv('MMM_PROMPT_MAX_ARTICLES', '').strip()
+        try:
+            max_prompt_articles = int(max_prompt_articles_env) if max_prompt_articles_env else 6
+        except ValueError:
+            max_prompt_articles = 6
+        max_prompt_articles = max(3, min(10, max_prompt_articles))
+
+        for i, article in enumerate(available_articles[:max_prompt_articles], 1):
             article_title = _truncate_text(article.get('title', ''), 140)
             article_content = _truncate_text(article.get('content', ''), max_article_chars)
             article_source = article.get('source', 'Okänd källa')
@@ -1291,7 +1414,7 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
 
 DATUM (KRITISKT): {date_str} ({date_context})
 VÄDER: {weather_info}
-LÄNGD: Absolut mål är 10 minuter (minst 1800-2200 ord för talat innehåll)
+LÄNGD: Absolut mål är 6-8 minuter (cirka 900-1100 ord för talat innehåll)
 VÄRDAR: Lisa (kvinnlig, professionell men vänlig) och Pelle (manlig, nyfiken och engagerad)
 
 {article_refs}{callback_refs}
@@ -1372,6 +1495,24 @@ VIKTIGT: Endast dialog - inga rubriker eller formatering! Bara "Namn: Text" rad 
 Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 1800 ord:"""
 
     messages = [{"role": "user", "content": prompt}]
+
+    podcast_settings = config.get('podcastSettings', {}) if isinstance(config.get('podcastSettings'), dict) else {}
+    env_provider = os.getenv('MMM_AI_PROVIDER', '').strip().lower()
+    cfg_provider = str(podcast_settings.get('ai_provider', '') or '').strip().lower()
+    llm_provider = env_provider or cfg_provider or 'gemini'
+
+    env_model = os.getenv('MMM_LLM_MODEL', '').strip()
+    cfg_gemini_model = str(podcast_settings.get('gemini_model', '') or '').strip()
+    cfg_openrouter_model = str(podcast_settings.get('openrouter_model', '') or '').strip()
+    cfg_openai_model = str(podcast_settings.get('openai_model', '') or '').strip()
+
+    if llm_provider == 'gemini':
+        llm_model = env_model or cfg_gemini_model or cfg_openrouter_model or 'gemini-2.5-flash'
+    elif llm_provider == 'openai':
+        llm_model = env_model or cfg_openai_model or 'gpt-5-mini'
+    else:
+        llm_provider = 'openrouter'
+        llm_model = env_model or cfg_openrouter_model or 'google/gemini-2.5-flash'
     
     def generate_fallback_content_from_articles() -> str:
         # Bygg ett längre, källbaserat manus utan LLM så att vi inte publicerar ~1 minut.
@@ -1436,32 +1577,40 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
         # Säkerställ minlängd även i fallback-läget.
         min_words_env_local = os.getenv('MMM_MIN_SCRIPT_WORDS', '').strip()
         try:
-            min_words_local = int(min_words_env_local) if min_words_env_local else 1400
+            min_words_local = int(min_words_env_local) if min_words_env_local else 900
         except ValueError:
-            min_words_local = 1400
+            min_words_local = 900
         if _should_pad_short_scripts():
             return _append_article_padding(draft, chosen, min_words_local)
         return draft
 
     try:
-        content = get_openrouter_response(messages)
+        logger.info(f"[AI] Using LLM provider/model: {llm_provider}/{llm_model}")
+        content = get_openrouter_response(messages, model=llm_model, provider=llm_provider)
         # Guard: ibland svarar modellen alldeles för kort (t.ex. när källistan är tunn).
-        # Gör en explicit retry med skarpare instruktioner, annars riskerar vi 1-minutsavsnitt.
+        # Gör retry endast vid extremt kort svar för att minska extra API-kostnad.
         min_words_env = os.getenv('MMM_MIN_SCRIPT_WORDS', '').strip()
         try:
-            min_words = int(min_words_env) if min_words_env else 1400
+            min_words = int(min_words_env) if min_words_env else 900
         except ValueError:
-            min_words = 1400
+            min_words = 900
+        retry_threshold_env = os.getenv('MMM_RETRY_IF_BELOW_WORDS', '').strip()
+        try:
+            retry_if_below_words = int(retry_threshold_env) if retry_threshold_env else 700
+        except ValueError:
+            retry_if_below_words = 700
         wc = _count_words(content)
-        if wc < min_words:
+        if wc < retry_if_below_words:
             logger.warning(f"[AI] Manus för kort ({wc} ord < {min_words}). Försöker en gång till med förtydligad prompt...")
             log_diagnostic('ai_script_too_short_retry', {
                 'word_count': wc,
                 'min_words': min_words,
-                'model': 'openai/gpt-4o-mini',
+                'retry_if_below_words': retry_if_below_words,
+                'provider': llm_provider,
+                'model': llm_model,
             })
             retry_prompt = prompt + "\n\nVIKTIGT: Ditt förra svar blev för kort. Skriv om manuset till minst " + str(min_words) + " ord. Behåll exakt samma FORMAT (bara 'Namn: text') och använd de listade källorna."
-            content = get_openrouter_response([{"role": "user", "content": retry_prompt}])
+            content = get_openrouter_response([{"role": "user", "content": retry_prompt}], model=llm_model, provider=llm_provider)
             wc2 = _count_words(content)
             logger.info(f"[AI] Retry word count: {wc2}")
             if wc2 < min_words:
@@ -1861,6 +2010,44 @@ def clean_xml_text(text: Optional[str]) -> str:
     return html.escape(normalized, quote=True)
 
 
+def _linkify_text_line(line: str) -> str:
+    """Convert plain URLs in a text line into safe HTML links."""
+    if not line:
+        return ""
+
+    url_pattern = re.compile(r'(https?://[^\s<>"]+)')
+    parts = url_pattern.split(line)
+    html_parts = []
+
+    for index, part in enumerate(parts):
+        if not part:
+            continue
+
+        if index % 2 == 1:
+            safe_url = html.escape(part, quote=True)
+            html_parts.append(f'<a href="{safe_url}">{safe_url}</a>')
+        else:
+            html_parts.append(html.escape(part))
+
+    return ''.join(html_parts)
+
+
+def description_to_html_show_notes(description: Optional[str]) -> str:
+    """Build lightweight HTML show notes from plain text description."""
+    if not description:
+        return ""
+
+    lines = str(description).splitlines()
+    rendered_lines = []
+    for line in lines:
+        if not line.strip():
+            rendered_lines.append("<br/>")
+        else:
+            rendered_lines.append(_linkify_text_line(line))
+
+    return '<p>' + '<br/>'.join(rendered_lines) + '</p>'
+
+
 def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
     """Generera RSS-feed.
 
@@ -1903,20 +2090,25 @@ def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
             guid = audio_url
         
         safe_title = clean_xml_text(episode.get('title', ''))
-        safe_description = clean_xml_text(episode.get('description', ''))
+        raw_description = episode.get('description', '')
+        safe_description = clean_xml_text(raw_description)
+        safe_summary = clean_xml_text(raw_description)
+        content_encoded_html = description_to_html_show_notes(raw_description)
         safe_audio_url = html.escape(audio_url, quote=True)
         safe_guid = clean_xml_text(guid)
 
         rss_items.append(f"""        <item>
             <title>{safe_title}</title>
             <description>{safe_description}</description>
+            <itunes:summary>{safe_summary}</itunes:summary>
+            <content:encoded><![CDATA[{content_encoded_html}]]></content:encoded>
             <pubDate>{pub_date}</pubDate>
             <enclosure url="{safe_audio_url}" length="{file_size}" type="audio/mpeg"/>
             <guid>{safe_guid}</guid>
         </item>""")
     
     rss_content = f"""<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+    <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>{clean_xml_text(channel_title)}</title>
         <description>{clean_xml_text(channel_description)}</description>
@@ -2113,49 +2305,42 @@ def main():
         audio_filepath = os.path.join('audio', audio_filename)
 
         require_gemini_tts = os.getenv('MMM_FORCE_GEMINI_TTS', '').strip().lower() in {'1', 'true', 'yes', 'y'}
-        
-        # Försök först med Gemini TTS för naturlig dialog
-        logger.info("[TTS] Försöker generera naturlig dialog med Gemini TTS...")
+
+        tts_provider = os.getenv('MMM_TTS_PROVIDER', 'google_cloud').strip().lower()
+        if tts_provider not in {'google_cloud', 'gemini'}:
+            logger.warning(f"[TTS] Okänd MMM_TTS_PROVIDER='{tts_provider}', använder google_cloud")
+            tts_provider = 'google_cloud'
+
+        if require_gemini_tts:
+            tts_provider = 'gemini'
+
+        logger.info(f"[TTS] Aktiv provider: {tts_provider}")
         log_diagnostic('tts_provider_attempt', {
-            'provider': 'gemini',
+            'provider': tts_provider,
             'output_file': audio_filepath,
             'require_gemini': require_gemini_tts,
         })
-        gemini_success = generate_audio_with_gemini_dialog(podcast_content, weather_info, audio_filepath)
-        
-        if not gemini_success:
+
+        if tts_provider == 'gemini':
+            gemini_success = generate_audio_with_gemini_dialog(podcast_content, weather_info, audio_filepath)
             log_diagnostic('tts_provider_result', {
                 'provider': 'gemini',
-                'success': False,
-                'error': _LAST_GEMINI_ERROR,
+                'success': bool(gemini_success),
+                'error': _LAST_GEMINI_ERROR if not gemini_success else None,
             })
-
-            if require_gemini_tts:
-                logger.error("[TTS] MMM_FORCE_GEMINI_TTS är aktivt: avbryter istället för fallback")
+            if not gemini_success:
+                logger.error("[ERROR] Gemini TTS misslyckades")
                 return False
-
-            # Fallback till standard Google Cloud TTS
-            logger.info("[TTS] Använder standard Google Cloud TTS som fallback...")
-            log_diagnostic('tts_provider_fallback', {
-                'from_provider': 'gemini',
-                'to_provider': 'google_cloud',
-            })
+            logger.info("[TTS] ✅ Naturlig dialog genererad med Gemini TTS!")
+        else:
             success = generate_audio_google_cloud(segments, audio_filepath)
-
             log_diagnostic('tts_provider_result', {
                 'provider': 'google_cloud',
                 'success': bool(success),
             })
-            
             if not success:
                 logger.error("[ERROR] Audio-generering misslyckades")
                 return False
-        else:
-            logger.info("[TTS] ✅ Naturlig dialog genererad med Gemini TTS!")
-            log_diagnostic('tts_provider_result', {
-                'provider': 'gemini',
-                'success': True,
-            })
         
         # Lägg till musik och bryggkor
         audio_filepath = add_music_to_podcast(audio_filepath)
@@ -2212,7 +2397,7 @@ def main():
             if article.get('link') and article.get('title'):
                 short_title = article['title'][:60] + "..." if len(article['title']) > 60 else article['title']
                 source_name = article.get('source', 'Okänd källa')
-                article_links.append(f"{source_name}: {short_title}\n  {article['link']}")
+                article_links.append(f"{source_name}: {short_title}\n{article['link']}")
         
         sources_text = ""
         if article_links:

@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import re
 from datetime import datetime, timezone
 import pytz
 from feedgen.feed import FeedGenerator
@@ -10,6 +11,22 @@ from dotenv import load_dotenv
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def normalize_description_for_links(text: str) -> str:
+    """Normalize description text to improve URL detection in podcast apps."""
+    if not text:
+        return ""
+
+    normalized_lines = []
+    for line in str(text).splitlines():
+        trimmed = line.strip()
+        if re.match(r'^https?://', trimmed):
+            normalized_lines.append(trimmed)
+        else:
+            normalized_lines.append(line.rstrip())
+
+    return "\n".join(normalized_lines).strip()
 
 class RSSGenerator:
     def __init__(self):
@@ -65,7 +82,9 @@ class RSSGenerator:
         # Basic episode info
         fe.id(episode_metadata['guid'])
         fe.title(episode_metadata['title'])
-        fe.description(episode_metadata['description'])
+        normalized_description = normalize_description_for_links(episode_metadata.get('description', ''))
+        fe.description(normalized_description)
+        fe.podcast.itunes_summary(normalized_description)
         
         # Publication date - ensure timezone info
         pub_date = datetime.fromisoformat(episode_metadata['pub_date'])

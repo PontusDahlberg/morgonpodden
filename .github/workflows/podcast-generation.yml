@@ -142,9 +142,10 @@ jobs:
         PY
 
     - name: 🔍 Verify Gemini TTS access (multi-speaker)
+      if: github.event_name == 'workflow_dispatch'
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/google-cloud-service-account.json
-        MMM_FORCE_GEMINI_TTS: ${{ vars.MMM_FORCE_GEMINI_TTS }}
+        MMM_FORCE_GEMINI_TTS: "false"
       run: |
         set +e
         python - <<'PY'
@@ -205,7 +206,13 @@ jobs:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/google-cloud-service-account.json
         USE_GOOGLE_CLOUD_TTS: true
         TZ: Europe/Stockholm
-        MMM_FORCE_GEMINI_TTS: ${{ vars.MMM_FORCE_GEMINI_TTS }}
+        MMM_FORCE_GEMINI_TTS: "false"
+        MMM_TTS_PROVIDER: google_cloud
+        MMM_MAX_TOKENS: "2200"
+        MMM_MIN_SCRIPT_WORDS: "900"
+        MMM_RETRY_IF_BELOW_WORDS: "700"
+        MMM_PROMPT_MAX_ARTICLES: "6"
+        MMM_PROMPT_ARTICLE_CHARS: "320"
         # Explicitly unset GOOGLE_CLOUD_KEY to force using file
         GOOGLE_CLOUD_KEY: ""
 

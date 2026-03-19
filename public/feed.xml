@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+    <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>MMM Senaste Nytt</title>
         <description>Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.</description>
@@ -14,8 +14,44 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Wed, 18 Mar 2026 05:51:57 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 19 Mar 2026 05:44:51 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 19 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - torsdag den 19 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Insändare. Därför behöver Sverige ett nytt socialliberalt pa...
+https://www.dn.se/insandare/darfor-behover-sverige-ett-nytt-socialliberalt-parti/
+• Computer Sweden: Mystisk kraftfull AI-modell har dykt upp online – Hunter Alp...
+https://computersweden.se/article/4147031/mystisk-kraftfull-ai-modell-har-dykt-upp-online-hunter-alpha.html
+• Computer Sweden: Mistrals nya plattform låter företag skapa egna AI-modeller
+https://computersweden.se/article/4146930/mistrals-nya-plattform-later-foretag-skapa-egna-ai-modeller.html
+• SVT Nyheter: Kinesiskan skadar sig under VM-matchen mot Sverige – får hjä...
+https://www.svt.se/sport/curling/kinesiskan-skadar-sig-under-vm-matchen-mot-sverige-far-hjalp-av-isen
+• SVT Nyheter: Statsministerns besked om satsningar på väg och järnväg i Jä...
+https://www.svt.se/nyheter/lokalt/jamtland/statsministerns-besked-om-satsningar-pa-vag-och-jarnvag-i-jamtlands-lan
+• Miljö &amp; Utveckling: Fler arter i Sverige – men biologisk mångfald minskar
+https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - torsdag den 19 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Insändare. Därför behöver Sverige ett nytt socialliberalt pa...
+https://www.dn.se/insandare/darfor-behover-sverige-ett-nytt-socialliberalt-parti/
+• Computer Sweden: Mystisk kraftfull AI-modell har dykt upp online – Hunter Alp...
+https://computersweden.se/article/4147031/mystisk-kraftfull-ai-modell-har-dykt-upp-online-hunter-alpha.html
+• Computer Sweden: Mistrals nya plattform låter företag skapa egna AI-modeller
+https://computersweden.se/article/4146930/mistrals-nya-plattform-later-foretag-skapa-egna-ai-modeller.html
+• SVT Nyheter: Kinesiskan skadar sig under VM-matchen mot Sverige – får hjä...
+https://www.svt.se/sport/curling/kinesiskan-skadar-sig-under-vm-matchen-mot-sverige-far-hjalp-av-isen
+• SVT Nyheter: Statsministerns besked om satsningar på väg och järnväg i Jä...
+https://www.svt.se/nyheter/lokalt/jamtland/statsministerns-besked-om-satsningar-pa-vag-och-jarnvag-i-jamtlands-lan
+• Miljö &amp; Utveckling: Fler arter i Sverige – men biologisk mångfald minskar
+https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - torsdag den 19 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• Dagens Nyheter: Insändare. Därför behöver Sverige ett nytt socialliberalt pa...<br/><a href="https://www.dn.se/insandare/darfor-behover-sverige-ett-nytt-socialliberalt-parti/">https://www.dn.se/insandare/darfor-behover-sverige-ett-nytt-socialliberalt-parti/</a><br/>• Computer Sweden: Mystisk kraftfull AI-modell har dykt upp online – Hunter Alp...<br/><a href="https://computersweden.se/article/4147031/mystisk-kraftfull-ai-modell-har-dykt-upp-online-hunter-alpha.html">https://computersweden.se/article/4147031/mystisk-kraftfull-ai-modell-har-dykt-upp-online-hunter-alpha.html</a><br/>• Computer Sweden: Mistrals nya plattform låter företag skapa egna AI-modeller<br/><a href="https://computersweden.se/article/4146930/mistrals-nya-plattform-later-foretag-skapa-egna-ai-modeller.html">https://computersweden.se/article/4146930/mistrals-nya-plattform-later-foretag-skapa-egna-ai-modeller.html</a><br/>• SVT Nyheter: Kinesiskan skadar sig under VM-matchen mot Sverige – får hjä...<br/><a href="https://www.svt.se/sport/curling/kinesiskan-skadar-sig-under-vm-matchen-mot-sverige-far-hjalp-av-isen">https://www.svt.se/sport/curling/kinesiskan-skadar-sig-under-vm-matchen-mot-sverige-far-hjalp-av-isen</a><br/>• SVT Nyheter: Statsministerns besked om satsningar på väg och järnväg i Jä...<br/><a href="https://www.svt.se/nyheter/lokalt/jamtland/statsministerns-besked-om-satsningar-pa-vag-och-jarnvag-i-jamtlands-lan">https://www.svt.se/nyheter/lokalt/jamtland/statsministerns-besked-om-satsningar-pa-vag-och-jarnvag-i-jamtlands-lan</a><br/>• Miljö &amp; Utveckling: Fler arter i Sverige – men biologisk mångfald minskar<br/><a href="https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/">https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/</a></p>]]></content:encoded>
+            <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260319_054347.mp3" length="6757869" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260319_054347.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 18 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - onsdag den 18 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -32,6 +68,22 @@ Källor som refereras i detta avsnitt:
   https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/
 • Dagens Nyheter: Eldfesten firades i Malmö: ”Extra viktigt nu”
   https://www.dn.se/sverige/eldfesten-firades-i-malmo-extra-viktigt-nu/</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - onsdag den 18 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Sveriges Natur: Sveriges Natur går mot strömmen – allt fler läser tidningen
+  https://www.sverigesnatur.org/aktuellt/sveriges-natur-gar-mot-strommen-allt-fler-laser-tidningen/
+• Dagens Nyheter: DN Debatt. ”Sveriges kunskapssyn är förlegad – vi kommer bli...
+  https://www.dn.se/debatt/sveriges-kunskapssyn-ar-forlegad-vi-kommer-bli-omsprungna/
+• Miljö &amp; Utveckling: Fler arter i Sverige – men biologisk mångfald minskar
+  https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/
+• SVT Nyheter: Malmö rasar efter avgörandet: ”Får hela hans röv i ansiktet”
+  https://www.svt.se/sport/ishockey/malmo-rasar-efter-avgorandet-far-hela-hans-rov-i-ansiktet
+• TechCrunch: Mistral bets on ‘build-your-own AI’ as it takes on OpenAI, A...
+  https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/
+• Dagens Nyheter: Eldfesten firades i Malmö: ”Extra viktigt nu”
+  https://www.dn.se/sverige/eldfesten-firades-i-malmo-extra-viktigt-nu/</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - onsdag den 18 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• Sveriges Natur: Sveriges Natur går mot strömmen – allt fler läser tidningen<br/>  <a href="https://www.sverigesnatur.org/aktuellt/sveriges-natur-gar-mot-strommen-allt-fler-laser-tidningen/">https://www.sverigesnatur.org/aktuellt/sveriges-natur-gar-mot-strommen-allt-fler-laser-tidningen/</a><br/>• Dagens Nyheter: DN Debatt. ”Sveriges kunskapssyn är förlegad – vi kommer bli...<br/>  <a href="https://www.dn.se/debatt/sveriges-kunskapssyn-ar-forlegad-vi-kommer-bli-omsprungna/">https://www.dn.se/debatt/sveriges-kunskapssyn-ar-forlegad-vi-kommer-bli-omsprungna/</a><br/>• Miljö &amp; Utveckling: Fler arter i Sverige – men biologisk mångfald minskar<br/>  <a href="https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/">https://miljo-utveckling.se/fler-arter-i-sverige-men-biologisk-mangfald-minskar/</a><br/>• SVT Nyheter: Malmö rasar efter avgörandet: ”Får hela hans röv i ansiktet”<br/>  <a href="https://www.svt.se/sport/ishockey/malmo-rasar-efter-avgorandet-far-hela-hans-rov-i-ansiktet">https://www.svt.se/sport/ishockey/malmo-rasar-efter-avgorandet-far-hela-hans-rov-i-ansiktet</a><br/>• TechCrunch: Mistral bets on ‘build-your-own AI’ as it takes on OpenAI, A...<br/>  <a href="https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/">https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/</a><br/>• Dagens Nyheter: Eldfesten firades i Malmö: ”Extra viktigt nu”<br/>  <a href="https://www.dn.se/sverige/eldfesten-firades-i-malmo-extra-viktigt-nu/">https://www.dn.se/sverige/eldfesten-firades-i-malmo-extra-viktigt-nu/</a></p>]]></content:encoded>
             <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260318_054509.mp3" length="8662893" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260318_054509.mp3</guid>
@@ -52,6 +104,22 @@ Källor som refereras i detta avsnitt:
   https://techcrunch.com/2026/03/16/memories-ai-is-building-the-visual-memory-layer-for-wearables-and-robotics/
 • TechCrunch: The dictionary sues OpenAI
   https://techcrunch.com/2026/03/16/merriam-webster-openai-encyclopedia-brittanica-lawsuit/</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - tisdag den 17 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Statsministerns brutna vallöfte – ingen satsning på Ostkustb...
+  https://www.svt.se/nyheter/lokalt/vasternorrland/statsministerns-brutna-vallofte-ingen-satsning-pa-ostkustbanan
+• Ny Teknik: Studie: Elbilar minskar utsläppen – men kan öka trängseln
+  https://www.nyteknik.se/elbilar/studie-elbilar-minskar-utslaeppen-men-kan-oeka-traengseln/4444845
+• Dagens Nyheter: Största beslaget av handgranater i Sverige
+  https://www.dn.se/sverige/storsta-beslaget-av-handgranater-i-sverige/
+• Svenska Dagbladet: De har makten över maten i Sverige
+  https://www.svd.se/a/Oko0Qk/de-ar-maktigaste-influencers-om-mat-och-halsa-i-sverige-enligt-medieakademien
+• TechCrunch: Memories AI is building the visual memory layer for wearable...
+  https://techcrunch.com/2026/03/16/memories-ai-is-building-the-visual-memory-layer-for-wearables-and-robotics/
+• TechCrunch: The dictionary sues OpenAI
+  https://techcrunch.com/2026/03/16/merriam-webster-openai-encyclopedia-brittanica-lawsuit/</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - tisdag den 17 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• SVT Nyheter: Statsministerns brutna vallöfte – ingen satsning på Ostkustb...<br/>  <a href="https://www.svt.se/nyheter/lokalt/vasternorrland/statsministerns-brutna-vallofte-ingen-satsning-pa-ostkustbanan">https://www.svt.se/nyheter/lokalt/vasternorrland/statsministerns-brutna-vallofte-ingen-satsning-pa-ostkustbanan</a><br/>• Ny Teknik: Studie: Elbilar minskar utsläppen – men kan öka trängseln<br/>  <a href="https://www.nyteknik.se/elbilar/studie-elbilar-minskar-utslaeppen-men-kan-oeka-traengseln/4444845">https://www.nyteknik.se/elbilar/studie-elbilar-minskar-utslaeppen-men-kan-oeka-traengseln/4444845</a><br/>• Dagens Nyheter: Största beslaget av handgranater i Sverige<br/>  <a href="https://www.dn.se/sverige/storsta-beslaget-av-handgranater-i-sverige/">https://www.dn.se/sverige/storsta-beslaget-av-handgranater-i-sverige/</a><br/>• Svenska Dagbladet: De har makten över maten i Sverige<br/>  <a href="https://www.svd.se/a/Oko0Qk/de-ar-maktigaste-influencers-om-mat-och-halsa-i-sverige-enligt-medieakademien">https://www.svd.se/a/Oko0Qk/de-ar-maktigaste-influencers-om-mat-och-halsa-i-sverige-enligt-medieakademien</a><br/>• TechCrunch: Memories AI is building the visual memory layer for wearable...<br/>  <a href="https://techcrunch.com/2026/03/16/memories-ai-is-building-the-visual-memory-layer-for-wearables-and-robotics/">https://techcrunch.com/2026/03/16/memories-ai-is-building-the-visual-memory-layer-for-wearables-and-robotics/</a><br/>• TechCrunch: The dictionary sues OpenAI<br/>  <a href="https://techcrunch.com/2026/03/16/merriam-webster-openai-encyclopedia-brittanica-lawsuit/">https://techcrunch.com/2026/03/16/merriam-webster-openai-encyclopedia-brittanica-lawsuit/</a></p>]]></content:encoded>
             <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260317_054056.mp3" length="9173997" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260317_054056.mp3</guid>
@@ -70,6 +138,20 @@ Källor som refereras i detta avsnitt:
   https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/
 • SVT Nyheter: Vittnesmålet från slutenvården på Sunderbyn: ”Lättad att ha ...
   https://www.svt.se/nyheter/lokalt/norrbotten/vittnesmalet-fran-slutenvarden-lattad-att-ha-overlevt</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - måndag den 16 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Johanna Alm Dahlin: ”Staten måste ta ett större ansvar”
+  https://www.svt.se/nyheter/nyhetstecken/johanna-alm-dahlin-staten-maste-ta-ett-storre-ansvar
+• SVT Nyheter: Statusen på tolkyrket måste höjas: ”Fler väljer annat”
+  https://www.svt.se/nyheter/nyhetstecken/statusen-pa-tolkyrket-maste-hojas-fler-valjer-annat
+• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning
+  https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/
+• Miljö &amp; Utveckling: Rapport: EU:s livsmedelssystem måste ställas om för att klar...
+  https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/
+• SVT Nyheter: Vittnesmålet från slutenvården på Sunderbyn: ”Lättad att ha ...
+  https://www.svt.se/nyheter/lokalt/norrbotten/vittnesmalet-fran-slutenvarden-lattad-att-ha-overlevt</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - måndag den 16 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• SVT Nyheter: Johanna Alm Dahlin: ”Staten måste ta ett större ansvar”<br/>  <a href="https://www.svt.se/nyheter/nyhetstecken/johanna-alm-dahlin-staten-maste-ta-ett-storre-ansvar">https://www.svt.se/nyheter/nyhetstecken/johanna-alm-dahlin-staten-maste-ta-ett-storre-ansvar</a><br/>• SVT Nyheter: Statusen på tolkyrket måste höjas: ”Fler väljer annat”<br/>  <a href="https://www.svt.se/nyheter/nyhetstecken/statusen-pa-tolkyrket-maste-hojas-fler-valjer-annat">https://www.svt.se/nyheter/nyhetstecken/statusen-pa-tolkyrket-maste-hojas-fler-valjer-annat</a><br/>• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning<br/>  <a href="https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/">https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/</a><br/>• Miljö &amp; Utveckling: Rapport: EU:s livsmedelssystem måste ställas om för att klar...<br/>  <a href="https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/">https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/</a><br/>• SVT Nyheter: Vittnesmålet från slutenvården på Sunderbyn: ”Lättad att ha ...<br/>  <a href="https://www.svt.se/nyheter/lokalt/norrbotten/vittnesmalet-fran-slutenvarden-lattad-att-ha-overlevt">https://www.svt.se/nyheter/lokalt/norrbotten/vittnesmalet-fran-slutenvarden-lattad-att-ha-overlevt</a></p>]]></content:encoded>
             <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260316_055825.mp3" length="8249709" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260316_055825.mp3</guid>
@@ -88,6 +170,20 @@ Källor som refereras i detta avsnitt:
   https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/
 • SVT Nyheter: Handgranater och narkotika i polisens tillslag i Västsverige
   https://www.svt.se/nyheter/lokalt/vast/handgranater-och-narkotika-i-polisens-tillslag-i-vastsverige</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - söndag den 15 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Skandalscener i svenska cupen – när Mjällby krossade Malmö
+  https://www.svt.se/sport/fotboll/skandalscener-i-svenska-cupen-mellan-mjallby-och-malmo
+• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning
+  https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/
+• SVT Nyheter: Fiskstammar kan slås ut av vattenkraft – regeringen begränsa...
+  https://www.svt.se/nyheter/lokalt/vasternorrland/fiskstammar-kan-slas-ut-av-vattenkraft-regeringen-begransar-miljoatgarder
+• TechCrunch: How to use the new ChatGPT app integrations, including DoorD...
+  https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/
+• SVT Nyheter: Handgranater och narkotika i polisens tillslag i Västsverige
+  https://www.svt.se/nyheter/lokalt/vast/handgranater-och-narkotika-i-polisens-tillslag-i-vastsverige</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - söndag den 15 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• SVT Nyheter: Skandalscener i svenska cupen – när Mjällby krossade Malmö<br/>  <a href="https://www.svt.se/sport/fotboll/skandalscener-i-svenska-cupen-mellan-mjallby-och-malmo">https://www.svt.se/sport/fotboll/skandalscener-i-svenska-cupen-mellan-mjallby-och-malmo</a><br/>• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning<br/>  <a href="https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/">https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/</a><br/>• SVT Nyheter: Fiskstammar kan slås ut av vattenkraft – regeringen begränsa...<br/>  <a href="https://www.svt.se/nyheter/lokalt/vasternorrland/fiskstammar-kan-slas-ut-av-vattenkraft-regeringen-begransar-miljoatgarder">https://www.svt.se/nyheter/lokalt/vasternorrland/fiskstammar-kan-slas-ut-av-vattenkraft-regeringen-begransar-miljoatgarder</a><br/>• TechCrunch: How to use the new ChatGPT app integrations, including DoorD...<br/>  <a href="https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/">https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/</a><br/>• SVT Nyheter: Handgranater och narkotika i polisens tillslag i Västsverige<br/>  <a href="https://www.svt.se/nyheter/lokalt/vast/handgranater-och-narkotika-i-polisens-tillslag-i-vastsverige">https://www.svt.se/nyheter/lokalt/vast/handgranater-och-narkotika-i-polisens-tillslag-i-vastsverige</a></p>]]></content:encoded>
             <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260315_055120.mp3" length="9029997" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260315_055120.mp3</guid>
@@ -106,6 +202,20 @@ Källor som refereras i detta avsnitt:
   https://spectrum.ieee.org/level-4-autonomous-trucks
 • Guardian Environment: Nearly three-quarters of England’s woods inaccessible to pub...
   https://www.theguardian.com/environment/2026/mar/13/nearly-three-quarters-of-englands-woods-inaccessible-to-public-study-finds</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - lördag den 14 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Ny Teknik: Regeringen: Kritiserade effektavgifter stoppas – ”Slagit för...
+  https://www.nyteknik.se/energi/regeringen-kritiserade-effektavgifter-stoppas-slagit-foer-hart-mot-hushall/4444638
+• Dagens Nyheter: Näringslivet: Migrationspolitiken dålig för Stockholm
+  https://www.dn.se/sverige/naringslivet-migrationspolitiken-dalig-for-stockholm/
+• TechCrunch: Travis Kalanick launches a new company called Atoms focused ...
+  https://techcrunch.com/2026/03/13/travis-kalanick-launches-a-new-company-called-atoms-focused-on-robotics/
+• IEEE Spectrum: Raquel Urtasun on Level-4 Autonomous Trucks
+  https://spectrum.ieee.org/level-4-autonomous-trucks
+• Guardian Environment: Nearly three-quarters of England’s woods inaccessible to pub...
+  https://www.theguardian.com/environment/2026/mar/13/nearly-three-quarters-of-englands-woods-inaccessible-to-public-study-finds</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - lördag den 14 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• Ny Teknik: Regeringen: Kritiserade effektavgifter stoppas – ”Slagit för...<br/>  <a href="https://www.nyteknik.se/energi/regeringen-kritiserade-effektavgifter-stoppas-slagit-foer-hart-mot-hushall/4444638">https://www.nyteknik.se/energi/regeringen-kritiserade-effektavgifter-stoppas-slagit-foer-hart-mot-hushall/4444638</a><br/>• Dagens Nyheter: Näringslivet: Migrationspolitiken dålig för Stockholm<br/>  <a href="https://www.dn.se/sverige/naringslivet-migrationspolitiken-dalig-for-stockholm/">https://www.dn.se/sverige/naringslivet-migrationspolitiken-dalig-for-stockholm/</a><br/>• TechCrunch: Travis Kalanick launches a new company called Atoms focused ...<br/>  <a href="https://techcrunch.com/2026/03/13/travis-kalanick-launches-a-new-company-called-atoms-focused-on-robotics/">https://techcrunch.com/2026/03/13/travis-kalanick-launches-a-new-company-called-atoms-focused-on-robotics/</a><br/>• IEEE Spectrum: Raquel Urtasun on Level-4 Autonomous Trucks<br/>  <a href="https://spectrum.ieee.org/level-4-autonomous-trucks">https://spectrum.ieee.org/level-4-autonomous-trucks</a><br/>• Guardian Environment: Nearly three-quarters of England’s woods inaccessible to pub...<br/>  <a href="https://www.theguardian.com/environment/2026/mar/13/nearly-three-quarters-of-englands-woods-inaccessible-to-public-study-finds">https://www.theguardian.com/environment/2026/mar/13/nearly-three-quarters-of-englands-woods-inaccessible-to-public-study-finds</a></p>]]></content:encoded>
             <pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260314_053741.mp3" length="9221613" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260314_053741.mp3</guid>
@@ -126,6 +236,22 @@ Källor som refereras i detta avsnitt:
   https://miljo-utveckling.se/ny-ranking-de-uppfattas-som-sveriges-mest-hallbara-varumarken/
 • SVT Nyheter: Mer makt till unga – Knivsta topp fem med förstagångsväljare
   https://www.svt.se/nyheter/lokalt/uppsala/mer-makt-till-unga-knivsta-topp-fem-med-forstagangsvaljare</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - fredag den 13 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Politisk strid i Finland – regeringen vill slopa kärnvapenfö...
+  https://www.svt.se/nyheter/uutiset/svenska/politisk-strid-i-finland-regeringen-vill-slopa-karnvapenforbudet
+• SVT Nyheter: Evert hamnade i rullstol efter TBE-smitta – trots vaccin: ”M...
+  https://www.svt.se/nyheter/lokalt/jonkoping/evert-hamnade-i-rullstol-efter-tbe-smitta-trots-vaccin-maximal-otur
+• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning
+  https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/
+• Miljö &amp; Utveckling: Rapport: EU:s livsmedelssystem måste ställas om för att klar...
+  https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/
+• Miljö &amp; Utveckling: Ny ranking: De uppfattas som Sveriges mest hållbara varumärk...
+  https://miljo-utveckling.se/ny-ranking-de-uppfattas-som-sveriges-mest-hallbara-varumarken/
+• SVT Nyheter: Mer makt till unga – Knivsta topp fem med förstagångsväljare
+  https://www.svt.se/nyheter/lokalt/uppsala/mer-makt-till-unga-knivsta-topp-fem-med-forstagangsvaljare</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - fredag den 13 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• SVT Nyheter: Politisk strid i Finland – regeringen vill slopa kärnvapenfö...<br/>  <a href="https://www.svt.se/nyheter/uutiset/svenska/politisk-strid-i-finland-regeringen-vill-slopa-karnvapenforbudet">https://www.svt.se/nyheter/uutiset/svenska/politisk-strid-i-finland-regeringen-vill-slopa-karnvapenforbudet</a><br/>• SVT Nyheter: Evert hamnade i rullstol efter TBE-smitta – trots vaccin: ”M...<br/>  <a href="https://www.svt.se/nyheter/lokalt/jonkoping/evert-hamnade-i-rullstol-efter-tbe-smitta-trots-vaccin-maximal-otur">https://www.svt.se/nyheter/lokalt/jonkoping/evert-hamnade-i-rullstol-efter-tbe-smitta-trots-vaccin-maximal-otur</a><br/>• Miljö &amp; Utveckling: Studie: Höga klimatmål betyder inte alltid mer omställning<br/>  <a href="https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/">https://miljo-utveckling.se/studie-hoga-klimatmal-betyder-inte-alltid-mer-omstallning/</a><br/>• Miljö &amp; Utveckling: Rapport: EU:s livsmedelssystem måste ställas om för att klar...<br/>  <a href="https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/">https://miljo-utveckling.se/rapport-eus-livsmedelssystem-maste-stallas-om-for-att-klara-klimatmalen/</a><br/>• Miljö &amp; Utveckling: Ny ranking: De uppfattas som Sveriges mest hållbara varumärk...<br/>  <a href="https://miljo-utveckling.se/ny-ranking-de-uppfattas-som-sveriges-mest-hallbara-varumarken/">https://miljo-utveckling.se/ny-ranking-de-uppfattas-som-sveriges-mest-hallbara-varumarken/</a><br/>• SVT Nyheter: Mer makt till unga – Knivsta topp fem med förstagångsväljare<br/>  <a href="https://www.svt.se/nyheter/lokalt/uppsala/mer-makt-till-unga-knivsta-topp-fem-med-forstagangsvaljare">https://www.svt.se/nyheter/lokalt/uppsala/mer-makt-till-unga-knivsta-topp-fem-med-forstagangsvaljare</a></p>]]></content:encoded>
             <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260313_053829.mp3" length="7311213" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260313_053829.mp3</guid>
@@ -146,6 +272,22 @@ Källor som refereras i detta avsnitt:
   https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/
 • Miljö &amp; Utveckling: Miljöorganisation kritiserar EU-parlamentets bostadsrapport
   https://miljo-utveckling.se/miljoorganisation-kritiserar-eu-parlamentets-bostadsrapport/</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - torsdag den 12 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Sveriges största exklav Munsvattnet finns i Krokom – men til...
+  https://www.svt.se/nyheter/lokalt/jamtland/sveriges-storsta-exklav-munsvattnet-finns-i-krokom-men-tillhor-stromsund
+• SVT Nyheter: Jättesik fångad i Landösjön – kan vara Sveriges största
+  https://www.svt.se/nyheter/lokalt/jamtland/jattesik-fangad-i-landosjon-kan-vara-sveriges-storsta
+• SVT Nyheter: Forskning vid LTU: Svenskar vill ha tillbaka uroxen i skogen
+  https://www.svt.se/nyheter/lokalt/norrbotten/forskning-vid-ltu-svenskar-vill-ha-tillbaka-uroxen-i-skogen
+• The Verge: OpenAI’s Sora video generator is reportedly coming to ChatGP...
+  https://www.theverge.com/ai-artificial-intelligence/893189/openai-chatgpt-sora-integration
+• TechCrunch: Nuro is testing its autonomous vehicle tech on Tokyo’s stree...
+  https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/
+• Miljö &amp; Utveckling: Miljöorganisation kritiserar EU-parlamentets bostadsrapport
+  https://miljo-utveckling.se/miljoorganisation-kritiserar-eu-parlamentets-bostadsrapport/</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - torsdag den 12 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• SVT Nyheter: Sveriges största exklav Munsvattnet finns i Krokom – men til...<br/>  <a href="https://www.svt.se/nyheter/lokalt/jamtland/sveriges-storsta-exklav-munsvattnet-finns-i-krokom-men-tillhor-stromsund">https://www.svt.se/nyheter/lokalt/jamtland/sveriges-storsta-exklav-munsvattnet-finns-i-krokom-men-tillhor-stromsund</a><br/>• SVT Nyheter: Jättesik fångad i Landösjön – kan vara Sveriges största<br/>  <a href="https://www.svt.se/nyheter/lokalt/jamtland/jattesik-fangad-i-landosjon-kan-vara-sveriges-storsta">https://www.svt.se/nyheter/lokalt/jamtland/jattesik-fangad-i-landosjon-kan-vara-sveriges-storsta</a><br/>• SVT Nyheter: Forskning vid LTU: Svenskar vill ha tillbaka uroxen i skogen<br/>  <a href="https://www.svt.se/nyheter/lokalt/norrbotten/forskning-vid-ltu-svenskar-vill-ha-tillbaka-uroxen-i-skogen">https://www.svt.se/nyheter/lokalt/norrbotten/forskning-vid-ltu-svenskar-vill-ha-tillbaka-uroxen-i-skogen</a><br/>• The Verge: OpenAI’s Sora video generator is reportedly coming to ChatGP...<br/>  <a href="https://www.theverge.com/ai-artificial-intelligence/893189/openai-chatgpt-sora-integration">https://www.theverge.com/ai-artificial-intelligence/893189/openai-chatgpt-sora-integration</a><br/>• TechCrunch: Nuro is testing its autonomous vehicle tech on Tokyo’s stree...<br/>  <a href="https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/">https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/</a><br/>• Miljö &amp; Utveckling: Miljöorganisation kritiserar EU-parlamentets bostadsrapport<br/>  <a href="https://miljo-utveckling.se/miljoorganisation-kritiserar-eu-parlamentets-bostadsrapport/">https://miljo-utveckling.se/miljoorganisation-kritiserar-eu-parlamentets-bostadsrapport/</a></p>]]></content:encoded>
             <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260312_053859.mp3" length="9302253" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260312_053859.mp3</guid>
@@ -166,6 +308,22 @@ Källor som refereras i detta avsnitt:
   https://techcrunch.com/2026/03/10/mandiants-founder-just-raised-190m-for-his-autonomous-ai-agent-security-startup/
 • TechCrunch: ChatGPT can now create interactive visuals to help you under...
   https://techcrunch.com/2026/03/10/chatgpt-can-now-create-interactive-visuals-to-help-you-understand-math-and-science-concepts/</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - onsdag den 11 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Här rivs 60 år gamla ledningar – Stockholms elförsörjning sk...
+  https://www.svt.se/nyheter/lokalt/stockholm/har-rivs-60-ar-gamla-ledningar-stockholms-elforsorjning-ska-sakras
+• SVT Nyheter: Därför är det smog i Göteborg – och så länge väntas den stan...
+  https://www.svt.se/nyheter/lokalt/vast/darfor-ar-det-smog-i-goteborg-och-sa-lange-vantas-den-stanna
+• SVT Nyheter: Expo: Högerextrema aktiviteter ökar mest i Stockholms län
+  https://www.svt.se/nyheter/lokalt/sodertalje/expo-hogerextrema-aktiviteter-okar-mest-i-stockholms-lan
+• Ny Teknik: Avtagbar räckviddsförlängare kan göra elbilar till hybrider ...
+  https://www.nyteknik.se/elbilar/avtagbar-raeckviddsfoerlaengare-kan-goera-elbilar-till-hybrider-pa-langresorna/4443382
+• TechCrunch: Mandiant’s founder just raised $190M for his autonomous AI a...
+  https://techcrunch.com/2026/03/10/mandiants-founder-just-raised-190m-for-his-autonomous-ai-agent-security-startup/
+• TechCrunch: ChatGPT can now create interactive visuals to help you under...
+  https://techcrunch.com/2026/03/10/chatgpt-can-now-create-interactive-visuals-to-help-you-understand-math-and-science-concepts/</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - onsdag den 11 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• SVT Nyheter: Här rivs 60 år gamla ledningar – Stockholms elförsörjning sk...<br/>  <a href="https://www.svt.se/nyheter/lokalt/stockholm/har-rivs-60-ar-gamla-ledningar-stockholms-elforsorjning-ska-sakras">https://www.svt.se/nyheter/lokalt/stockholm/har-rivs-60-ar-gamla-ledningar-stockholms-elforsorjning-ska-sakras</a><br/>• SVT Nyheter: Därför är det smog i Göteborg – och så länge väntas den stan...<br/>  <a href="https://www.svt.se/nyheter/lokalt/vast/darfor-ar-det-smog-i-goteborg-och-sa-lange-vantas-den-stanna">https://www.svt.se/nyheter/lokalt/vast/darfor-ar-det-smog-i-goteborg-och-sa-lange-vantas-den-stanna</a><br/>• SVT Nyheter: Expo: Högerextrema aktiviteter ökar mest i Stockholms län<br/>  <a href="https://www.svt.se/nyheter/lokalt/sodertalje/expo-hogerextrema-aktiviteter-okar-mest-i-stockholms-lan">https://www.svt.se/nyheter/lokalt/sodertalje/expo-hogerextrema-aktiviteter-okar-mest-i-stockholms-lan</a><br/>• Ny Teknik: Avtagbar räckviddsförlängare kan göra elbilar till hybrider ...<br/>  <a href="https://www.nyteknik.se/elbilar/avtagbar-raeckviddsfoerlaengare-kan-goera-elbilar-till-hybrider-pa-langresorna/4443382">https://www.nyteknik.se/elbilar/avtagbar-raeckviddsfoerlaengare-kan-goera-elbilar-till-hybrider-pa-langresorna/4443382</a><br/>• TechCrunch: Mandiant’s founder just raised $190M for his autonomous AI a...<br/>  <a href="https://techcrunch.com/2026/03/10/mandiants-founder-just-raised-190m-for-his-autonomous-ai-agent-security-startup/">https://techcrunch.com/2026/03/10/mandiants-founder-just-raised-190m-for-his-autonomous-ai-agent-security-startup/</a><br/>• TechCrunch: ChatGPT can now create interactive visuals to help you under...<br/>  <a href="https://techcrunch.com/2026/03/10/chatgpt-can-now-create-interactive-visuals-to-help-you-understand-math-and-science-concepts/">https://techcrunch.com/2026/03/10/chatgpt-can-now-create-interactive-visuals-to-help-you-understand-math-and-science-concepts/</a></p>]]></content:encoded>
             <pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260311_053827.mp3" length="6509805" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260311_053827.mp3</guid>
@@ -186,29 +344,25 @@ Källor som refereras i detta avsnitt:
   https://miljo-utveckling.se/studie-den-globala-uppvarmningen-accelererar/
 • TechCrunch: OpenAI acquires Promptfoo to secure its AI agents
   https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - tisdag den 10 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• SVT Nyheter: Så kan börsoron slå mot Stockholms bostadsmarknad: ”Risken f...
+  https://www.svt.se/nyheter/lokalt/stockholm/sa-kan-borsoron-sla-mot-stockholms-bostadsmarknad-risken-finns
+• SVT Nyheter: Så agerar Trafikverket för att förhindra renolyckor i Härjed...
+  https://www.svt.se/nyheter/lokalt/jamtland/sa-agerar-trafikverket-for-att-forhindra-renolyckor-i-harjedalen
+• Svenska Dagbladet: Internt larm: Psykiatrin i Stockholm utarmas
+  https://www.svd.se/a/ExQy1o/varningen-psykiatrin-i-stockholm-lagger-ned-psykodynamiska-behandlingar
+• TechCrunch: Qualcomm’s partnership with Neura Robotics is just the begin...
+  https://techcrunch.com/2026/03/09/qualcomms-partnership-with-neura-robotics-is-just-the-beginning/
+• Miljö &amp; Utveckling: Studie: Den globala uppvärmningen accelererar
+  https://miljo-utveckling.se/studie-den-globala-uppvarmningen-accelererar/
+• TechCrunch: OpenAI acquires Promptfoo to secure its AI agents
+  https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - tisdag den 10 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• SVT Nyheter: Så kan börsoron slå mot Stockholms bostadsmarknad: ”Risken f...<br/>  <a href="https://www.svt.se/nyheter/lokalt/stockholm/sa-kan-borsoron-sla-mot-stockholms-bostadsmarknad-risken-finns">https://www.svt.se/nyheter/lokalt/stockholm/sa-kan-borsoron-sla-mot-stockholms-bostadsmarknad-risken-finns</a><br/>• SVT Nyheter: Så agerar Trafikverket för att förhindra renolyckor i Härjed...<br/>  <a href="https://www.svt.se/nyheter/lokalt/jamtland/sa-agerar-trafikverket-for-att-forhindra-renolyckor-i-harjedalen">https://www.svt.se/nyheter/lokalt/jamtland/sa-agerar-trafikverket-for-att-forhindra-renolyckor-i-harjedalen</a><br/>• Svenska Dagbladet: Internt larm: Psykiatrin i Stockholm utarmas<br/>  <a href="https://www.svd.se/a/ExQy1o/varningen-psykiatrin-i-stockholm-lagger-ned-psykodynamiska-behandlingar">https://www.svd.se/a/ExQy1o/varningen-psykiatrin-i-stockholm-lagger-ned-psykodynamiska-behandlingar</a><br/>• TechCrunch: Qualcomm’s partnership with Neura Robotics is just the begin...<br/>  <a href="https://techcrunch.com/2026/03/09/qualcomms-partnership-with-neura-robotics-is-just-the-beginning/">https://techcrunch.com/2026/03/09/qualcomms-partnership-with-neura-robotics-is-just-the-beginning/</a><br/>• Miljö &amp; Utveckling: Studie: Den globala uppvärmningen accelererar<br/>  <a href="https://miljo-utveckling.se/studie-den-globala-uppvarmningen-accelererar/">https://miljo-utveckling.se/studie-den-globala-uppvarmningen-accelererar/</a><br/>• TechCrunch: OpenAI acquires Promptfoo to secure its AI agents<br/>  <a href="https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/">https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/</a></p>]]></content:encoded>
             <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260310_053750.mp3" length="6856173" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260310_053750.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 9 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 9 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Lisa Magnusson: Skjutna apor och delfinshower – hur är det h...
-  https://www.dn.se/ledare/lisa-magnusson-skjutna-apor-och-delfinshower-hur-ar-det-har-ens-lagligt-i-sverige/
-• Dagens Nyheter: Insändare. Låt inte staten söva ner Stockholms city
-  https://www.dn.se/insandare/lat-inte-staten-sova-ner-stockholms-city/
-• Dagens Nyheter: DN Debatt. ”Nu stryps rättigheterna för Sveriges unga”
-  https://www.dn.se/debatt/nu-stryps-rattigheterna-for-sveriges-unga/
-• SVT Nyheter: Ekologiskt allt populärare i världen – men inte i Sverige
-  https://www.svt.se/nyheter/lokalt/sodertalje/ekologiskt-allt-popularare-i-varlden-men-inte-i-sverige
-• Ny Teknik: De byggde nya liv i Sverige – nu jobbar de som ingenjörer
-  https://www.nyteknik.se/karriaer/de-kom-till-sverige-med-en-droem-nu-jobbar-de-som-ingenjoerer/4430887
-• Guardian Climate Crisis: Global sea levels have been underestimated due to poor model...
-  https://www.theguardian.com/environment/2026/mar/04/global-sea-levels-underestimated-poor-modelling-research</description>
-            <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260309_054104.mp3" length="7525485" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260309_054104.mp3</guid>
         </item>
     </channel>
 </rss>

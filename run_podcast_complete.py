@@ -953,7 +953,7 @@ def _fallback_collect_articles_from_scraped(max_per_source: int = 5, max_total: 
                         available_articles.append({
                             'source': source_name,
                             'title': item['title'][:100],
-                            'content': item.get('content', '')[:300],
+                            'content': _article_text(item, 1600),
                             'link': item['link']
                         })
                     if len(available_articles) >= max_total:
@@ -970,6 +970,17 @@ def _truncate_text(text: str, max_chars: int) -> str:
     if len(clean) <= max_chars:
         return clean
     return clean[: max(0, max_chars - 1)].rstrip() + "…"
+
+
+def _article_text(article: Dict[str, Any], max_chars: int) -> str:
+    """Hämta bästa tillgängliga artikeltext (content -> summary -> description -> snippet)."""
+    text = (
+        (article.get('content') or '')
+        or (article.get('summary') or '')
+        or (article.get('description') or '')
+        or (article.get('snippet') or '')
+    )
+    return _truncate_text(text, max_chars)
 
 
 def _append_article_padding(script_text: str, articles: List[Dict], min_words: int) -> str:
@@ -1012,7 +1023,7 @@ def _append_article_padding(script_text: str, articles: List[Dict], min_words: i
                 break
             source = (a.get('source') or 'Okänd källa').strip()
             title = (a.get('title') or '').strip()
-            content_snip = _truncate_text(a.get('content', ''), 700)
+            content_snip = _article_text(a, 700)
             if not content_snip:
                 content_snip = "Vi har begränsade detaljer i underlaget just nu, men rubriken pekar på en tydlig utveckling."
 
@@ -1243,7 +1254,7 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
 
         for i, article in enumerate(available_articles[:max_prompt_articles], 1):
             article_title = _truncate_text(article.get('title', ''), 140)
-            article_content = _truncate_text(article.get('content', ''), max_article_chars)
+            article_content = _article_text(article, max_article_chars)
             article_source = article.get('source', 'Okänd källa')
             article_refs += f"{i}. {article_source}: {article_title}\n   Innehåll: {article_content}\n   [Referera som: {article_source}]\n\n"
 
@@ -1543,7 +1554,7 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
             source = a.get('source', 'Okänd källa')
             title = (a.get('title') or '').strip()
             link = (a.get('link') or '').strip()
-            content_snip = _truncate_text(a.get('content', ''), 1100)
+            content_snip = _article_text(a, 1100)
             if not content_snip:
                 content_snip = "Detaljerna är begränsade i vårt underlag just nu, men rubriken ger en tydlig signal om vad som hänt."
 
@@ -1625,8 +1636,16 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
                     content = _append_article_padding(content, available_articles, min_words)
                 else:
                     logger.warning(
-                        f"[AI] Retry fortfarande kort ({wc2} < {min_words}). Lämnar manuset kort (MMM_PAD_SHORT_SCRIPTS=0)."
+                        f"[AI] Retry fortfarande kort ({wc2} < {min_words}) och padding är av. Faller tillbaka till källbaserat manus."
                     )
+                    log_diagnostic('ai_script_short_fallback', {
+                        'word_count': wc2,
+                        'min_words': min_words,
+                        'provider': llm_provider,
+                        'model': llm_model,
+                        'fallback': 'article_based',
+                    })
+                    content = generate_fallback_content_from_articles()
         logger.info("[AI] Genererade podcast-innehåll med väderdata")
         return content, available_articles
     except Exception as e:

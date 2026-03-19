@@ -30,10 +30,12 @@ async def curate_news_with_agents(scraped_content_path: str = 'scraped_content.j
         items = source_group.get('items', [])
         
         for item in items:
+            item_content = (item.get('content') or '').strip()
+            item_summary = (item.get('summary') or '').strip()
             raw_articles.append({
                 'source': source_name,
                 'title': item.get('title', ''),
-                'content': item.get('content', ''),
+                'content': item_content or item_summary,
                 'link': item.get('link', '')
             })
     

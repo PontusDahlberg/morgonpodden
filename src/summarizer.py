@@ -400,6 +400,13 @@ KVALITET & LÄNGD:
 - Undvik metaprata om att ni 'hanterar nyheterna' eller att ni 'tackar för er' och sedan fortsätter prata.
  - Om andra instruktioner i prompten säger "exakt 10 minuter": prioritera reglerna här ovan.
 
+SPRÅK & FLOW (VIKTIGT):
+- Undvik upprepningar av samma fras eller frågeformulering. Om en formulering redan använts: variera uttrycket.
+- Undvik tjatiga meta-fraser om källor. Nämn källa naturligt i samband med respektive nyhet, men upprepa inte samma källmantra flera gånger.
+- Använd aldrig rubriker eller etiketter som "Nyhet 1", "Nyhet 2", "Punkt 1" i manuset.
+- Bygg övergångar tematiskt i stället: till exempel "på energispåret", "i AI-spåret", "i samma utveckling".
+- Om texten börjar bli repetitiv: korta ner i stället för att fylla ut.
+
 {aftertalk_instructions}
 4. Inkludera naturliga övergångar med emotionell förändring
 5. {host1['name']} börjar med energi anpassad till {time_context}

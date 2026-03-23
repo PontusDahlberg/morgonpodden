@@ -166,10 +166,81 @@ def _write_run_diagnostics_extract(
                 os.remove(out_path)
             except Exception:
                 pass
-            return None
         return out_path
     except Exception:
         return None
+
+
+def cleanup_generated_dialogue(text: str) -> str:
+    """Städa bort kända oönskade meta-fraser innan publicering/TTS."""
+    if not text:
+        return text
+
+    updated = text
+    news_labels_removed = len(re.findall(r'\bNyhet\s+\d+\s*[:.]?', updated, flags=re.IGNORECASE))
+    updated = re.sub(r'\bNyhet\s+\d+\s*[:.]?\s*', '', updated, flags=re.IGNORECASE)
+
+    replacements = {
+        "Okej, vad är kärnan här – och vad vet vi faktiskt?": "Vad är det viktigaste att ta med sig här?",
+        "Okej, vad är kärnan här - och vad vet vi faktiskt?": "Vad är det viktigaste att ta med sig här?",
+        "Vad vet vi faktiskt här?": "Vad är det viktigaste här?",
+        "Det här väcker ju frågan om konsekvenser och nästa steg. Finns det något som fortfarande är oklart?": "Det intressanta nu är vilka följder det här kan få framåt.",
+        "Ja – och det är viktigt att säga högt: om källtexten inte ger exakta siffror eller tidsplaner så låtsas vi inte. Vi följer upp när mer information finns.": "Vi återkommer när fler bekräftade detaljer finns på plats.",
+        "Ja - och det är viktigt att säga högt: om källtexten inte ger exakta siffror eller tidsplaner så låtsas vi inte. Vi följer upp när mer information finns.": "Vi återkommer när fler bekräftade detaljer finns på plats.",
+        "Vi har inte så mycket underliggande information här ännu.": "Det finns fortfarande flera detaljer som väntar på besked.",
+        "Det finns inte så mycket underliggande information här ännu.": "Det finns fortfarande flera detaljer som väntar på besked.",
+        "Och som alltid: vi länkar till originalkällan så att du kan läsa mer själv och bedöma detaljerna.": "Källan finns länkad i avsnittsbeskrivningen för den som vill läsa vidare.",
+    }
+
+    replaced_phrases = 0
+    for old, new in replacements.items():
+        hits = len(re.findall(re.escape(old), updated, flags=re.IGNORECASE))
+        if hits:
+            updated = re.sub(re.escape(old), new, updated, flags=re.IGNORECASE)
+            replaced_phrases += hits
+
+    meta_line_patterns = (
+        r'\bunderliggande information\b',
+        r'\bkälltext(?:en)?\b',
+        r'\bvad vet vi faktiskt\b',
+        r'\bvad är oklart\b',
+        r'\bvi (?:kan|ska|bör) inte hitta på\b',
+        r'\bvi låtsas inte\b',
+        r'\bai-röster\b',
+        r'\bvi kan göra fel\b',
+        r'\bdubbelkolla gärna\b',
+        r'\bavsnittsinformationen\b',
+        r'\bkällan finns länkad\b',
+    )
+    removed_meta_lines = 0
+    cleaned_lines = []
+    for line in updated.splitlines():
+        stripped = line.strip()
+        if stripped and re.match(r'^(Lisa|Pelle):', stripped):
+            lowered = stripped.lower()
+            if any(re.search(pattern, lowered, flags=re.IGNORECASE) for pattern in meta_line_patterns):
+                removed_meta_lines += 1
+                continue
+        cleaned_lines.append(line)
+
+    updated = '\n'.join(cleaned_lines)
+
+    updated = re.sub(r'\n{3,}', '\n\n', updated).strip()
+
+    if updated != text:
+        logger.info(
+            "[SCRIPT] Städade manus före TTS/publicering (tog bort %s nyhetsetiketter, ersatte %s meta-fraser, tog bort %s meta-rader)",
+            news_labels_removed,
+            replaced_phrases,
+            removed_meta_lines,
+        )
+        log_diagnostic('script_cleanup_applied', {
+            'news_labels_removed': news_labels_removed,
+            'replaced_phrases': replaced_phrases,
+            'removed_meta_lines': removed_meta_lines,
+        })
+
+    return updated
 
 
 def _write_log_tail(
@@ -1466,7 +1537,7 @@ KÄLLHÄNVISNING - MYCKET VIKTIGT:
 - Specifika personer MÅSTE namnges när de finns i artiklarna (t.ex. "Miljöminister Romina Pourmokhtari säger...", "Enligt statsminister Ulf kristersson...")
 - Konkreta detaljer MÅSTE tas från artiklarna - påhitta ALDRIG fakta
 - När möjligt: använd siffror och fakta från artiklarna
-- Om information saknas i artiklarna - säg det tydligt ("detaljerna är ännu inte kända", "ingen tidsplan har presenterats")
+- Om underlaget är tunt: håll delen kort och konkret. Säg bara vad som är bekräftat och gå vidare utan att prata om "underlag", "källtext", "vad vet vi faktiskt" eller att ni "inte hittar på".
 - Undvik vaga termer - var specifik baserat på vad som faktiskt står i artiklarna
 - Lyssnarna ska kunna förstå att nyheten kommer från en etablerad, trovärdig nyhetskälla
 
@@ -1476,11 +1547,12 @@ OUTRO-KRAV (MYCKET VIKTIGT):
 - STARK koppling till huvudpodden "Människa Maskin Miljö"
 - Förklara att MMM Senaste Nytt är en del av Människa Maskin Miljö-familjen
 - Uppmana lyssnare att kolla in huvudpodden för djupare analyser
-- OBLIGATORISK AI-BRASKLAPP: Lisa och Pelle ska ödmjukt förklara att de är AI-röster och att information kan innehålla fel, hänvisa till länkarna i avsnittsinformationen för verifiering
+- Ingen AI-brasklapp eller metakommentar om att ni är AI-röster, hur ni verifierar uppgifter eller att lyssnaren ska dubbelkolla länkar
 
 SLUTREGLER (KRITISKT):
 - Ingen utfyllnad efter outrot (om inte EFTERSNACK är explicit tillåtet idag).
 - Ingen "vi fortsätter", "en sista grej", "bonus" eller liknande efter att ni sagt tack och rundat av.
+- Prata aldrig om er arbetsmetod, om "underliggande information", om vad ni "vet faktiskt" eller om att ni "inte hittar på".
 {aftertalk_instructions}
 
 DIALOGREGLER:
@@ -1537,7 +1609,7 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
         intro = (
             f"Lisa: Hej och välkommen till MMM Senaste Nytt! Jag heter Lisa.\n\n"
             f"Pelle: Och jag heter Pelle. Idag är det {swedish_weekday} den {today.day} {swedish_month} {today.year}, och {weather_info.lower()}.\n\n"
-            "Lisa: Vi går igenom dagens viktigaste nyheter inom teknik, AI, klimat och miljö – och vi berättar tydligt vilka källor vi bygger på.\n\n"
+            "Lisa: Vi går igenom dagens viktigaste nyheter inom teknik, AI, klimat och miljö.\n\n"
             "Pelle: Bra! Vi kör igång.\n"
         )
 
@@ -1549,37 +1621,49 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
             f"Pelle: { ' | '.join([p for p in overview_parts if p]) }.\n"
         )
 
+        lead_templates = [
+            'Lisa: Från {source} kommer en nyhet om "{title}".',
+            'Pelle: {source} lyfter i dag fram "{title}".',
+            'Lisa: Vi stannar till vid {source}, som rapporterar om "{title}".',
+            'Pelle: En annan utveckling som sticker ut kommer från {source} och gäller "{title}".',
+        ]
+        bridge_templates = [
+            'Pelle: Det viktiga här är vad det här kan betyda i praktiken.',
+            'Lisa: Det här är intressant eftersom följderna kan bli större än rubriken först antyder.',
+            'Pelle: Här finns det flera spår att hålla ögonen på framåt.',
+            'Lisa: Det som fastnar här är hur snabbt läget kan förändras beroende på nästa besked.',
+        ]
+        wrap_templates = [
+            'Pelle: Det här är en fråga vi lär återkomma till.',
+            'Lisa: Det här kan få större följder längre fram.',
+            'Pelle: Nu blir det intressant att se vad nästa steg blir.',
+            'Lisa: Den här utvecklingen är värd att hålla ögonen på.',
+        ]
+
         body_lines: List[str] = []
         for idx, a in enumerate(chosen[:8], 1):
             source = a.get('source', 'Okänd källa')
             title = (a.get('title') or '').strip()
-            link = (a.get('link') or '').strip()
             content_snip = _article_text(a, 1100)
             if not content_snip:
-                content_snip = "Detaljerna är begränsade i vårt underlag just nu, men rubriken ger en tydlig signal om vad som hänt."
+                content_snip = "Detaljerna är fortfarande få, men rubriken pekar tydligt på vad som står på spel."
 
-            body_lines.append(f"\nLisa: Nyhet {idx}. {source} rapporterar i artikeln \"{title}\".")
-            body_lines.append(f"Pelle: Okej, vad är kärnan här – och vad vet vi faktiskt?")
+            lead_line = lead_templates[(idx - 1) % len(lead_templates)].format(source=source, title=title)
+            bridge_line = bridge_templates[(idx - 1) % len(bridge_templates)]
+            wrap_line = wrap_templates[(idx - 1) % len(wrap_templates)]
+
+            body_lines.append(f"\n{lead_line}")
+            body_lines.append(bridge_line)
             body_lines.append(
                 "Lisa: "
                 + content_snip
                 + ("" if content_snip.endswith(('.', '!', '?')) else ".")
             )
-            body_lines.append(
-                "Pelle: Det här väcker ju frågan om konsekvenser och nästa steg. Finns det något som fortfarande är oklart?"
-            )
-            body_lines.append(
-                "Lisa: Ja – och det är viktigt att säga högt: om källtexten inte ger exakta siffror eller tidsplaner så låtsas vi inte. Vi följer upp när mer information finns."
-            )
-            body_lines.append(
-                "Pelle: Och som alltid: vi länkar till originalkällan så att du kan läsa mer själv och bedöma detaljerna."
-            )
-            if link:
-                body_lines.append(f"Pelle: Länk finns i avsnittsbeskrivningen – källa: {source}.")
+            body_lines.append(wrap_line)
 
         outro = (
-            "\nLisa: Det var dagens genomgång. Kom ihåg: vi är AI-röster och vi kan göra fel, så dubbelkolla gärna via länkarna i avsnittsinformationen.\n"
-            "Pelle: Och vill du ha mer djup och sammanhang så finns huvudpodden Människa Maskin Miljö, där vi går längre i analysen.\n"
+            "\nLisa: Det var dagens genomgång av läget just nu.\n"
+            "Pelle: Vill du ha mer djup och sammanhang finns huvudpodden Människa Maskin Miljö, där vi går längre i analysen.\n"
             "Lisa: Tack för att du lyssnade på MMM Senaste Nytt!\n"
         )
 
@@ -1853,6 +1937,18 @@ def generate_audio_with_gemini_dialog(script_content: str, weather_info: str, ou
         logger.info("[AUDIO] Genererar naturlig dialog med Gemini TTS...")
         
         generator = GeminiTTSDialogGenerator()
+        lisa_voice = generator.voices.get('Lisa', {})
+        pelle_voice = generator.voices.get('Pelle', {})
+        logger.info(
+            "[AUDIO] Gemini voice mapping: Lisa=%s, Pelle=%s",
+            lisa_voice.get('speaker_id', 'okänd'),
+            pelle_voice.get('speaker_id', 'okänd'),
+        )
+        log_diagnostic('tts_voice_mapping', {
+            'provider': 'gemini',
+            'lisa_speaker_id': lisa_voice.get('speaker_id', ''),
+            'pelle_speaker_id': pelle_voice.get('speaker_id', ''),
+        })
         
         # Om manus redan är en dialog (Lisa:/Pelle:), använd det i stället för att
         # bygga om via heuristisk split (som kan skapa rader utan talarprefix).
@@ -2309,6 +2405,8 @@ def main():
             if final_podcast_content != podcast_content:
                 logger.info("[FACT-CHECK] 📝 Använder automatiskt korrigerat innehåll")
                 podcast_content = final_podcast_content
+
+        podcast_content = cleanup_generated_dialogue(podcast_content)
         
         # Parsa innehållet i segment
         segments = parse_podcast_text(podcast_content)

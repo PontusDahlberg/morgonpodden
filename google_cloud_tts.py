@@ -97,6 +97,21 @@ class GoogleCloudTTS:
             pass
         
         self._init_client()
+        self._log_voice_mapping()
+
+    def _log_voice_mapping(self) -> None:
+        lisa_cfg = self.voice_mapping.get('lisa', {})
+        pelle_cfg = self.voice_mapping.get('pelle', {})
+        logger.info(
+            "[TTS] Google voice mapping: Lisa=%s, Pelle=%s",
+            lisa_cfg.get('name', 'okänd'),
+            pelle_cfg.get('name', 'okänd'),
+        )
+        _log_diagnostic('tts_voice_mapping', {
+            'provider': 'google_cloud',
+            'lisa_voice_name': lisa_cfg.get('name', ''),
+            'pelle_voice_name': pelle_cfg.get('name', ''),
+        })
     
     def _init_client(self) -> bool:
         """Initialisera Google Cloud TTS-klient"""
@@ -459,6 +474,19 @@ class GoogleCloudTTS:
         try:
             max_retries = 3
             skip_indices = set()
+            planned_voices: Dict[str, int] = {}
+
+            for segment in segments:
+                voice_name = segment.get('voice', 'sanna')
+                planned_voices[voice_name] = planned_voices.get(voice_name, 0) + 1
+
+            _log_diagnostic('tts_segment_plan', {
+                'provider': 'google_cloud',
+                'segment_count': len(segments),
+                'voice_counts': planned_voices,
+                'lisa_voice_name': self.voice_mapping.get('lisa', {}).get('name', ''),
+                'pelle_voice_name': self.voice_mapping.get('pelle', {}).get('name', ''),
+            })
 
             # Generera varje segment
             for i, segment in enumerate(segments):

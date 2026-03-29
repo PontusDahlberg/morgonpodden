@@ -16,6 +16,29 @@ from pydub import AudioSegment
 
 logger = logging.getLogger(__name__)
 
+_SPOKEN_URL_PATTERNS = (
+    re.compile(r'https?://\S+', re.IGNORECASE),
+    re.compile(r'\bwww\.\S+', re.IGNORECASE),
+    re.compile(
+        r'(?<!@)\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+'
+        r'(?:se|com|net|org|io|ai|news|tv|dev|co|nu|eu|gov|edu)\b(?:/[^\s]*)?',
+        re.IGNORECASE,
+    ),
+)
+
+
+def _strip_spoken_urls(text: str) -> str:
+    if not text:
+        return ""
+
+    cleaned = text
+    for pattern in _SPOKEN_URL_PATTERNS:
+        cleaned = pattern.sub(' ', cleaned)
+
+    cleaned = re.sub(r'\s+([,.;:!?])', r'\1', cleaned)
+    cleaned = re.sub(r'\s{2,}', ' ', cleaned)
+    return cleaned.strip()
+
 class GeminiTTSDialogGenerator:
     """Generera naturlig dialog mellan Lisa och Pelle med Gemini TTS"""
     
@@ -158,6 +181,9 @@ class GeminiTTSDialogGenerator:
 
         # Replace ampersand which has historically triggered invalid-argument errors
         dialog_script = dialog_script.replace("&", "och")
+
+        # Strip URLs and bare domains so the TTS model does not spell them out.
+        dialog_script = _strip_spoken_urls(dialog_script)
 
         # Normalize whitespace but keep line breaks (speaker turns)
         dialog_script = "\n".join(" ".join(line.split()) for line in dialog_script.splitlines())

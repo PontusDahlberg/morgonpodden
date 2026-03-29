@@ -7,6 +7,7 @@ Primär TTS-leverantör som ersätter ElevenLabs
 import os
 import logging
 import json
+import re
 from typing import Dict, List, Optional, Tuple
 from google.cloud import texttospeech
 from pydub import AudioSegment
@@ -15,6 +16,16 @@ logger = logging.getLogger(__name__)
 
 # Diagnostics (JSONL). Körningen kan sätta MMM_RUN_ID i environment.
 _DIAGNOSTICS_FILE = os.getenv('MMM_DIAGNOSTICS_FILE', 'diagnostics.jsonl')
+
+_SPOKEN_URL_PATTERNS = (
+    re.compile(r'https?://\S+', re.IGNORECASE),
+    re.compile(r'\bwww\.\S+', re.IGNORECASE),
+    re.compile(
+        r'(?<!@)\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+'
+        r'(?:se|com|net|org|io|ai|news|tv|dev|co|nu|eu|gov|edu)\b(?:/[^\s]*)?',
+        re.IGNORECASE,
+    ),
+)
 
 
 def _log_diagnostic(event: str, payload: dict) -> None:
@@ -32,12 +43,26 @@ def _log_diagnostic(event: str, payload: dict) -> None:
     except Exception:
         pass
 
+
+def _strip_spoken_urls(text: str) -> str:
+    if not text:
+        return ""
+
+    cleaned = text
+    for pattern in _SPOKEN_URL_PATTERNS:
+        cleaned = pattern.sub(' ', cleaned)
+
+    cleaned = re.sub(r'\s+([,.;:!?])', r'\1', cleaned)
+    cleaned = re.sub(r'\s{2,}', ' ', cleaned)
+    return cleaned.strip()
+
 class GoogleCloudTTS:
     """Google Cloud TTS-integration med Chirp3-HD röster"""
     
     def __init__(self):
         logger.info("🔥 GOOGLE CLOUD TTS VERSION 2.0 - BRUTAL FIX LOADED!")
         self.client = None
+        self.speaking_rate = self._read_speaking_rate()
         self.voice_mapping = {
             # Primära röster för podcasten
             "sanna": {
@@ -99,18 +124,31 @@ class GoogleCloudTTS:
         self._init_client()
         self._log_voice_mapping()
 
+    def _read_speaking_rate(self) -> float:
+        raw = os.getenv('MMM_GOOGLE_TTS_SPEAKING_RATE', '').strip()
+        if not raw:
+            return 0.96
+        try:
+            rate = float(raw)
+        except ValueError:
+            logger.warning("[TTS] Ogiltig MMM_GOOGLE_TTS_SPEAKING_RATE='%s', använder 0.96", raw)
+            return 0.96
+        return max(0.85, min(1.1, rate))
+
     def _log_voice_mapping(self) -> None:
         lisa_cfg = self.voice_mapping.get('lisa', {})
         pelle_cfg = self.voice_mapping.get('pelle', {})
         logger.info(
-            "[TTS] Google voice mapping: Lisa=%s, Pelle=%s",
+            "[TTS] Google voice mapping: Lisa=%s, Pelle=%s, speaking_rate=%.2f",
             lisa_cfg.get('name', 'okänd'),
             pelle_cfg.get('name', 'okänd'),
+            self.speaking_rate,
         )
         _log_diagnostic('tts_voice_mapping', {
             'provider': 'google_cloud',
             'lisa_voice_name': lisa_cfg.get('name', ''),
             'pelle_voice_name': pelle_cfg.get('name', ''),
+            'speaking_rate': self.speaking_rate,
         })
     
     def _init_client(self) -> bool:
@@ -335,7 +373,6 @@ class GoogleCloudTTS:
         som `&`, `<`, `>` eller kontrolltecken. Vi ersätter dessa tidigt,
         innan vi lägger på <speak>/<phoneme>.
         """
-        import re
         import unicodedata
 
         if not text:
@@ -358,6 +395,9 @@ class GoogleCloudTTS:
         text = text.replace("&", " och ")
         text = text.replace("<", " ")
         text = text.replace(">", " ")
+
+        # Ta bort URL:er och bare domäner så fallbacken inte läser upp dem bokstav för bokstav.
+        text = _strip_spoken_urls(text)
 
         # Komprimera whitespace
         text = re.sub(r"\s{2,}", " ", text).strip()
@@ -406,7 +446,7 @@ class GoogleCloudTTS:
             audio_config = texttospeech.AudioConfig(
                 audio_encoding=texttospeech.AudioEncoding.MP3,
                 sample_rate_hertz=24000,  # Hög kvalitet
-                speaking_rate=1.0,        # Normal hastighet
+                speaking_rate=self.speaking_rate,
                 pitch=0.0,               # Normal pitch
                 volume_gain_db=0.0       # Normal volym
             )

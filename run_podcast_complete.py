@@ -99,6 +99,100 @@ _TITLE_STOPWORDS = {
     'the', 'a', 'an', 'and', 'or', 'but', 'to', 'of', 'in', 'on', 'for', 'with', 'from', 'by', 'as', 'at',
 }
 
+_PROMOTIONAL_TITLE_PATTERNS = (
+    r'\bsave up to\b',
+    r'\bdays? left\b',
+    r'\bbefore prices rise\b',
+    r'\bexhibit table\b',
+    r'\bpass\b',
+    r'\bticket(?:s)?\b',
+    r'\bbiljett(?:er)?\b',
+    r'\bdeal(?:s)?\b',
+    r'\bsale\b',
+    r'\brabatt\b',
+    r'\berbjudande\b',
+    r'\bshopping\b',
+    r'\breview\b',
+    r'\bgallery\b',
+    r'\bbest\b',
+)
+
+_ARTICLE_HARD_CUT_MARKERS = (
+    'är du redan prenumerant',
+    'logga in för att fortsätta läsa',
+    'läs dn +',
+    'ditt erbjudande',
+    'det här ingår',
+    'share this article',
+    'copy/paste the article video embed link below',
+    'go to accessibility shortcuts',
+    'advertisement',
+    'in partnership with',
+    'follow live coverage',
+    'follow the latest updates',
+    'also on ',
+    'så arbetar vi',
+    'läs mer om hur vi arbetar',
+    'relaterat',
+    'copied',
+)
+
+_ARTICLE_DROP_PATTERNS = (
+    r'https?://\S+',
+    r'\bwww\.\S+',
+    r'\bartikelns ursprungsadress\b',
+    r'\ben utskrift från\b',
+    r'\bshare\b',
+    r'\bsave\b',
+    r'\bfacebook\b',
+    r'\btwitter\b',
+    r'\bwhatsapp\b',
+    r'\breddit\b',
+    r'\blinkedin\b',
+    r'\btelegram\b',
+    r'\bbluesky\b',
+    r'\bthreads\b',
+    r'\blogga in\b',
+    r'\bprenumerant\b',
+    r'\bgratiskonto\b',
+    r'\bsubscription\b',
+    r'\bsubscribe\b',
+    r'\bord\.?\s*pris\b',
+    r'\b\d+\s*kr(?:/mån|/man|/månad)?\b',
+    r'\b\d+\s*mån(?:ader)?\s*för\s*\d+\s*kr\b',
+    r'\b0\s*kr\b',
+    r'\bannons\b',
+    r'\badvertisement\b',
+    r'\bsponsor(?:ed)?\b',
+    r'\berbjudande\b',
+    r'\brabatt\b',
+    r'\bkampanj\b',
+    r'\bexhibit table\b',
+    r'\bbefore prices rise\b',
+    r'\bsave up to\b',
+)
+
+_ENGLISH_FUNCTION_WORDS = {
+    'the', 'and', 'that', 'with', 'from', 'this', 'these', 'those', 'into', 'about', 'after', 'before',
+    'while', 'when', 'where', 'which', 'their', 'there', 'would', 'could', 'should', 'have', 'has',
+    'had', 'said', 'says', 'will', 'just', 'more', 'most', 'than', 'also', 'over', 'under', 'through',
+}
+
+_SWEDISH_FUNCTION_WORDS = {
+    'och', 'det', 'att', 'som', 'för', 'med', 'den', 'detta', 'där', 'här', 'inte', 'också', 'från',
+    'genom', 'efter', 'innan', 'skulle', 'kan', 'kunde', 'har', 'hade', 'säger', 'sa', 'fler', 'mest',
+}
+
+_SPOKEN_URL_PATTERNS = (
+    re.compile(r'https?://\S+', re.IGNORECASE),
+    re.compile(r'\bwww\.\S+', re.IGNORECASE),
+    re.compile(
+        r'(?<!@)\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+'
+        r'(?:se|com|net|org|io|ai|news|tv|dev|co|nu|eu|gov|edu)\b(?:/[^\s]*)?',
+        re.IGNORECASE,
+    ),
+)
+
 # Diagnostics
 DIAGNOSTICS_FILE = os.getenv('MMM_DIAGNOSTICS_FILE', 'diagnostics.jsonl')
 _CURRENT_RUN_ID: Optional[str] = None
@@ -177,6 +271,7 @@ def cleanup_generated_dialogue(text: str) -> str:
         return text
 
     updated = text
+    updated = _strip_spoken_urls(updated)
     news_labels_removed = len(re.findall(r'\bNyhet\s+\d+\s*[:.]?', updated, flags=re.IGNORECASE))
     updated = re.sub(r'\bNyhet\s+\d+\s*[:.]?\s*', '', updated, flags=re.IGNORECASE)
 
@@ -193,11 +288,31 @@ def cleanup_generated_dialogue(text: str) -> str:
     }
 
     replaced_phrases = 0
+    removed_english_quotes = 0
+    removed_english_lines = 0
+
+    def _strip_long_english_quote(match: re.Match[str]) -> str:
+        nonlocal removed_english_quotes
+
+        quoted = (match.group(2) or '').strip()
+        if _is_probably_english_span(quoted, min_word_count=8):
+            removed_english_quotes += 1
+            return ''
+        return match.group(0)
+
     for old, new in replacements.items():
         hits = len(re.findall(re.escape(old), updated, flags=re.IGNORECASE))
         if hits:
             updated = re.sub(re.escape(old), new, updated, flags=re.IGNORECASE)
             replaced_phrases += hits
+
+    updated = re.sub(r'(["“])([^"”\n]{40,})(["”])', _strip_long_english_quote, updated)
+    updated = re.sub(
+        r'(?:,?\s*)\b(?:sade|skrev|beskrev|kallade det|formulerade det som)\b\s*$',
+        '',
+        updated,
+        flags=re.IGNORECASE | re.MULTILINE,
+    )
 
     meta_line_patterns = (
         r'\bunderliggande information\b',
@@ -211,6 +326,16 @@ def cleanup_generated_dialogue(text: str) -> str:
         r'\bdubbelkolla gärna\b',
         r'\bavsnittsinformationen\b',
         r'\bkällan finns länkad\b',
+        r'https?://',
+        r'\bwww\.',
+        r'\bord\.?\s*pris\b',
+        r'\b\d+\s*kr(?:/mån|/man|/månad)?\b',
+        r'\brabatt\b',
+        r'\berbjudande\b',
+        r'\bkampanj\b',
+        r'\bannons\b',
+        r'\badvertisement\b',
+        r'\bsponsor(?:ed)?\b',
     )
     removed_meta_lines = 0
     cleaned_lines = []
@@ -218,8 +343,12 @@ def cleanup_generated_dialogue(text: str) -> str:
         stripped = line.strip()
         if stripped and re.match(r'^(Lisa|Pelle):', stripped):
             lowered = stripped.lower()
+            spoken_text = stripped.split(':', 1)[1].strip() if ':' in stripped else stripped
             if any(re.search(pattern, lowered, flags=re.IGNORECASE) for pattern in meta_line_patterns):
                 removed_meta_lines += 1
+                continue
+            if _is_probably_english_span(spoken_text, min_word_count=14):
+                removed_english_lines += 1
                 continue
         cleaned_lines.append(line)
 
@@ -229,15 +358,19 @@ def cleanup_generated_dialogue(text: str) -> str:
 
     if updated != text:
         logger.info(
-            "[SCRIPT] Städade manus före TTS/publicering (tog bort %s nyhetsetiketter, ersatte %s meta-fraser, tog bort %s meta-rader)",
+            "[SCRIPT] Städade manus före TTS/publicering (tog bort %s nyhetsetiketter, ersatte %s meta-fraser, tog bort %s meta-rader, strök %s långa engelska citat, tog bort %s engelsktunga repliker)",
             news_labels_removed,
             replaced_phrases,
             removed_meta_lines,
+            removed_english_quotes,
+            removed_english_lines,
         )
         log_diagnostic('script_cleanup_applied', {
             'news_labels_removed': news_labels_removed,
             'replaced_phrases': replaced_phrases,
             'removed_meta_lines': removed_meta_lines,
+            'removed_english_quotes': removed_english_quotes,
+            'removed_english_lines': removed_english_lines,
         })
 
     return updated
@@ -872,6 +1005,21 @@ def _count_words(text: str) -> int:
     return len(re.findall(r"\S+", text))
 
 
+def _is_probably_english_span(text: str, *, min_word_count: int = 10) -> bool:
+    if not text:
+        return False
+
+    words = re.findall(r"[A-Za-zÅÄÖåäö][A-Za-zÅÄÖåäö'’-]*", text.lower())
+    if len(words) < min_word_count:
+        return False
+
+    english_hits = sum(1 for word in words if word in _ENGLISH_FUNCTION_WORDS)
+    swedish_hits = sum(1 for word in words if word in _SWEDISH_FUNCTION_WORDS)
+    ascii_ratio = sum(1 for ch in text if ch.isascii()) / max(1, len(text))
+
+    return english_hits >= 3 and english_hits > swedish_hits and ascii_ratio >= 0.85
+
+
 def _parse_weekday_value(value: Any) -> Optional[int]:
     """Parse weekday to Python weekday int (Mon=0..Sun=6)."""
     if value is None:
@@ -1043,6 +1191,52 @@ def _truncate_text(text: str, max_chars: int) -> str:
     return clean[: max(0, max_chars - 1)].rstrip() + "…"
 
 
+def _strip_article_noise(text: str) -> str:
+    if not text:
+        return ""
+
+    cleaned = html.unescape(str(text))
+    cleaned = _strip_spoken_urls(cleaned)
+
+    lowered = cleaned.lower()
+    cut_positions = [lowered.find(marker) for marker in _ARTICLE_HARD_CUT_MARKERS if marker in lowered]
+    if cut_positions:
+        cleaned = cleaned[:min(cut_positions)]
+
+    sentences = re.split(r'(?<=[.!?])\s+|\s{2,}', cleaned)
+    kept_sentences: List[str] = []
+    for sentence in sentences:
+        candidate = " ".join(sentence.split()).strip(' -|')
+        if not candidate:
+            continue
+        lowered_candidate = candidate.lower()
+        if any(re.search(pattern, lowered_candidate, flags=re.IGNORECASE) for pattern in _ARTICLE_DROP_PATTERNS):
+            continue
+        if len(candidate) < 25 and not re.search(r'\d', candidate):
+            continue
+        kept_sentences.append(candidate)
+
+    cleaned = " ".join(kept_sentences)
+    cleaned = re.sub(r'\s+', ' ', cleaned).strip(' .,;:-')
+    return cleaned
+
+
+def _is_promotional_article(article: Dict[str, Any]) -> bool:
+    title = (article.get('title') or '').strip().lower()
+    link = (article.get('link') or '').strip().lower()
+
+    if any(re.search(pattern, title, flags=re.IGNORECASE) for pattern in _PROMOTIONAL_TITLE_PATTERNS):
+        return True
+
+    if '/review/' in link or '/gallery/' in link:
+        return True
+
+    if 'techcrunch disrupt' in title and ('pass' in title or 'exhibit' in title):
+        return True
+
+    return False
+
+
 def _article_text(article: Dict[str, Any], max_chars: int) -> str:
     """Hämta bästa tillgängliga artikeltext (content -> summary -> description -> snippet)."""
     text = (
@@ -1051,7 +1245,8 @@ def _article_text(article: Dict[str, Any], max_chars: int) -> str:
         or (article.get('description') or '')
         or (article.get('snippet') or '')
     )
-    return _truncate_text(text, max_chars)
+    sanitized = _strip_article_noise(text)
+    return _truncate_text(sanitized, max_chars)
 
 
 def _append_article_padding(script_text: str, articles: List[Dict], min_words: int) -> str:
@@ -1072,8 +1267,8 @@ def _append_article_padding(script_text: str, articles: List[Dict], min_words: i
     # Undvik att pad:en blir oändlig om articles är tom.
     if not articles:
         filler = (
-            "\n\nLisa: Innan vi rundar av – en sista påminnelse: kolla länkarna i avsnittsbeskrivningen för att verifiera uppgifterna.\n"
-            "Pelle: Och hör gärna av dig om du upptäcker något som behöver rättas.\n"
+            "\n\nLisa: Då avrundar vi där för i dag och lämnar lite luft i flödet.\n"
+            "Pelle: Ja, vi återkommer när vi har mer att bygga vidare på.\n"
         )
         combined = (body + filler).strip() if body else (script_text + filler).strip()
         return (combined + ("\n\n" + outro if outro else "")).strip()
@@ -1094,19 +1289,18 @@ def _append_article_padding(script_text: str, articles: List[Dict], min_words: i
                 break
             source = (a.get('source') or 'Okänd källa').strip()
             title = (a.get('title') or '').strip()
-            content_snip = _article_text(a, 700)
+            content_snip = _article_text(a, 260)
             if not content_snip:
-                content_snip = "Vi har begränsade detaljer i underlaget just nu, men rubriken pekar på en tydlig utveckling."
+                content_snip = "Detaljerna är fortfarande få, men huvudlinjen i utvecklingen är tydlig."
 
             lines.append(f"\nLisa: Nästa punkt – {source} har en artikel med rubriken \"{_truncate_text(title, 160)}\".")
-            lines.append("Pelle: Okej, vad är det viktigaste vi ska ta med oss?")
+            lines.append("Pelle: Kortversionen då, vad behöver man förstå?")
             lines.append(
                 "Lisa: "
                 + content_snip
                 + ("" if content_snip.endswith(('.', '!', '?')) else ".")
             )
-            lines.append(
-                "Pelle: Bra. Och om det saknas siffror eller detaljer i källan så är det helt okej – då säger vi bara det.")
+            lines.append("Pelle: Bra, då har vi kärnan utan att fastna i detaljerna.")
         loops += 1
 
     combined = (base_text + "\n" + "\n".join(lines)).strip()
@@ -1215,8 +1409,19 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
         # Filtrera bort upprepningar (men tillåt uppföljningar)
         filtered_articles = []
         skipped_count = 0
+        skipped_promotional_count = 0
         skipped_articles: List[Dict] = []
         for a in available_articles:
+            if _is_promotional_article(a):
+                skipped_promotional_count += 1
+                logger.info(f"[CURATION] Skipping promotional/article-marketing item: {a.get('source', '')} - {a.get('title', '')[:80]}")
+                log_diagnostic('article_skipped_promotional', {
+                    'source': a.get('source', ''),
+                    'title': a.get('title', ''),
+                    'link': a.get('link', ''),
+                })
+                continue
+
             url_key = _canonicalize_url(a.get('link', ''))
             fp_key = _title_fingerprint(a.get('title', ''))
 
@@ -1262,6 +1467,18 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
                     'repeat_by_title_fingerprint': is_repeat_by_fp,
                 })
 
+            cleaned_content = _article_text(a, 5000)
+            if not cleaned_content:
+                logger.info(f"[CURATION] Skipping article without usable editorial text after cleanup: {a.get('source', '')} - {a.get('title', '')[:80]}")
+                log_diagnostic('article_skipped_empty_after_cleanup', {
+                    'source': a.get('source', ''),
+                    'title': a.get('title', ''),
+                    'link': a.get('link', ''),
+                })
+                continue
+
+            a = dict(a)
+            a['content'] = cleaned_content
             filtered_articles.append(a)
 
             # Markera som sedd i persistent historik när vi väljer att behålla artikeln
@@ -1275,6 +1492,13 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
             logger.info(f"[HISTORY] Filtrerade bort {skipped_count} upprepade artiklar")
             log_diagnostic('dedupe_summary', {
                 'skipped_repeat_count': skipped_count,
+                'remaining_article_count': len(filtered_articles),
+            })
+
+        if skipped_promotional_count:
+            logger.info(f"[CURATION] Filtrerade bort {skipped_promotional_count} reklam-/promoartiklar")
+            log_diagnostic('promotional_filter_summary', {
+                'skipped_promotional_count': skipped_promotional_count,
                 'remaining_article_count': len(filtered_articles),
             })
 
@@ -1492,37 +1716,47 @@ def generate_structured_podcast_content(weather_info: str, today: Optional[datet
             "- Avsluta när outrot är klart, och skriv inga extra repliker efter sista avslutningen.\n"
         )
 
-    prompt = f"""Skapa ett KOMPLETT och DETALJERAT manus för dagens avsnitt av "MMM Senaste Nytt" - en svensk daglig nyhetspodcast om teknik, AI och klimat.
+    prompt = f"""Skapa ett KOMPLETT men KONCIST manus för dagens avsnitt av "MMM Senaste Nytt" - en svensk daglig nyhetspodcast om teknik, AI och klimat.
 
 DATUM (KRITISKT): {date_str} ({date_context})
 VÄDER: {weather_info}
-LÄNGD: Absolut mål är 6-8 minuter (cirka 900-1100 ord för talat innehåll)
+LÄNGD: Absolut mål är 6,5-8 minuter (cirka 850-1050 ord för talat innehåll)
 VÄRDAR: Lisa (kvinnlig, professionell men vänlig) och Pelle (manlig, nyfiken och engagerad)
 
 {article_refs}{callback_refs}
 
 DETALJERAD STRUKTUR:
-1. INTRO & VÄLKOMST (90-120 sekunder) - Inkludera RIKTIG väderinfo från "{weather_info}"
-2. INNEHÅLLSÖVERSIKT (60-90 sekunder) - Detaljerad genomgång av alla ämnen
-3. HUVUDNYHETER (6-7 minuter) - 5-6 nyheter med djup analys och dialog  
-4. DJUP DISKUSSION/ANALYS (2-3 minuter) - Lisa och Pelle diskuterar trender och framtid
-5. SAMMANFATTNING (60-90 sekunder) - Detaljerad recap av alla ämnen
-6. OUTRO & MMM-KOPPLING (60-90 sekunder) - STARK koppling till huvudpodden "Människa Maskin Miljö"
+1. INTRO & VÄLKOMST (45-60 sekunder) - Inkludera RIKTIG väderinfo från "{weather_info}"
+2. KORT INNEHÅLLSÖVERSIKT (20-30 sekunder) - En snabb orientering, ingen lång uppräkning
+3. HUVUDNYHETER (4,5-6 minuter) - 4-5 nyheter med tydlig prioritering och lagom mycket analys
+4. KORT ANALYS (60-90 sekunder) - Lisa och Pelle knyter ihop mönster, konsekvenser och möjliga vägval
+5. KORT SAMMANFATTNING (20-30 sekunder) - Bara det viktigaste
+6. OUTRO & MMM-KOPPLING (30-45 sekunder) - STARK koppling till huvudpodden "Människa Maskin Miljö"
 
 INNEHÅLLSKRAV OCH ÄMNESFÖRDELNING:
 - KRITISKT: Utgå från DATUM (KRITISKT) ovan (= dagens datum för denna körning). Nämn inte fel månad (t.ex. "november") eller fel datum.
 - Lisa säger "MMM Senaste Nytt" naturligt och professionellt (inte överdrivet)
 - Använd RIKTIG väderdata: "{weather_info}" - inte påhittade kommentarer om "fin dag i Stockholm"
-- Minst 6 konkreta nyheter från svenska och internationella källor
+- Sikta på 4-5 konkreta nyheter från svenska och internationella källor
+- Om underlaget är svagare: välj hellre 3-4 nyheter och gör dem tydliga än att pressa in fler punkter
 - OBLIGATORISK ÄMNESFÖRDELNING (mycket viktigt för balans):
   * MINST 50% av nyheterna MÅSTE handla om KLIMAT, MILJÖ och HÅLLBARHET
   * Maximalt 50% får handla om AI och teknologi (inte klimatrelaterad)
   * Prioritera SVENSKA klimat- och miljönyheter när de finns tillgängliga
-  * Exempel: Om du har 6 nyheter, MINST 3 ska vara klimat/miljö
-- Varje nyhet ska vara minst 150-200 ord inklusive diskussion
+    * Exempel: Om du har 4 nyheter, MINST 2 ska vara klimat/miljö
+- Varje nyhet ska vara kärnfull och tydlig, oftast 90-130 ord inklusive diskussion
 - Lisa och Pelle ska ha naturliga konversationer med följdfrågor
 - Inkludera siffror, fakta och konkreta exempel
 - Nämn specifika företag, forskare eller organisationer
+- Tempot ska kännas lugnt och begripligt i örat: kortare repliker, färre fakta per mening och tydliga andningspauser mellan ämnen
+- Hellre ett avsnitt på cirka 7 minuter än ett stressat avsnitt som jagar 10 minuter
+- MÅLGRUPP: smarta lyssnare och beslutsfattare inom människa, maskin och miljö som vill förstå vad nyheten betyder i praktiken
+- PROGRAMLEDARROLL: de ska inte bara återge nyheten, utan hjälpa lyssnaren att orientera sig och förstå vad man kan göra med informationen
+- För 1-2 av dagens viktigaste nyheter ska programledarna lägga in TRE MÖJLIGA VÄGAR FRAMÅT eller scenarier
+- Varje scenario måste vara kort, konkret och förankrat i det som faktiskt står i källorna eller i tydliga följder av källfakta
+- Formulera scenarierna som handlings- eller utvecklingsspår, till exempel: "en väg är...", "en annan möjlighet är...", "en tredje riktning att hålla ögonen på är..."
+- Scenarierna ska hjälpa beslutsfattare att tänka framåt, inte låta som löst tyckande eller science fiction
+- Om källstödet inte räcker för tre tydliga scenarier: nöj er med två eller hoppa över helt
 
 REDATIONELL LINJE (KRITISKT):
 - MMM Senaste Nytt är INTE för kärnkraft som klimatlösning. Presentera inte kärnkraft som "lösningen".
@@ -1538,6 +1772,11 @@ KÄLLHÄNVISNING - MYCKET VIKTIGT:
 - Konkreta detaljer MÅSTE tas från artiklarna - påhitta ALDRIG fakta
 - När möjligt: använd siffror och fakta från artiklarna
 - Om underlaget är tunt: håll delen kort och konkret. Säg bara vad som är bekräftat och gå vidare utan att prata om "underlag", "källtext", "vad vet vi faktiskt" eller att ni "inte hittar på".
+- Läs aldrig upp webbadresser, domännamn, artikellänkar, prenumerationsvillkor, kampanjer, rabatter, biljettpriser eller andra kommersiella erbjudanden.
+- Om en källa innehåller navigationsbrus, inloggningsrutor, "läs mer", reklam eller prisinformation ska det ignoreras helt och aldrig återges i manuset.
+- Om originalartikeln är på engelska eller annat språk: sammanfatta ALLTID innehållet på naturlig svenska.
+- Korta originalcitat är tillåtna bara om de är helt centrala, och då högst 6 ord i originalspråk.
+- Läs ALDRIG upp längre engelska meningar eller stycken ur artikeln. Parafrasera i stället på svenska.
 - Undvik vaga termer - var specifik baserat på vad som faktiskt står i artiklarna
 - Lyssnarna ska kunna förstå att nyheten kommer från en etablerad, trovärdig nyhetskälla
 
@@ -1561,6 +1800,7 @@ DIALOGREGLER:
 - Inkludera korta pauser för eftertanke: "Hmm, det är en bra poäng..."
 - Använd svenska uttryck och vardagligt språk
 - Variera meningslängderna för naturligt flyt
+- Håll replikerna till 1-3 meningar i taget i normalfallet. Undvik långa stycken som måste läsas snabbt.
 - KRITISKT: Varje replik måste logiskt följa föregående - ingen får svara på något som inte sagts ännu
 - KRITISKT: Om någon nämner en siffra/statistik, måste den först ha presenterats i tidigare replik
 - Kontrollera att alla hänvisningar ("det", "den siffran", "som du sa") faktiskt refererar till något som redan sagts
@@ -1575,7 +1815,7 @@ Lisa: Ja, det stämmer! Men vi har mycket spännande att prata om idag inom tekn
 
 VIKTIGT: Endast dialog - inga rubriker eller formatering! Bara "Namn: Text" rad för rad.
 
-Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 1800 ord:"""
+Skapa nu ett komplett manus för dagens avsnitt. Sikta på cirka 900 ord och gå inte över 1050 ord om underlaget inte verkligen kräver det:"""
 
     messages = [{"role": "user", "content": prompt}]
 
@@ -1603,8 +1843,8 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
         if not chosen:
             chosen = _fallback_collect_articles_from_scraped(max_per_source=4, max_total=20)
 
-        # Försök få minst 8 nyheter. Om vi inte har det, ta det vi har.
-        chosen = chosen[:10]
+        # Håll fallback-läget kort och tydligt i stället för att maxa antalet punkter.
+        chosen = chosen[:5]
 
         intro = (
             f"Lisa: Hej och välkommen till MMM Senaste Nytt! Jag heter Lisa.\n\n"
@@ -1614,7 +1854,7 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
         )
 
         overview_parts = []
-        for a in chosen[:8]:
+        for a in chosen[:5]:
             overview_parts.append(f"{a.get('source','')}: {a.get('title','')}")
         overview = (
             "\nLisa: Här är en snabb översikt på vad vi tar upp idag.\n"
@@ -1641,10 +1881,10 @@ Skapa nu ett KOMPLETT och LÅNGT manus för dagens avsnitt - kom ihåg minst 180
         ]
 
         body_lines: List[str] = []
-        for idx, a in enumerate(chosen[:8], 1):
+        for idx, a in enumerate(chosen[:5], 1):
             source = a.get('source', 'Okänd källa')
             title = (a.get('title') or '').strip()
-            content_snip = _article_text(a, 1100)
+            content_snip = _article_text(a, 360)
             if not content_snip:
                 content_snip = "Detaljerna är fortfarande få, men rubriken pekar tydligt på vad som står på spel."
 
@@ -1788,12 +2028,27 @@ def clean_text_for_tts(text: str) -> str:
     # Ta bort andra formattering
     text = re.sub(r'`([^`]+)`', r'\1', text)        # `code` -> code
     text = re.sub(r'_{1,2}([^_]+)_{1,2}', r'\1', text)  # __text__ -> text
+    text = _strip_spoken_urls(text)
     
     # Rensa extra whitespace
     text = re.sub(r'\s+', ' ', text)
     text = text.strip()
     
     return text
+
+
+def _strip_spoken_urls(text: str) -> str:
+    """Ta bort webbadresser och bara domännamn som annars läses upp bokstav för bokstav."""
+    if not text:
+        return ""
+
+    cleaned = text
+    for pattern in _SPOKEN_URL_PATTERNS:
+        cleaned = pattern.sub(' ', cleaned)
+
+    cleaned = re.sub(r'\s+([,.;:!?])', r'\1', cleaned)
+    cleaned = re.sub(r'\s{2,}', ' ', cleaned)
+    return cleaned.strip()
 
 def split_long_text_for_tts(text: str, speaker: str, max_bytes: int = 4000) -> List[Dict]:
     """Dela upp lång text i TTS-kompatibla segment"""
@@ -2047,6 +2302,35 @@ def generate_audio_google_cloud(segments: List[Dict], output_file: str) -> bool:
     except Exception as e:
         logger.error(f"[ERROR] TTS-fel: {e}")
         return False
+
+
+def _resolve_tts_provider() -> Tuple[str, Dict[str, Any]]:
+    """Resolve active TTS provider with Gemini as explicit production default."""
+    require_gemini = os.getenv('MMM_FORCE_GEMINI_TTS', '').strip().lower() in {'1', 'true', 'yes', 'y'}
+    configured_provider = os.getenv('MMM_TTS_PROVIDER', '').strip().lower()
+
+    if require_gemini:
+        provider = 'gemini'
+        reason = 'forced_gemini'
+    elif configured_provider in {'gemini', 'google_cloud'}:
+        provider = configured_provider
+        reason = 'env_configured'
+    elif configured_provider:
+        logger.warning(f"[TTS] Okänd MMM_TTS_PROVIDER='{configured_provider}', använder gemini")
+        provider = 'gemini'
+        reason = 'invalid_env_fallback_to_gemini'
+    else:
+        provider = 'gemini'
+        reason = 'default_gemini'
+
+    details = {
+        'provider': provider,
+        'reason': reason,
+        'require_gemini': require_gemini,
+        'configured_provider': configured_provider or None,
+        'gemini_available': bool(GEMINI_TTS_AVAILABLE),
+    }
+    return provider, details
 
 def add_music_to_podcast(audio_file: str) -> str:
     """Lägg till musik och bryggkor till podcast med MusicMixer"""
@@ -2421,21 +2705,21 @@ def main():
         audio_filename = f"MMM_senaste_nytt_{timestamp}.mp3"
         audio_filepath = os.path.join('audio', audio_filename)
 
-        require_gemini_tts = os.getenv('MMM_FORCE_GEMINI_TTS', '').strip().lower() in {'1', 'true', 'yes', 'y'}
-
-        tts_provider = os.getenv('MMM_TTS_PROVIDER', 'google_cloud').strip().lower()
-        if tts_provider not in {'google_cloud', 'gemini'}:
-            logger.warning(f"[TTS] Okänd MMM_TTS_PROVIDER='{tts_provider}', använder google_cloud")
-            tts_provider = 'google_cloud'
-
-        if require_gemini_tts:
-            tts_provider = 'gemini'
-
-        logger.info(f"[TTS] Aktiv provider: {tts_provider}")
+        tts_provider, tts_resolution = _resolve_tts_provider()
+        logger.info(
+            "[TTS] Aktiv provider: %s (reason=%s, configured=%s, gemini_available=%s)",
+            tts_provider,
+            tts_resolution['reason'],
+            tts_resolution['configured_provider'] or 'unset',
+            tts_resolution['gemini_available'],
+        )
         log_diagnostic('tts_provider_attempt', {
             'provider': tts_provider,
             'output_file': audio_filepath,
-            'require_gemini': require_gemini_tts,
+            'require_gemini': tts_resolution['require_gemini'],
+            'reason': tts_resolution['reason'],
+            'configured_provider': tts_resolution['configured_provider'],
+            'gemini_available': tts_resolution['gemini_available'],
         })
 
         if tts_provider == 'gemini':

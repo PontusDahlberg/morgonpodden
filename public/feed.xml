@@ -14,8 +14,40 @@
             <itunes:email>podcast@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://pontusdahlberg.github.io/morgonpodden/cover.jpg"/>
-        <lastBuildDate>Sun, 29 Mar 2026 06:55:55 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 30 Mar 2026 07:02:42 +0000</lastBuildDate>
                 <item>
+            <title>MMM Senaste Nytt - 30 mars 2026</title>
+            <description>Dagens nyheter inom AI, teknik och klimat - måndag den 30 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Gisslandiplomati, exportdrömmar och sabotage – Sveriges stor...
+https://www.dn.se/varlden/gisslandiplomati-exportdrommar-och-sabotage-sveriges-stormiga-relation-till-iran/
+• Dagens Nyheter: Lisa Magnusson: Tillgången till vaccin får inte vara en klas...
+https://www.dn.se/ledare/lisa-magnusson-tillgangen-till-vaccin-far-inte-vara-en-klassfraga/
+• NWT - Nya Wermlands-Tidningen: Industripolitiken saknas från både höger och vänster
+https://www.nwt.se/2026/03/30/industripolitiken-saknas-fran-bade-hoger-och-vanster-165a1/
+• Dagens Nyheter: En nationalikon på nedgång kan döda Sveriges VM-drömmar
+https://www.dn.se/sport/en-nationalikon-pa-nedgang-kan-doda-sveriges-vm-drommar/
+• Computer Sweden: Hemarbete är vår nya beredskapsreserv
+https://computersweden.se/article/4151126/hemarbete-ar-var-nya-beredskapsreserv.html</description>
+            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - måndag den 30 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
+
+Källor som refereras i detta avsnitt:
+• Dagens Nyheter: Gisslandiplomati, exportdrömmar och sabotage – Sveriges stor...
+https://www.dn.se/varlden/gisslandiplomati-exportdrommar-och-sabotage-sveriges-stormiga-relation-till-iran/
+• Dagens Nyheter: Lisa Magnusson: Tillgången till vaccin får inte vara en klas...
+https://www.dn.se/ledare/lisa-magnusson-tillgangen-till-vaccin-far-inte-vara-en-klassfraga/
+• NWT - Nya Wermlands-Tidningen: Industripolitiken saknas från både höger och vänster
+https://www.nwt.se/2026/03/30/industripolitiken-saknas-fran-bade-hoger-och-vanster-165a1/
+• Dagens Nyheter: En nationalikon på nedgång kan döda Sveriges VM-drömmar
+https://www.dn.se/sport/en-nationalikon-pa-nedgang-kan-doda-sveriges-vm-drommar/
+• Computer Sweden: Hemarbete är vår nya beredskapsreserv
+https://computersweden.se/article/4151126/hemarbete-ar-var-nya-beredskapsreserv.html</itunes:summary>
+            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - måndag den 30 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• Dagens Nyheter: Gisslandiplomati, exportdrömmar och sabotage – Sveriges stor...<br/><a href="https://www.dn.se/varlden/gisslandiplomati-exportdrommar-och-sabotage-sveriges-stormiga-relation-till-iran/">https://www.dn.se/varlden/gisslandiplomati-exportdrommar-och-sabotage-sveriges-stormiga-relation-till-iran/</a><br/>• Dagens Nyheter: Lisa Magnusson: Tillgången till vaccin får inte vara en klas...<br/><a href="https://www.dn.se/ledare/lisa-magnusson-tillgangen-till-vaccin-far-inte-vara-en-klassfraga/">https://www.dn.se/ledare/lisa-magnusson-tillgangen-till-vaccin-far-inte-vara-en-klassfraga/</a><br/>• NWT - Nya Wermlands-Tidningen: Industripolitiken saknas från både höger och vänster<br/><a href="https://www.nwt.se/2026/03/30/industripolitiken-saknas-fran-bade-hoger-och-vanster-165a1/">https://www.nwt.se/2026/03/30/industripolitiken-saknas-fran-bade-hoger-och-vanster-165a1/</a><br/>• Dagens Nyheter: En nationalikon på nedgång kan döda Sveriges VM-drömmar<br/><a href="https://www.dn.se/sport/en-nationalikon-pa-nedgang-kan-doda-sveriges-vm-drommar/">https://www.dn.se/sport/en-nationalikon-pa-nedgang-kan-doda-sveriges-vm-drommar/</a><br/>• Computer Sweden: Hemarbete är vår nya beredskapsreserv<br/><a href="https://computersweden.se/article/4151126/hemarbete-ar-var-nya-beredskapsreserv.html">https://computersweden.se/article/4151126/hemarbete-ar-var-nya-beredskapsreserv.html</a></p>]]></content:encoded>
+            <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260330_070203.mp3" length="4779501" type="audio/mpeg"/>
+            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260330_070203.mp3</guid>
+        </item>        <item>
             <title>MMM Senaste Nytt - 29 mars 2026</title>
             <description>Dagens nyheter inom AI, teknik och klimat - söndag den 29 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
 
@@ -339,42 +371,6 @@ https://www.dn.se/debatt/kommuner-borde-fa-ta-ut-mer-skatter-och-av-fler/</itune
             <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
             <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260321_053610.mp3" length="10778349" type="audio/mpeg"/>
             <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260321_053610.mp3</guid>
-        </item>        <item>
-            <title>MMM Senaste Nytt - 20 mars 2026</title>
-            <description>Dagens nyheter inom AI, teknik och klimat - fredag den 20 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Ledare: De har inte begått något brott – men Sverige låser i...
-https://www.dn.se/ledare/de-har-inte-begatt-nagot-brott-men-sverige-laser-in-dem-i-manader/
-• SVT Nyheter: Försvunnen kvinna i Örebro hittad avliden i samband med larm...
-https://www.svt.se/nyheter/lokalt/orebro/larm-om-drunkning-i-orebro-pagaende-insats
-• SVT Nyheter: ”Om oppositionen vinner valet väntar strid om klimatmålen”
-https://www.svt.se/nyheter/inrikes/om-oppositionen-vinner-valet-vantar-strid-om-klimatmalen
-• SVT Nyheter: L-ledaren på interna mötet: ”Inte mitt förstahandsval”
-https://www.svt.se/nyheter/inrikes/l-ledaren-pa-interna-motet-inte-mitt-forstahandsval
-• SVT Nyheter: Politiker kritiserar Skellefteå kommuns rekryteringskampanj:...
-https://www.svt.se/nyheter/lokalt/vasterbotten/politiker-kritiserar-skelleftea-kommuns-rekryteringskampanj-provocerande
-• Dagens Nyheter: Insändare. Elektrifiera Sverige för att göra oss oberoende
-https://www.dn.se/insandare/elektrifiera-sverige-for-att-gora-oss-oberoende/</description>
-            <itunes:summary>Dagens nyheter inom AI, teknik och klimat - fredag den 20 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.
-
-Källor som refereras i detta avsnitt:
-• Dagens Nyheter: Ledare: De har inte begått något brott – men Sverige låser i...
-https://www.dn.se/ledare/de-har-inte-begatt-nagot-brott-men-sverige-laser-in-dem-i-manader/
-• SVT Nyheter: Försvunnen kvinna i Örebro hittad avliden i samband med larm...
-https://www.svt.se/nyheter/lokalt/orebro/larm-om-drunkning-i-orebro-pagaende-insats
-• SVT Nyheter: ”Om oppositionen vinner valet väntar strid om klimatmålen”
-https://www.svt.se/nyheter/inrikes/om-oppositionen-vinner-valet-vantar-strid-om-klimatmalen
-• SVT Nyheter: L-ledaren på interna mötet: ”Inte mitt förstahandsval”
-https://www.svt.se/nyheter/inrikes/l-ledaren-pa-interna-motet-inte-mitt-forstahandsval
-• SVT Nyheter: Politiker kritiserar Skellefteå kommuns rekryteringskampanj:...
-https://www.svt.se/nyheter/lokalt/vasterbotten/politiker-kritiserar-skelleftea-kommuns-rekryteringskampanj-provocerande
-• Dagens Nyheter: Insändare. Elektrifiera Sverige för att göra oss oberoende
-https://www.dn.se/insandare/elektrifiera-sverige-for-att-gora-oss-oberoende/</itunes:summary>
-            <content:encoded><![CDATA[<p>Dagens nyheter inom AI, teknik och klimat - fredag den 20 mars 2026. Med detaljerade källhänvisningar från svenska och internationella medier.<br/><br/><br/>Källor som refereras i detta avsnitt:<br/>• Dagens Nyheter: Ledare: De har inte begått något brott – men Sverige låser i...<br/><a href="https://www.dn.se/ledare/de-har-inte-begatt-nagot-brott-men-sverige-laser-in-dem-i-manader/">https://www.dn.se/ledare/de-har-inte-begatt-nagot-brott-men-sverige-laser-in-dem-i-manader/</a><br/>• SVT Nyheter: Försvunnen kvinna i Örebro hittad avliden i samband med larm...<br/><a href="https://www.svt.se/nyheter/lokalt/orebro/larm-om-drunkning-i-orebro-pagaende-insats">https://www.svt.se/nyheter/lokalt/orebro/larm-om-drunkning-i-orebro-pagaende-insats</a><br/>• SVT Nyheter: ”Om oppositionen vinner valet väntar strid om klimatmålen”<br/><a href="https://www.svt.se/nyheter/inrikes/om-oppositionen-vinner-valet-vantar-strid-om-klimatmalen">https://www.svt.se/nyheter/inrikes/om-oppositionen-vinner-valet-vantar-strid-om-klimatmalen</a><br/>• SVT Nyheter: L-ledaren på interna mötet: ”Inte mitt förstahandsval”<br/><a href="https://www.svt.se/nyheter/inrikes/l-ledaren-pa-interna-motet-inte-mitt-forstahandsval">https://www.svt.se/nyheter/inrikes/l-ledaren-pa-interna-motet-inte-mitt-forstahandsval</a><br/>• SVT Nyheter: Politiker kritiserar Skellefteå kommuns rekryteringskampanj:...<br/><a href="https://www.svt.se/nyheter/lokalt/vasterbotten/politiker-kritiserar-skelleftea-kommuns-rekryteringskampanj-provocerande">https://www.svt.se/nyheter/lokalt/vasterbotten/politiker-kritiserar-skelleftea-kommuns-rekryteringskampanj-provocerande</a><br/>• Dagens Nyheter: Insändare. Elektrifiera Sverige för att göra oss oberoende<br/><a href="https://www.dn.se/insandare/elektrifiera-sverige-for-att-gora-oss-oberoende/">https://www.dn.se/insandare/elektrifiera-sverige-for-att-gora-oss-oberoende/</a></p>]]></content:encoded>
-            <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
-            <enclosure url="https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260320_053843.mp3" length="11496045" type="audio/mpeg"/>
-            <guid>https://pontusdahlberg.github.io/morgonpodden/audio/MMM_senaste_nytt_20260320_053843.mp3</guid>
         </item>
     </channel>
 </rss>

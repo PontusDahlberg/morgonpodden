@@ -213,6 +213,102 @@ class GeminiTTSDialogGenerator:
 
         return "\n".join(fixed_lines).strip()
 
+    def _sanitize_turn_text(self, text: str) -> str:
+        """Sanitize spoken content without injecting a synthetic speaker prefix."""
+        if not text:
+            return ""
+
+        sanitized = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]", "", text)
+        sanitized = sanitized.replace("&", "och")
+        sanitized = _strip_spoken_urls(sanitized)
+
+        # Style tags are control hints for the script, not something the voice should read out.
+        sanitized = re.sub(r"\[(?:[^\[\]\n]{1,24})\]", " ", sanitized)
+
+        # Normalize known Swedish abbreviations and weather phrasing for Gemini TTS.
+        sanitized = re.sub(
+            r"\bNWT\s*-\s*Nya Wermlands-Tidningen\b",
+            "NVT, Nya Wermlands-Tidningen",
+            sanitized,
+            flags=re.IGNORECASE,
+        )
+        sanitized = re.sub(r"\bSMHI\b", "ess emm hå i", sanitized, flags=re.IGNORECASE)
+        sanitized = re.sub(r"\bNWT\b", "NVT", sanitized, flags=re.IGNORECASE)
+        sanitized = re.sub(r"(-?\d+)\s*°\s*C\b", r"\1 grader", sanitized, flags=re.IGNORECASE)
+        sanitized = re.sub(r"(-?\d+)\s*°\b", r"\1 grader", sanitized)
+        sanitized = re.sub(
+            r"(?<!\d)(-?\d+)\s*[-–]\s*(\+?-?\d+)\s*grader\b",
+            r"\1 till \2 grader",
+            sanitized,
+            flags=re.IGNORECASE,
+        )
+
+        sanitized = " ".join(sanitized.split())
+        sanitized = re.sub(r"\s+([,.;:!?])", r"\1", sanitized)
+        return sanitized.strip()
+
+    def _dialog_script_to_turns(self, dialog_script: str) -> List[texttospeech.MultiSpeakerMarkup.Turn]:
+        """Convert Lisa/Pelle dialog text into structured multi-speaker turns."""
+        sanitized_script = self._sanitize_dialog_script(dialog_script)
+        if not sanitized_script:
+            return []
+
+        turns: List[texttospeech.MultiSpeakerMarkup.Turn] = []
+        for line in sanitized_script.splitlines():
+            match = re.match(r"^\s*(Lisa|Pelle)\s*:\s*(.*)$", line)
+            if not match:
+                continue
+
+            speaker_alias = match.group(1)
+            turn_text = self._sanitize_turn_text(match.group(2))
+            if not turn_text:
+                continue
+
+            turns.append(
+                texttospeech.MultiSpeakerMarkup.Turn(
+                    speaker_alias=speaker_alias,
+                    text=turn_text,
+                )
+            )
+
+        return turns
+
+    def _build_style_prompt(self, prompt_max_bytes: int) -> str:
+        style_prompt = (
+            "Swedish news podcast (MMM Senaste Nytt). "
+            "Lisa: professional, warm, clear. "
+            "Pelle: energetic, curious, explains simply. "
+            "Natural Swedish pronunciation and smooth conversational flow. "
+            "Speaker labels are control metadata only and must never be spoken aloud."
+        )
+        return self._truncate_utf8(style_prompt.strip(), prompt_max_bytes)
+
+    def _build_voice_and_audio_config(self):
+        multi_speaker_voice_config = texttospeech.MultiSpeakerVoiceConfig(
+            speaker_voice_configs=[
+                texttospeech.MultispeakerPrebuiltVoice(
+                    speaker_alias="Lisa",
+                    speaker_id=self.voices["Lisa"]["speaker_id"]
+                ),
+                texttospeech.MultispeakerPrebuiltVoice(
+                    speaker_alias="Pelle",
+                    speaker_id=self.voices["Pelle"]["speaker_id"]
+                )
+            ]
+        )
+
+        voice = texttospeech.VoiceSelectionParams(
+            language_code="sv-SE",
+            model_name="gemini-2.5-pro-tts",
+            multi_speaker_voice_config=multi_speaker_voice_config
+        )
+
+        audio_config = texttospeech.AudioConfig(
+            audio_encoding=texttospeech.AudioEncoding.MP3,
+            sample_rate_hertz=24000
+        )
+        return voice, audio_config
+
     def _truncate_utf8(self, s: str, max_bytes: int) -> str:
         if self._utf8_len(s) <= max_bytes:
             return s
@@ -376,13 +472,7 @@ class GeminiTTSDialogGenerator:
             prompt_max_bytes = int(os.getenv('GEMINI_TTS_PROMPT_MAX_BYTES', '850'))
             chunk_max_bytes_default = int(os.getenv('GEMINI_TTS_MAX_BYTES', '3900'))
 
-            style_prompt = (
-                "Swedish news podcast (MMM Senaste Nytt). "
-                "Lisa: professional, warm, clear. "
-                "Pelle: energetic, curious, explains simply. "
-                "Natural Swedish pronunciation and smooth conversational flow."
-            )
-            style_prompt = self._truncate_utf8(style_prompt.strip(), prompt_max_bytes)
+            style_prompt = self._build_style_prompt(prompt_max_bytes)
 
             dialog_script = self._sanitize_dialog_script(dialog_script)
             if not dialog_script:
@@ -453,32 +543,7 @@ class GeminiTTSDialogGenerator:
 
             # We build voice/audio_config before attempting synthesis (existing code below)
             
-            # Konfigurera multi-speaker voice
-            multi_speaker_voice_config = texttospeech.MultiSpeakerVoiceConfig(
-                speaker_voice_configs=[
-                    texttospeech.MultispeakerPrebuiltVoice(
-                        speaker_alias="Lisa",
-                        speaker_id=self.voices["Lisa"]["speaker_id"]
-                    ),
-                    texttospeech.MultispeakerPrebuiltVoice(
-                        speaker_alias="Pelle", 
-                        speaker_id=self.voices["Pelle"]["speaker_id"]
-                    )
-                ]
-            )
-            
-            # Konfigurera röst
-            voice = texttospeech.VoiceSelectionParams(
-                language_code="sv-SE",
-                model_name="gemini-2.5-pro-tts",  # Pro för bästa kvalitet
-                multi_speaker_voice_config=multi_speaker_voice_config
-            )
-            
-            # Audio-konfiguration
-            audio_config = texttospeech.AudioConfig(
-                audio_encoding=texttospeech.AudioEncoding.MP3,
-                sample_rate_hertz=24000
-            )
+            voice, audio_config = self._build_voice_and_audio_config()
 
             # Attempt synthesis; if the API reports a lower byte-limit, retry with that.
             last_error: Optional[Exception] = None
@@ -509,6 +574,135 @@ class GeminiTTSDialogGenerator:
         except Exception as e:
             logger.error(f"[GEMINI-TTS] Fel vid dialog-generering: {e}")
             return False
+
+    def synthesize_dialog_script_structured(self, dialog_script: str, output_file: str) -> bool:
+        """Synthesize a ready-made Lisa/Pelle dialog using structured turns."""
+        try:
+            prompt_max_bytes = int(os.getenv('GEMINI_TTS_PROMPT_MAX_BYTES', '850'))
+            chunk_max_bytes_default = int(os.getenv('GEMINI_TTS_MAX_BYTES', '3900'))
+
+            turns = self._dialog_script_to_turns(dialog_script)
+            if not turns:
+                logger.warning("[GEMINI-TTS] Inga giltiga turns efter sanering av dialog-script")
+                return False
+
+            style_prompt = self._build_style_prompt(prompt_max_bytes)
+            voice, audio_config = self._build_voice_and_audio_config()
+
+            def normalize_turns(max_bytes: int) -> List[texttospeech.MultiSpeakerMarkup.Turn]:
+                normalized: List[texttospeech.MultiSpeakerMarkup.Turn] = []
+                for turn in turns:
+                    speaker_alias = getattr(turn, 'speaker_alias', None)
+                    txt = getattr(turn, 'text', '') or ''
+                    if self._utf8_len(txt) <= max_bytes:
+                        normalized.append(turn)
+                        continue
+
+                    parts = self._split_text_by_bytes(txt, max_bytes=max(200, max_bytes - 10))
+                    for part in parts:
+                        spoken_part = self._sanitize_turn_text(part)
+                        if not spoken_part:
+                            continue
+                        normalized.append(
+                            texttospeech.MultiSpeakerMarkup.Turn(
+                                speaker_alias=speaker_alias,
+                                text=spoken_part,
+                            )
+                        )
+                return normalized
+
+            def chunk_turns(max_bytes: int) -> List[List[texttospeech.MultiSpeakerMarkup.Turn]]:
+                normalized = normalize_turns(max_bytes=max_bytes)
+                chunks: List[List[texttospeech.MultiSpeakerMarkup.Turn]] = []
+                current: List[texttospeech.MultiSpeakerMarkup.Turn] = []
+                current_bytes = 0
+
+                for turn in normalized:
+                    turn_bytes = self._utf8_len(getattr(turn, 'text', '')) + 1
+                    if current and current_bytes + turn_bytes > max_bytes:
+                        chunks.append(current)
+                        current = []
+                        current_bytes = 0
+                    current.append(turn)
+                    current_bytes += turn_bytes
+
+                if current:
+                    chunks.append(current)
+                return chunks
+
+            def run_synthesis(turn_chunks: List[List[texttospeech.MultiSpeakerMarkup.Turn]]) -> None:
+                if len(turn_chunks) == 1:
+                    synthesis_input = texttospeech.SynthesisInput(
+                        multi_speaker_markup=texttospeech.MultiSpeakerMarkup(turns=turn_chunks[0]),
+                        prompt=style_prompt
+                    )
+                    response = self.client.synthesize_speech(
+                        input=synthesis_input,
+                        voice=voice,
+                        audio_config=audio_config
+                    )
+                    os.makedirs(os.path.dirname(output_file) or '.', exist_ok=True)
+                    with open(output_file, "wb") as out:
+                        out.write(response.audio_content)
+                    logger.info(f"[GEMINI-TTS] Strukturerat dialog-script sparat: {output_file}")
+                    return
+
+                logger.info(f"[GEMINI-TTS] Strukturerat dialog-script kräver {len(turn_chunks)} chunks")
+                tmp_files: List[str] = []
+                try:
+                    for idx, chunk in enumerate(turn_chunks, start=1):
+                        synthesis_input = texttospeech.SynthesisInput(
+                            multi_speaker_markup=texttospeech.MultiSpeakerMarkup(turns=chunk),
+                            prompt=style_prompt
+                        )
+                        chunk_bytes = sum(self._utf8_len(getattr(turn, 'text', '')) + 1 for turn in chunk)
+                        logger.info(f"[GEMINI-TTS] Genererar strukturerat chunk {idx}/{len(turn_chunks)} (~{chunk_bytes} bytes)")
+                        response = self.client.synthesize_speech(
+                            input=synthesis_input,
+                            voice=voice,
+                            audio_config=audio_config
+                        )
+                        fd, tmp_path = tempfile.mkstemp(prefix=f"gemini_tts_struct_script_{idx}_", suffix=".mp3")
+                        os.close(fd)
+                        with open(tmp_path, "wb") as out:
+                            out.write(response.audio_content)
+                        tmp_files.append(tmp_path)
+
+                    self._stitch_mp3_segments(tmp_files, output_file)
+                    logger.info(f"[GEMINI-TTS] Strukturerat dialog-script (chunkat) sparat: {output_file}")
+                finally:
+                    for path in tmp_files:
+                        try:
+                            os.remove(path)
+                        except Exception:
+                            pass
+
+            last_error: Optional[Exception] = None
+            attempt_limits = [chunk_max_bytes_default]
+            for attempt_index, max_bytes in enumerate(attempt_limits, start=1):
+                try:
+                    turn_chunks = chunk_turns(max_bytes=max_bytes)
+                    logger.info(
+                        f"[GEMINI-TTS] Structured-script försök {attempt_index}/{len(attempt_limits)} "
+                        f"(chunk_max_bytes={max_bytes}, prompt_bytes={self._utf8_len(style_prompt)})"
+                    )
+                    run_synthesis(turn_chunks)
+                    return True
+                except Exception as e:
+                    last_error = e
+                    limit = self._extract_limit_bytes_from_error(e)
+                    logger.warning(f"[GEMINI-TTS] Structured-script försök {attempt_index} misslyckades: {e}")
+                    if limit is not None and len(attempt_limits) == 1:
+                        safe = max(200, limit - 50)
+                        attempt_limits.append(safe)
+                        logger.info(f"[GEMINI-TTS] Upptäckte byte-limit {limit}; retry med chunk_max_bytes={safe}")
+                        continue
+                    break
+
+            raise last_error if last_error is not None else RuntimeError("Gemini structured script TTS failed")
+        except Exception as e:
+            logger.error(f"[GEMINI-TTS] Fel vid strukturerat dialog-script: {e}")
+            return False
     
     def synthesize_dialog_structured(self, news_segments: List[Dict], 
                                    weather_info: str, output_file: str) -> bool:
@@ -526,10 +720,6 @@ class GeminiTTSDialogGenerator:
         try:
             prompt_max_bytes = int(os.getenv('GEMINI_TTS_PROMPT_MAX_BYTES', '850'))
             chunk_max_bytes_default = int(os.getenv('GEMINI_TTS_MAX_BYTES', '3900'))
-
-            def sanitize_turn_text(text: str) -> str:
-                # Reuse the same sanitization logic as freeform, but keep it single-line.
-                return self._sanitize_dialog_script(text).replace("\n", " ")
 
             # Bygg strukturerade turns
             turns = []
@@ -550,11 +740,11 @@ class GeminiTTSDialogGenerator:
             turns.extend([
                 texttospeech.MultiSpeakerMarkup.Turn(
                     speaker_alias="Lisa",
-                    text=sanitize_turn_text("Men först, hur ser vädret ut idag?")
+                    text=self._sanitize_turn_text("Men först, hur ser vädret ut idag?")
                 ),
                 texttospeech.MultiSpeakerMarkup.Turn(
                     speaker_alias="Pelle",
-                    text=sanitize_turn_text(f"[informative] {weather_info}")
+                    text=self._sanitize_turn_text(f"[informative] {weather_info}")
                 )
             ])
             
@@ -566,7 +756,7 @@ class GeminiTTSDialogGenerator:
                 turns.append(
                     texttospeech.MultiSpeakerMarkup.Turn(
                         speaker_alias=speaker,
-                        text=sanitize_turn_text(f"{emotion_tag} {segment['text']}")
+                        text=self._sanitize_turn_text(f"{emotion_tag} {segment['text']}")
                     )
                 )
             
@@ -583,38 +773,8 @@ class GeminiTTSDialogGenerator:
             ])
             
             # Style prompt
-            style_prompt = (
-                "Swedish news podcast (MMM Senaste Nytt). "
-                "Lisa: professional, warm, clear. "
-                "Pelle: energetic, curious, explains simply. "
-                "Natural Swedish pronunciation and smooth conversational flow."
-            )
-            style_prompt = self._truncate_utf8(style_prompt.strip(), prompt_max_bytes)
-
-            # Voice config (samma som freeform)
-            multi_speaker_voice_config = texttospeech.MultiSpeakerVoiceConfig(
-                speaker_voice_configs=[
-                    texttospeech.MultispeakerPrebuiltVoice(
-                        speaker_alias="Lisa",
-                        speaker_id=self.voices["Lisa"]["speaker_id"]
-                    ),
-                    texttospeech.MultispeakerPrebuiltVoice(
-                        speaker_alias="Pelle",
-                        speaker_id=self.voices["Pelle"]["speaker_id"]
-                    )
-                ]
-            )
-
-            voice = texttospeech.VoiceSelectionParams(
-                language_code="sv-SE",
-                model_name="gemini-2.5-pro-tts",
-                multi_speaker_voice_config=multi_speaker_voice_config
-            )
-
-            audio_config = texttospeech.AudioConfig(
-                audio_encoding=texttospeech.AudioEncoding.MP3,
-                sample_rate_hertz=24000
-            )
+            style_prompt = self._build_style_prompt(prompt_max_bytes)
+            voice, audio_config = self._build_voice_and_audio_config()
 
             def normalize_turns(max_bytes: int) -> List[texttospeech.MultiSpeakerMarkup.Turn]:
                 """Ensure no single turn exceeds max_bytes by splitting long turns."""

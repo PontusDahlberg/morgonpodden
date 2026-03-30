@@ -135,6 +135,18 @@ _ARTICLE_HARD_CUT_MARKERS = (
     'läs mer om hur vi arbetar',
     'relaterat',
     'copied',
+    'javascript är avstängt',
+    'javascript måste vara påslaget',
+    'läs mer om webbläsarstöd',
+    'någonting är fel',
+    'läs vidare',
+    'starta din prenumeration',
+    'redan prenumerant',
+    'logga in och läs vidare',
+    'full tillgång till allt digitalt material',
+    'på din profilsida',
+    'kontakta vår kundtjänst',
+    'premium',
 )
 
 _ARTICLE_DROP_PATTERNS = (
@@ -170,6 +182,17 @@ _ARTICLE_DROP_PATTERNS = (
     r'\bexhibit table\b',
     r'\bbefore prices rise\b',
     r'\bsave up to\b',
+    r'\bfoto\s*:',
+    r'\bbild(?:text)?\s*:',
+    r'\bfotograf\s*:',
+    r'\barkivbild\b',
+    r'\bgenrebild\b',
+    r'\bjavascript är avstängt\b',
+    r'\bjavascript måste vara påslaget\b',
+    r'\bwebbläsarstöd\b',
+    r'\bpremium\b',
+    r'\bprenumerera\b',
+    r'\bredan prenumerant\b',
 )
 
 _ENGLISH_FUNCTION_WORDS = {
@@ -336,6 +359,13 @@ def cleanup_generated_dialogue(text: str) -> str:
         r'\bannons\b',
         r'\badvertisement\b',
         r'\bsponsor(?:ed)?\b',
+        r'\bfoto\s*:',
+        r'\bbild(?:text)?\s*:',
+        r'\bfotograf\s*:',
+        r'\barkivbild\b',
+        r'\bgenrebild\b',
+        r'\bjavascript är avstängt\b',
+        r'\bwebbläsarstöd\b',
     )
     removed_meta_lines = 0
     cleaned_lines = []
@@ -1197,6 +1227,14 @@ def _strip_article_noise(text: str) -> str:
 
     cleaned = html.unescape(str(text))
     cleaned = _strip_spoken_urls(cleaned)
+    cleaned = re.sub(
+        r'\b(?:Foto|Bild(?:text)?|Fotograf)\s*:\s*[^.!?]{0,220}(?=[.!?]|$)',
+        ' ',
+        cleaned,
+        flags=re.IGNORECASE,
+    )
+    cleaned = re.sub(r'\b(?:Arkivbild|Genrebild)\b', ' ', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\b[A-Za-z0-9+/]{80,}={0,2}\b', ' ', cleaned)
 
     lowered = cleaned.lower()
     cut_positions = [lowered.find(marker) for marker in _ARTICLE_HARD_CUT_MARKERS if marker in lowered]
@@ -2241,11 +2279,18 @@ def generate_audio_with_gemini_dialog(script_content: str, weather_info: str, ou
             logger.warning("[AUDIO] Tomt dialog-script för Gemini, faller tillbaka")
             return False
         
-        # Generera audio med freeform dialog
-        success = generator.synthesize_dialog_freeform(
+        # Structured turns ger stabilare röstkoppling och undviker att talarnamn läses upp.
+        success = generator.synthesize_dialog_script_structured(
             dialog_script=dialog_script,
             output_file=output_file
         )
+
+        if not success:
+            logger.warning("[AUDIO] Structured Gemini TTS misslyckades, provar freeform som fallback")
+            success = generator.synthesize_dialog_freeform(
+                dialog_script=dialog_script,
+                output_file=output_file
+            )
         
         if success:
             logger.info(f"[AUDIO] ✅ Gemini TTS dialog sparad: {output_file}")

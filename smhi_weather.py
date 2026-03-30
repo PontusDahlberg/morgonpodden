@@ -175,15 +175,10 @@ class SMHIWeatherService:
                             if tmin_i == tmax_i:
                                 temp_str = f"{tmin_i} grader"
                             else:
-                                # Undvik "-12--6"; använd "till" när negativa tal förekommer
-                                # eller när intervallet korsar noll (för tydlighet med plus).
+                                # Använd alltid "till" i podcasttext för naturligare uppläsning.
                                 crosses_zero = tmin_i < 0 < tmax_i
-                                has_negative = tmin_i < 0 or tmax_i < 0
-                                if has_negative or crosses_zero:
-                                    tmax_fmt = f"+{tmax_i}" if crosses_zero and tmax_i > 0 else f"{tmax_i}"
-                                    temp_str = f"{tmin_i} till {tmax_fmt} grader"
-                                else:
-                                    temp_str = f"{tmin_i}-{tmax_i} grader"
+                                tmax_fmt = f"+{tmax_i}" if crosses_zero and tmax_i > 0 else f"{tmax_i}"
+                                temp_str = f"{tmin_i} till {tmax_fmt} grader"
                         else:
                             temp_str = f"{temp:.0f} grader"
                         weather_desc = self.get_weather_symbol_description(symbol)

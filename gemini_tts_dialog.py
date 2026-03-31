@@ -185,6 +185,13 @@ class GeminiTTSDialogGenerator:
         # Strip URLs and bare domains so the TTS model does not spell them out.
         dialog_script = _strip_spoken_urls(dialog_script)
 
+        dialog_script = re.sub(
+            r"(?<!^)(?<!\n)\s+(?=(?:\*{1,2})?(?:Lisa|Pelle)(?:\*{1,2})?\s*:)",
+            "\n",
+            dialog_script,
+            flags=re.IGNORECASE,
+        )
+
         # Normalize whitespace but keep line breaks (speaker turns)
         dialog_script = "\n".join(" ".join(line.split()) for line in dialog_script.splitlines())
 
@@ -221,6 +228,12 @@ class GeminiTTSDialogGenerator:
         sanitized = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]", "", text)
         sanitized = sanitized.replace("&", "och")
         sanitized = _strip_spoken_urls(sanitized)
+        sanitized = re.sub(
+            r"(?:\*{1,2})?(?:Lisa|Pelle)(?:\*{1,2})?\s*:\s*",
+            " ",
+            sanitized,
+            flags=re.IGNORECASE,
+        )
 
         # Style tags are control hints for the script, not something the voice should read out.
         sanitized = re.sub(r"\[(?:[^\[\]\n]{1,24})\]", " ", sanitized)

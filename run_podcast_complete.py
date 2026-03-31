@@ -2088,6 +2088,18 @@ def _strip_spoken_urls(text: str) -> str:
     cleaned = re.sub(r'\s{2,}', ' ', cleaned)
     return cleaned.strip()
 
+
+def _normalize_inline_speaker_turns(text: str) -> str:
+    """Bryt ut inline-dialog så Lisa/Pelle alltid hamnar på egna rader."""
+    if not text:
+        return ""
+
+    return re.sub(
+        r'(?<!^)(?<!\n)\s+(?=(?:\*{1,2})?(?:Lisa|Pelle|LISA|PELLE)(?:\*{1,2})?\s*:)',
+        '\n',
+        text,
+    )
+
 def split_long_text_for_tts(text: str, speaker: str, max_bytes: int = 4000) -> List[Dict]:
     """Dela upp lång text i TTS-kompatibla segment"""
     segments = []
@@ -2163,7 +2175,7 @@ def split_long_text_for_tts(text: str, speaker: str, max_bytes: int = 4000) -> L
 def parse_podcast_text(text: str) -> List[Dict]:
     """Parsa podcast-text i segment med talare och repliker"""
     segments = []
-    lines = text.strip().split('\n')
+    lines = _normalize_inline_speaker_turns(text or '').strip().split('\n')
     
     current_speaker = None
     current_text = []

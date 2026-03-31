@@ -399,6 +399,15 @@ class GoogleCloudTTS:
         # Ta bort URL:er och bare domäner så fallbacken inte läser upp dem bokstav för bokstav.
         text = _strip_spoken_urls(text)
 
+        # Normalisera svenska förkortningar som annars uttalas fel i fallback-rösten.
+        text = re.sub(
+            r'\bNWT\s*-\s*Nya Wermlands-Tidningen\b',
+            'NVT, Nya Wermlands-Tidningen',
+            text,
+            flags=re.IGNORECASE,
+        )
+        text = re.sub(r'\bNWT\b', 'NVT', text, flags=re.IGNORECASE)
+
         # Komprimera whitespace
         text = re.sub(r"\s{2,}", " ", text).strip()
 

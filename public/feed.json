@@ -1,5 +1,7 @@
 {
-  "podcast_title": "MMM Veckonytt - MÄNNISKA MASKIN MILJÖ",
+  "podcast_title": "MMM Senaste Nytt",
+  "status": "paused",
+  "notice": "MMM Senaste Nytt är tillfälligt pausad för underhåll medan vi gör ett större omtag för att få podcasten att fungera bättre.",
   "last_updated": "2025-09-22T15:00:00Z",
   "episode_count": 1,
   "latest_episode": {

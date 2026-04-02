@@ -1,4 +1,4 @@
-name: 🎙️ Människa Maskin Miljö - Podcast Generation
+name: 🎙️ Människa Maskin Miljö - Podcast Generation (PAUSAD)
 
 # Kör workflow varje dag kl 06:00 svensk tid eller manuellt
 on:
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     # needs: test-code  # Tillfälligt inaktiverat för att fokusera på podcast-generering
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: false  # MMM Senaste Nytt är pausad för underhåll
     
     permissions:
       contents: write  # Behövs för att committa tillbaka till repo
@@ -313,7 +313,7 @@ jobs:
     name: 🌐 Deploy Podcast Website
     runs-on: ubuntu-latest
     needs: generate-podcast
-    if: success() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    if: false  # Webbdeploy pausad tillsammans med podcast-genereringen
     
     permissions:
       contents: read

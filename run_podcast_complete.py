@@ -2512,12 +2512,16 @@ def generate_github_rss(episodes_data: List[Dict], base_url: str) -> str:
     """
     config = load_config() or {}
     ps = (config.get('podcastSettings') or {}) if isinstance(config.get('podcastSettings'), dict) else {}
+    maintenance_message = (ps.get('maintenanceMessage') or "").strip()
+    podcast_paused = bool(ps.get('paused'))
 
     channel_title = (ps.get('title') or "MMM Senaste Nytt").strip()
     channel_description = (ps.get('description') or "").strip() or (
         "Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. "
         "En del av Människa Maskin Miljö-familjen."
     )
+    if podcast_paused and maintenance_message:
+        channel_description = maintenance_message
     itunes_author = (ps.get('author') or "").strip() or "Pontus Dahlberg"
     itunes_explicit = bool(ps.get('explicit', False))
     itunes_category = (ps.get('category') or "Technology").strip()

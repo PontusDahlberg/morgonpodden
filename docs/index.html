@@ -3,157 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMM Veckonytt - MÄNNISKA MASKIN MILJÖ</title>
-    <meta name="description" content="En automatiskt genererad podcast med veckans viktigaste nyheter inom AI, teknik och klimat">
-    
-    <!-- Podcast RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="MMM Veckonytt RSS" href="/feed.xml">
-    
+    <title>MMM Senaste Nytt - Tillfällig paus</title>
+    <meta name="description" content="MMM Senaste Nytt är tillfälligt pausad för underhåll medan podcasten byggs om för att fungera bättre.">
+    <link rel="alternate" type="application/rss+xml" title="MMM Senaste Nytt RSS" href="/feed.xml">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Georgia, 'Times New Roman', serif;
+            background:
+                radial-gradient(circle at top, rgba(244, 196, 48, 0.32), transparent 32%),
+                linear-gradient(160deg, #123524 0%, #1f4d3c 48%, #f1ead9 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
-        
+
         .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 600px;
             width: 100%;
-            padding: 40px;
+            max-width: 720px;
+            padding: 44px;
+            border-radius: 28px;
+            background: rgba(247, 243, 234, 0.96);
+            border: 1px solid rgba(18, 53, 36, 0.14);
+            box-shadow: 0 24px 80px rgba(8, 22, 17, 0.28);
         }
-        
+
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
-        
+
         .logo {
             width: 120px;
             height: 120px;
             margin: 0 auto 20px;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
+            box-shadow: 0 14px 30px rgba(18, 53, 36, 0.18);
         }
-        
+
         .logo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            color: #123524;
+            font-size: 2.7em;
+            margin-bottom: 12px;
         }
-        
+
         .tagline {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 30px;
+            color: #4d5f55;
+            font-size: 1.15em;
+            line-height: 1.5;
         }
-        
-        .subscribe-section {
-            background: #f7f7f7;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
+
+        .status-card {
+            margin-bottom: 28px;
+            padding: 28px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(18, 53, 36, 0.96), rgba(31, 77, 60, 0.92));
+            color: #f7f3ea;
         }
-        
+
+        .status-chip {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(244, 196, 48, 0.18);
+            border: 1px solid rgba(244, 196, 48, 0.38);
+            color: #f4c430;
+            font-size: 0.9em;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
         h2 {
-            color: #444;
+            color: #123524;
             font-size: 1.5em;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
-        
+
+        .status-card h2 {
+            color: #f7f3ea;
+            margin-bottom: 12px;
+        }
+
+        .status-card p,
+        .listen-copy,
+        .info p {
+            line-height: 1.7;
+        }
+
+        .listen-section,
+        .latest-episodes {
+            margin-bottom: 28px;
+            padding: 25px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(18, 53, 36, 0.1);
+        }
+
+        .listen-copy {
+            color: #4d5f55;
+            margin-bottom: 16px;
+        }
+
         .podcast-links {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
-        
+
         .podcast-link {
             flex: 1;
             min-width: 200px;
             padding: 15px;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             text-decoration: none;
-            color: #333;
+            color: #123524;
             text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
-            border: 2px solid #e0e0e0;
+            border: 2px solid rgba(18, 53, 36, 0.12);
         }
-        
+
         .podcast-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: #667eea;
+            box-shadow: 0 10px 24px rgba(18, 53, 36, 0.12);
+            border-color: #123524;
         }
-        
-        .podcast-link .icon {
-            font-size: 2em;
+
+        .icon {
+            display: block;
             margin-bottom: 10px;
+            font-size: 1.15em;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
-        
+
         .rss-url {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
             padding: 12px;
+            border-radius: 10px;
+            background: white;
+            border: 2px solid rgba(18, 53, 36, 0.12);
             font-family: monospace;
             font-size: 0.9em;
             word-break: break-all;
-            color: #666;
+            color: #4d5f55;
         }
-        
-        .latest-episodes {
-            margin-top: 30px;
-        }
-        
+
         .episode {
-            border-left: 3px solid #667eea;
+            border-left: 3px solid #c58f00;
             padding-left: 20px;
-            margin-bottom: 20px;
         }
-        
+
         .episode-title {
             font-weight: bold;
-            color: #333;
+            color: #123524;
             margin-bottom: 5px;
         }
-        
+
         .episode-date {
-            color: #999;
+            color: #6a786f;
             font-size: 0.9em;
         }
-        
+
         .info {
             text-align: center;
-            color: #999;
-            font-size: 0.9em;
-            margin-top: 30px;
+            color: #6a786f;
+            font-size: 0.95em;
             padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .audio-player {
-            width: 100%;
-            margin-top: 10px;
+            border-top: 1px solid rgba(18, 53, 36, 0.12);
         }
     </style>
 </head>
@@ -161,70 +193,60 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <img src="/cover.jpg" alt="MÄNNISKA MASKIN MILJÖ">
+                <img src="/cover.jpg" alt="MMM Senaste Nytt">
             </div>
-            <h1>MMM Veckonytt</h1>
-            <p class="tagline">Veckans viktigaste nyheter inom AI, teknik och klimat</p>
+            <h1>MMM Senaste Nytt</h1>
+            <p class="tagline">Tillfälligt stängt för underhåll medan vi gör ett större omtag för att få podcasten att fungera bättre.</p>
         </div>
-        
-        <div class="subscribe-section">
-            <h2>🎧 Prenumerera</h2>
-            
+
+        <div class="status-card">
+            <div class="status-chip">Pausad</div>
+            <h2>Podcasten är tillfälligt stängd för underhåll</h2>
+            <p>MMM Senaste Nytt publicerar inga nya avsnitt just nu. Vi använder pausen för att bygga om format, innehåll och produktion så att podcasten fungerar bättre när den kommer tillbaka.</p>
+        </div>
+
+        <div class="listen-section">
+            <h2>Lyssna vidare under pausen</h2>
+            <p class="listen-copy">Tidigare avsnitt finns kvar. Du kan också behålla RSS-flödet i din poddapp medan omtaget pågår.</p>
             <div class="podcast-links">
-                <a href="#" onclick="copyRSSLink()" class="podcast-link">
-                    <div class="icon">📱</div>
-                    <div>Apple Podcasts</div>
-                    <small>Kopiera RSS-länk</small>
+                <a href="#" onclick="copyRSSLink(); return false;" class="podcast-link">
+                    <span class="icon">RSS</span>
+                    <div>Kopiera RSS-länk</div>
+                    <small>För valfri poddapp</small>
                 </a>
-                
                 <a href="https://open.spotify.com/show/4yxgwhz56Tz5RaqqmIlINQ" class="podcast-link">
-                    <div class="icon">🎵</div>
-                    <div>Spotify</div>
+                    <span class="icon">Spotify</span>
+                    <div>Öppna Spotify</div>
+                    <small>Tidigare avsnitt</small>
                 </a>
             </div>
-            
-            <p style="margin-bottom: 10px; color: #666;">RSS-feed för andra poddappar:</p>
             <div class="rss-url" id="rss-url">https://din-doman.com/feed.xml</div>
         </div>
-        
+
         <div class="latest-episodes">
-            <h2>📻 Senaste avsnitten</h2>
+            <h2>Tidigare avsnitt</h2>
             <div id="episodes">
-                <p style="color: #999;">Laddar avsnitt...</p>
+                <p style="color: #6a786f;">Laddar avsnitt...</p>
             </div>
         </div>
-        
+
         <div class="info">
-            <p>Nya avsnitt publiceras varje onsdag kl 07:00</p>
-            <p>Driven av AI • Uppdateras automatiskt</p>
+            <p>MMM Senaste Nytt är pausad tills vidare.</p>
+            <p>Tidigare avsnitt ligger kvar medan omtaget pågår.</p>
         </div>
     </div>
-    
+
     <script>
-        // Update RSS URL
         const currentUrl = window.location.origin;
         const rssUrl = currentUrl + '/feed.xml';
         document.getElementById('rss-url').textContent = rssUrl;
-        
-        // Copy RSS link function
+
         function copyRSSLink() {
             navigator.clipboard.writeText(rssUrl).then(() => {
-                alert('RSS-länk kopierad! Klistra in i Apple Podcasts för att prenumerera.');
+                alert('RSS-länk kopierad. Du kan använda den i valfri poddapp under pausen.');
             });
         }
-        
-        // Update podcast links
-        document.querySelectorAll('.podcast-link').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.includes('DOMAIN')) {
-                link.setAttribute('href', href.replace('DOMAIN', window.location.host));
-            }
-            if (href && href.includes('FEED_URL')) {
-                link.setAttribute('href', href.replace('FEED_URL', encodeURIComponent(rssUrl)));
-            }
-        });
-        
-        // Load episodes from feed.json
+
         fetch('/feed.json')
             .then(res => res.json())
             .then(data => {
@@ -232,15 +254,13 @@
                 if (data.episode_count > 0) {
                     episodesDiv.innerHTML = `
                         <div class="episode">
-                            <div class="episode-title">Senaste avsnittet</div>
+                            <div class="episode-title">Senaste publicerade avsnittet</div>
                             <div class="episode-date">Uppdaterad: ${new Date(data.last_updated).toLocaleDateString('sv-SE')}</div>
                         </div>
-                        <p style="color: #666; margin-top: 10px;">
-                            Totalt ${data.episode_count} avsnitt tillgängliga
-                        </p>
+                        <p style="color: #4d5f55; margin-top: 10px;">Totalt ${data.episode_count} tidigare avsnitt finns kvar att lyssna på.</p>
                     `;
                 } else {
-                    episodesDiv.innerHTML = '<p style="color: #999;">Inga avsnitt publicerade än</p>';
+                    episodesDiv.innerHTML = '<p style="color: #6a786f;">Inga tidigare avsnitt finns tillgängliga just nu.</p>';
                 }
             })
             .catch(err => {

@@ -255,7 +255,9 @@
   ],
   "podcastSettings": {
     "title": "MMM Senaste Nytt",
-    "description": "Dagliga nyheter från världen av människa, maskin och miljö - med Lisa och Pelle. En del av Människa Maskin Miljö-familjen.",
+    "description": "MMM Senaste Nytt är tillfälligt pausad för underhåll medan vi gör ett större omtag för att få podcasten att fungera bättre. Tidigare avsnitt finns kvar under tiden.",
+    "paused": true,
+    "maintenanceMessage": "MMM Senaste Nytt är tillfälligt pausad för underhåll medan vi gör ett större omtag för att få podcasten att fungera bättre. Tidigare avsnitt finns kvar under tiden.",
     "author": "Människa Maskin Miljö",
     "language": "sv-SE", 
     "category": "Technology",
